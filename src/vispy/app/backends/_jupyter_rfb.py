@@ -1,10 +1,25 @@
-import sys
 import asyncio
+import warnings
 
 from ..base import BaseApplicationBackend, BaseCanvasBackend, BaseTimerBackend
 from ...app import Timer
+from ...gloo.context import forget_canvas
 from ...util import keys
 from ._offscreen_util import OffscreenContext, FrameBufferHelper
+
+
+def _get_or_create_event_loop():
+    try:
+        return asyncio.get_running_loop()
+    except RuntimeError:
+        try:
+            with warnings.catch_warnings():
+                warnings.simplefilter("ignore", DeprecationWarning)
+                return asyncio.get_event_loop()
+        except RuntimeError:
+            loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(loop)
+            return loop
 
 
 try:
@@ -79,25 +94,13 @@ class CanvasBackend(BaseCanvasBackend, RemoteFrameBuffer):
     def __init__(self, vispy_canvas, **kwargs):
         BaseCanvasBackend.__init__(self, vispy_canvas)
         RemoteFrameBuffer.__init__(self)
-        # Use a context per canvas, because we seem to make assumptions
-        # about OpenGL state being local to the canvas.
-        self._context = OffscreenContext()  # OffscreenContext.get_global_instance()
-        # Briefly create a new window to trigger something context related.
-        # Not sure why this works, but it's part of the fix for  https://github.com/vispy/jupyter_rfb/issues/151
-        if sys.platform.startswith('win'):
-            self._context.make_current()
-            OffscreenContext().make_current().close()
+        # Use a Dawn offscreen context per canvas so canvas state remains isolated.
+        self._context = OffscreenContext()
         self._helper = FrameBufferHelper()
-
-        # With python 3.14 get_event_loop does not create one anymore, but raises runtimeerror,
-        # see: https://github.com/livekit/agents/issues/4755
-        try:
-            self._loop = asyncio.get_event_loop()
-        except RuntimeError:
-            self._loop = asyncio.new_event_loop()
-            asyncio.set_event_loop(self._loop)
+        self._loop = _get_or_create_event_loop()
         self._logical_size = 1, 1
         self._physical_size = 1, 1
+        self._pending_resize = False
         self._lifecycle = 0  # 0: not initialized, 1: initialized, 2: closed
         self._buttons = []
         # Init more based on kwargs (could maybe handle, title, show, context)
@@ -121,7 +124,8 @@ class CanvasBackend(BaseCanvasBackend, RemoteFrameBuffer):
             self._logical_size = w, h
             self._physical_size = int(w * r), int(h * r)
             self._helper.set_physical_size(*self._physical_size)
-            self._loop.call_soon(self._emit_resize_event)
+            self._pending_resize = True
+            self._loop.call_soon(self._flush_pending_resize)
             self._vispy_update()  # make sure to schedule a new draw
         elif type == "pointer_down":
             button = ev["button"]
@@ -188,16 +192,61 @@ class CanvasBackend(BaseCanvasBackend, RemoteFrameBuffer):
                 text=ev["key"],
             )
         elif type == "close":
-            self._lifecycle = 2
-            self._context.close()
-            _stop_timers(self._vispy_canvas)
+            self._cleanup_dawn_resources()
         else:
             pass  # event ignored / unknown
 
     def _modifiers(self, ev):
         return tuple(getattr(keys, m.upper()) for m in ev["modifiers"])
 
+    @property
+    def _dawn_canvas_id(self):
+        ctx = getattr(self, "_context", None)
+        if ctx is None or getattr(ctx, "_is_closed", True):
+            return 0
+        canvas = getattr(ctx, "_canvas", None)
+        backend = getattr(canvas, "_backend", None) if canvas is not None else None
+        if canvas is None or getattr(canvas, "_closed", True):
+            return 0
+        return int(getattr(backend, "_dawn_canvas_id", 0) or 0)
+
+    def _cleanup_dawn_resources(self):
+        if getattr(self, "_lifecycle", 2) == 2:
+            return
+        self._lifecycle = 2
+        self._pending_resize = False
+        vispy_canvas = getattr(self, "_vispy_canvas", None)
+        if vispy_canvas is not None:
+            _stop_timers(vispy_canvas)
+        ctx = getattr(self, "_context", None)
+        helper = getattr(self, "_helper", None)
+        try:
+            if ctx is not None and not getattr(ctx, "_is_closed", True):
+                ctx.make_current()
+            if helper is not None:
+                helper.close()
+            if vispy_canvas is not None:
+                try:
+                    vispy_canvas.context.flush_commands()
+                except Exception:
+                    pass
+            if ctx is not None and getattr(ctx, "_canvas", None) is not None and not getattr(ctx, "_is_closed", True):
+                try:
+                    ctx._canvas.context.flush_commands()
+                except Exception:
+                    pass
+        finally:
+            if ctx is not None:
+                ctx.close()
+            if vispy_canvas is not None:
+                forget_canvas(vispy_canvas)
+
+    def _flush_pending_resize(self):
+        if self._pending_resize and self._lifecycle != 2:
+            self._emit_resize_event()
+
     def _emit_resize_event(self):
+        self._pending_resize = False
         self._vispy_canvas.events.resize(
             size=self._logical_size,
             physical_size=self._physical_size,
@@ -206,8 +255,8 @@ class CanvasBackend(BaseCanvasBackend, RemoteFrameBuffer):
     def get_frame(self):
         # This gets automatically called by the RFB widget
 
-        # Only draw if the draw region is not null
-        if self._physical_size[0] <= 1 or self._physical_size[1] <= 1:
+        # Only draw if open and the draw region is not null
+        if self._lifecycle == 2 or self._physical_size[0] <= 1 or self._physical_size[1] <= 1:
             return None
 
         # Handle initialization
@@ -215,6 +264,9 @@ class CanvasBackend(BaseCanvasBackend, RemoteFrameBuffer):
             self._lifecycle = 1
             self._vispy_canvas.set_current()
             self._vispy_canvas.events.initialize()
+            self._emit_resize_event()
+        elif self._pending_resize:
+            self._vispy_canvas.set_current()
             self._emit_resize_event()
 
         # Draw and obtain result
@@ -260,8 +312,25 @@ class CanvasBackend(BaseCanvasBackend, RemoteFrameBuffer):
         self.request_draw()
 
     def _vispy_close(self):
+        self._cleanup_dawn_resources()
         # ipywidget.Widget.close()  ->  closes the comm and removes all views
-        self.close()
+        if hasattr(self, "close"):
+            try:
+                self.close()
+            except Exception:
+                pass
+
+    def __del__(self):
+        try:
+            self._cleanup_dawn_resources()
+        except Exception:
+            pass
+        super_del = getattr(super(), "__del__", None)
+        if callable(super_del):
+            try:
+                super_del()
+            except Exception:
+                pass
 
     def _vispy_get_size(self):
         return self._logical_size
@@ -282,7 +351,7 @@ class TimerBackend(BaseTimerBackend):
 
     def __init__(self, vispy_timer):
         super().__init__(vispy_timer)
-        self._loop = asyncio.get_event_loop()
+        self._loop = _get_or_create_event_loop()
         self._task = None
 
     async def _timer_coro(self, interval):
@@ -293,11 +362,16 @@ class TimerBackend(BaseTimerBackend):
     def _vispy_start(self, interval):
         if self._task is not None:
             self._task.cancel()
-        self._task = asyncio.create_task(self._timer_coro(interval))
+        try:
+            self._loop = asyncio.get_running_loop()
+        except RuntimeError:
+            pass
+        self._task = self._loop.create_task(self._timer_coro(interval))
 
     def _vispy_stop(self):
-        self._task.cancel()
-        self._task = None
+        if self._task is not None:
+            self._task.cancel()
+            self._task = None
 
     def _vispy_timeout(self):
         self._loop.call_soon(self._vispy_timer._timeout)

@@ -1,0 +1,112 @@
+{
+  "schema": 1,
+  "id": "wsl-software-tk90-cp31213-development",
+  "phase": "source-functional",
+  "product_runtime_source_commit": "3daf19be6c102764a5891ccbc29bf906e0588df1",
+  "kind": "wsl-software",
+  "architecture": "x86_64",
+  "python_abi": "cp312",
+  "python_version": "3.12.13 (main, Apr 14 2026, 14:29:00) [Clang 22.1.3 ]",
+  "interpreter": "/home/heq/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/bin/python3.12",
+  "interpreter_sha256": "339de109f072e52523066d97a2b3372e358a10cc00c6a9df62c28a6618061900",
+  "base_interpreter": {
+    "path": "/home/heq/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/bin/python3.12",
+    "sha256": "339de109f072e52523066d97a2b3372e358a10cc00c6a9df62c28a6618061900"
+  },
+  "os_identity": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "toolkit": {
+    "tk_version": 9.0,
+    "tcl_version": 9.0,
+    "binding_origin": "/home/heq/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/lib-dynload/_tkinter.cpython-312-x86_64-linux-gnu.so",
+    "binding_sha256": "0240658571f1531461f4a7178c454795c55fe0f5723eebeda0b5de2f4aeee303"
+  },
+  "display_mode": "tk-raster",
+  "device": {
+    "backend": "Vulkan",
+    "adapter_type": "cpu",
+    "vendor": "mesa",
+    "device": "llvmpipe (LLVM 18.1.3, 256 bits)",
+    "driver": "llvmpipe: Mesa 26.1.8 (LLVM 18.1.3)",
+    "vendor_id": 65541,
+    "device_id": 0,
+    "max_texture_dimension_1d": 16384,
+    "max_texture_dimension_2d": 16384,
+    "max_texture_dimension_3d": 4096,
+    "max_vertex_attributes": 30,
+    "max_vertex_buffers": 8,
+    "max_vertex_buffer_array_stride": 2048,
+    "max_storage_buffers_per_shader_stage": 16,
+    "max_uniform_buffers_per_shader_stage": 12,
+    "max_inter_stage_shader_variables": 30,
+    "max_storage_buffer_binding_size": 134217728,
+    "max_bindings_per_bind_group": 1000,
+    "max_compute_invocations_per_workgroup": 1024,
+    "max_compute_workgroup_size_x": 1024,
+    "max_compute_workgroups_per_dimension": 65535,
+    "max_point_vertex_attributes": 30,
+    "core_features_and_limits": true,
+    "point_input_limit_scope": "all active user point inputs share one vertex buffer; exact vertex/instance identities use read-only vertex storage without reserving a user attribute; actual granted attribute/stride/storage/allocation limits apply",
+    "max_samplers_per_shader_stage": 16,
+    "max_sampled_textures_per_shader_stage": 48,
+    "max_buffer_size": 4294967295,
+    "max_uniform_buffer_binding_size": 65536,
+    "software": true,
+    "float32_filterable": true,
+    "unorm16_texture_formats": true,
+    "bresenham_lines": true,
+    "last_vertex_provoking": true,
+    "timestamp_query": true,
+    "timestamp_quantization_ns": 65536,
+    "host_mapped_pointer": true,
+    "host_import_limit": 536870912,
+    "depth_stencil_storage": "depth24_unorm_stencil8",
+    "ok": true,
+    "error": "",
+    "loss_count": 0,
+    "revision": "117b054598f4758b598f4b8f48feea48c11fe7b0+dawn-499e5c6ff9b37d5de70c6493fb74c251e0d35c1c"
+  },
+  "native_sha256": "fcf0c5a81a6e6a0c1bd218687878ed8d2d32492768fabbb635c7b47ed9da03ef",
+  "observed_module_origin": "/home/heq/vispy-vulkan-managed/build/work/gap-w5-cp312-wsl-tk-1010b/target/vispy/_dawn.cpython-312-x86_64-linux-gnu.so",
+  "native_inputs_sha256": "93241ed251ce3d75d9c346ea7abcf02c51cc7c4ac0450921e5e4489cd078e4af",
+  "evidence_store": {
+    "path": "compat/evidence-stores/secondary-v1.json",
+    "sha256": "b164e3fdc85863a2327b508ea60f8d3068f740cfe90f665aa52905e28bfb3ca5"
+  },
+  "source_observation": {
+    "cases": 14,
+    "report": {
+      "path": "@evidence/build/runs/gap-w5-cp312-wsl-tk-1010b/worker.json",
+      "sha256": "5c982ce5feae10a030c8a8affa18dacfb19144a3e6af2a435e8176f7b10e8929"
+    },
+    "shutdown_gauges": {
+      "pending_tickets": 0,
+      "queued_frames": 0,
+      "live_buffer_bytes": 0,
+      "live_cpu_buffer_bytes": 0,
+      "live_texture_bytes": 0,
+      "canvas_texture_bytes": 0,
+      "transient_buffer_bytes": 0,
+      "line_resource_pool_busy_slots": 0,
+      "line_resource_pool_bytes": 0
+    }
+  },
+  "limitations": [
+    "Schema phase source-functional conservatively records actual zero-overlay candidate Tk 14-case capture and direct four-phase failure/recovery (1007b/1010b); separate matching headless 75-case GPU proof (56 state/readback + 16 collections/plot + 3 jupyter_rfb in 1007/1010) is referenced, not combined into a fabricated single execution.",
+    "Observed package/native paths were terminal scratch and are now absent; use retained cp312 wheel by content hash (ec8097cf/513088c1), not those scratch paths as dependencies.",
+    "Strict workflow observer/functional receipts, four workflows/32 selected rows/128 bindings, mandatory eight-host-row admission, independent source/scope/native-reuse review (1014r/1015), final 23-job CI/integration, and distinct public delivery remain open.",
+    "previous_qualified_wheel_sha256 stays the immutable canonical matrix reference; actual previously delivered 4f53/dfe6 and 9919/e600 wheels and new Wave 5 ec80/5130 cp312 wheels (plus installed-functional cp311/cp313 wheels) are separately retained. No canonical matrix or historical profile is rewritten."
+  ],
+  "driver_library": {
+    "path": "/home/heq/vispy-vulkan-managed/build/artifacts/9c5c41b3a7b9d759b0960c868f10375281798ad084150716d6d122c8789b9e12/libvulkan_lvp.so",
+    "sha256": "9c5c41b3a7b9d759b0960c868f10375281798ad084150716d6d122c8789b9e12"
+  },
+  "borrowed_llvm": {
+    "path": "/usr/lib/llvm-18/lib/libLLVM.so.1",
+    "sha256": "5c3a63957e28c15cdf1503892074f032d29b72e36a9824a77dfa87e48a0dafb0"
+  },
+  "system_mesa_failure": "compat/api-acceptance/lifecycle-linux-system-mesa-msaa-failure-v1.json",
+  "supporting_headless_observation": {
+    "path": "@evidence/build/runs/gap-w5-cp312-wsl-1010/verification.json",
+    "sha256": "ebede24e64c5b59bf8ca72f0b335ca286a0f29fe8235b16f354f9a4a938852da"
+  }
+}

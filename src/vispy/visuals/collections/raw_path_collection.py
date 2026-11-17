@@ -56,7 +56,6 @@ class RawPathCollection(Collection):
         if fragment is None:
             fragment = glsl.get('collections/raw-path.frag')
 
-        vertex = transform + vertex
         Collection.__init__(self, dtype=dtype, itype=None, mode='line_strip',
                             vertex=vertex, fragment=fragment, **kwargs)
         self._programs[0].vert['transform'] = self.transform
@@ -82,23 +81,24 @@ class RawPathCollection(Collection):
         color : list, array or 4-tuple
            Path color
         """
+        P = np.asarray(P, dtype=np.float32)
         itemsize = itemsize or len(P)
-        itemcount = len(P) / itemsize
+        itemcount = len(P) // itemsize
         P = P.reshape(itemcount, itemsize, 3)
         if closed:
             V = np.empty((itemcount, itemsize + 3), dtype=self.vtype)
             # Apply default values on vertices
             for name in self.vtype.names:
                 if name not in ['collection_index', 'position']:
-                    V[name][1:-2] = kwargs.get(name, self._defaults[name])
+                    V[name][:, 1:-2] = kwargs.get(name, self._defaults[name])
             V["position"][:, 1:-2] = P
-            V["position"][:, -2] = V["position"][:, 1]
+            V[:, -2] = V[:, 1]
         else:
             V = np.empty((itemcount, itemsize + 2), dtype=self.vtype)
             # Apply default values on vertices
             for name in self.vtype.names:
                 if name not in ['collection_index', 'position']:
-                    V[name][1:-1] = kwargs.get(name, self._defaults[name])
+                    V[name][:, 1:-1] = kwargs.get(name, self._defaults[name])
             V["position"][:, 1:-1] = P
         V["id"] = 1
         V[:, 0] = V[:, 1]

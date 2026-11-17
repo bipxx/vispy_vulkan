@@ -570,6 +570,17 @@ def test_w3_4a_api05_plot_transforms_current_wheels_manifests_contract() -> None
         and wsl_doc["wsl_guest_build_work"] == []
     )
 
+    w5_tier1, _ = _read_lf_json("compat/api-acceptance/tier1-collections-jupyter-rfb-v1.json")
+    w5_mods = {m["path"]: m for m in w5_tier1["test_modules"]}
+    wave3_historical_mod_hashes = {
+        "tests/contract/test_subpackages_api05_contract.py": (
+            "e48d6e6c53d62f2a5a4d80f148bc7ede149dfd47f7c9715327e9a9590ced2b40"
+        ),
+        "tests/visuals/test_plot_transforms_filters_gpu.py": (
+            "e0834c97f2c5fea75cc025626bdf62628148ef209e67a0a0b6944bc6e6d8091a"
+        ),
+    }
+
     for doc in (win_doc, wsl_doc):
         assert doc["coverage_ids"] == ["API-05", "API-06"]
         assert doc["evidence_store"]["sha256"] == EXPECTED_SECONDARY_STORE_SHA256
@@ -589,10 +600,11 @@ def test_w3_4a_api05_plot_transforms_current_wheels_manifests_contract() -> None
             "failed": 0,
         }
         for rel_p, m_entry in mods.items():
+            assert m_entry["sha256"] == wave3_historical_mod_hashes[rel_p]
             disk_p = REPO_ROOT / rel_p
             assert disk_p.is_file()
             raw = disk_p.read_bytes()
-            assert b"\r" not in raw and _sha256_bytes(raw) == m_entry["sha256"]
+            assert b"\r" not in raw and _sha256_bytes(raw) == w5_mods[rel_p]["sha256"]
 
     assert win_doc["collections_runtime_matrix"] == wsl_doc["collections_runtime_matrix"]
     cmat = win_doc["collections_runtime_matrix"]
@@ -606,6 +618,165 @@ def test_w3_4a_api05_plot_transforms_current_wheels_manifests_contract() -> None
     assert bounded["PathCollection_raw"]["error_type"] == "TypeError"
 
 
+WAVE5_EXPECTED_SOURCE_COMMIT = "3daf19be6c102764a5891ccbc29bf906e0588df1"
+WAVE5_EXPECTED_SOURCE_TREE = "6c8d3bad7d86d42c623d3e20ba1bbee87273b169"
+WAVE5_EXPECTED_WHEEL_SHA256S = {
+    "win_amd64_cp311": "834fe5f7ab564ed9e7dd6bddb2b3a52aa7010c129fb6044ef85a0b35fdbb7e9c",
+    "win_amd64_cp312": "ec8097cf151b6773916f07d8ee30d450392067827bc70bdf94ea5f09cf34210f",
+    "win_amd64_cp313": "793dab792b689f8339be8cfb507397b8efa146a3801053805accef5475a96e51",
+    "manylinux_2_39_x86_64_cp311": "fc8dd6cc10daa11457d86ea4b9c2eaeba5248aec23658260b644593646763dbe",
+    "manylinux_2_39_x86_64_cp312": "513088c146014305eb695d12915dafe26f55316c45bf800a8363f27e4cfb5d78",
+    "manylinux_2_39_x86_64_cp313": "1362eb6a567ed713834a8c69bf7297299c6266e43af980366087481a69fa7b64",
+}
+
+
+def _validate_wave5_tier1_and_plat02_manifests(tier1: dict, plat02: dict) -> None:
+    for doc, expected_id in (
+        (tier1, "tier1-collections-jupyter-rfb-v1"),
+        (plat02, "plat02-cp311-cp313-wheels-v1"),
+    ):
+        _require(doc.get("schema") == 1, f"{expected_id}: schema must be 1")
+        _require(doc.get("acceptance_id") == expected_id, f"{expected_id}: unexpected acceptance_id")
+        _require(doc.get("evidence_tier") == "installed-functional", f"{expected_id}: wrong evidence_tier")
+        _require(doc.get("runtime_version") == "0.17.0+vulkan.2", f"{expected_id}: wrong runtime_version")
+        _require(doc.get("source_commit") == WAVE5_EXPECTED_SOURCE_COMMIT, f"{expected_id}: wrong source_commit")
+        _require(doc.get("source_tree") == WAVE5_EXPECTED_SOURCE_TREE, f"{expected_id}: wrong source_tree")
+        _require(doc.get("scoped_admitted") is False, f"{expected_id}: scoped_admitted must be False")
+        _require(doc.get("artifact_admitted") is False, f"{expected_id}: artifact_admitted must be False")
+        _require(doc.get("publicly_delivered") is False, f"{expected_id}: publicly_delivered must be False")
+        _require(doc.get("published") is False, f"{expected_id}: published must be False")
+        _require(doc.get("plat02_closed") is False, f"{expected_id}: plat02_closed must be False")
+        _require(doc.get("full_inventory_complete") is False, f"{expected_id}: full_inventory_complete must be False")
+        _require(doc.get("default_sessions_unchanged") is True, f"{expected_id}: default_sessions_unchanged must be True")
+        store = doc.get("evidence_store")
+        _require(
+            isinstance(store, dict)
+            and store.get("path") == "compat/evidence-stores/secondary-v1.json"
+            and store.get("sha256") == EXPECTED_SECONDARY_STORE_SHA256,
+            f"{expected_id}: invalid evidence_store",
+        )
+
+    _require(plat02.get("cp310_gpu_wheels_claimed") is False, "cp310_gpu_wheels_claimed must be False")
+    _require(plat02.get("cp314_gpu_wheels_claimed") is False, "cp314_gpu_wheels_claimed must be False")
+
+    rfiles = tier1.get("runtime_files")
+    _require(isinstance(rfiles, list) and len(rfiles) == 6, "tier1 runtime_files must have 6 entries")
+    for rf in rfiles:
+        _require(rf.get("line_endings") == "CRLF", f"runtime file {rf} must record CRLF")
+        disk_p = REPO_ROOT / rf["path"]
+        _require(disk_p.is_file(), f"missing runtime file {rf['path']}")
+        raw = disk_p.read_bytes()
+        _require(
+            raw.count(b"\r\n") == raw.count(b"\n") > 0
+            and len(raw) == rf["bytes"]
+            and _sha256_bytes(raw) == rf["sha256"],
+            f"runtime file mismatch on {rf['path']}",
+        )
+
+    tmods = tier1.get("test_modules")
+    _require(isinstance(tmods, list) and len(tmods) == 3, "tier1 test_modules must have 3 entries")
+    for tm in tmods:
+        _require(tm.get("line_endings") == "LF", f"test module {tm} must record LF")
+        disk_p = REPO_ROOT / tm["path"]
+        _require(disk_p.is_file(), f"missing test module {tm['path']}")
+        raw = disk_p.read_bytes()
+        _require(
+            b"\r" not in raw and len(raw) == tm["bytes"] and _sha256_bytes(raw) == tm["sha256"],
+            f"test module mismatch on {tm['path']}",
+        )
+
+    cpu = tier1["source_freeze_1006"]["cpu_contracts"]
+    per_mod = cpu["per_module_from_cpu_checks_log"]
+    _require(
+        cpu["passed"] == 85
+        and cpu["failed"] == 0
+        and cpu["skipped"] == 0
+        and sum(per_mod.values()) == 85,
+        "invalid 1006 cpu_contracts summary",
+    )
+    _require(
+        tier1["source_freeze_1006"]["cpython_314_timerbackend_asyncio"]["status"] == "PASS",
+        "cpython_314_timerbackend_asyncio must PASS",
+    )
+
+    cmat = tier1.get("collections_runtime_matrix")
+    _require(isinstance(cmat, dict) and len(cmat) == 9, "collections_runtime_matrix must have 9 entries")
+    for cname, centry in cmat.items():
+        _require(centry.get("status") == "rendered", f"collection {cname} must be rendered")
+        lp = centry.get("lit_pixels", {})
+        _require(
+            isinstance(lp, dict)
+            and lp.get("windows_rtx4090", 0) > 0
+            and lp.get("wsl_mesa", 0) > 0
+            and lp.get("colab_tesla_t4", 0) > 0,
+            f"collection {cname} missing positive per-host lit_pixels",
+        )
+
+    wheels = plat02.get("wheels")
+    _require(
+        isinstance(wheels, dict) and set(wheels) == set(WAVE5_EXPECTED_WHEEL_SHA256S),
+        "plat02 wheels keys mismatch",
+    )
+    for wkey, expected_sha in WAVE5_EXPECTED_WHEEL_SHA256S.items():
+        w = wheels[wkey]
+        _require(w["wheel"]["sha256"] == expected_sha, f"{wkey}: wheel sha256 mismatch")
+        _require(w["installed_members_verified"] == 537, f"{wkey}: installed_members_verified must be 537")
+        _require(w["source_overrides"] == 0, f"{wkey}: source_overrides must be 0")
+        _require(w["shutdown_gauges"] == TEN_ZERO_SHUTDOWN_GAUGES, f"{wkey}: non-zero shutdown_gauges")
+        jrfb = w["suites"]["test_jupyter_rfb_gpu"]
+        _require(
+            jrfb == {"passed": 3, "skipped": 0, "failed": 0},
+            f"{wkey}: test_jupyter_rfb_gpu must be 3 passed / 0 skipped",
+        )
+        if w["abi"] in ("cp311", "cp313"):
+            ct = w["ctest"]
+            _require(
+                ct["total"] == 44
+                and ct["passed"] == 44
+                and ct["skipped"] == 0
+                and ct["failures"] == 0
+                and ct["errors"] == 0,
+                f"{wkey}: ctest must be 44/44",
+            )
+        else:
+            tk = w.get("tk_capture_recovery")
+            _require(
+                isinstance(tk, dict)
+                and tk.get("tk_capture_cases")
+                == {"total": 14, "passed": 14, "skipped": 0, "failures": 0, "errors": 0}
+                and tk.get("direct_functional_status") == "PASS"
+                and tk.get("shutdown_gauges") == TEN_ZERO_SHUTDOWN_GAUGES,
+                f"{wkey}: missing 14/14 tk_capture_recovery",
+            )
+
+    colab = plat02.get("colab_tesla_t4_summary")
+    _require(
+        isinstance(colab, dict)
+        and colab.get("gpu_model") == "NVIDIA Tesla T4"
+        and colab.get("software") is False
+        and colab.get("xvfb_waited") is True
+        and colab.get("xvfb_exit") == 0
+        and colab.get("session_stopped_in_finally") is True
+        and colab.get("total_passed_cases_across_abis") == 225,
+        "invalid colab_tesla_t4_summary",
+    )
+    for abi in ("cp311", "cp312", "cp313"):
+        cabi = colab["abis"][abi]
+        _require(
+            cabi["source_overrides"] == 0
+            and cabi["device"]["software"] is False
+            and cabi["junit_summary"] == {"total": 75, "passed": 75, "skipped": 0, "failures": 0, "errors": 0}
+            and cabi["shutdown_gauges"] == TEN_ZERO_SHUTDOWN_GAUGES,
+            f"colab {abi}: invalid consumer receipt",
+        )
+
+
+def test_w5_tier1_collections_jupyter_rfb_and_plat02_wheels_manifests_contract() -> None:
+    tier1, _ = _read_lf_json("compat/api-acceptance/tier1-collections-jupyter-rfb-v1.json")
+    plat02, _ = _read_lf_json("compat/api-acceptance/plat02-cp311-cp313-wheels-v1.json")
+    _validate_wave5_tier1_and_plat02_manifests(tier1, plat02)
+
+
 def test_w3_4a_local_secondary_evidence_store_and_negative_fail_closed_controls() -> None:
     manifest_paths = (
         "compat/no-opengl-optional-hosts-current-v1.json",
@@ -614,6 +785,8 @@ def test_w3_4a_local_secondary_evidence_store_and_negative_fail_closed_controls(
         "compat/api-acceptance/lif02-08-qt-multibinding-wsl-v1.json",
         "compat/api-acceptance/api05-plot-transforms-windows-v1.json",
         "compat/api-acceptance/api05-plot-transforms-wsl-v1.json",
+        "compat/api-acceptance/tier1-collections-jupyter-rfb-v1.json",
+        "compat/api-acceptance/plat02-cp311-cp313-wheels-v1.json",
     )
     all_refs: list[tuple[str, str]] = []
     for rel in manifest_paths:
@@ -683,6 +856,29 @@ def test_w3_4a_local_secondary_evidence_store_and_negative_fail_closed_controls(
             expected_wheel_sha=CURRENT_WINDOWS_WHEEL_SHA256,
             expected_total_passed=16,
         )
+
+    w5_tier1, _ = _read_lf_json("compat/api-acceptance/tier1-collections-jupyter-rfb-v1.json")
+    w5_plat02, _ = _read_lf_json("compat/api-acceptance/plat02-cp311-cp313-wheels-v1.json")
+
+    bad_plat02_closed = copy.deepcopy(w5_plat02)
+    bad_plat02_closed["plat02_closed"] = True
+    with pytest.raises(ValueError, match="plat02_closed"):
+        _validate_wave5_tier1_and_plat02_manifests(w5_tier1, bad_plat02_closed)
+
+    bad_w5_admitted = copy.deepcopy(w5_tier1)
+    bad_w5_admitted["scoped_admitted"] = True
+    with pytest.raises(ValueError, match="scoped_admitted"):
+        _validate_wave5_tier1_and_plat02_manifests(bad_w5_admitted, w5_plat02)
+
+    bad_w5_cmat = copy.deepcopy(w5_tier1)
+    bad_w5_cmat["collections_runtime_matrix"]["PathCollection_raw"]["status"] = "error"
+    with pytest.raises(ValueError, match="PathCollection_raw"):
+        _validate_wave5_tier1_and_plat02_manifests(bad_w5_cmat, w5_plat02)
+
+    bad_w5_sw = copy.deepcopy(w5_plat02)
+    bad_w5_sw["colab_tesla_t4_summary"]["software"] = True
+    with pytest.raises(ValueError, match="colab_tesla_t4_summary"):
+        _validate_wave5_tier1_and_plat02_manifests(w5_tier1, bad_w5_sw)
 
 
 __all__ = [name for name in dir() if name.startswith("test_")]

@@ -48,10 +48,14 @@ class OffscreenContext:
             return
         elif not getattr(self, '_is_closed', True):
             self._is_closed = True
-            self._canvas.close()
+            if self._canvas is not None:
+                self._canvas.close()
 
     def __del__(self):
-        self.close()
+        try:
+            self.close()
+        except Exception:
+            pass
 
 
 class FrameBufferHelper:
@@ -83,6 +87,34 @@ class FrameBufferHelper:
         """ Call this within the with-context to obtain the frame buffer contents.
         """
         return self._fbo.read()
+
+    def close(self):
+        """ Delete the FBO and any attached buffers created by this helper.
+        """
+        fbo = self._fbo
+        self._fbo = None
+        self._fbo_size = -1, -1
+        if fbo is not None:
+            for buf in (
+                getattr(fbo, 'color_buffer', None),
+                getattr(fbo, 'depth_buffer', None),
+                getattr(fbo, 'stencil_buffer', None),
+            ):
+                if buf is not None:
+                    try:
+                        buf.delete()
+                    except Exception:
+                        pass
+            try:
+                fbo.delete()
+            except Exception:
+                pass
+
+    def __del__(self):
+        try:
+            self.close()
+        except Exception:
+            pass
 
     def __enter__(self):
         self._ensure_fbo()

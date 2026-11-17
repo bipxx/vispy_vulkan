@@ -1,0 +1,1560 @@
+{
+  "schema": 1,
+  "acceptance_id": "plat02-cp311-cp313-wheels-v1",
+  "date": "2026-11-16",
+  "slice": "W5-PLAT02",
+  "evidence_tier": "installed-functional",
+  "status": "PASS_INSTALLED_FUNCTIONAL_SIX_WHEELS_CP311_CP312_CP313_WIN_MANYLINUX_AND_COLAB_T4",
+  "runtime_version": "0.17.0+vulkan.2",
+  "source_commit": "3daf19be6c102764a5891ccbc29bf906e0588df1",
+  "source_tree": "6c8d3bad7d86d42c623d3e20ba1bbee87273b169",
+  "repo_main_base": "88c0e65162bbf9a26128a35c87fd7bef71907107",
+  "evidence_store": {
+    "path": "compat/evidence-stores/secondary-v1.json",
+    "sha256": "b164e3fdc85863a2327b508ea60f8d3068f740cfe90f665aa52905e28bfb3ca5"
+  },
+  "scoped_admitted": false,
+  "artifact_admitted": false,
+  "publicly_delivered": false,
+  "published": false,
+  "plat02_closed": false,
+  "cp310_gpu_wheels_claimed": false,
+  "cp314_gpu_wheels_claimed": false,
+  "full_inventory_complete": false,
+  "default_sessions_unchanged": true,
+  "coverage_ids": [
+    "PLAT-01",
+    "PLAT-02",
+    "PLAT-03",
+    "PLAT-08",
+    "API-05",
+    "API-06",
+    "API-06-READBACK-GEOMETRY",
+    "LIF-05",
+    "LIF-07"
+  ],
+  "wheels": {
+    "win_amd64_cp311": {
+      "abi": "cp311",
+      "platform_tag": "win_amd64",
+      "build_route": "sdk_linked_leaf_build",
+      "run_id": "gap-w5-win-cp311-1008",
+      "wheel": {
+        "path": "@evidence/build/artifacts/834fe5f7ab564ed9e7dd6bddb2b3a52aa7010c129fb6044ef85a0b35fdbb7e9c/vispy-0.17.0+vulkan.2-cp311-cp311-win_amd64.whl",
+        "sha256": "834fe5f7ab564ed9e7dd6bddb2b3a52aa7010c129fb6044ef85a0b35fdbb7e9c"
+      },
+      "wheel_sha256": "834fe5f7ab564ed9e7dd6bddb2b3a52aa7010c129fb6044ef85a0b35fdbb7e9c",
+      "wheel_filename": "vispy-0.17.0+vulkan.2-cp311-cp311-win_amd64.whl",
+      "wheel_bytes": 6817083,
+      "native_outputs": {
+        "vispy/_dawn.cp311-win_amd64.pyd": "0d9b7d15b45590a3f4572d0c2fdf90541a5fbd839a9f33660a64289e5bb8d4d7",
+        "vispy/visuals/text/_sdf_cpu.cp311-win_amd64.pyd": "6b0e562a1530ab81f9aa524bcdc1375ffc41f866c595bf432a23ba7cfd88dfc3",
+        "vispy/VkLayer_vispy_submit.dll": "7688c86162fe1a6eecb2c75996b770f36550f9c76bde9f840cda36a3abe283dd",
+        "vispy/VkLayer_vispy_submit.json": "7323cea73a46efcba615ca452d2b0235e3741109628c4bf2979c105e6ae69d56"
+      },
+      "native_sha256": "0d9b7d15b45590a3f4572d0c2fdf90541a5fbd839a9f33660a64289e5bb8d4d7",
+      "sdf_cpu_sha256": "6b0e562a1530ab81f9aa524bcdc1375ffc41f866c595bf432a23ba7cfd88dfc3",
+      "installed_members_verified": 537,
+      "source_overrides": 0,
+      "actual_exit": 0,
+      "child_waited": true,
+      "scratch_absent_verified": true,
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      },
+      "device": {
+        "backend": "Vulkan",
+        "adapter_type": "discrete",
+        "device": "NVIDIA GeForce RTX 4090",
+        "driver": "NVIDIA: 610.88 610.88.0.0",
+        "software": false
+      },
+      "suites": {
+        "test_dawn_state_queries": {
+          "passed": 56,
+          "skipped": 0,
+          "failed": 0
+        },
+        "w3_3_subpackages_and_plot": {
+          "passed": 16,
+          "skipped": 0,
+          "failed": 0,
+          "test_subpackages_api05_contract": 12,
+          "test_plot_transforms_filters_gpu": 4,
+          "collections_rendered": 9
+        },
+        "test_jupyter_rfb_gpu": {
+          "passed": 3,
+          "skipped": 0,
+          "failed": 0
+        }
+      },
+      "junit_summary": {
+        "total": 75,
+        "passed": 75,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0
+      },
+      "receipts": {
+        "verification": {
+          "path": "@evidence/build/runs/gap-w5-win-cp311-1008/verification.json",
+          "sha256": "5257a5c11fcbb9bc9668a7be10873dc4352952ac99a06b54c42d9a9100c4c10c"
+        },
+        "worker": {
+          "path": "@evidence/build/runs/gap-w5-win-cp311-1008/worker.json",
+          "sha256": "d3f97828c9fd95d4e9df41706f7e4761c8c05f116c82cb476c7acbd5ce60e107"
+        },
+        "worker_w3_3": {
+          "path": "@evidence/build/runs/gap-w5-win-cp311-1008/worker-w3-3.json",
+          "sha256": "436789d19af99a9084035bcd7363be3ad615689df05b39b0469312465b32f4be"
+        },
+        "worker_rfb": {
+          "path": "@evidence/build/runs/gap-w5-win-cp311-1008/worker-rfb.json",
+          "sha256": "e7c49d4cffbecbf8ff665453bf733013e5b317562c926aaceff914fe8517c75f"
+        },
+        "collections_telemetry": {
+          "path": "@evidence/build/runs/gap-w5-win-cp311-1008/collections-telemetry.json",
+          "sha256": "532917f7074551336f2d6a676fd9a3aa57d8ad9a9efea741b4685f30827e387c"
+        },
+        "query_readback_xml": {
+          "path": "@evidence/build/runs/gap-w5-win-cp311-1008/query-readback.xml",
+          "sha256": "7e8f77fbb1072ece6565dac5bf382afabda8008ce44b59bf06fc7cdf6ce66a25"
+        },
+        "w3_3_xml": {
+          "path": "@evidence/build/runs/gap-w5-win-cp311-1008/w3-3.xml",
+          "sha256": "0db5e64b87fb52f2d0cdee704d1e353be032cd1cd71c6b7251e4e6e04c10408c"
+        },
+        "jupyter_rfb_xml": {
+          "path": "@evidence/build/runs/gap-w5-win-cp311-1008/jupyter-rfb.xml",
+          "sha256": "9f528de37fffdb4ce681a40c9b8921eab8d9888bb7bda564a24a00657b593e51"
+        },
+        "terminal": {
+          "path": "@evidence/build/runs/gap-w5-win-cp311-1008/terminal.json",
+          "sha256": "692e41932959541bd44864aa43cc1e44761bd0135f890a9ed43bdca869635ff2"
+        },
+        "cleanup_plan": {
+          "path": "@evidence/build/runs/gap-w5-win-cp311-1008/cleanup-plan.json",
+          "sha256": "abd78f39cb9c1edcdca6142acefb3d6d93130751c408f9cfb49f0e4bdcd5bb13"
+        },
+        "cleanup_result": {
+          "path": "@evidence/build/runs/gap-w5-win-cp311-1008/cleanup-result.json",
+          "sha256": "ab626579cdcf19b3f2a9f088d1b86bbd266bbe16f36fa454c95be3bf3ba00b73"
+        }
+      },
+      "interpreter_pin": "3.11.11",
+      "consumer_python_version": "3.11.11 (main, Dec 19 2024, 14:36:07) [MSC v.1942 64 bit (AMD64)]",
+      "ctest": {
+        "total": 44,
+        "passed": 44,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0,
+        "ctest_xml": {
+          "path": "@evidence/build/runs/gap-w5-win-cp311-1008/ctest.xml",
+          "sha256": "1a052558f7487fa9d77e205c5f780e50db758a007fb89f550f2dbc4d25ef4967"
+        }
+      },
+      "sdf_cpu_check": {
+        "status": "PASS",
+        "rendered_lit_pixels": 836,
+        "sdf_module_sha256": "6b0e562a1530ab81f9aa524bcdc1375ffc41f866c595bf432a23ba7cfd88dfc3"
+      }
+    },
+    "win_amd64_cp312": {
+      "abi": "cp312",
+      "platform_tag": "win_amd64",
+      "build_route": "repackaged_pure_members_7",
+      "run_id": "gap-w5-cp312-win-1007",
+      "wheel": {
+        "path": "@evidence/build/artifacts/ec8097cf151b6773916f07d8ee30d450392067827bc70bdf94ea5f09cf34210f/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+        "sha256": "ec8097cf151b6773916f07d8ee30d450392067827bc70bdf94ea5f09cf34210f"
+      },
+      "wheel_sha256": "ec8097cf151b6773916f07d8ee30d450392067827bc70bdf94ea5f09cf34210f",
+      "wheel_filename": "vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+      "wheel_bytes": 6816190,
+      "native_outputs": {
+        "vispy/_dawn.cp312-win_amd64.pyd": "057d13e62ac520fbf7fe7b62a3059588bb477e24a0061d087bcc50edd44a12ea",
+        "vispy/visuals/text/_sdf_cpu.cp312-win_amd64.pyd": "1147270525e05e512d01cb4f3ba1dc192eea71a93908676dc269f4d025028f95",
+        "vispy/VkLayer_vispy_submit.dll": "e0a0d35e1b1c11af904b4a4f7dbfd70fe1f0bda1ba16baeb119f6ec78d4bd325",
+        "vispy/VkLayer_vispy_submit.json": "7323cea73a46efcba615ca452d2b0235e3741109628c4bf2979c105e6ae69d56"
+      },
+      "native_sha256": "057d13e62ac520fbf7fe7b62a3059588bb477e24a0061d087bcc50edd44a12ea",
+      "sdf_cpu_sha256": "1147270525e05e512d01cb4f3ba1dc192eea71a93908676dc269f4d025028f95",
+      "installed_members_verified": 537,
+      "source_overrides": 0,
+      "actual_exit": 0,
+      "child_waited": true,
+      "scratch_absent_verified": true,
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      },
+      "device": {
+        "backend": "Vulkan",
+        "adapter_type": "discrete",
+        "device": "NVIDIA GeForce RTX 4090",
+        "driver": "NVIDIA: 610.88 610.88.0.0",
+        "software": false
+      },
+      "suites": {
+        "test_dawn_state_queries": {
+          "passed": 56,
+          "skipped": 0,
+          "failed": 0
+        },
+        "w3_3_subpackages_and_plot": {
+          "passed": 16,
+          "skipped": 0,
+          "failed": 0,
+          "test_subpackages_api05_contract": 12,
+          "test_plot_transforms_filters_gpu": 4,
+          "collections_rendered": 9
+        },
+        "test_jupyter_rfb_gpu": {
+          "passed": 3,
+          "skipped": 0,
+          "failed": 0
+        }
+      },
+      "junit_summary": {
+        "total": 75,
+        "passed": 75,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0
+      },
+      "receipts": {
+        "verification": {
+          "path": "@evidence/build/runs/gap-w5-cp312-win-1007/verification.json",
+          "sha256": "2d235c58585a738a370003569eeef63393b5f1c93546d190ffc470e6665a806c"
+        },
+        "worker": {
+          "path": "@evidence/build/runs/gap-w5-cp312-win-1007/worker.json",
+          "sha256": "7777843403764a6baa981814ad7ce26626df67a5b94449b06f7613357f9ef84c"
+        },
+        "worker_w3_3": {
+          "path": "@evidence/build/runs/gap-w5-cp312-win-1007/worker-w3-3.json",
+          "sha256": "fc960b4afcf89f27b8c451acee1fa96abfc8fcbee0149bdd9a47be4a09478d1d"
+        },
+        "worker_rfb": {
+          "path": "@evidence/build/runs/gap-w5-cp312-win-1007/worker-rfb.json",
+          "sha256": "ea0fde51d7323e9e3adbdba3fe09847c560ab8e3c67e03cd7cea0a67e7b68df3"
+        },
+        "collections_telemetry": {
+          "path": "@evidence/build/runs/gap-w5-cp312-win-1007/collections-telemetry.json",
+          "sha256": "532917f7074551336f2d6a676fd9a3aa57d8ad9a9efea741b4685f30827e387c"
+        },
+        "query_readback_xml": {
+          "path": "@evidence/build/runs/gap-w5-cp312-win-1007/query-readback.xml",
+          "sha256": "dde660888cfc0f54ed5eb652505020dbe02172a65a949ec19d2441297bbbdf42"
+        },
+        "w3_3_xml": {
+          "path": "@evidence/build/runs/gap-w5-cp312-win-1007/w3-3.xml",
+          "sha256": "d7c2fdf5be63c9285675c963b699c9898b0315f5d029e1a57643206d88e687f1"
+        },
+        "jupyter_rfb_xml": {
+          "path": "@evidence/build/runs/gap-w5-cp312-win-1007/jupyter-rfb.xml",
+          "sha256": "e9f1888f814d8bf55ecbe0fe411e9b26dba21abd362454317230689a558f7f21"
+        },
+        "terminal": {
+          "path": "@evidence/build/runs/gap-w5-cp312-win-1007/terminal.json",
+          "sha256": "e99813f07665646e077d0aaddee4d1ab0a6f34d2a0b35f7ea218a9593979efaf"
+        },
+        "cleanup_plan": {
+          "path": "@evidence/build/runs/gap-w5-cp312-win-1007/cleanup-plan.json",
+          "sha256": "4fe0bda739a35b2d46d00648690d8bebeb88d5e92429f4cbd8121a94f58e3412"
+        },
+        "cleanup_result": {
+          "path": "@evidence/build/runs/gap-w5-cp312-win-1007/cleanup-result.json",
+          "sha256": "48c37281354c0159e38198c3298ee410d53abe1f33ae8135f69ad4f6103ad786"
+        }
+      },
+      "native_rebuilt": false,
+      "original_wheel_sha256": "4f537748c74689ed4d55ee2e3f8e3d9f1c1cfdf0803d1b72c4169217c74291d8",
+      "changed_pure_members": [
+        "vispy/app/backends/_jupyter_rfb.py",
+        "vispy/app/backends/_offscreen_util.py",
+        "vispy/gloo/dawn_parser.py",
+        "vispy/glsl/collections/agg-point.vert",
+        "vispy/visuals/collections/base_collection.py",
+        "vispy/visuals/collections/raw_path_collection.py",
+        "vispy/visuals/collections/raw_segment_collection.py"
+      ],
+      "tk_capture_recovery": {
+        "run_id": "gap-w5-cp312-win-tk-1007b",
+        "wheel_sha256": "ec8097cf151b6773916f07d8ee30d450392067827bc70bdf94ea5f09cf34210f",
+        "tk_capture_cases": {
+          "total": 14,
+          "passed": 14,
+          "skipped": 0,
+          "failures": 0,
+          "errors": 0
+        },
+        "direct_functional_status": "PASS",
+        "direct_functional_phases": [
+          "ordinary_state",
+          "resource_failure_recovery",
+          "native_progress_failure_recovery",
+          "submission_failure_recovery"
+        ],
+        "toolkit": {
+          "tk_version": 8.6,
+          "tcl_version": 8.6,
+          "binding_origin": "C:\\Users\\HEQ\\AppData\\Roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\DLLs\\_tkinter.pyd",
+          "binding_sha256": "38453f6aff3f3a3ef0017c00bfee2f403ca0aeaf92b8b5c56d05460fd6dbbdf9"
+        },
+        "installed_members_verified": 537,
+        "source_overrides": 0,
+        "shutdown_gauges": {
+          "pending_tickets": 0,
+          "queued_frames": 0,
+          "live_buffer_bytes": 0,
+          "live_cpu_buffer_bytes": 0,
+          "live_texture_bytes": 0,
+          "canvas_texture_bytes": 0,
+          "transient_buffer_bytes": 0,
+          "line_resource_pool_busy_slots": 0,
+          "line_resource_pool_bytes": 0,
+          "host_import_pinned_bytes": 0
+        },
+        "actual_exit": 0,
+        "child_waited": true,
+        "scratch_absent_verified": true,
+        "receipts": {
+          "verification": {
+            "path": "@evidence/build/runs/gap-w5-cp312-win-tk-1007b/verification.json",
+            "sha256": "2a4dc500529c75a26724d4fc5d076322f16cd1b25294bb1e2a1cbe4f4737dc2f"
+          },
+          "worker": {
+            "path": "@evidence/build/runs/gap-w5-cp312-win-tk-1007b/worker.json",
+            "sha256": "61576d3aba2b3838e4fd11f194f377f5cfac0d982575df0bcdf6bb32f6aa2619"
+          },
+          "tk_capture_xml": {
+            "path": "@evidence/build/runs/gap-w5-cp312-win-tk-1007b/tk-capture.xml",
+            "sha256": "ed3068a9524e71135cfdbad3dbb8f1033c933c467c212dcbe8b6888403af9b57"
+          },
+          "terminal": {
+            "path": "@evidence/build/runs/gap-w5-cp312-win-tk-1007b/terminal.json",
+            "sha256": "f32696f09f351607b777fa825f79e3b705b5c4fa51917985e8f7cd5be5284d95"
+          },
+          "cleanup_plan": {
+            "path": "@evidence/build/runs/gap-w5-cp312-win-tk-1007b/cleanup-plan.json",
+            "sha256": "7ae9837b35a4453d7c307acaaa38a6d9533629e77c7bbfbb34b9c43ab6dade27"
+          },
+          "cleanup_result": {
+            "path": "@evidence/build/runs/gap-w5-cp312-win-tk-1007b/cleanup-result.json",
+            "sha256": "6399620caaad1b948cd843faa6b3372acc46412b8c5ee4bdf1bfb1c0105acd0b"
+          }
+        }
+      }
+    },
+    "win_amd64_cp313": {
+      "abi": "cp313",
+      "platform_tag": "win_amd64",
+      "build_route": "sdk_linked_leaf_build",
+      "run_id": "gap-w5-win-cp313-1009",
+      "wheel": {
+        "path": "@evidence/build/artifacts/793dab792b689f8339be8cfb507397b8efa146a3801053805accef5475a96e51/vispy-0.17.0+vulkan.2-cp313-cp313-win_amd64.whl",
+        "sha256": "793dab792b689f8339be8cfb507397b8efa146a3801053805accef5475a96e51"
+      },
+      "wheel_sha256": "793dab792b689f8339be8cfb507397b8efa146a3801053805accef5475a96e51",
+      "wheel_filename": "vispy-0.17.0+vulkan.2-cp313-cp313-win_amd64.whl",
+      "wheel_bytes": 6815757,
+      "native_outputs": {
+        "vispy/_dawn.cp313-win_amd64.pyd": "4b7e8865a8ec0b639e23b4ca42103c0d6dbff5a8552509c5d9cd593032548206",
+        "vispy/visuals/text/_sdf_cpu.cp313-win_amd64.pyd": "e90bb04fedc702a49a268d14f88e2831a4ff0076c2ac135895f352bb117cc090",
+        "vispy/VkLayer_vispy_submit.dll": "7f1806818e5cd4a3616b9d0744d3cb01bcf97c6ea6c1653f14daceecdca935a2",
+        "vispy/VkLayer_vispy_submit.json": "7323cea73a46efcba615ca452d2b0235e3741109628c4bf2979c105e6ae69d56"
+      },
+      "native_sha256": "4b7e8865a8ec0b639e23b4ca42103c0d6dbff5a8552509c5d9cd593032548206",
+      "sdf_cpu_sha256": "e90bb04fedc702a49a268d14f88e2831a4ff0076c2ac135895f352bb117cc090",
+      "installed_members_verified": 537,
+      "source_overrides": 0,
+      "actual_exit": 0,
+      "child_waited": true,
+      "scratch_absent_verified": true,
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      },
+      "device": {
+        "backend": "Vulkan",
+        "adapter_type": "discrete",
+        "device": "NVIDIA GeForce RTX 4090",
+        "driver": "NVIDIA: 610.88 610.88.0.0",
+        "software": false
+      },
+      "suites": {
+        "test_dawn_state_queries": {
+          "passed": 56,
+          "skipped": 0,
+          "failed": 0
+        },
+        "w3_3_subpackages_and_plot": {
+          "passed": 16,
+          "skipped": 0,
+          "failed": 0,
+          "test_subpackages_api05_contract": 12,
+          "test_plot_transforms_filters_gpu": 4,
+          "collections_rendered": 9
+        },
+        "test_jupyter_rfb_gpu": {
+          "passed": 3,
+          "skipped": 0,
+          "failed": 0
+        }
+      },
+      "junit_summary": {
+        "total": 75,
+        "passed": 75,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0
+      },
+      "receipts": {
+        "verification": {
+          "path": "@evidence/build/runs/gap-w5-win-cp313-1009/verification.json",
+          "sha256": "04b84b3a7df29a35641f51eea9aaeee84bbe80ce197edabb3e0ce5d46b1ef820"
+        },
+        "worker": {
+          "path": "@evidence/build/runs/gap-w5-win-cp313-1009/worker.json",
+          "sha256": "162959d379ebb434143ae4a9f57531a8f4d520419f561d4c6084e42c8234340e"
+        },
+        "worker_w3_3": {
+          "path": "@evidence/build/runs/gap-w5-win-cp313-1009/worker-w3-3.json",
+          "sha256": "886cafad20660d5253786075ceade5da417578ab6a5c6bb886874b65b54fdafc"
+        },
+        "worker_rfb": {
+          "path": "@evidence/build/runs/gap-w5-win-cp313-1009/worker-rfb.json",
+          "sha256": "0b86955d2de6e7f1a98a43b4194057c8493e536a21c3dd606b65ac445b108f1d"
+        },
+        "collections_telemetry": {
+          "path": "@evidence/build/runs/gap-w5-win-cp313-1009/collections-telemetry.json",
+          "sha256": "532917f7074551336f2d6a676fd9a3aa57d8ad9a9efea741b4685f30827e387c"
+        },
+        "query_readback_xml": {
+          "path": "@evidence/build/runs/gap-w5-win-cp313-1009/query-readback.xml",
+          "sha256": "1b2e56caf62285b36cbcb7fc5f5b02388358281716422bfd16ba26f848971810"
+        },
+        "w3_3_xml": {
+          "path": "@evidence/build/runs/gap-w5-win-cp313-1009/w3-3.xml",
+          "sha256": "b6e7f1ed853090f3926e11732a03da1558c5cdc116e3a4e8c23ca7c5baab4f86"
+        },
+        "jupyter_rfb_xml": {
+          "path": "@evidence/build/runs/gap-w5-win-cp313-1009/jupyter-rfb.xml",
+          "sha256": "d82f86330f721f145b4678bdfcfe3288ce776d1cc9dc0555ab1fec4734561858"
+        },
+        "terminal": {
+          "path": "@evidence/build/runs/gap-w5-win-cp313-1009/terminal.json",
+          "sha256": "bee197df4eabb28ea64ff271c2af67813faa65c5cf9d5dba0dd956ddf71cd149"
+        },
+        "cleanup_plan": {
+          "path": "@evidence/build/runs/gap-w5-win-cp313-1009/cleanup-plan.json",
+          "sha256": "206a6ee88c0913077d8349816c2fdedf634e3b84e1bc7a5dc7c520c910d5689a"
+        },
+        "cleanup_result": {
+          "path": "@evidence/build/runs/gap-w5-win-cp313-1009/cleanup-result.json",
+          "sha256": "b1bb1842063d6e956f90d896f3c0aac61f637416f8b884fe1fb862ceb704e3f3"
+        }
+      },
+      "interpreter_pin": "3.13.8",
+      "consumer_python_version": "3.13.8 (main, Oct 10 2025, 12:47:06) [MSC v.1944 64 bit (AMD64)]",
+      "ctest": {
+        "total": 44,
+        "passed": 44,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0,
+        "ctest_xml": {
+          "path": "@evidence/build/runs/gap-w5-win-cp313-1009/ctest.xml",
+          "sha256": "f85f4a3f901eef0fc2deb5af453daa7961b1bbd2df21a2c7b7d1cc451cf4ee13"
+        }
+      },
+      "sdf_cpu_check": {
+        "status": "PASS",
+        "rendered_lit_pixels": 836,
+        "sdf_module_sha256": "e90bb04fedc702a49a268d14f88e2831a4ff0076c2ac135895f352bb117cc090"
+      }
+    },
+    "manylinux_2_39_x86_64_cp311": {
+      "abi": "cp311",
+      "platform_tag": "manylinux_2_39_x86_64",
+      "build_route": "fresh_ninja_build_offline_auditwheel_retag",
+      "run_id": "gap-w5-wsl-cp311-1011",
+      "wheel": {
+        "path": "@evidence/build/artifacts/fc8dd6cc10daa11457d86ea4b9c2eaeba5248aec23658260b644593646763dbe/vispy-0.17.0+vulkan.2-cp311-cp311-manylinux_2_39_x86_64.whl",
+        "sha256": "fc8dd6cc10daa11457d86ea4b9c2eaeba5248aec23658260b644593646763dbe"
+      },
+      "wheel_sha256": "fc8dd6cc10daa11457d86ea4b9c2eaeba5248aec23658260b644593646763dbe",
+      "wheel_filename": "vispy-0.17.0+vulkan.2-cp311-cp311-manylinux_2_39_x86_64.whl",
+      "wheel_bytes": 10568678,
+      "native_outputs": {
+        "vispy/_dawn.cpython-311-x86_64-linux-gnu.so": "1d2fc887735ef8a4b1a95b04fe203fffc988aac088208861e29f3d38ba7c2c98",
+        "vispy/visuals/text/_sdf_cpu.cpython-311-x86_64-linux-gnu.so": "50687ccad60edb7f76c6d3fb8e7ca1184e9c45abacdf5b30ce188c15244b2082",
+        "vispy/VkLayer_vispy_submit.so": "95907606472ffe51bec021d4b28e4717472e40f2cef34cd2590d172575c113d4",
+        "vispy/VkLayer_vispy_submit.json": "e0762acec9e2df811cbb67e1c25e5c82d9fb76def0101f54fd737464c76786c2"
+      },
+      "native_sha256": "1d2fc887735ef8a4b1a95b04fe203fffc988aac088208861e29f3d38ba7c2c98",
+      "sdf_cpu_sha256": "50687ccad60edb7f76c6d3fb8e7ca1184e9c45abacdf5b30ce188c15244b2082",
+      "installed_members_verified": 537,
+      "source_overrides": 0,
+      "actual_exit": 0,
+      "child_waited": true,
+      "scratch_absent_verified": true,
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      },
+      "device": {
+        "backend": "Vulkan",
+        "adapter_type": "cpu",
+        "device": "llvmpipe (LLVM 18.1.3, 256 bits)",
+        "driver": "llvmpipe: Mesa 26.1.8 (LLVM 18.1.3)",
+        "software": true
+      },
+      "suites": {
+        "test_dawn_state_queries": {
+          "passed": 56,
+          "skipped": 0,
+          "failed": 0
+        },
+        "w3_3_subpackages_and_plot": {
+          "passed": 16,
+          "skipped": 0,
+          "failed": 0,
+          "test_subpackages_api05_contract": 12,
+          "test_plot_transforms_filters_gpu": 4,
+          "collections_rendered": 9
+        },
+        "test_jupyter_rfb_gpu": {
+          "passed": 3,
+          "skipped": 0,
+          "failed": 0
+        }
+      },
+      "junit_summary": {
+        "total": 75,
+        "passed": 75,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0
+      },
+      "receipts": {
+        "verification": {
+          "path": "@evidence/build/runs/gap-w5-wsl-cp311-1011/verification.json",
+          "sha256": "fb26fcf7a2b8c991a8291e917a069ed8967af30e13f6ba70cdd0242172abfbb6"
+        },
+        "worker": {
+          "path": "@evidence/build/runs/gap-w5-wsl-cp311-1011/worker.json",
+          "sha256": "b9c30f0022c1c863d8701df1956740047ef6b1ba3dce9977116df43a503e7918"
+        },
+        "worker_w3_3": {
+          "path": "@evidence/build/runs/gap-w5-wsl-cp311-1011/worker-w3-3.json",
+          "sha256": "09549e21c5d50ecad36b080e96c2912fdf7bddff7e8245008804224212692589"
+        },
+        "worker_rfb": {
+          "path": "@evidence/build/runs/gap-w5-wsl-cp311-1011/worker-rfb.json",
+          "sha256": "e553332695e6551608e380bc9e244cca2b0386efaa5b6db34babe494df145b6a"
+        },
+        "collections_telemetry": {
+          "path": "@evidence/build/runs/gap-w5-wsl-cp311-1011/collections-telemetry.json",
+          "sha256": "6b2ca775aed2969ffc4dd664252bff46a0dd6b6586f2a094cc1828aa75b5a9b3"
+        },
+        "query_readback_xml": {
+          "path": "@evidence/build/runs/gap-w5-wsl-cp311-1011/query-readback.xml",
+          "sha256": "4055087b20972d0cf0d34667e2fe76489c78eca18601e18d7c7ed8d9af5afe7d"
+        },
+        "w3_3_xml": {
+          "path": "@evidence/build/runs/gap-w5-wsl-cp311-1011/w3-3.xml",
+          "sha256": "8694ecae46f6950c0e7de45c576bae8ab84fd47fef2480882d8f78db97c577d2"
+        },
+        "jupyter_rfb_xml": {
+          "path": "@evidence/build/runs/gap-w5-wsl-cp311-1011/jupyter-rfb.xml",
+          "sha256": "794006fb07adaa3cc5a63508f4b2122dbb5810672cbf35600b5404bb1939f51d"
+        },
+        "terminal": {
+          "path": "@evidence/build/runs/gap-w5-wsl-cp311-1011/terminal.json",
+          "sha256": "2cb36d485a8577169ff8c41385d05a1ceb95d33336b087fcfabcdaf3decab21c"
+        },
+        "cleanup_plan": {
+          "path": "@evidence/build/runs/gap-w5-wsl-cp311-1011/cleanup-plan.json",
+          "sha256": "54a2f9545c581d856435af5aed4f79fb55d1f59c5091183b978b1aee1f0f1d3a"
+        },
+        "cleanup_result": {
+          "path": "@evidence/build/runs/gap-w5-wsl-cp311-1011/cleanup-result.json",
+          "sha256": "d089c0dd9b476690e158402c63c24df3c5324497f27b727a763ea05ab0377614"
+        },
+        "retag": {
+          "path": "@evidence/build/runs/gap-w5-wsl-cp311-1011/retag.json",
+          "sha256": "bc06a6e99821f83253a759dce89788d2ac3d0e530ccc2c177f7cea5d50845343"
+        }
+      },
+      "driver_sha256": "9c5c41b3a7b9d759b0960c868f10375281798ad084150716d6d122c8789b9e12",
+      "xvfb_waited": true,
+      "interpreter_pin": "3.11.14",
+      "consumer_python_version": "3.11.14 (main, Feb 12 2026, 00:42:50) [Clang 21.1.4 ]",
+      "ctest": {
+        "total": 44,
+        "passed": 44,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0,
+        "ctest_xml": {
+          "path": "@evidence/build/runs/gap-w5-wsl-cp311-1011/ctest.xml",
+          "sha256": "29c9a2e6f9ef9cd186576019b9fc79d37b8572af6cc02e909b2b8bd27d7d0ad4"
+        }
+      },
+      "sdf_cpu_check": {
+        "status": "PASS",
+        "rendered_lit_pixels": 882,
+        "sdf_module_sha256": "50687ccad60edb7f76c6d3fb8e7ca1184e9c45abacdf5b30ce188c15244b2082"
+      },
+      "raw_linux_wheel_sha256": "a6bcb3fa951311e73aa3f200688ecb1295debb9061256641f8409541f9cb9f46",
+      "retag_changed_members": [
+        "vispy-0.17.0+vulkan.2.dist-info/RECORD",
+        "vispy-0.17.0+vulkan.2.dist-info/WHEEL"
+      ],
+      "elf_dependencies": {
+        "vispy/_dawn.cpython-311-x86_64-linux-gnu.so": {
+          "needed": [
+            "ld-linux-x86-64.so.2",
+            "libX11.so.6",
+            "libc.so.6",
+            "libgcc_s.so.1",
+            "libm.so.6",
+            "libstdc++.so.6"
+          ],
+          "sha256": "1d2fc887735ef8a4b1a95b04fe203fffc988aac088208861e29f3d38ba7c2c98"
+        },
+        "vispy/visuals/text/_sdf_cpu.cpython-311-x86_64-linux-gnu.so": {
+          "needed": [
+            "libc.so.6"
+          ],
+          "sha256": "50687ccad60edb7f76c6d3fb8e7ca1184e9c45abacdf5b30ce188c15244b2082"
+        },
+        "vispy/VkLayer_vispy_submit.so": {
+          "needed": [
+            "libc.so.6",
+            "libgcc_s.so.1",
+            "libstdc++.so.6"
+          ],
+          "sha256": "95907606472ffe51bec021d4b28e4717472e40f2cef34cd2590d172575c113d4"
+        }
+      },
+      "colab_tesla_t4": {
+        "python_version": "3.11.17",
+        "wheel_sha256": "fc8dd6cc10daa11457d86ea4b9c2eaeba5248aec23658260b644593646763dbe",
+        "native_sha256": "1d2fc887735ef8a4b1a95b04fe203fffc988aac088208861e29f3d38ba7c2c98",
+        "sdf_cpu_sha256": "50687ccad60edb7f76c6d3fb8e7ca1184e9c45abacdf5b30ce188c15244b2082",
+        "installed_members_verified": 537,
+        "record_hashed_rows_verified": 561,
+        "source_overrides": 0,
+        "device": {
+          "device": "Tesla T4",
+          "driver": "NVIDIA: 580.82.07 580.82.7.0",
+          "backend": "Vulkan",
+          "software": false,
+          "adapter_type": "discrete"
+        },
+        "sdf_cpu_check": {
+          "status": "PASS",
+          "rendered_lit_pixels": 882,
+          "sdf_module_sha256": "50687ccad60edb7f76c6d3fb8e7ca1184e9c45abacdf5b30ce188c15244b2082"
+        },
+        "suites": {
+          "test_dawn_state_queries": {
+            "passed": 56,
+            "total": 56,
+            "skipped": 0
+          },
+          "w3_3_subpackages_and_plot": {
+            "passed": 16,
+            "total": 16,
+            "skipped": 0,
+            "test_subpackages_api05_contract": 12,
+            "test_plot_transforms_filters_gpu": 4,
+            "collections_rendered": 9,
+            "collections_total": 9
+          },
+          "test_jupyter_rfb_gpu": {
+            "passed": 3,
+            "total": 3,
+            "skipped": 0
+          }
+        },
+        "junit_summary": {
+          "total": 75,
+          "passed": 75,
+          "skipped": 0,
+          "failures": 0,
+          "errors": 0
+        },
+        "shutdown_gauges": {
+          "pending_tickets": 0,
+          "queued_frames": 0,
+          "live_buffer_bytes": 0,
+          "live_cpu_buffer_bytes": 0,
+          "live_texture_bytes": 0,
+          "canvas_texture_bytes": 0,
+          "transient_buffer_bytes": 0,
+          "line_resource_pool_busy_slots": 0,
+          "line_resource_pool_bytes": 0,
+          "host_import_pinned_bytes": 0
+        },
+        "receipts": {
+          "worker_abi": {
+            "path": "@evidence/build/runs/gap-w5-colab-t4-tier1-1013/worker-cp311.json",
+            "sha256": "fc1b280894a41f3d3751c352a5cf94d4d4e2125dc3edf21befb24f676c0a143b"
+          },
+          "junit_xml": {
+            "path": "@evidence/build/runs/gap-w5-colab-t4-tier1-1013/junit-cp311.xml",
+            "sha256": "b01437c478ae85dda5f552ccde13792e83b4ab9d463d7868b2e5b8de7b6c6f48"
+          },
+          "collections_json": {
+            "path": "@evidence/build/runs/gap-w5-colab-t4-tier1-1013/collections-cp311.json",
+            "sha256": "532917f7074551336f2d6a676fd9a3aa57d8ad9a9efea741b4685f30827e387c"
+          }
+        }
+      }
+    },
+    "manylinux_2_39_x86_64_cp312": {
+      "abi": "cp312",
+      "platform_tag": "manylinux_2_39_x86_64",
+      "build_route": "repackaged_pure_members_7",
+      "run_id": "gap-w5-cp312-wsl-1010",
+      "wheel": {
+        "path": "@evidence/build/artifacts/513088c146014305eb695d12915dafe26f55316c45bf800a8363f27e4cfb5d78/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+        "sha256": "513088c146014305eb695d12915dafe26f55316c45bf800a8363f27e4cfb5d78"
+      },
+      "wheel_sha256": "513088c146014305eb695d12915dafe26f55316c45bf800a8363f27e4cfb5d78",
+      "wheel_filename": "vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+      "wheel_bytes": 10565539,
+      "native_outputs": {
+        "vispy/_dawn.cpython-312-x86_64-linux-gnu.so": "fcf0c5a81a6e6a0c1bd218687878ed8d2d32492768fabbb635c7b47ed9da03ef",
+        "vispy/visuals/text/_sdf_cpu.cpython-312-x86_64-linux-gnu.so": "1e508269c6d8c4a0f9ed041987237c6fef5768eeb1e8174ed1e8eb29f8f7162f",
+        "vispy/VkLayer_vispy_submit.so": "95907606472ffe51bec021d4b28e4717472e40f2cef34cd2590d172575c113d4",
+        "vispy/VkLayer_vispy_submit.json": "e0762acec9e2df811cbb67e1c25e5c82d9fb76def0101f54fd737464c76786c2"
+      },
+      "native_sha256": "fcf0c5a81a6e6a0c1bd218687878ed8d2d32492768fabbb635c7b47ed9da03ef",
+      "sdf_cpu_sha256": "1e508269c6d8c4a0f9ed041987237c6fef5768eeb1e8174ed1e8eb29f8f7162f",
+      "installed_members_verified": 537,
+      "source_overrides": 0,
+      "actual_exit": 0,
+      "child_waited": true,
+      "scratch_absent_verified": true,
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      },
+      "device": {
+        "backend": "Vulkan",
+        "adapter_type": "cpu",
+        "device": "llvmpipe (LLVM 18.1.3, 256 bits)",
+        "driver": "llvmpipe: Mesa 26.1.8 (LLVM 18.1.3)",
+        "software": true
+      },
+      "suites": {
+        "test_dawn_state_queries": {
+          "passed": 56,
+          "skipped": 0,
+          "failed": 0
+        },
+        "w3_3_subpackages_and_plot": {
+          "passed": 16,
+          "skipped": 0,
+          "failed": 0,
+          "test_subpackages_api05_contract": 12,
+          "test_plot_transforms_filters_gpu": 4,
+          "collections_rendered": 9
+        },
+        "test_jupyter_rfb_gpu": {
+          "passed": 3,
+          "skipped": 0,
+          "failed": 0
+        }
+      },
+      "junit_summary": {
+        "total": 75,
+        "passed": 75,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0
+      },
+      "receipts": {
+        "verification": {
+          "path": "@evidence/build/runs/gap-w5-cp312-wsl-1010/verification.json",
+          "sha256": "ebede24e64c5b59bf8ca72f0b335ca286a0f29fe8235b16f354f9a4a938852da"
+        },
+        "worker": {
+          "path": "@evidence/build/runs/gap-w5-cp312-wsl-1010/worker.json",
+          "sha256": "524130bdf6dd3b2727f38b34e830728796592a41593311f6e373e07b4c5fc405"
+        },
+        "worker_w3_3": {
+          "path": "@evidence/build/runs/gap-w5-cp312-wsl-1010/worker-w3-3.json",
+          "sha256": "3a28ba2bb2cfb6dbc2d0bceab0c037fe30ac861a39f811be60ce698591a7aef2"
+        },
+        "worker_rfb": {
+          "path": "@evidence/build/runs/gap-w5-cp312-wsl-1010/worker-rfb.json",
+          "sha256": "c4249387894b74e66b5c9b1b3d27251951016aa80cb4a4a0a33d04925f353b23"
+        },
+        "collections_telemetry": {
+          "path": "@evidence/build/runs/gap-w5-cp312-wsl-1010/collections-telemetry.json",
+          "sha256": "6b2ca775aed2969ffc4dd664252bff46a0dd6b6586f2a094cc1828aa75b5a9b3"
+        },
+        "query_readback_xml": {
+          "path": "@evidence/build/runs/gap-w5-cp312-wsl-1010/query-readback.xml",
+          "sha256": "c41a375cfd1e7808c34a3ce44752b2d79e365b0698196f1bee9a0279d053bef7"
+        },
+        "w3_3_xml": {
+          "path": "@evidence/build/runs/gap-w5-cp312-wsl-1010/w3-3.xml",
+          "sha256": "b87a5b195193efb574737c5ff7868d4ba28524ed4676efc734d4e346b3d24387"
+        },
+        "jupyter_rfb_xml": {
+          "path": "@evidence/build/runs/gap-w5-cp312-wsl-1010/jupyter-rfb.xml",
+          "sha256": "7b398d587bb7d675fa3c13a98b26b3f9494644ac52bc1c7b72db20310d81a08c"
+        },
+        "terminal": {
+          "path": "@evidence/build/runs/gap-w5-cp312-wsl-1010/terminal.json",
+          "sha256": "fed11ec519eba4e08df83adfd089943499fb629bede6c222b9a9f2d5cf834123"
+        },
+        "cleanup_plan": {
+          "path": "@evidence/build/runs/gap-w5-cp312-wsl-1010/cleanup-plan.json",
+          "sha256": "6915e404ca98fe262a25c2c6efeda9fe9df6431305aa03af13678fa401cd7455"
+        },
+        "cleanup_result": {
+          "path": "@evidence/build/runs/gap-w5-cp312-wsl-1010/cleanup-result.json",
+          "sha256": "54693cc848d89aa32c5921156f4fe3f2080382899120cd37d581186f241f2a33"
+        }
+      },
+      "driver_sha256": "9c5c41b3a7b9d759b0960c868f10375281798ad084150716d6d122c8789b9e12",
+      "xvfb_waited": true,
+      "native_rebuilt": false,
+      "original_wheel_sha256": "dfe1033fc90b9d6bd575c8988cc51544be47d71225509244e69be1ea91a42715",
+      "changed_pure_members": [
+        "vispy/app/backends/_jupyter_rfb.py",
+        "vispy/app/backends/_offscreen_util.py",
+        "vispy/gloo/dawn_parser.py",
+        "vispy/glsl/collections/agg-point.vert",
+        "vispy/visuals/collections/base_collection.py",
+        "vispy/visuals/collections/raw_path_collection.py",
+        "vispy/visuals/collections/raw_segment_collection.py"
+      ],
+      "tk_capture_recovery": {
+        "run_id": "gap-w5-cp312-wsl-tk-1010b",
+        "wheel_sha256": "513088c146014305eb695d12915dafe26f55316c45bf800a8363f27e4cfb5d78",
+        "tk_capture_cases": {
+          "total": 14,
+          "passed": 14,
+          "skipped": 0,
+          "failures": 0,
+          "errors": 0
+        },
+        "direct_functional_status": "PASS",
+        "direct_functional_phases": [
+          "ordinary_state",
+          "resource_failure_recovery",
+          "native_progress_failure_recovery",
+          "submission_failure_recovery"
+        ],
+        "toolkit": {
+          "tk_version": 9.0,
+          "tcl_version": 9.0,
+          "binding_origin": "/home/heq/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/lib-dynload/_tkinter.cpython-312-x86_64-linux-gnu.so",
+          "binding_sha256": "0240658571f1531461f4a7178c454795c55fe0f5723eebeda0b5de2f4aeee303"
+        },
+        "installed_members_verified": 537,
+        "source_overrides": 0,
+        "shutdown_gauges": {
+          "pending_tickets": 0,
+          "queued_frames": 0,
+          "live_buffer_bytes": 0,
+          "live_cpu_buffer_bytes": 0,
+          "live_texture_bytes": 0,
+          "canvas_texture_bytes": 0,
+          "transient_buffer_bytes": 0,
+          "line_resource_pool_busy_slots": 0,
+          "line_resource_pool_bytes": 0,
+          "host_import_pinned_bytes": 0
+        },
+        "actual_exit": 0,
+        "child_waited": true,
+        "scratch_absent_verified": true,
+        "receipts": {
+          "verification": {
+            "path": "@evidence/build/runs/gap-w5-cp312-wsl-tk-1010b/verification.json",
+            "sha256": "2616ae676bbba92e0386a49cb17cfb37faa3f57277a5c20f1c08ec545f0e39f6"
+          },
+          "worker": {
+            "path": "@evidence/build/runs/gap-w5-cp312-wsl-tk-1010b/worker.json",
+            "sha256": "5c982ce5feae10a030c8a8affa18dacfb19144a3e6af2a435e8176f7b10e8929"
+          },
+          "tk_capture_xml": {
+            "path": "@evidence/build/runs/gap-w5-cp312-wsl-tk-1010b/tk-capture.xml",
+            "sha256": "76fb611977c4aded2d6da51a48ca1d54aa342174514629c8d51d95efb032ba7e"
+          },
+          "terminal": {
+            "path": "@evidence/build/runs/gap-w5-cp312-wsl-tk-1010b/terminal.json",
+            "sha256": "ad5fbe48f2eb2dc3b3041b79e5cca5885f06bc1cfa20a94e4ce94d926df06857"
+          },
+          "cleanup_plan": {
+            "path": "@evidence/build/runs/gap-w5-cp312-wsl-tk-1010b/cleanup-plan.json",
+            "sha256": "98acc94b61348b20086e91bfae9557203126c3e8731e43372edfa73b2682ea88"
+          },
+          "cleanup_result": {
+            "path": "@evidence/build/runs/gap-w5-cp312-wsl-tk-1010b/cleanup-result.json",
+            "sha256": "8f1a1e210570da8d1c75e9607bfc9602a8c14e296cf52fa6159d50d97e1a61fb"
+          }
+        }
+      },
+      "colab_tesla_t4": {
+        "python_version": "3.12.3",
+        "wheel_sha256": "513088c146014305eb695d12915dafe26f55316c45bf800a8363f27e4cfb5d78",
+        "native_sha256": "fcf0c5a81a6e6a0c1bd218687878ed8d2d32492768fabbb635c7b47ed9da03ef",
+        "sdf_cpu_sha256": "1e508269c6d8c4a0f9ed041987237c6fef5768eeb1e8174ed1e8eb29f8f7162f",
+        "installed_members_verified": 537,
+        "record_hashed_rows_verified": 561,
+        "source_overrides": 0,
+        "device": {
+          "device": "Tesla T4",
+          "driver": "NVIDIA: 580.82.07 580.82.7.0",
+          "backend": "Vulkan",
+          "software": false,
+          "adapter_type": "discrete"
+        },
+        "sdf_cpu_check": {
+          "status": "PASS",
+          "rendered_lit_pixels": 882,
+          "sdf_module_sha256": "1e508269c6d8c4a0f9ed041987237c6fef5768eeb1e8174ed1e8eb29f8f7162f"
+        },
+        "suites": {
+          "test_dawn_state_queries": {
+            "passed": 56,
+            "total": 56,
+            "skipped": 0
+          },
+          "w3_3_subpackages_and_plot": {
+            "passed": 16,
+            "total": 16,
+            "skipped": 0,
+            "test_subpackages_api05_contract": 12,
+            "test_plot_transforms_filters_gpu": 4,
+            "collections_rendered": 9,
+            "collections_total": 9
+          },
+          "test_jupyter_rfb_gpu": {
+            "passed": 3,
+            "total": 3,
+            "skipped": 0
+          }
+        },
+        "junit_summary": {
+          "total": 75,
+          "passed": 75,
+          "skipped": 0,
+          "failures": 0,
+          "errors": 0
+        },
+        "shutdown_gauges": {
+          "pending_tickets": 0,
+          "queued_frames": 0,
+          "live_buffer_bytes": 0,
+          "live_cpu_buffer_bytes": 0,
+          "live_texture_bytes": 0,
+          "canvas_texture_bytes": 0,
+          "transient_buffer_bytes": 0,
+          "line_resource_pool_busy_slots": 0,
+          "line_resource_pool_bytes": 0,
+          "host_import_pinned_bytes": 0
+        },
+        "receipts": {
+          "worker_abi": {
+            "path": "@evidence/build/runs/gap-w5-colab-t4-tier1-1013/worker-cp312.json",
+            "sha256": "70c62aa1b8ba158523303bd1b773c18f96ea7c052c1ee8cc2a950d4616ce7357"
+          },
+          "junit_xml": {
+            "path": "@evidence/build/runs/gap-w5-colab-t4-tier1-1013/junit-cp312.xml",
+            "sha256": "be46a5b87c5d99d65fa6cb13def0bf2e67088911efbe2a554d3980daee09955b"
+          },
+          "collections_json": {
+            "path": "@evidence/build/runs/gap-w5-colab-t4-tier1-1013/collections-cp312.json",
+            "sha256": "532917f7074551336f2d6a676fd9a3aa57d8ad9a9efea741b4685f30827e387c"
+          }
+        }
+      }
+    },
+    "manylinux_2_39_x86_64_cp313": {
+      "abi": "cp313",
+      "platform_tag": "manylinux_2_39_x86_64",
+      "build_route": "fresh_ninja_build_offline_auditwheel_retag",
+      "run_id": "gap-w5-wsl-cp313-1012",
+      "wheel": {
+        "path": "@evidence/build/artifacts/1362eb6a567ed713834a8c69bf7297299c6266e43af980366087481a69fa7b64/vispy-0.17.0+vulkan.2-cp313-cp313-manylinux_2_39_x86_64.whl",
+        "sha256": "1362eb6a567ed713834a8c69bf7297299c6266e43af980366087481a69fa7b64"
+      },
+      "wheel_sha256": "1362eb6a567ed713834a8c69bf7297299c6266e43af980366087481a69fa7b64",
+      "wheel_filename": "vispy-0.17.0+vulkan.2-cp313-cp313-manylinux_2_39_x86_64.whl",
+      "wheel_bytes": 10565231,
+      "native_outputs": {
+        "vispy/_dawn.cpython-313-x86_64-linux-gnu.so": "88a560fdccadad3945b4693ad2f9402c50e9d75517a5a7b730b13a4b4a52aeeb",
+        "vispy/visuals/text/_sdf_cpu.cpython-313-x86_64-linux-gnu.so": "976736115497691fd6f164134849f9b55bb28fec33972986aaedcba472867b4e",
+        "vispy/VkLayer_vispy_submit.so": "95907606472ffe51bec021d4b28e4717472e40f2cef34cd2590d172575c113d4",
+        "vispy/VkLayer_vispy_submit.json": "e0762acec9e2df811cbb67e1c25e5c82d9fb76def0101f54fd737464c76786c2"
+      },
+      "native_sha256": "88a560fdccadad3945b4693ad2f9402c50e9d75517a5a7b730b13a4b4a52aeeb",
+      "sdf_cpu_sha256": "976736115497691fd6f164134849f9b55bb28fec33972986aaedcba472867b4e",
+      "installed_members_verified": 537,
+      "source_overrides": 0,
+      "actual_exit": 0,
+      "child_waited": true,
+      "scratch_absent_verified": true,
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      },
+      "device": {
+        "backend": "Vulkan",
+        "adapter_type": "cpu",
+        "device": "llvmpipe (LLVM 18.1.3, 256 bits)",
+        "driver": "llvmpipe: Mesa 26.1.8 (LLVM 18.1.3)",
+        "software": true
+      },
+      "suites": {
+        "test_dawn_state_queries": {
+          "passed": 56,
+          "skipped": 0,
+          "failed": 0
+        },
+        "w3_3_subpackages_and_plot": {
+          "passed": 16,
+          "skipped": 0,
+          "failed": 0,
+          "test_subpackages_api05_contract": 12,
+          "test_plot_transforms_filters_gpu": 4,
+          "collections_rendered": 9
+        },
+        "test_jupyter_rfb_gpu": {
+          "passed": 3,
+          "skipped": 0,
+          "failed": 0
+        }
+      },
+      "junit_summary": {
+        "total": 75,
+        "passed": 75,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0
+      },
+      "receipts": {
+        "verification": {
+          "path": "@evidence/build/runs/gap-w5-wsl-cp313-1012/verification.json",
+          "sha256": "997b918b4266733228898e4119d0def78c7d3ae1ce6f8825dade7c828e62a5e1"
+        },
+        "worker": {
+          "path": "@evidence/build/runs/gap-w5-wsl-cp313-1012/worker.json",
+          "sha256": "90a79523b7b27c5aebf77a8aae79ebaef9afce7c8f23bb11e24e35bedba1c2ff"
+        },
+        "worker_w3_3": {
+          "path": "@evidence/build/runs/gap-w5-wsl-cp313-1012/worker-w3-3.json",
+          "sha256": "dbf4d562fc7422ad490c0b94af79a3aef776ea6bdd211baaccafec968b6c8a07"
+        },
+        "worker_rfb": {
+          "path": "@evidence/build/runs/gap-w5-wsl-cp313-1012/worker-rfb.json",
+          "sha256": "5ac24d6828f3e62909b41ebb1922a652eb555ab86debc99fb7d8e403e3350fbb"
+        },
+        "collections_telemetry": {
+          "path": "@evidence/build/runs/gap-w5-wsl-cp313-1012/collections-telemetry.json",
+          "sha256": "6b2ca775aed2969ffc4dd664252bff46a0dd6b6586f2a094cc1828aa75b5a9b3"
+        },
+        "query_readback_xml": {
+          "path": "@evidence/build/runs/gap-w5-wsl-cp313-1012/query-readback.xml",
+          "sha256": "6f5ac679bf92117fa79b08ef9202643bcf0719a3aa3c9eef2963e5c61d0ecb52"
+        },
+        "w3_3_xml": {
+          "path": "@evidence/build/runs/gap-w5-wsl-cp313-1012/w3-3.xml",
+          "sha256": "7ae1974bf66a33da6c11757b52843144eb39e8936dc93f5ab638db7b44c8f58d"
+        },
+        "jupyter_rfb_xml": {
+          "path": "@evidence/build/runs/gap-w5-wsl-cp313-1012/jupyter-rfb.xml",
+          "sha256": "7dc002bbddd66701cc747e1f767ac70c05a8528c4a9808f384bfab493a1f5fc0"
+        },
+        "terminal": {
+          "path": "@evidence/build/runs/gap-w5-wsl-cp313-1012/terminal.json",
+          "sha256": "8d264cd8299a7356205a7a68a8a93e2afb40668c04bcd9ca61081f327759b2f9"
+        },
+        "cleanup_plan": {
+          "path": "@evidence/build/runs/gap-w5-wsl-cp313-1012/cleanup-plan.json",
+          "sha256": "6f87deebe2b7eb42d2d37fd7ba06a291b8f9c963639a6bc7cbb63b64b8364288"
+        },
+        "cleanup_result": {
+          "path": "@evidence/build/runs/gap-w5-wsl-cp313-1012/cleanup-result.json",
+          "sha256": "b5423b0b701447922479574e1176f0cad151a6245f25287dd0265b3f1fbbe013"
+        },
+        "retag": {
+          "path": "@evidence/build/runs/gap-w5-wsl-cp313-1012/retag.json",
+          "sha256": "702f74e4f41ee9f2c8e9899158f9fef019bd24a802d0dfd996f86fca06815cb4"
+        }
+      },
+      "driver_sha256": "9c5c41b3a7b9d759b0960c868f10375281798ad084150716d6d122c8789b9e12",
+      "xvfb_waited": true,
+      "interpreter_pin": "3.13.8",
+      "consumer_python_version": "3.13.8 (main, Oct 10 2025, 12:48:21) [Clang 20.1.4 ]",
+      "ctest": {
+        "total": 44,
+        "passed": 44,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0,
+        "ctest_xml": {
+          "path": "@evidence/build/runs/gap-w5-wsl-cp313-1012/ctest.xml",
+          "sha256": "838904e2985ce27926db3652044e629c83816c84d6ee81b0fdeda09ddaa42b32"
+        }
+      },
+      "sdf_cpu_check": {
+        "status": "PASS",
+        "rendered_lit_pixels": 882,
+        "sdf_module_sha256": "976736115497691fd6f164134849f9b55bb28fec33972986aaedcba472867b4e"
+      },
+      "raw_linux_wheel_sha256": "fe24acf3880f9203c30aa4147e95cf77cd0f141e25d07744afee7ba1f8ca7b0a",
+      "retag_changed_members": [
+        "vispy-0.17.0+vulkan.2.dist-info/RECORD",
+        "vispy-0.17.0+vulkan.2.dist-info/WHEEL"
+      ],
+      "elf_dependencies": {
+        "vispy/_dawn.cpython-313-x86_64-linux-gnu.so": {
+          "needed": [
+            "ld-linux-x86-64.so.2",
+            "libX11.so.6",
+            "libc.so.6",
+            "libgcc_s.so.1",
+            "libm.so.6",
+            "libstdc++.so.6"
+          ],
+          "sha256": "88a560fdccadad3945b4693ad2f9402c50e9d75517a5a7b730b13a4b4a52aeeb"
+        },
+        "vispy/visuals/text/_sdf_cpu.cpython-313-x86_64-linux-gnu.so": {
+          "needed": [
+            "libc.so.6"
+          ],
+          "sha256": "976736115497691fd6f164134849f9b55bb28fec33972986aaedcba472867b4e"
+        },
+        "vispy/VkLayer_vispy_submit.so": {
+          "needed": [
+            "libc.so.6",
+            "libgcc_s.so.1",
+            "libstdc++.so.6"
+          ],
+          "sha256": "95907606472ffe51bec021d4b28e4717472e40f2cef34cd2590d172575c113d4"
+        }
+      },
+      "colab_tesla_t4": {
+        "python_version": "3.13.16",
+        "wheel_sha256": "1362eb6a567ed713834a8c69bf7297299c6266e43af980366087481a69fa7b64",
+        "native_sha256": "88a560fdccadad3945b4693ad2f9402c50e9d75517a5a7b730b13a4b4a52aeeb",
+        "sdf_cpu_sha256": "976736115497691fd6f164134849f9b55bb28fec33972986aaedcba472867b4e",
+        "installed_members_verified": 537,
+        "record_hashed_rows_verified": 561,
+        "source_overrides": 0,
+        "device": {
+          "device": "Tesla T4",
+          "driver": "NVIDIA: 580.82.07 580.82.7.0",
+          "backend": "Vulkan",
+          "software": false,
+          "adapter_type": "discrete"
+        },
+        "sdf_cpu_check": {
+          "status": "PASS",
+          "rendered_lit_pixels": 882,
+          "sdf_module_sha256": "976736115497691fd6f164134849f9b55bb28fec33972986aaedcba472867b4e"
+        },
+        "suites": {
+          "test_dawn_state_queries": {
+            "passed": 56,
+            "total": 56,
+            "skipped": 0
+          },
+          "w3_3_subpackages_and_plot": {
+            "passed": 16,
+            "total": 16,
+            "skipped": 0,
+            "test_subpackages_api05_contract": 12,
+            "test_plot_transforms_filters_gpu": 4,
+            "collections_rendered": 9,
+            "collections_total": 9
+          },
+          "test_jupyter_rfb_gpu": {
+            "passed": 3,
+            "total": 3,
+            "skipped": 0
+          }
+        },
+        "junit_summary": {
+          "total": 75,
+          "passed": 75,
+          "skipped": 0,
+          "failures": 0,
+          "errors": 0
+        },
+        "shutdown_gauges": {
+          "pending_tickets": 0,
+          "queued_frames": 0,
+          "live_buffer_bytes": 0,
+          "live_cpu_buffer_bytes": 0,
+          "live_texture_bytes": 0,
+          "canvas_texture_bytes": 0,
+          "transient_buffer_bytes": 0,
+          "line_resource_pool_busy_slots": 0,
+          "line_resource_pool_bytes": 0,
+          "host_import_pinned_bytes": 0
+        },
+        "receipts": {
+          "worker_abi": {
+            "path": "@evidence/build/runs/gap-w5-colab-t4-tier1-1013/worker-cp313.json",
+            "sha256": "11f11bd4ad16235c7d27654edeee95b7c7e0364ff8dc8f13bac1a557409fce1f"
+          },
+          "junit_xml": {
+            "path": "@evidence/build/runs/gap-w5-colab-t4-tier1-1013/junit-cp313.xml",
+            "sha256": "f6357fac1b00f5f32940be6740f8dd6332bc509a3643956156bf86785209c579"
+          },
+          "collections_json": {
+            "path": "@evidence/build/runs/gap-w5-colab-t4-tier1-1013/collections-cp313.json",
+            "sha256": "532917f7074551336f2d6a676fd9a3aa57d8ad9a9efea741b4685f30827e387c"
+          }
+        }
+      }
+    }
+  },
+  "colab_tesla_t4_summary": {
+    "run_id": "gap-w5-colab-t4-tier1-1013",
+    "os_pretty_name": "Ubuntu 24.04.4 LTS",
+    "glibc": "glibc 2.39",
+    "kernel": "6.6.159+",
+    "gpu_model": "NVIDIA Tesla T4",
+    "driver_version": "580.82.07",
+    "vulkan_api_version": "1.4.312",
+    "software": false,
+    "xvfb_waited": true,
+    "xvfb_exit": 0,
+    "session_stopped_in_finally": true,
+    "default_sessions_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "total_expected_cases_across_abis": 225,
+    "total_passed_cases_across_abis": 225,
+    "abis": {
+      "cp311": {
+        "python_version": "3.11.17",
+        "wheel_sha256": "fc8dd6cc10daa11457d86ea4b9c2eaeba5248aec23658260b644593646763dbe",
+        "native_sha256": "1d2fc887735ef8a4b1a95b04fe203fffc988aac088208861e29f3d38ba7c2c98",
+        "sdf_cpu_sha256": "50687ccad60edb7f76c6d3fb8e7ca1184e9c45abacdf5b30ce188c15244b2082",
+        "installed_members_verified": 537,
+        "record_hashed_rows_verified": 561,
+        "source_overrides": 0,
+        "device": {
+          "device": "Tesla T4",
+          "driver": "NVIDIA: 580.82.07 580.82.7.0",
+          "backend": "Vulkan",
+          "software": false,
+          "adapter_type": "discrete"
+        },
+        "sdf_cpu_check": {
+          "status": "PASS",
+          "rendered_lit_pixels": 882,
+          "sdf_module_sha256": "50687ccad60edb7f76c6d3fb8e7ca1184e9c45abacdf5b30ce188c15244b2082"
+        },
+        "suites": {
+          "test_dawn_state_queries": {
+            "passed": 56,
+            "total": 56,
+            "skipped": 0
+          },
+          "w3_3_subpackages_and_plot": {
+            "passed": 16,
+            "total": 16,
+            "skipped": 0,
+            "test_subpackages_api05_contract": 12,
+            "test_plot_transforms_filters_gpu": 4,
+            "collections_rendered": 9,
+            "collections_total": 9
+          },
+          "test_jupyter_rfb_gpu": {
+            "passed": 3,
+            "total": 3,
+            "skipped": 0
+          }
+        },
+        "junit_summary": {
+          "total": 75,
+          "passed": 75,
+          "skipped": 0,
+          "failures": 0,
+          "errors": 0
+        },
+        "shutdown_gauges": {
+          "pending_tickets": 0,
+          "queued_frames": 0,
+          "live_buffer_bytes": 0,
+          "live_cpu_buffer_bytes": 0,
+          "live_texture_bytes": 0,
+          "canvas_texture_bytes": 0,
+          "transient_buffer_bytes": 0,
+          "line_resource_pool_busy_slots": 0,
+          "line_resource_pool_bytes": 0,
+          "host_import_pinned_bytes": 0
+        },
+        "receipts": {
+          "worker_abi": {
+            "path": "@evidence/build/runs/gap-w5-colab-t4-tier1-1013/worker-cp311.json",
+            "sha256": "fc1b280894a41f3d3751c352a5cf94d4d4e2125dc3edf21befb24f676c0a143b"
+          },
+          "junit_xml": {
+            "path": "@evidence/build/runs/gap-w5-colab-t4-tier1-1013/junit-cp311.xml",
+            "sha256": "b01437c478ae85dda5f552ccde13792e83b4ab9d463d7868b2e5b8de7b6c6f48"
+          },
+          "collections_json": {
+            "path": "@evidence/build/runs/gap-w5-colab-t4-tier1-1013/collections-cp311.json",
+            "sha256": "532917f7074551336f2d6a676fd9a3aa57d8ad9a9efea741b4685f30827e387c"
+          }
+        }
+      },
+      "cp312": {
+        "python_version": "3.12.3",
+        "wheel_sha256": "513088c146014305eb695d12915dafe26f55316c45bf800a8363f27e4cfb5d78",
+        "native_sha256": "fcf0c5a81a6e6a0c1bd218687878ed8d2d32492768fabbb635c7b47ed9da03ef",
+        "sdf_cpu_sha256": "1e508269c6d8c4a0f9ed041987237c6fef5768eeb1e8174ed1e8eb29f8f7162f",
+        "installed_members_verified": 537,
+        "record_hashed_rows_verified": 561,
+        "source_overrides": 0,
+        "device": {
+          "device": "Tesla T4",
+          "driver": "NVIDIA: 580.82.07 580.82.7.0",
+          "backend": "Vulkan",
+          "software": false,
+          "adapter_type": "discrete"
+        },
+        "sdf_cpu_check": {
+          "status": "PASS",
+          "rendered_lit_pixels": 882,
+          "sdf_module_sha256": "1e508269c6d8c4a0f9ed041987237c6fef5768eeb1e8174ed1e8eb29f8f7162f"
+        },
+        "suites": {
+          "test_dawn_state_queries": {
+            "passed": 56,
+            "total": 56,
+            "skipped": 0
+          },
+          "w3_3_subpackages_and_plot": {
+            "passed": 16,
+            "total": 16,
+            "skipped": 0,
+            "test_subpackages_api05_contract": 12,
+            "test_plot_transforms_filters_gpu": 4,
+            "collections_rendered": 9,
+            "collections_total": 9
+          },
+          "test_jupyter_rfb_gpu": {
+            "passed": 3,
+            "total": 3,
+            "skipped": 0
+          }
+        },
+        "junit_summary": {
+          "total": 75,
+          "passed": 75,
+          "skipped": 0,
+          "failures": 0,
+          "errors": 0
+        },
+        "shutdown_gauges": {
+          "pending_tickets": 0,
+          "queued_frames": 0,
+          "live_buffer_bytes": 0,
+          "live_cpu_buffer_bytes": 0,
+          "live_texture_bytes": 0,
+          "canvas_texture_bytes": 0,
+          "transient_buffer_bytes": 0,
+          "line_resource_pool_busy_slots": 0,
+          "line_resource_pool_bytes": 0,
+          "host_import_pinned_bytes": 0
+        },
+        "receipts": {
+          "worker_abi": {
+            "path": "@evidence/build/runs/gap-w5-colab-t4-tier1-1013/worker-cp312.json",
+            "sha256": "70c62aa1b8ba158523303bd1b773c18f96ea7c052c1ee8cc2a950d4616ce7357"
+          },
+          "junit_xml": {
+            "path": "@evidence/build/runs/gap-w5-colab-t4-tier1-1013/junit-cp312.xml",
+            "sha256": "be46a5b87c5d99d65fa6cb13def0bf2e67088911efbe2a554d3980daee09955b"
+          },
+          "collections_json": {
+            "path": "@evidence/build/runs/gap-w5-colab-t4-tier1-1013/collections-cp312.json",
+            "sha256": "532917f7074551336f2d6a676fd9a3aa57d8ad9a9efea741b4685f30827e387c"
+          }
+        }
+      },
+      "cp313": {
+        "python_version": "3.13.16",
+        "wheel_sha256": "1362eb6a567ed713834a8c69bf7297299c6266e43af980366087481a69fa7b64",
+        "native_sha256": "88a560fdccadad3945b4693ad2f9402c50e9d75517a5a7b730b13a4b4a52aeeb",
+        "sdf_cpu_sha256": "976736115497691fd6f164134849f9b55bb28fec33972986aaedcba472867b4e",
+        "installed_members_verified": 537,
+        "record_hashed_rows_verified": 561,
+        "source_overrides": 0,
+        "device": {
+          "device": "Tesla T4",
+          "driver": "NVIDIA: 580.82.07 580.82.7.0",
+          "backend": "Vulkan",
+          "software": false,
+          "adapter_type": "discrete"
+        },
+        "sdf_cpu_check": {
+          "status": "PASS",
+          "rendered_lit_pixels": 882,
+          "sdf_module_sha256": "976736115497691fd6f164134849f9b55bb28fec33972986aaedcba472867b4e"
+        },
+        "suites": {
+          "test_dawn_state_queries": {
+            "passed": 56,
+            "total": 56,
+            "skipped": 0
+          },
+          "w3_3_subpackages_and_plot": {
+            "passed": 16,
+            "total": 16,
+            "skipped": 0,
+            "test_subpackages_api05_contract": 12,
+            "test_plot_transforms_filters_gpu": 4,
+            "collections_rendered": 9,
+            "collections_total": 9
+          },
+          "test_jupyter_rfb_gpu": {
+            "passed": 3,
+            "total": 3,
+            "skipped": 0
+          }
+        },
+        "junit_summary": {
+          "total": 75,
+          "passed": 75,
+          "skipped": 0,
+          "failures": 0,
+          "errors": 0
+        },
+        "shutdown_gauges": {
+          "pending_tickets": 0,
+          "queued_frames": 0,
+          "live_buffer_bytes": 0,
+          "live_cpu_buffer_bytes": 0,
+          "live_texture_bytes": 0,
+          "canvas_texture_bytes": 0,
+          "transient_buffer_bytes": 0,
+          "line_resource_pool_busy_slots": 0,
+          "line_resource_pool_bytes": 0,
+          "host_import_pinned_bytes": 0
+        },
+        "receipts": {
+          "worker_abi": {
+            "path": "@evidence/build/runs/gap-w5-colab-t4-tier1-1013/worker-cp313.json",
+            "sha256": "11f11bd4ad16235c7d27654edeee95b7c7e0364ff8dc8f13bac1a557409fce1f"
+          },
+          "junit_xml": {
+            "path": "@evidence/build/runs/gap-w5-colab-t4-tier1-1013/junit-cp313.xml",
+            "sha256": "f6357fac1b00f5f32940be6740f8dd6332bc509a3643956156bf86785209c579"
+          },
+          "collections_json": {
+            "path": "@evidence/build/runs/gap-w5-colab-t4-tier1-1013/collections-cp313.json",
+            "sha256": "532917f7074551336f2d6a676fd9a3aa57d8ad9a9efea741b4685f30827e387c"
+          }
+        }
+      }
+    },
+    "receipts": {
+      "verification": {
+        "path": "@evidence/build/runs/gap-w5-colab-t4-tier1-1013/verification.json",
+        "sha256": "254329bd71aec44578d9b1be900a062937fdb9a31128a0f732f09b014ca577c7"
+      },
+      "worker": {
+        "path": "@evidence/build/runs/gap-w5-colab-t4-tier1-1013/worker.json",
+        "sha256": "a9e3392196eec1268159ca7161e3afe203211c5fe0407dd67d7246f866e5f02b"
+      },
+      "remote_report": {
+        "path": "@evidence/build/runs/gap-w5-colab-t4-tier1-1013/remote-report.json",
+        "sha256": "6a5b4d51aaea4c965c856d99d0b0d00b40ffbe706d4bc306737aaea308bf9608"
+      },
+      "bundle_manifest": {
+        "path": "@evidence/build/runs/gap-w5-colab-t4-tier1-1013/bundle-manifest.json",
+        "sha256": "15d1d0f1b875fcccb8da1b9220eebf4c26c4a8019de8f4cb0082677bd6b19c27"
+      },
+      "processes": {
+        "path": "@evidence/build/runs/gap-w5-colab-t4-tier1-1013/processes.json",
+        "sha256": "b6cd46573a065d81d3e015204ee6a0047181dd31d2d3bceabce2c86c387ccd57"
+      },
+      "terminal": {
+        "path": "@evidence/build/runs/gap-w5-colab-t4-tier1-1013/terminal.json",
+        "sha256": "0e3fd2e69d99f0f7d64ec830c1892d524bba87c0c7f47741d4dfcb5a181b5be2"
+      },
+      "cleanup_plan": {
+        "path": "@evidence/build/runs/gap-w5-colab-t4-tier1-1013/cleanup-plan.json",
+        "sha256": "a840cac8b48796a0732a7acf23472872f78b91d6d4d6602525091ba7a1e3307f"
+      },
+      "cleanup_result": {
+        "path": "@evidence/build/runs/gap-w5-colab-t4-tier1-1013/cleanup-result.json",
+        "sha256": "9353d4bb4ff99cf0073b8e1d8d2f990eb65b045e9f4fcea588a95ddde8e5db28"
+      }
+    }
+  },
+  "open_plat02_boundaries": [
+    "PLAT-02 remains [ ] OPEN: cp310 and cp314 GPU wheels are not built or claimed (CPU CI only).",
+    "All 6 Wave 5 wheels (cp311/cp312/cp313 x win_amd64 & manylinux_2_39_x86_64) are recorded strictly at evidence_tier 'installed-functional', not scoped-admitted in compat/no-opengl-matrix.json and not publicly delivered on GitHub Releases.",
+    "ARM (Windows/Linux aarch64), free-threaded Python, and ABI3 remain outside release scope under PLAT-06."
+  ],
+  "scope": "Wave 5 PLAT-02 installed-functional multi-ABI wheel matrix at source 3daf19be (tree 6c8d3bad): 6 retained 0.17.0+vulkan.2 wheels across cp311, cp312, and cp313 on win_amd64 (RTX 4090: 1007, 1007b, 1008, 1009) and manylinux_2_39_x86_64 (WSL Mesa 9c5c41b3 + Xvfb: 1010, 1010b, 1011, 1012; and Google Colab physical NVIDIA Tesla T4: 1013, 225/225 across cp311/cp312/cp313). Fresh cp311 and cp313 builds pass 44/44 CTests, 537/537 wheel member checks, clean ELF dependency / offline auditwheel 6.8.2 + wheel 0.48.0 retag checks (ONLY RECORD & WHEEL changed), _sdf_cpu glyph render, 56/56 state/readback, 16/16 W3-3 (9/9 collections), 3/3 live jupyter_rfb (0 skipped), and 10/10 zero Dawn shutdown gauges; cp312 wheels also pass 14/14 Tk capture + 4-phase failure/recovery (1007b/1010b). PLAT-02 remains [ ] OPEN because cp310/cp314 GPU wheels, mandatory 8-row strict scoped admission for cp311/cp313, and public release delivery are not claimed."
+}

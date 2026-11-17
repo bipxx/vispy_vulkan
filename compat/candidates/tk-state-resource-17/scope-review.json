@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "status": "APPROVED",
+  "kind": "scope",
+  "independent": true,
+  "reviewer": "Opus independent read-only peer review gap-w5-review-1014r exact preparation17 bindings",
+  "candidate_scope_sha256": "9e11b4f69df0b2a355c9ed48a563316c938b1bf1c3a2e68586b620f8a7fae6b7",
+  "reviewed_delta_sha256": "7c88bbdc70a54dfd8986c8ca41abc005c9739aec0b09d774d16c02752aa8d170",
+  "native_reuse_links": [
+    "69d1c1388c9c332f7f8b18e45975ad47cc199e06d824b26a9aafcfcc56518482",
+    "e10286b1288e0cc9e514ce38d62210b6e8e484056f382bc577a8ada1ec520b8f"
+  ],
+  "evidence": {
+    "path": "@evidence/build/runs/gap-w5-review-1014r/review-response.md",
+    "sha256": "30576d06d94b81b8105650c2ac5779f7d0598fd88052c47aba5a9e5623ff3dd9"
+  },
+  "raw_response": {
+    "path": "@evidence/build/runs/gap-w5-review-1014r/review-response.json",
+    "sha256": "70b49bca3af0688598a2cb9fe6a968929126abd6e57dd1225a9d8e1af0df69b6"
+  },
+  "decision": {
+    "path": "@evidence/build/runs/gap-w5-review-1014r/decision.json",
+    "sha256": "c71c4ed5cffa95b6de62964be2e8069288d4a184afc45250a40eaf144342da7f"
+  },
+  "scope": "Exact whole prepared Wave 5 preparation17 source/scope/native-reuse declarations. No strict installed/profile/artifact, CI/integration/publication admission.",
+  "conditions": [
+    "Add only compat/candidates/tk-state-resource-17/{source-review.json,scope-review.json} with list-form native_reuse_links [\"69d1c1388c9c332f7f8b18e45975ad47cc199e06d824b26a9aafcfcc56518482\", \"e10286b1288e0cc9e514ce38d62210b6e8e484056f382bc577a8ada1ec520b8f\"], schema: 1, status: \"APPROVED\", independent: true, non-empty reviewer, exact candidate_scope_sha256 9e11b4f69df0b2a355c9ed48a563316c938b1bf1c3a2e68586b620f8a7fae6b7, reviewed_delta_sha256 7c88bbdc70a54dfd8986c8ca41abc005c9739aec0b09d774d16c02752aa8d170, and scope map digests (coverage_map_sha256, execution_map_sha256, admission_scope_sha256) on scope-review.json.",
+    "Set candidate.reviews references in compat/candidates/tk-state-resource-17/candidate.json and reseal; candidate_scope_sha256 9e11b4f69df0b2a355c9ed48a563316c938b1bf1c3a2e68586b620f8a7fae6b7 must stay unchanged.",
+    "Update only candidate.sha256 outside the reuse block in windows-native-provenance.json and linux-native-provenance.json; reuse blocks and native_reuse_links digests remain unchanged.",
+    "Apply review flags only through tools/compatibility_execution.py --apply-reviewed; ledger_scope_sha256 673bad47ee19974b4fb9e1f44d1c1fdd3546f17fa716303c412deb576c9a9c74 and coverage/execution/admission semantic manifests stay unchanged.",
+    "Run authoritative candidate/coverage/execution/selection/native/installed/retention/host/CI validators in Step 5d (1015); preserve any failure and do not bypass.",
+    "Declared strict capture/no-opengl workflow acceptance, cp311/cp313 mandatory strict admission, PLAT-02 closure, and public release delivery remain separate and open."
+  ],
+  "qualification_approved": false,
+  "coverage_map_sha256": "410152d5f5e84bfcf590cf30519abe05111ca935e917e47ddbd88915c20caf01",
+  "execution_map_sha256": "91c878a254d20fca3355c136f544619e9b550fd64f3031f16925a54dd1e107f3",
+  "admission_scope_sha256": "f5283b8b56ffa3125daf1ad2fcdfebf3d368e4683b41a861eb51f8dbb19fb578"
+}

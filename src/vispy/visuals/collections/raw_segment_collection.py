@@ -59,7 +59,7 @@ class RawSegmentCollection(Collection):
             transform = NullTransform()
         self.transform = transform        
         if fragment is None:
-            fragment = glsl.get('collections/raw-segment.frag')
+            fragment = glsl.get('collections/raw-segment.frag').replace('<viewport.clipping>;', '')
 
         Collection.__init__(self, dtype=dtype, itype=None, mode='lines',
                             vertex=vertex, fragment=fragment, **kwargs)
@@ -86,19 +86,21 @@ class RawSegmentCollection(Collection):
         color : list, array or 4-tuple
            Path color
         """
+        P0 = np.asarray(P0, dtype=np.float32)
+        P1 = np.asarray(P1, dtype=np.float32)
         itemsize = itemsize or 1
-        itemcount = len(P0) / itemsize
+        itemcount = len(P0) // itemsize
 
-        V = np.empty(itemcount, dtype=self.vtype)
+        V = np.empty(len(P0), dtype=self.vtype)
 
         # Apply default values on vertices
         for name in self.vtype.names:
-            if name not in ['collection_index', 'P']:
+            if name not in ['collection_index', 'position']:
                 V[name] = kwargs.get(name, self._defaults[name])
 
         V = np.repeat(V, 2, axis=0)
-        V['P'][0::2] = P0
-        V['P'][1::2] = P1
+        V['position'][0::2] = P0
+        V['position'][1::2] = P1
 
         # Uniforms
         if self.utype:
@@ -109,4 +111,4 @@ class RawSegmentCollection(Collection):
         else:
             U = None
 
-        Collection.append(self, vertices=V, uniforms=U, itemsize=itemsize)
+        Collection.append(self, vertices=V, uniforms=U, itemsize=2 * itemsize)
