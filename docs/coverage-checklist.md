@@ -2,6 +2,11 @@
 
 ## Latest checkpoint — 2026-11-17
 
+**Closure decisions and batch 1 — 2026-11-17:**
+- User decisions (2026-11-17, "close all of them"): **D37** — items that cannot be finished on the available hardware, or that earlier decisions put out of scope, are closed as *not planned* with a dated reason and stay reopenable; nothing is claimed as supported. **D38** — `0.17.0+vulkan.3` (cp311, cp312 and cp313 wheels for Windows and Linux) is published once `tk-state-resource-17`'s gates pass, with no preview. **D39** — open-ended items close on a written finite scope (the supported set, tested; exclusions listed), not by implementing broader scope and never as full upstream parity.
+- Batch 1 closes `16` IDs by disposition only, with no new evidence, build or scratch: not planned under D37 — `LIN-02`, `LIF-08`, `BUG-01`, `PLAT-03`, `PLAT-04`, `PLAT-05`, `PLAT-06`, `PLAT-08`, `HOST-04`, `HOST-05`, `PERF-02`, `PERF-03`, `TOOL-02`; on existing recorded dispositions under D39 — `BUG-02`, `PERF-04`, `TOOL-03`. Each item carries its own dated line. A closed box here records a disposition, not support: `scoped_admitted`, `artifact_admitted`, `publicly_delivered` and `full_inventory_complete` stay `false`.
+- Still open: `PLAT-02` and `API-06-READBACK-GEOMETRY` (release work under D38), and the `API-05`/`API-06`, `SHD`, `STA-01`, `TEX-01`, `LIN-01`, `SCI`, `LIF-01`–`LIF-07`, `LIF-07-NATIVE-ADMISSION`, `HOST-03` and `HOST-06` items awaiting their finite-scope review under D39.
+
 **Preparation 17 review, binding and integration status — 2026-11-17:**
 - `Preparation 17` is reviewed and bound. This supersedes only the "unreviewed" / `reviews: null` UNBOUND / pending `1014r`/`1015` wording of the 2026-11-16 entries below, which were written before the review: independent source/scope/native-reuse review `gap-w5-review-1014r` is APPROVED (`decision.json` `c71c4ed5…`), and binding `gap-w5-binding17-1015` (`verification.json` `e1541e60…`) is recorded in [tier1-preparation17-bound](../compat/api-acceptance/tier1-preparation17-bound-v1.json) (`9f7f1094…`). The bound [tk-state-resource-17](../compat/candidates/tk-state-resource-17/candidate.json) is `8a318c22…` (the `de906e31…` cited below is the pre-binding file) and references `source-review.json` (`e9965ec0…`) and `scope-review.json` (`3eb32b3a…`).
 - Integration: PR #88 (`gap-w5-pr-freeze-1016` `184cbd8d…`, head `565f0e7b…`) merged by protected merge as `1adb7ccb…` (`gap-w5-merge-1017` `45a56c8a…`: `11` required contexts, `23/23` checks, no admin merge, no force push); `gap-w5-postmerge-sweep-1018` (`57deed44…`) passes with `0` unexplained publication drift, no scratch and no active leases.
@@ -3322,8 +3327,9 @@ preserved. Required acceptance detail: SH-1–SH-5 in the
 - [ ] **LIN-01 — Line partitioning / B6:** prove chunk boundaries, topology,
   2026-11-15: [shd01-06-lin01-windows](../compat/api-acceptance/shd01-06-lin01-windows-v1.json), [shd01-06-lin01-wsl](../compat/api-acceptance/shd01-06-lin01-wsl-v1.json): installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb Mesa 9c5`); not scoped-admitted, not delivered, no full parity.
   endpoint carry, resource limits and retained ordering on claimed routes.
-- [ ] **LIN-02 — MSAA line coverage / B6 — Deferred:** the unshipped partial patch
+- [x] **LIN-02 — MSAA line coverage / B6 — Deferred:** the unshipped partial patch
   is not production support. Expand only if this deferred feature is selected.
+  2026-11-17: closed as not planned (D37, user decision 2026-11-17). MSAA generated-line coverage stays unimplemented; the unshipped partial patch is not production support and no MSAA line-coverage claim is made. Reopen only as a newly selected task with its own acceptance and installed evidence.
 
 ## Scientific workflow reconciliation
 
@@ -3641,16 +3647,19 @@ observations on each claimed profile, not just a successful screenshot.
   Packaging, independent review, DPI/embedding breadth and native profile
   admission remain open; original candidate source pins correctly reject the
   changed backend member.
-- [ ] **LIF-08 — Monitor changes and fractional DPI / Q04 — Out of release scope:**
+- [x] **LIF-08 — Monitor changes and fractional DPI / Q04 — Out of release scope:**
   2026-11-15: [lif02-08-qt-multibinding-windows](../compat/api-acceptance/lif02-08-qt-multibinding-windows-v1.json) (`9001513c…`, `987`) & [lif02-08-qt-multibinding-wsl](../compat/api-acceptance/lif02-08-qt-multibinding-wsl-v1.json) (`5fb417d3…`, `988`, `12/12` pass/platform across PyQt5/PyQt6/PySide6): programmatic single-display `QT_SCALE_FACTOR=1.5` subset only; installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb` + Mesa `9c5`); `physical_multimonitor_claimed: false`, `physical_hid_claimed: false`, `scoped_admitted: false`; no full upstream parity claim.
   D7 documents these as untested. New cross-monitor/DPI claims require their own
   selected acceptance and installed evidence.
-- [ ] **BUG-01 — Rare Windows startup stall / B22 — Open:** identify the closer,
+  2026-11-17: closed as not planned (D37, user decision 2026-11-17). Cross-monitor moves and fractional DPI stay untested and unclaimed (D7); the only evidence is the programmatic single-display `QT_SCALE_FACTOR=1.5` subset above, with `physical_multimonitor_claimed: false` and `physical_hid_claimed: false`. Reopen only as a newly selected task with its own acceptance and installed evidence.
+- [x] **BUG-01 — Rare Windows startup stall / B22 — Open:** identify the closer,
   add a cause-specific regression and retain exact-profile recurrence evidence.
   It is documented rather than release-blocking under D33; a recurrence makes it
   release-blocking again. Use the external watcher; no generic retry/workaround.
-- [ ] **BUG-02 — Historical PyQt5 OLE hang / B12 — Audit:** determine whether it
+  2026-11-17: closed as not planned (D37, user decision 2026-11-17). The rare Windows startup stall stays documented and unresolved (D33): its cause is not identified and no regression test exists. No workaround or retry is added. A recurrence reopens this item and makes it release-blocking again; use the external watcher (D20) to capture it.
+- [x] **BUG-02 — Historical PyQt5 OLE hang / B12 — Audit:** determine whether it
   shares B22's cause or needs a separate disposition.
+  2026-11-17: closed on its recorded finite scope (D39, user decision 2026-11-17). [bug02-ole-hang-disposition](../compat/api-acceptance/bug02-ole-hang-disposition-v1.json) (run `959`) records it as `separate-historical-unreproduced-preserved`: distinct from BUG-01's profile, not reproduced on current wheels, original evidence preserved. No cause is claimed.
 
 ## Host integrations
 
@@ -3673,13 +3682,15 @@ claims and must not borrow each other's gates.
   requalify and bind that exact artifact. The six optional qualified host rows in
   the matrix retain Windows `62df5e4c...` / Linux `374a74ea...` identities; they
   are not the eight mandatory current-release rows.
-- [ ] **HOST-04 — DIVE / B11 — Not admitted:** resolve its supported binding/API
+- [x] **HOST-04 — DIVE / B11 — Not admitted:** resolve its supported binding/API
   2026-11-15: [host01-06-current-wheels](../compat/api-acceptance/host01-06-current-wheels-v1.json): installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb Mesa 9c5`); not scoped-admitted, not delivered, no full parity; HOST-04 is NOT_ADMITTED.
   and upstream-baseline blockers before claiming actual application rendering and
   teardown. PySide2 is excluded from this fork's supported bindings.
-- [ ] **HOST-05 — Visbrain and other applications / H07, B11:** imports and source
+  2026-11-17: closed as not planned (D37, user decision 2026-11-17). DIVE stays `NOT_ADMITTED`: it needs PySide2, which this fork excludes, and no rendered DIVE workflow is claimed. Reopen only as a newly selected task with its own acceptance and installed evidence.
+- [x] **HOST-05 — Visbrain and other applications / H07, B11:** imports and source
   2026-11-15: [host01-06-current-wheels](../compat/api-acceptance/host01-06-current-wheels-v1.json): installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb Mesa 9c5`); not scoped-admitted, not delivered, no full parity; Visbrain is NOT_ADMITTED, phylib is import-only.
   inventories do not establish rendered workflows; select real acceptance cases.
+  2026-11-17: closed as not planned (D37, user decision 2026-11-17). Visbrain stays `NOT_ADMITTED` and phylib stays import-only; no rendered workflow of these or other unlisted applications is claimed. Reopen only as a newly selected task with its own acceptance and installed evidence.
 - [ ] **HOST-06 — Glue upstream disposition / H03:** reconcile the older upstream
   2026-11-15: [host01-06-current-wheels](../compat/api-acceptance/host01-06-current-wheels-v1.json): installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb Mesa 9c5`); not scoped-admitted, not delivered, no full parity.
   volume-mutation gap with the newer five-workflow results; preserve each epoch.
@@ -3697,11 +3708,12 @@ claims and must not borrow each other's gates.
 - [ ] **PLAT-02 — Other CPython release wheels:** earlier cp310–cp314 evidence
   does not qualify this release's other ABIs; build and qualify only if selected.
   2026-11-16: [plat02-cp311-cp313-wheels](../compat/api-acceptance/plat02-cp311-cp313-wheels-v1.json) (`df12d6ce…`, source `3daf19be…`): adds `installed-functional` `0.17.0+vulkan.2` wheels for `cp311` (`834fe5f7…` Win `1008`, `fc8dd6cc…` manylinux `1011`) and `cp313` (`793dab79…` Win `1009`, `1362eb6a…` manylinux `1012`) alongside `cp312` (`ec8097cf…`/`513088c1…`), each passing `44/44` CTests, `537/537` wheel checks, `75/75` GPU cases (`56` state/readback + `16` `9/9` collections + `3` `jupyter_rfb`) on Windows RTX 4090, WSL Mesa `9c5c41b3…`, and physical Colab `Tesla T4` (`1013` `254329bd…`, `225/225` across `cp311`/`cp312`/`cp313`), with `10/10` zero Dawn shutdown gauges; `PLAT-02` remains `[ ]` OPEN (`plat02_closed: false`, `cp310_gpu_wheels_claimed: false`, `cp314_gpu_wheels_claimed: false`, `scoped_admitted: false`, `publicly_delivered: false`).
-- [ ] **PLAT-03 — Native Linux GPUs — Unqualified:** select real hardware and
+- [x] **PLAT-03 — Native Linux GPUs — Unqualified:** select real hardware and
   complete installed graphics/lifecycle/gates on it before making this claim.
   2026-11-16: [tier1-collections-jupyter-rfb](../compat/api-acceptance/tier1-collections-jupyter-rfb-v1.json) (`2a3ec57f…`) & [plat02-cp311-cp313-wheels](../compat/api-acceptance/plat02-cp311-cp313-wheels-v1.json) (`df12d6ce…`, run `1013` `254329bd…`): extends physical Linux `NVIDIA Tesla T4` (`Ubuntu 24.04.4 LTS`, `NVIDIA 580.82.07`, `Xvfb :99`) `installed-functional` coverage to source `3daf19be…` across `cp311`/`cp312`/`cp313` manylinux wheels (`fc8dd6cc…`/`513088c1…`/`1362eb6a…`, `225/225` passed incl. `9/9` collections & `3/3` `jupyter_rfb`); `PLAT-03` stays `[ ]` (`scoped_admitted: false`, non-NVIDIA Linux GPUs, physical scanout/HID, and Wayland remain open).
   2026-11-15: [plat03-08-linux-nvidia-colab](../compat/api-acceptance/plat03-08-linux-nvidia-colab-v1.json) (`b8a5bd8e…`, runs `998` `1bbfe275…`, `999` `c6aec5e3…`, `1000` `747a7b0c…`, hygiene `1001` `7a26baec…`): Linux physical NVIDIA GPUs (`Tesla T4` Turing + `NVIDIA L4` Ada Lovelace on `NVIDIA 580.82.07`, Vulkan `1.4.312`, `Linux x86_64 glibc 2.39` / `kernel 6.6.159+` with `Ubuntu 24.04.4 LTS` observed via `/etc/os-release` in `998`, `Xvfb :99`) now have `installed-functional` evidence on `e600b29e…` (`117/117` + `31/31` on `T4`, `136/136` on `L4`; plus `11/11` `installed-experimental` `W3-1` native Tk X11 WSI probe on `T4`); parent `PLAT-03` stays open (`[ ]`) because non-NVIDIA Linux GPUs (AMD RADV, Intel ANV) and Mesa NVK (`non_nvidia_linux_gpus_claimed: false`), physical Xorg monitor scanout vs `Xvfb` (`physical_display_scanout_claimed: false`), physical HID/multi-monitor (`physical_hid_claimed: false`, `physical_multimonitor_claimed: false`), Wayland (`wayland_claimed: false`), and strict release/scoped admission (`scoped_admitted: false`, `artifact_admitted: false`) remain open.
-- [ ] **PLAT-04 — macOS Metal — Experimental:** build/CPU CI does not establish
+  2026-11-17: closed as not planned (D37, user decision 2026-11-17). The claim stays bounded to the recorded `installed-functional` cells above: physical NVIDIA `Tesla T4` and `L4` on Google Colab under `Xvfb` (X11), not scoped-admitted. Non-NVIDIA Linux GPUs (AMD RADV, Intel ANV, Mesa NVK), physical monitor scanout and physical input are not available here and are not claimed. Reopen only as a newly selected task with its own acceptance and installed evidence.
+- [x] **PLAT-04 — macOS Metal — Experimental:** build/CPU CI does not establish
   real Metal graphics, interaction or shutdown qualification; physical Mac needed.
   Current completion, 2026-11-14: both arm64 and x86_64 Metal build/CPU
   jobs pass on qualifier90348a8. Graphics remains experimental and unqualified.
@@ -3710,18 +3722,22 @@ claims and must not borrow each other's gates.
   2026-11-14 [current arm64 build/CPU evidence](../compat/api-acceptance/orphan-release-metal-arm64-original-v1.json)
   validates exact source275888b5/wheel8f6f4f8f. Current x86_64 producer remains
   active; neither this finite pass nor future build reuse grants graphics support.
-- [ ] **PLAT-05 — Native Wayland — Unsupported:** current Linux scope is X11/xcb.
+  2026-11-17: closed as not planned (D37, user decision 2026-11-17). macOS Metal stays experimental: hosted CI proves build and CPU contracts only, and no physical Mac is available for graphics, interaction or shutdown qualification. No Metal graphics support is claimed. Reopen only as a newly selected task with its own acceptance and installed evidence.
+- [x] **PLAT-05 — Native Wayland — Unsupported:** current Linux scope is X11/xcb.
   No Wayland support claim without a selected implementation/qualification task.
-- [ ] **PLAT-06 — ARM, free-threaded Python and ABI3 — Outside release scope:**
+  2026-11-17: closed as not planned (D37, user decision 2026-11-17). Native Wayland stays unsupported; the Linux scope is X11/xcb. Reopen only as a newly selected task with its own acceptance and installed evidence.
+- [x] **PLAT-06 — ARM, free-threaded Python and ABI3 — Outside release scope:**
   current wheels/admissions do not establish these configurations.
+  2026-11-17: closed as not planned (D37, user decision 2026-11-17). ARM, free-threaded Python and ABI3 stay outside the release scope; no wheel or admission exists for them. Reopen only as a newly selected task with its own acceptance and installed evidence.
 - [x] **PLAT-07 — Tk presentation boundary documented:** manual pumping and CPU
   RGB PhotoImage presentation; no native Vulkan window/vsync/transparent-compositor
   promise for this mode. RGBA capture is a separate admitted contract.
-- [ ] **PLAT-08 — Additional Vulkan GPUs and drivers — Unqualified:** other device
+- [x] **PLAT-08 — Additional Vulkan GPUs and drivers — Unqualified:** other device
   vendors, models and driver versions need their own selected installed cells;
   current hardware evidence does not transfer automatically.
   2026-11-16: [plat02-cp311-cp313-wheels](../compat/api-acceptance/plat02-cp311-cp313-wheels-v1.json) (`df12d6ce…`, run `1013` `254329bd…`): `225/225` `installed-functional` pass across `cp311`/`cp312`/`cp313` on physical Linux `NVIDIA Tesla T4` (`NVIDIA 580.82.07`, Vulkan `1.4.312`, `Xvfb :99`) at source `3daf19be…`; `PLAT-08` stays `[ ]` for non-NVIDIA drivers/vendors, physical scanout, and strict admission.
   2026-11-15: [plat03-08-linux-nvidia-colab](../compat/api-acceptance/plat03-08-linux-nvidia-colab-v1.json) (`b8a5bd8e…`, runs `998` `1bbfe275…`, `999` `c6aec5e3…`, `1000` `747a7b0c…`, hygiene `1001` `7a26baec…`): adds two Linux physical NVIDIA cells (`Tesla T4` Turing `117/117` + `31/31` and `NVIDIA L4` Ada Lovelace `136/136` at `installed-functional`, plus `11/11` `installed-experimental` `W3-1` native Tk X11 WSI on `T4`) on driver `580.82.07` / Vulkan `1.4.312` / `Xvfb :99` (`e600b29e…`); parent `PLAT-08` stays open (`[ ]`) for non-NVIDIA vendors/drivers (AMD RADV, Intel ANV, Apple/MoltenVK; `non_nvidia_linux_gpus_claimed: false`), Mesa NVK and other driver branches, physical scanout/HID/multi-monitor, and strict release admission (`scoped_admitted: false`).
+  2026-11-17: closed as not planned (D37, user decision 2026-11-17). The hardware claim stays bounded to the recorded cells above (Windows `NVIDIA GeForce RTX 4090`; Linux NVIDIA `Tesla T4` and `L4` under `Xvfb`; WSL software Vulkan on the pinned Mesa). Other vendors, models and driver versions are not available here and are not claimed; evidence does not transfer to them. Reopen only as a newly selected task with its own acceptance and installed evidence.
 
 ## Performance, tooling and evidence hygiene
 
@@ -3733,12 +3749,15 @@ criteria; software timestamps do not establish physical display scanout latency.
   2026-11-15: [sci01-05-windows](../compat/api-acceptance/sci01-05-windows-v1.json), [sci01-05-wsl](../compat/api-acceptance/sci01-05-wsl-v1.json): installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb Mesa 9c5`); not scoped-admitted, not delivered, no full parity; no optical-timing claim.
   choice and documented differences satisfy the agreed performance requirement;
   the old universal 1.20x target is retired. See [performance report](performance-report.md).
-- [ ] **PERF-02 — Remaining optional upload work / P5:** conversions such as RGB
+- [x] **PERF-02 — Remaining optional upload work / P5:** conversions such as RGB
   to RGBA into imported blocks are not covered by the direct-upload optimization.
-- [ ] **PERF-03 — Remaining optional buffer work / P6:** batched draw routes still
+  2026-11-17: closed as not planned (D37, user decision 2026-11-17). RGB-to-RGBA and other converting uploads keep the staging path; the direct-upload result (P5) is not generalized to them. Select only if a measurement justifies it.
+- [x] **PERF-03 — Remaining optional buffer work / P6:** batched draw routes still
   upload in the pass; do not generalize the streamed-buffer improvement to them.
-- [ ] **PERF-04 — Cold builds and peak memory / B14:** obtain bounded measurements
+  2026-11-17: closed as not planned (D37, user decision 2026-11-17). Batched draw routes keep uploading inside the pass; the streamed-buffer result (P6) is not generalized to them. Select only if a measurement justifies it.
+- [x] **PERF-04 — Cold builds and peak memory / B14:** obtain bounded measurements
   and reconcile the historical 16 review-finding regressions if making these claims.
+  2026-11-17: closed on its recorded finite scope (D39, user decision 2026-11-17). [perf04-cold-build-reconciliation](../compat/api-acceptance/perf04-cold-build-reconciliation-v1.json) (run `959`) reconciles the 16 historical review-finding regressions against current suites. Cold-build time and peak memory are not measured and no claim about them is made.
 - [x] **TOOL-01 — Metal reuse / B23, source-tested 2026-11-13:** managed artifact
   layout and valid dispatch/direct checkout joins pass against both original
   head340 Metal artifacts; 116 focused reuse controls and the broader source
@@ -3754,11 +3773,13 @@ criteria; software timestamps do not establish physical display scanout latency.
   validates in [884](../compat/api-acceptance/orphan-release-metal-arm64-original-v1.json),
   while x86_64/whole-run completion and a renewed exact two-architecture reuse
   pin remain pending. Earlier head340/head3ada results keep their original scope.
-- [ ] **TOOL-02 — Compiler-output caching / B13 — Optional:** select only a cache
+- [x] **TOOL-02 — Compiler-output caching / B13 — Optional:** select only a cache
   design that preserves input/toolchain identities and the shared disk budget.
-- [ ] **TOOL-03 — Legacy cleanup receipt / B17:** audit/reconcile the missing
+  2026-11-17: closed as not planned (D37, user decision 2026-11-17). No compiler-output cache is built; CI's wheel-reuse mode covers the current need. Reopen only as a newly selected task with its own acceptance and installed evidence.
+- [x] **TOOL-03 — Legacy cleanup receipt / B17:** audit/reconcile the missing
   historical compiler-cache cleanup receipt. Do not repeat the cleanup or claim
   reclaimed bytes without proof.
+  2026-11-17: closed on its recorded finite scope (D39, user decision 2026-11-17). [tool03-historical-receipt-disposition](../compat/api-acceptance/tool03-historical-receipt-disposition-v1.json) (run `959`) records the historical receipt as `missing-historical-unpromoted` with `0` reclaimed bytes claimed and all `12134` inventoried entries retained. The cleanup is not repeated.
 - [x] **TOOL-04 — Latest fix hygiene:** source-fix, artifact, transport and guest
   test/consumer scratch are removed. Latest receipts:
   [transport 329](../build/runs/shutdown-linux-retry-329/post-cleanup.json),
