@@ -18,8 +18,6 @@
 // ------------------------------------
 varying float v_size;
 varying vec4  v_color;
-varying float v_linewidth;
-varying float v_antialias;
 
 // Main (hooked)
 // ------------------------------------

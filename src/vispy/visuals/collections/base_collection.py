@@ -188,7 +188,7 @@ class BaseCollection(object):
             # Reserve some space in texture such that we have
             # at least one full line
             shape = self._compute_texture_shape(1)
-            self._uniforms_list.reserve(shape[1] / (count / 4))
+            self._uniforms_list.reserve(int(shape[1] // (count // 4)))
 
         # Last since utype may add a new field in vtype (collecion_index)
         self._vertices_list = ArrayList(dtype=vtype)
@@ -255,7 +255,7 @@ class BaseCollection(object):
         # Uniform itemsize (int)
         # ----------------------
         elif isinstance(itemsize, int):
-            count = len(vertices) / itemsize
+            count = len(vertices) // itemsize
             index = np.repeat(np.arange(count), itemsize)
 
         # Individual itemsize (array)

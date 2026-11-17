@@ -512,14 +512,14 @@ def test_gpu_collections_runtime_behavior_and_bounds():
 
         # 4. PointCollection (mode='agg', local color/size)
         def _make_pt_agg():
-            c = PointCollection(mode='agg')
+            c = PointCollection(mode='agg', color='local', size='local')
             pts = np.array([[0.0, 0.0, 0.0]], dtype=np.float32)
             c.append(pts, color=(0.2, 0.8, 1.0, 1.0), size=16.0)
             return c
 
-        # 5. SegmentCollection (mode='raw', default shared color -> tests fetchcode/uniforms texture!)
+        # 5. SegmentCollection (mode='raw', shared color -> tests fetchcode/uniforms texture!)
         def _make_seg_raw_shared():
-            c = SegmentCollection(mode='raw')
+            c = SegmentCollection(mode='raw', color='shared')
             c.append(
                 np.array([[-0.7, -0.7, 0.0]], dtype=np.float32),
                 np.array([[0.7, 0.7, 0.0]], dtype=np.float32),
@@ -565,12 +565,13 @@ def test_gpu_collections_runtime_behavior_and_bounds():
             c['viewport'] = (0.0, 0.0, float(size[0]), float(size[1]))
             return c
 
-        # 9. PathCollection (mode='raw' -> upstream RawPathCollection.__init__ TypeError bound)
+        # 9. PathCollection (mode='raw', local color)
         def _make_path_raw():
             c = PathCollection(mode='raw')
             c.append(
                 np.array([[-0.6, -0.4, 0.0], [0.0, 0.5, 0.0], [0.6, -0.4, 0.0]], dtype=np.float32),
                 closed=False,
+                color=(0.9, 0.5, 0.2, 1.0),
             )
             return c
 
@@ -593,33 +594,23 @@ def test_gpu_collections_runtime_behavior_and_bounds():
                 (json.dumps({'collections': outcomes}, indent=2) + '\n').encode('utf-8')
             )
 
-        # 6 rendered collection configurations on Dawn Vulkan (including shared float32 uniform texture!):
-        assert outcomes['TriangleCollection_raw_local']['status'] == 'rendered'
+        # All 9/9 collection configurations render cleanly on Dawn Vulkan (including shared float32 uniform textures):
+        assert len(outcomes) == 9
+        for case_name, info in outcomes.items():
+            assert info['status'] == 'rendered', f'{case_name} failed: {info}'
+            assert info['lit_pixels'] > 0, f'{case_name} produced zero lit pixels: {info}'
+
         assert outcomes['TriangleCollection_raw_local']['lit_pixels'] >= 400
-        assert outcomes['PolygonCollection_raw_local']['status'] == 'rendered'
         assert outcomes['PolygonCollection_raw_local']['lit_pixels'] >= 1500
-        assert outcomes['PointCollection_raw_local']['status'] == 'rendered'
         assert outcomes['PointCollection_raw_local']['lit_pixels'] >= 3
-        assert outcomes['SegmentCollection_agg_global']['status'] == 'rendered'
+        assert outcomes['PointCollection_agg_local']['lit_pixels'] >= 30
+        assert outcomes['SegmentCollection_raw_shared']['lit_pixels'] >= 10
+        assert outcomes['SegmentCollection_raw_shared']['uses_shared_utype'] is True
         assert outcomes['SegmentCollection_agg_global']['lit_pixels'] >= 150
-        assert outcomes['SegmentCollection_agg_shared']['status'] == 'rendered'
         assert outcomes['SegmentCollection_agg_shared']['lit_pixels'] >= 80
         assert outcomes['SegmentCollection_agg_shared']['uses_shared_utype'] is True
-        assert outcomes['PathCollection_agg_global']['status'] == 'rendered'
         assert outcomes['PathCollection_agg_global']['lit_pixels'] >= 150
-
-        # 3 exact upstream runtime bounds verified honestly without silent skips or source edits:
-        # - PointCollection(mode='agg'): Dawn WGSL pipeline link error on unused varyings
-        #   (v_linewidth/v_antialias) vs gl_PointCoord fragment input location in agg-point.{vert,frag}.
-        assert outcomes['PointCollection_agg_local']['status'] == 'error'
-        assert outcomes['PointCollection_agg_local']['error_type'] == 'RuntimeError'
-        assert 'fragment input at location' in outcomes['PointCollection_agg_local']['error_message']
-        # - SegmentCollection(mode='raw'): upstream Python 3 float division in RawSegmentCollection.append.
-        assert outcomes['SegmentCollection_raw_shared']['status'] == 'error'
-        assert outcomes['SegmentCollection_raw_shared']['error_type'] == 'TypeError'
-        # - PathCollection(mode='raw'): upstream NullTransform() + str in RawPathCollection.__init__.
-        assert outcomes['PathCollection_raw']['status'] == 'error'
-        assert outcomes['PathCollection_raw']['error_type'] == 'TypeError'
+        assert outcomes['PathCollection_raw']['lit_pixels'] >= 10
     finally:
         for coll in created:
             _cleanup_collection(coll)

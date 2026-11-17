@@ -62,3 +62,10 @@ gloo/glir.py
 visuals/__init__.py
 scene/widgets/__init__.py
 scene/widgets/viewbox.py
+
+# Wave 5 Tier 1: collections Dawn WGSL/Py3/clipping fixes and jupyter_rfb Dawn lifecycle/asyncio compatibility.
+app/backends/_jupyter_rfb.py
+glsl/collections/agg-point.vert
+visuals/collections/base_collection.py
+visuals/collections/raw_path_collection.py
+visuals/collections/raw_segment_collection.py

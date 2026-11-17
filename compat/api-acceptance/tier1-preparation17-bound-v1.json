@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "acceptance_id": "tier1-preparation17-bound-v1",
+  "date": "2026-11-17",
+  "kind": "wave5-preparation17-binding",
+  "status": "PASS_PREPARATION17_REVIEW_BINDING_AND_BOTH_NATIVE_ARCHIVE_JOINS",
+  "source_commit": "3daf19be6c102764a5891ccbc29bf906e0588df1",
+  "candidate_scope_sha256": "9e11b4f69df0b2a355c9ed48a563316c938b1bf1c3a2e68586b620f8a7fae6b7",
+  "reviewed_delta_sha256": "7c88bbdc70a54dfd8986c8ca41abc005c9739aec0b09d774d16c02752aa8d170",
+  "artifact_admitted": false,
+  "scoped_admitted": false,
+  "publicly_delivered": false,
+  "qualified": false,
+  "evidence_store": {
+    "path": "compat/evidence-stores/secondary-v1.json",
+    "sha256": "b164e3fdc85863a2327b508ea60f8d3068f740cfe90f665aa52905e28bfb3ca5"
+  },
+  "verification": {
+    "path": "@evidence/build/runs/gap-w5-binding17-1015/verification.json",
+    "sha256": "e1541e6049af159fd1ff4d51f3e1280a75eaa67d73e77dec01504ea288e79de3"
+  },
+  "snapshot": {
+    "path": "@evidence/build/runs/gap-w5-binding17-1015/bound-snapshot.json",
+    "sha256": "7dc0a6799dfab1b9769d3101ac6fa4a206e3b47e58f2606becea846f35626bf9"
+  },
+  "review_decision": {
+    "path": "@evidence/build/runs/gap-w5-review-1014r/decision.json",
+    "sha256": "c71c4ed5cffa95b6de62964be2e8069288d4a184afc45250a40eaf144342da7f"
+  },
+  "source_only": true,
+  "scratch_created": false
+}

@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "kind": "original-linux-ci-native-reuse",
+  "candidate": {
+    "path": "compat/candidates/tk-state-resource-17/candidate.json",
+    "sha256": "8a318c22c6a80cf1866af71f82726e26e7f6125126e222375c2d22e16aba7b16"
+  },
+  "capture": {
+    "path": "build/runs/orphan-linux-artifact-845/original-capture.json",
+    "sha256": "812c7b2d140b2d9e6d0754317e2482975e875ff31587e5adc094b3873a90a89c"
+  },
+  "reuse": {
+    "candidate_scope_sha256": "9e11b4f69df0b2a355c9ed48a563316c938b1bf1c3a2e68586b620f8a7fae6b7",
+    "profile": "wsl-software-tk90-cp31213-development",
+    "capture_sha256": "812c7b2d140b2d9e6d0754317e2482975e875ff31587e5adc094b3873a90a89c",
+    "production_sha256": "8421427008f18bce9d657f77b87c903d25f793c5896d6517883102ca1a39a8a0",
+    "evidence_store": {
+      "path": "compat/evidence-stores/secondary-v1.json",
+      "sha256": "b164e3fdc85863a2327b508ea60f8d3068f740cfe90f665aa52905e28bfb3ca5"
+    },
+    "impact": "Preparation 17 updates 6 pure-Python/GLSL runtime members (collections 9/9 + _jupyter_rfb/_offscreen_util Dawn lifecycle/readback/timer) at source 3daf19be with repackaged cp312 wheel bytes ec8097cf/513088c1. Native C++/CMake inputs, outputs, ABI, SDK, toolchain, and configuration are unchanged. Matching 75 headless GPU + 14 Tk/direct-recovery proofs exist per platform; fresh exact native-reuse/source/scope/installed-profile review is required. No historical strict receipt, host admission, or approval transfers automatically.",
+    "abi": {
+      "tag": "cp312",
+      "build_version": "3.12.8",
+      "build_python_sha256": "0dc3a692fa85fcdb7f1a5877d2adf179809ac417a07ffde2373c832863800a15",
+      "consumer_version": "3.12.13",
+      "consumer_python_sha256": "339de109f072e52523066d97a2b3372e358a10cc00c6a9df62c28a6618061900"
+    }
+  }
+}

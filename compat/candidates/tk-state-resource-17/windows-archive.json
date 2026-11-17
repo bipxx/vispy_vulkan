@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "kind": "archive-prerequisite",
+  "candidate": {
+    "path": "compat/candidates/tk-state-resource-17/candidate.json",
+    "scope_sha256": "9e11b4f69df0b2a355c9ed48a563316c938b1bf1c3a2e68586b620f8a7fae6b7"
+  },
+  "profile": "windows-gpu-tk86-cp312-development",
+  "evidence_store": {
+    "path": "compat/evidence-stores/secondary-v1.json",
+    "sha256": "b164e3fdc85863a2327b508ea60f8d3068f740cfe90f665aa52905e28bfb3ca5"
+  },
+  "wheel": {
+    "path": "build/artifacts/ec8097cf151b6773916f07d8ee30d450392067827bc70bdf94ea5f09cf34210f/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+    "sha256": "ec8097cf151b6773916f07d8ee30d450392067827bc70bdf94ea5f09cf34210f"
+  },
+  "native_outputs": [
+    {
+      "member": "vispy/_dawn.cp312-win_amd64.pyd",
+      "file": {
+        "path": "build/artifacts/057d13e62ac520fbf7fe7b62a3059588bb477e24a0061d087bcc50edd44a12ea/_dawn.cp312-win_amd64.pyd",
+        "sha256": "057d13e62ac520fbf7fe7b62a3059588bb477e24a0061d087bcc50edd44a12ea"
+      }
+    },
+    {
+      "member": "vispy/visuals/text/_sdf_cpu.cp312-win_amd64.pyd",
+      "file": {
+        "path": "build/artifacts/1147270525e05e512d01cb4f3ba1dc192eea71a93908676dc269f4d025028f95/_sdf_cpu.cp312-win_amd64.pyd",
+        "sha256": "1147270525e05e512d01cb4f3ba1dc192eea71a93908676dc269f4d025028f95"
+      }
+    },
+    {
+      "member": "vispy/VkLayer_vispy_submit.dll",
+      "file": {
+        "path": "build/artifacts/e0a0d35e1b1c11af904b4a4f7dbfd70fe1f0bda1ba16baeb119f6ec78d4bd325/VkLayer_vispy_submit.dll",
+        "sha256": "e0a0d35e1b1c11af904b4a4f7dbfd70fe1f0bda1ba16baeb119f6ec78d4bd325"
+      }
+    },
+    {
+      "member": "vispy/VkLayer_vispy_submit.json",
+      "file": {
+        "path": "build/artifacts/7323cea73a46efcba615ca452d2b0235e3741109628c4bf2979c105e6ae69d56/VkLayer_vispy_submit.json",
+        "sha256": "7323cea73a46efcba615ca452d2b0235e3741109628c4bf2979c105e6ae69d56"
+      }
+    }
+  ]
+}

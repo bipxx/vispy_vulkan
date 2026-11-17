@@ -900,7 +900,7 @@ def test_api05_subpkg_collections_and_plot_cpu_contracts():
     assert 'uniform   sampler2D uniforms;' in glsl_fetch
 
     with _cpu_recording_canvas(size=(128, 128)):
-        # PointCollection (raw: itemsize=1 -> 1 item per point; agg: 4-vertex quad per point -> 1 item per append)
+        # PointCollection (raw & agg with local and shared color/size scopes)
         pc_raw = vcollections.PointCollection(mode='raw', color='local')
         pc_raw.append(
             np.array([[-0.5, 0.0, 0.0], [0.5, 0.0, 0.0]], dtype=np.float32),
@@ -909,19 +909,33 @@ def test_api05_subpkg_collections_and_plot_cpu_contracts():
         )
         assert len(pc_raw) == 2 and pc_raw[0].vertices.size == 1
 
+        pc_agg_local = vcollections.PointCollection(mode='agg', color='local')
+        pc_agg_local.append(
+            np.array([[-0.25, 0.25, 0.0], [0.25, -0.25, 0.0]], dtype=np.float32),
+            color=(0.2, 0.8, 1.0, 1.0),
+        )
+        assert len(pc_agg_local) == 2 and pc_agg_local.utype is None
+        assert {'position', 'color'} == set(pc_agg_local.vtype.names)
+        assert 'v_linewidth' not in pc_agg_local._vertex and 'v_antialias' not in pc_agg_local._vertex
+        assert pc_agg_local[0].vertices.size == 1
+        np.testing.assert_allclose(pc_agg_local._vertices_list[0]['color'][0], [0.2, 0.8, 1.0, 1.0], atol=1e-6)
+
         pc_agg = vcollections.PointCollection(mode='agg', color='shared')
         pc_agg.append(np.zeros((3, 3), dtype=np.float32), color=(1.0, 0.0, 0.0, 1.0), size=8.0)
         assert len(pc_agg) == 3 and pc_agg.utype is not None
 
-        # SegmentCollection: mode='agg' constructs & appends 4-vertex quad segments cleanly;
-        # upstream RawSegmentCollection.append (mode='raw') hits Python 3 float division
-        # `itemcount = len(P0) / itemsize` passed to `np.empty(itemcount * itemsize, ...)`.
-        sc_raw = vcollections.SegmentCollection(mode='raw')
-        with pytest.raises(TypeError):
-            sc_raw.append(
-                np.array([[-0.5, -0.5, 0.0]], dtype=np.float32),
-                np.array([[0.5, 0.5, 0.0]], dtype=np.float32),
-            )
+        # SegmentCollection: both mode='raw' (2 vertices per segment) and mode='agg' (4-vertex quad)
+        sc_raw = vcollections.SegmentCollection(mode='raw', color='shared')
+        sc_raw.append(
+            np.array([[-0.5, -0.5, 0.0], [-0.2, 0.3, 0.0]], dtype=np.float32),
+            np.array([[0.5, 0.5, 0.0], [0.4, -0.1, 0.0]], dtype=np.float32),
+            color=(1.0, 0.5, 0.0, 1.0),
+        )
+        assert len(sc_raw) == 2 and sc_raw.utype is not None
+        assert set(sc_raw.vtype.names) == {'position', 'collection_index'}
+        assert sc_raw[0].vertices.size == 2 and sc_raw[1].vertices.size == 2
+        np.testing.assert_allclose(sc_raw._vertices_list[0]['position'], [[-0.5, -0.5, 0.0], [0.5, 0.5, 0.0]], atol=1e-6)
+        np.testing.assert_allclose(sc_raw['color'][0], [1.0, 0.5, 0.0, 1.0], atol=1e-6)
 
         sc_agg = vcollections.SegmentCollection(mode='agg')
         sc_agg.append(
@@ -946,11 +960,21 @@ def test_api05_subpkg_collections_and_plot_cpu_contracts():
         )
         assert len(poly_c) == 1 and poly_c[0].indices.size >= 6
 
-        # PathCollection: 'agg' (default) and 'agg+' construct, append, and delete items cleanly;
-        # upstream RawPathCollection (mode='raw') fails in __init__ (`NullTransform() + str`).
-        with pytest.raises(TypeError):
-            vcollections.PathCollection(mode='raw')
+        # PathCollection: 'raw' (closed=False and closed=True), 'agg', and 'agg+'
         path_pts = np.array([[-0.6, -0.2, 0.0], [0.0, 0.4, 0.0], [0.6, -0.2, 0.0]], dtype=np.float32)
+        path_raw = vcollections.PathCollection(mode='raw')
+        path_raw.append(path_pts, closed=False, color=(0.9, 0.5, 0.2, 1.0))
+        path_raw.append(path_pts, closed=True, color=(0.2, 0.7, 0.9, 1.0))
+        assert len(path_raw) == 2 and path_raw.utype is None
+        assert set(path_raw.vtype.names) == {'position', 'id', 'color'}
+        assert path_raw[0].vertices.size == len(path_pts) + 2
+        assert path_raw[1].vertices.size == len(path_pts) + 3
+        np.testing.assert_allclose(path_raw._vertices_list[0]['color'][1:-1], np.tile([0.9, 0.5, 0.2, 1.0], (3, 1)), atol=1e-6)
+        np.testing.assert_allclose(path_raw._vertices_list[1]['color'][1:-1], np.tile([0.2, 0.7, 0.9, 1.0], (4, 1)), atol=1e-6)
+        np.testing.assert_allclose(path_raw._vertices_list[1]['position'][-2], path_pts[0], atol=1e-6)
+        del path_raw[0]
+        assert len(path_raw) == 1
+
         for mode in ('agg', 'agg+'):
             path_c = vcollections.PathCollection(mode=mode)
             path_c.append(path_pts, closed=False)
