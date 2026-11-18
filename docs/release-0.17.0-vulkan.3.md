@@ -95,9 +95,10 @@ original compatibility obligations.
 
 ## Public channel verification — 2026-11-18
 
-All six wheels were installed from the public index with the command above, each in a fresh
-environment, and compared with the released files: 537 installed members equal the exact wheel
-and there are no source overrides.
+All six wheels were installed from the public index, each into a fresh location, pinning
+`vispy==0.17.0+vulkan.3` with PyPI as the primary index and this index as the extra index
+(`pip` in a new virtual environment on Windows; `uv pip install --target` on Linux). The 537
+installed files under `vispy/` equal the exact wheel and there are no source overrides.
 
 | ABI | Windows (RTX 4090) | Linux (WSL, glibc 2.39) |
 | --- | --- | --- |
