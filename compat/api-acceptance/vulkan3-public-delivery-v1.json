@@ -1,0 +1,322 @@
+{
+  "schema": 1,
+  "date": "2026-11-18",
+  "status": "PASS_VULKAN3_PUBLIC_DELIVERY_SIX_WHEELS",
+  "coverage_ids": [
+    "PLAT-02",
+    "API-06-READBACK-GEOMETRY"
+  ],
+  "version": "0.17.0+vulkan.3",
+  "release_url": "https://github.com/bipxx/vispy_vulkan/releases/tag/v0.17.0-vulkan.3",
+  "release_id": 449597969,
+  "published_at": "2026-11-18T06:20:45Z",
+  "index_url": "https://bipxx.github.io/vispy_vulkan/simple/",
+  "index_commit": "f0d620388af895acecf3eabb1bbc8c0d22e22b6e",
+  "product_source_commit": "45aee3e262a0dbb62e3db24369f7b289e1914b2e",
+  "qualification_head": "1a8df91954000a6d891f6cd8fbcb0624a4b66080",
+  "release_source_merge": "98fb17ee2c2b19f47f032c22a901ffc544ee1998",
+  "wheels": [
+    {
+      "name": "vispy-0.17.0+vulkan.3-cp312-cp312-manylinux_2_39_x86_64.whl",
+      "abi": "cp312",
+      "platform": "linux",
+      "bytes": 10565519,
+      "sha256": "fb81c75f12ab99769faa965728ec18b27b890d0b4b8dd0007c65fe1373850b01",
+      "tier": "scoped-admitted + publicly-delivered",
+      "strict_rows": 4,
+      "in_128_binding_admission": true,
+      "release_asset_id": 762188246,
+      "release_asset_digest": "sha256:fb81c75f12ab99769faa965728ec18b27b890d0b4b8dd0007c65fe1373850b01",
+      "url": "https://github.com/bipxx/vispy_vulkan/releases/download/v0.17.0-vulkan.3/vispy-0.17.0%2Bvulkan.3-cp312-cp312-manylinux_2_39_x86_64.whl",
+      "index_href": "https://github.com/bipxx/vispy_vulkan/releases/download/v0.17.0-vulkan.3/vispy-0.17.0%2Bvulkan.3-cp312-cp312-manylinux_2_39_x86_64.whl#sha256=fb81c75f12ab99769faa965728ec18b27b890d0b4b8dd0007c65fe1373850b01",
+      "public_install": {
+        "python": "3.12.13",
+        "installed_members_verified": 537,
+        "source_overrides": 0,
+        "channel_status": "PASS_PUBLIC_CHANNEL_LINUX_ABI_IMPORT",
+        "vulkan_clear_exact": false,
+        "gpu_rendered_in_delivery_smoke": false,
+        "device": null,
+        "result": {
+          "path": "@evidence/build/runs/vulkan3-channel-checks-1073/linux-cp312-channel.json",
+          "sha256": "9dc66418baed3efa7f869563d2ce4a372675b0d242a30d77d115e54b827fcc1c"
+        },
+        "processes": {
+          "path": "@evidence/build/runs/vulkan3-channel-checks-1073/linux-cp312-processes.json",
+          "sha256": "b506cb13decbead1f23c9e1767d17fbb96bdf6d3762516d08036921a180b147e"
+        },
+        "install_log": {
+          "path": "@evidence/build/runs/vulkan3-channel-checks-1073/linux-cp312-install.log",
+          "sha256": "89cdc6bef417b871c03f267dbd07252c0fd0c994967ac4c4f9b6e2c2f31dc5be"
+        }
+      }
+    },
+    {
+      "name": "vispy-0.17.0+vulkan.3-cp312-cp312-win_amd64.whl",
+      "abi": "cp312",
+      "platform": "windows",
+      "bytes": 6816164,
+      "sha256": "e4b9eb92e73ff08d5051a7baec3442e63f6d9f9caa6e69efd507a24c5d9871c6",
+      "tier": "scoped-admitted + publicly-delivered",
+      "strict_rows": 4,
+      "in_128_binding_admission": true,
+      "release_asset_id": 762188245,
+      "release_asset_digest": "sha256:e4b9eb92e73ff08d5051a7baec3442e63f6d9f9caa6e69efd507a24c5d9871c6",
+      "url": "https://github.com/bipxx/vispy_vulkan/releases/download/v0.17.0-vulkan.3/vispy-0.17.0%2Bvulkan.3-cp312-cp312-win_amd64.whl",
+      "index_href": "https://github.com/bipxx/vispy_vulkan/releases/download/v0.17.0-vulkan.3/vispy-0.17.0%2Bvulkan.3-cp312-cp312-win_amd64.whl#sha256=e4b9eb92e73ff08d5051a7baec3442e63f6d9f9caa6e69efd507a24c5d9871c6",
+      "public_install": {
+        "python": "3.12.8",
+        "installed_members_verified": 537,
+        "source_overrides": 0,
+        "channel_status": "PASS_PUBLIC_CHANNEL_WINDOWS_CLEAR",
+        "vulkan_clear_exact": true,
+        "gpu_rendered_in_delivery_smoke": true,
+        "device": "NVIDIA GeForce RTX 4090",
+        "result": {
+          "path": "@evidence/build/runs/vulkan3-channel-checks-1073/windows-cp312-channel.json",
+          "sha256": "a17e31cabe989bfb873d6fab0a989bdb35563beffe78329595c388674b8b81d9"
+        },
+        "processes": {
+          "path": "@evidence/build/runs/vulkan3-channel-checks-1073/windows-cp312-processes.json",
+          "sha256": "f1a1440eb6b6236e95c3efe8b4ca09f86f51eb05f6a65b008a78263633df3321"
+        },
+        "pip_report": {
+          "path": "@evidence/build/runs/vulkan3-channel-checks-1073/windows-cp312-pip-report.json",
+          "sha256": "fa125716f837fac6649ddd9b08c33906329e044e4bd838ec20b74f5eec9fbe39"
+        },
+        "downloaded_url": "https://github.com/bipxx/vispy_vulkan/releases/download/v0.17.0-vulkan.3/vispy-0.17.0%2Bvulkan.3-cp312-cp312-win_amd64.whl"
+      }
+    },
+    {
+      "name": "vispy-0.17.0+vulkan.3-cp311-cp311-manylinux_2_39_x86_64.whl",
+      "abi": "cp311",
+      "platform": "linux",
+      "bytes": 10568592,
+      "sha256": "6f0149d79d91a9365c7f291ac7e8b1d5e78f24167a822b8f2771c69094367c42",
+      "tier": "installed-functional + publicly-delivered",
+      "strict_rows": 0,
+      "in_128_binding_admission": false,
+      "release_asset_id": 762188240,
+      "release_asset_digest": "sha256:6f0149d79d91a9365c7f291ac7e8b1d5e78f24167a822b8f2771c69094367c42",
+      "url": "https://github.com/bipxx/vispy_vulkan/releases/download/v0.17.0-vulkan.3/vispy-0.17.0%2Bvulkan.3-cp311-cp311-manylinux_2_39_x86_64.whl",
+      "index_href": "https://github.com/bipxx/vispy_vulkan/releases/download/v0.17.0-vulkan.3/vispy-0.17.0%2Bvulkan.3-cp311-cp311-manylinux_2_39_x86_64.whl#sha256=6f0149d79d91a9365c7f291ac7e8b1d5e78f24167a822b8f2771c69094367c42",
+      "public_install": {
+        "python": "3.11.14",
+        "installed_members_verified": 537,
+        "source_overrides": 0,
+        "channel_status": "PASS_PUBLIC_CHANNEL_LINUX_ABI_IMPORT",
+        "vulkan_clear_exact": false,
+        "gpu_rendered_in_delivery_smoke": false,
+        "device": null,
+        "result": {
+          "path": "@evidence/build/runs/vulkan3-channel-checks-1073/linux-cp311-channel.json",
+          "sha256": "073aae63f5b9a40b9232e1678678cd498d8267e6985afa0b1c4da278953cb3c1"
+        },
+        "processes": {
+          "path": "@evidence/build/runs/vulkan3-channel-checks-1073/linux-cp311-processes.json",
+          "sha256": "7a15595b063d08382407516ea53d85d35193955e4eb1ca3c278c8f6552e445d1"
+        },
+        "install_log": {
+          "path": "@evidence/build/runs/vulkan3-channel-checks-1073/linux-cp311-install.log",
+          "sha256": "4323462b7360f1addae2c964fe15dd08ebde676af8abddd658f07099f9b1d8df"
+        }
+      }
+    },
+    {
+      "name": "vispy-0.17.0+vulkan.3-cp311-cp311-win_amd64.whl",
+      "abi": "cp311",
+      "platform": "windows",
+      "bytes": 6817078,
+      "sha256": "60590ef7023c88f6e57a15ba3ff455d6fa919a572886e22ebf4198b32305b3b0",
+      "tier": "installed-functional + publicly-delivered",
+      "strict_rows": 0,
+      "in_128_binding_admission": false,
+      "release_asset_id": 762188243,
+      "release_asset_digest": "sha256:60590ef7023c88f6e57a15ba3ff455d6fa919a572886e22ebf4198b32305b3b0",
+      "url": "https://github.com/bipxx/vispy_vulkan/releases/download/v0.17.0-vulkan.3/vispy-0.17.0%2Bvulkan.3-cp311-cp311-win_amd64.whl",
+      "index_href": "https://github.com/bipxx/vispy_vulkan/releases/download/v0.17.0-vulkan.3/vispy-0.17.0%2Bvulkan.3-cp311-cp311-win_amd64.whl#sha256=60590ef7023c88f6e57a15ba3ff455d6fa919a572886e22ebf4198b32305b3b0",
+      "public_install": {
+        "python": "3.11.11",
+        "installed_members_verified": 537,
+        "source_overrides": 0,
+        "channel_status": "PASS_PUBLIC_CHANNEL_WINDOWS_CLEAR",
+        "vulkan_clear_exact": true,
+        "gpu_rendered_in_delivery_smoke": true,
+        "device": "NVIDIA GeForce RTX 4090",
+        "result": {
+          "path": "@evidence/build/runs/vulkan3-channel-checks-1073/windows-cp311-channel.json",
+          "sha256": "69122370ee721977e74862f55dfc7849ce73d5f2942b99f3d80cf16b4e9adb85"
+        },
+        "processes": {
+          "path": "@evidence/build/runs/vulkan3-channel-checks-1073/windows-cp311-processes.json",
+          "sha256": "c8eeea45e5f02bb92e07c107bc8a1582b798711ac2a62c3109eae1475fcbc164"
+        },
+        "pip_report": {
+          "path": "@evidence/build/runs/vulkan3-channel-checks-1073/windows-cp311-pip-report.json",
+          "sha256": "63ab2fddee3ff8844b5b5e4c9abef676be54a69d16919860d5e23672ee81d92f"
+        },
+        "downloaded_url": "https://github.com/bipxx/vispy_vulkan/releases/download/v0.17.0-vulkan.3/vispy-0.17.0%2Bvulkan.3-cp311-cp311-win_amd64.whl"
+      }
+    },
+    {
+      "name": "vispy-0.17.0+vulkan.3-cp313-cp313-manylinux_2_39_x86_64.whl",
+      "abi": "cp313",
+      "platform": "linux",
+      "bytes": 10565277,
+      "sha256": "f15e50c91952b5ad5db5ad2b115a2147658aef74001bcba6ac30d185a1559000",
+      "tier": "installed-functional + publicly-delivered",
+      "strict_rows": 0,
+      "in_128_binding_admission": false,
+      "release_asset_id": 762188377,
+      "release_asset_digest": "sha256:f15e50c91952b5ad5db5ad2b115a2147658aef74001bcba6ac30d185a1559000",
+      "url": "https://github.com/bipxx/vispy_vulkan/releases/download/v0.17.0-vulkan.3/vispy-0.17.0%2Bvulkan.3-cp313-cp313-manylinux_2_39_x86_64.whl",
+      "index_href": "https://github.com/bipxx/vispy_vulkan/releases/download/v0.17.0-vulkan.3/vispy-0.17.0%2Bvulkan.3-cp313-cp313-manylinux_2_39_x86_64.whl#sha256=f15e50c91952b5ad5db5ad2b115a2147658aef74001bcba6ac30d185a1559000",
+      "public_install": {
+        "python": "3.13.8",
+        "installed_members_verified": 537,
+        "source_overrides": 0,
+        "channel_status": "PASS_PUBLIC_CHANNEL_LINUX_ABI_IMPORT",
+        "vulkan_clear_exact": false,
+        "gpu_rendered_in_delivery_smoke": false,
+        "device": null,
+        "result": {
+          "path": "@evidence/build/runs/vulkan3-channel-checks-1073/linux-cp313-channel.json",
+          "sha256": "2a8059a727427aa423c570af7bd4c05c74ae5992c7b79606bbe60505e16b9e17"
+        },
+        "processes": {
+          "path": "@evidence/build/runs/vulkan3-channel-checks-1073/linux-cp313-processes.json",
+          "sha256": "66fba19aa710d85d5e5b6681cf2cb29d3553882fea1aec8ccc1b6960cddc49db"
+        },
+        "install_log": {
+          "path": "@evidence/build/runs/vulkan3-channel-checks-1073/linux-cp313-install.log",
+          "sha256": "5d5e405cd6a8b15c4078955ed8151c67beb29538472944b3eeb7b2b38218cb26"
+        }
+      }
+    },
+    {
+      "name": "vispy-0.17.0+vulkan.3-cp313-cp313-win_amd64.whl",
+      "abi": "cp313",
+      "platform": "windows",
+      "bytes": 6815759,
+      "sha256": "7deb265c503d4f979f6ed7f229c83c556023dabca6d7ffb8adc991424802cd87",
+      "tier": "installed-functional + publicly-delivered",
+      "strict_rows": 0,
+      "in_128_binding_admission": false,
+      "release_asset_id": 762188247,
+      "release_asset_digest": "sha256:7deb265c503d4f979f6ed7f229c83c556023dabca6d7ffb8adc991424802cd87",
+      "url": "https://github.com/bipxx/vispy_vulkan/releases/download/v0.17.0-vulkan.3/vispy-0.17.0%2Bvulkan.3-cp313-cp313-win_amd64.whl",
+      "index_href": "https://github.com/bipxx/vispy_vulkan/releases/download/v0.17.0-vulkan.3/vispy-0.17.0%2Bvulkan.3-cp313-cp313-win_amd64.whl#sha256=7deb265c503d4f979f6ed7f229c83c556023dabca6d7ffb8adc991424802cd87",
+      "public_install": {
+        "python": "3.13.8",
+        "installed_members_verified": 537,
+        "source_overrides": 0,
+        "channel_status": "PASS_PUBLIC_CHANNEL_WINDOWS_CLEAR",
+        "vulkan_clear_exact": true,
+        "gpu_rendered_in_delivery_smoke": true,
+        "device": "NVIDIA GeForce RTX 4090",
+        "result": {
+          "path": "@evidence/build/runs/vulkan3-channel-checks-1073/windows-cp313-channel.json",
+          "sha256": "fb246cdf8c651035eaac88cdf4067c8d333964b6ca7c0ebf0903527646069a84"
+        },
+        "processes": {
+          "path": "@evidence/build/runs/vulkan3-channel-checks-1073/windows-cp313-processes.json",
+          "sha256": "6858bd8786069f97477e9b61abfcff0cbf9e3073b407be8f7298b099c3a9fe09"
+        },
+        "pip_report": {
+          "path": "@evidence/build/runs/vulkan3-channel-checks-1073/windows-cp313-pip-report.json",
+          "sha256": "1c9a58078e9e942e87ae7aecb45bbe0b500ea141a4e37900b7789a72259600bc"
+        },
+        "downloaded_url": "https://github.com/bipxx/vispy_vulkan/releases/download/v0.17.0-vulkan.3/vispy-0.17.0%2Bvulkan.3-cp313-cp313-win_amd64.whl"
+      }
+    }
+  ],
+  "admitted_tk_criteria": 128,
+  "admitted_mandatory_vispy_profiles": 8,
+  "admission_applies_to": "the two cp312 wheels only",
+  "required_qualification_ci_jobs": 23,
+  "installed_functional_record": {
+    "path": "compat/api-acceptance/vulkan3-wheels-v1.json",
+    "sha256": "06d5f67872ec9808b8d040cd7b35fb76ae8d92b65b965795bf2ba3a4480456a7"
+  },
+  "windows_channel": {
+    "abis": [
+      "cp311",
+      "cp312",
+      "cp313"
+    ],
+    "vulkan_clear_exact": true,
+    "frame_size": [
+      64,
+      64
+    ],
+    "expected_rgba": [
+      17,
+      33,
+      65,
+      255
+    ]
+  },
+  "linux_channel": {
+    "abis": [
+      "cp311",
+      "cp312",
+      "cp313"
+    ],
+    "native_abi_import": true,
+    "gpu_rendered_in_delivery_smoke": false,
+    "host": "WSL Ubuntu, glibc 2.39"
+  },
+  "licensing": {
+    "implementation": "AGPL-3.0-only",
+    "original_vispy_bsd_attached_unchanged": true,
+    "third_party_notices_attached": true
+  },
+  "index_asset_links": 10,
+  "previous_version_links_preserved": 4,
+  "older_releases_unchanged": true,
+  "temporary_channel_installs_removed": true,
+  "cp310_wheels_provided": false,
+  "cp314_wheels_provided": false,
+  "cp311_cp313_strict_rows": 0,
+  "physical_linux_gpu_claimed": false,
+  "colab_rerun": false,
+  "selected_artifact_delivery_complete": true,
+  "full_inventory_complete": false,
+  "recorded_failures": [
+    "publication 1072 publish mode: the release was published, then the script's older-release comparison failed on tuple-vs-list (script bug); state re-verified read-only by recover_publish.py; nothing recreated or re-uploaded",
+    "publication 1072 pages mode attempt 1: TLS handshake timeout on a read before any write; retried unchanged",
+    "release preview 1071 attempt 1: wrong script assert on zip member count; nothing published",
+    "required CI 1067 attempt 1: stale key in the collector before any GitHub call"
+  ],
+  "raw_evidence": {
+    "admission": {
+      "path": "@evidence/build/runs/vulkan3-scoped-admission-1069/verification.json",
+      "sha256": "f0b9433a09634ee0bf68c94c75c115f416a4f28faba280bf12b9ffd08eef0473"
+    },
+    "final_review": {
+      "path": "@evidence/build/runs/vulkan3-final-promotion-review-1068r/decision.json",
+      "sha256": "ee2e9b8a0a0133e4025818691f65349d0972a0919ef4f1b2828458ce456fc62a"
+    },
+    "merge": {
+      "path": "@evidence/build/runs/vulkan3-protected-merge-1070/verification.json",
+      "sha256": "a905e839be0ce050846908a7cb8819fc8bb9bb935474c8107abce06a47ed4674"
+    },
+    "published": {
+      "path": "@evidence/build/runs/vulkan3-publication-1072/published.json",
+      "sha256": "96af2ea516bbaa56a9d5f7c34b95ec56b8ac108620d1b757eb2ceb170d5cb8ec"
+    },
+    "index_pushed": {
+      "path": "@evidence/build/runs/vulkan3-publication-1072/index-pushed.json",
+      "sha256": "dc11f689681146e28a432456b2e4fd0ca68bbe092322f7e86025026ac169a8e1"
+    },
+    "index_live": {
+      "path": "@evidence/build/runs/vulkan3-publication-1072/index-live.json",
+      "sha256": "535d35dd185bfea4ff4a89aadf61f301379e9b76edbb6c78cdd00bd3234b7fd9"
+    },
+    "channel_cleanup": {
+      "path": "@evidence/build/runs/vulkan3-channel-checks-1073/cleanup-result.json",
+      "sha256": "12dab564620c5f342601fafdd1ec5a76b4f737c1f86d1d8b6b83213060a4d36c"
+    }
+  },
+  "scope": "Six exact x86_64 wheels (cp311, cp312, cp313; Windows and manylinux_2_39) delivered through the GitHub Release and the hash-pinned index. Scoped admission (128 Tk criteria, eight mandatory rows) covers the two cp312 wheels only; cp311/cp313 are installed-functional and publicly delivered with no strict rows. The delivery smoke renders on Windows only; on Linux it verifies members and native import. Metal graphics, physical Linux GPUs, cp310/cp314, other architectures, optional hosts and full API or raster parity are not claimed."
+}

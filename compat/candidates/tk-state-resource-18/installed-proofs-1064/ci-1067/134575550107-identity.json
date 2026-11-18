@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "kind": "ci-job-identity",
+  "repository": "bipxx/vispy_vulkan",
+  "run_id": 44237038106,
+  "attempt": 1,
+  "job_key": "cpu",
+  "job_name": "CPU linux-x86_64 CPython 3.12.8",
+  "event": "pull_request",
+  "source_head": "1a8df91954000a6d891f6cd8fbcb0624a4b66080",
+  "checked_head": "90ab9c00b887ad235be08d10c16b703a9ffc5b4c",
+  "parents": [
+    "f872680fce05a7092f87884b42339dea46cfe8b7",
+    "1a8df91954000a6d891f6cd8fbcb0624a4b66080"
+  ],
+  "workflow": {
+    "path": ".github/workflows/cpu-contract.yml",
+    "sha256": "7e530ca666b66da8a4d5e2313abe0f0b63ac297feab8c4efbee29ced23010853"
+  },
+  "collector_sha256": "d16bc66a51e8381296e77e2c3bea6e63a2ffa186bb38fd2f7f51c80e41437cc0"
+}

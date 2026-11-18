@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "kind": "ci-job-identity",
+  "repository": "bipxx/vispy_vulkan",
+  "run_id": 44237038058,
+  "attempt": 1,
+  "job_key": "software-vulkan",
+  "job_name": "software-vulkan",
+  "event": "pull_request",
+  "source_head": "1a8df91954000a6d891f6cd8fbcb0624a4b66080",
+  "checked_head": "90ab9c00b887ad235be08d10c16b703a9ffc5b4c",
+  "parents": [
+    "f872680fce05a7092f87884b42339dea46cfe8b7",
+    "1a8df91954000a6d891f6cd8fbcb0624a4b66080"
+  ],
+  "workflow": {
+    "path": ".github/workflows/linux-vulkan.yml",
+    "sha256": "cf0b7b037141dfdeb086343b8330600f006fb3fbbeb126c2e7dff20582a56356"
+  },
+  "collector_sha256": "d16bc66a51e8381296e77e2c3bea6e63a2ffa186bb38fd2f7f51c80e41437cc0"
+}
