@@ -1,0 +1,95 @@
+{
+  "schema": 1,
+  "date": "2026-11-17",
+  "status": "PASS_EXACT_TWO_ARCH_METAL_NATIVE_REUSE_PIN_RENEWAL_NOT_GPU",
+  "coverage_ids": [
+    "PLAT-02",
+    "API-06-READBACK-GEOMETRY",
+    "PLAT-04"
+  ],
+  "source_commit": "45aee3e262a0dbb62e3db24369f7b289e1914b2e",
+  "run_id": 44205402554,
+  "attempt": 1,
+  "source_inputs": 628,
+  "architectures": [
+    {
+      "architecture": "arm64",
+      "artifact": {
+        "artifact_id": 14391023548,
+        "artifact_bytes": 23784362,
+        "artifact_sha256": "4e0c39828a27e4b32e67a0a6805359cc8954d3102188f69f42b3a1925353eda4",
+        "max_expanded_bytes": 100663296,
+        "recovered_members": []
+      },
+      "wheel_sha256": "fe3d425b64d656808c7cdadf6f4f3e8cd92cd47a2dc4c2c8299ffc623a9264af",
+      "source_inventory_origin": {
+        "run_id": 44205402554,
+        "member": "runs/metal-ci-44205402554-1-arm64/source-before.json",
+        "sha256": "7d16ae5f68494a13fc9ea26c707fd0fadc20293c5fc3a09a02da2a78467e5989"
+      },
+      "original_validation": {
+        "path": "@evidence/build/runs/vulkan3-metal-arm64-1039/verification.json",
+        "sha256": "bb904f3236bd2ec647f1f5f300e9499fc812e274969edda86d3dfa9692e83f71"
+      },
+      "cleanup": {
+        "path": "@evidence/build/runs/vulkan3-metal-arm64-1039/cleanup-result.json",
+        "sha256": "6351e0da29f503d3bf97beea3921f2e6634e380cd6c64bd245ba9b42802adc49"
+      },
+      "installed_cpu_controls": true,
+      "package_changed_members": [],
+      "GPU_qualified": false
+    },
+    {
+      "architecture": "x86_64",
+      "artifact": {
+        "artifact_id": 14392553230,
+        "artifact_bytes": 25736338,
+        "artifact_sha256": "41a0960d92846ba988051bb09e970902c8ee93f9140ca3ade8777040f90ab1fa",
+        "max_expanded_bytes": 100663296,
+        "recovered_members": []
+      },
+      "wheel_sha256": "b3ae0637df4d61206b83b57491e10c799f1b1c38c69e5ba04ea59532cce6a30f",
+      "source_inventory_origin": {
+        "run_id": 44205402554,
+        "member": "runs/metal-ci-44205402554-1-x86_64/source-before.json",
+        "sha256": "7d16ae5f68494a13fc9ea26c707fd0fadc20293c5fc3a09a02da2a78467e5989"
+      },
+      "original_validation": {
+        "path": "@evidence/build/runs/vulkan3-metal-x64-1041/verification.json",
+        "sha256": "e038ca35e3a34a3d74609d31458e6ebeeacccb7c6c34061c2023e3fc3f4ae12c"
+      },
+      "cleanup": {
+        "path": "@evidence/build/runs/vulkan3-metal-x64-1041/cleanup-result.json",
+        "sha256": "7cc92aba976d606ca8c36bd8d8fa2fcc1f64a1ab5a512c3086a6af345e763326"
+      },
+      "installed_cpu_controls": true,
+      "package_changed_members": [],
+      "GPU_qualified": false
+    }
+  ],
+  "whole_run": {
+    "path": "@evidence/build/runs/vulkan3-metal-pin-1042/whole-run.json",
+    "sha256": "61c9ad2bffc85753157ccdbddb0649b677608ce67b78debed35bad721b02504f"
+  },
+  "original_pin": {
+    "path": "@evidence/build/runs/vulkan3-metal-pin-1042/metal-ci-reuse-before.json",
+    "sha256": "44b5810b02668674330ad72595f6686cd36ee30284ff8f1409f8ace4f714b61e"
+  },
+  "current_pin": {
+    "path": "compat/metal-ci-reuse.json",
+    "sha256": "5bc2c36449d92d09106d0caa406d93a02ed677a4267a46d4c1c0ad92321e9b96"
+  },
+  "source_inventory_origin": {
+    "run_id": 44205402554,
+    "member": "runs/metal-ci-44205402554-1-arm64/source-before.json",
+    "sha256": "7d16ae5f68494a13fc9ea26c707fd0fadc20293c5fc3a09a02da2a78467e5989"
+  },
+  "original_workflow_unchanged": true,
+  "workflow_sha256": "6c051d233db4752d8cda90545398f51d678e55e4737626fbce5a8a4f634b8a97",
+  "native_rebuilt_locally": false,
+  "verifier_changed": false,
+  "Windows_Linux_release_artifacts_changed": false,
+  "artifact_admitted": false,
+  "GPU_qualified": false,
+  "scope": "Both original fresh build/installed CPU/native/archive/package/source/cleanup records validate under unchanged reuse readers. Only the Metal original-production reference is renewed; whole-run success checked. Current Windows4f/Linuxdfe qualifications and canonical preparation remain unchanged. Final combined-source review/CI/impact/promotion/integration/admission/delivery remain pending."
+}

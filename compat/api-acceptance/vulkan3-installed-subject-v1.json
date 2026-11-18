@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "date": "2026-11-17",
+  "status": "PASS_PREPARATION16_EXACT_SUBJECT_128_BINDINGS_NOT_ADMITTED",
+  "coverage_ids": [
+    "FIX-04",
+    "FIX-06",
+    "API-06",
+    "LIF-01",
+    "LIF-05",
+    "LIF-07",
+    "TOOL-01"
+  ],
+  "candidate": "tk-state-resource-18",
+  "source_commit": "45aee3e262a0dbb62e3db24369f7b289e1914b2e",
+  "qualification_subject": {
+    "path": "@evidence/build/runs/vulkan3-installed-subject-1061/qualification-subject.json",
+    "sha256": "674ab35bf16434d9787fdfa7be96741bf1a6a9a36361986f4f57ee243379e496"
+  },
+  "result": {
+    "path": "@evidence/build/runs/vulkan3-installed-subject-1061/subject-result.json",
+    "sha256": "9b6295968063b62d36505e79062a52a54ccb6906fe09236d81adb82531b058c0"
+  },
+  "terminal": {
+    "path": "@evidence/build/runs/vulkan3-installed-subject-1061/terminal-source-only.json",
+    "sha256": "feade7ffc028111d6245054fddaca2e0afb02350c98323cf44c4844c850f60c5"
+  },
+  "restoration": {
+    "path": "@evidence/build/runs/vulkan3-installed-subject-1061/restoration.json",
+    "sha256": "4e9c60a201b412247b01c56c75f21f38514541d681c620ec333e042621bf3f2c"
+  },
+  "retention": {
+    "path": "@evidence/build/runs/vulkan3-proof-retention-1060/retention-record.json",
+    "sha256": "07b43891ac1b88a3bd79e94fa13361b0235423f187500e0f53e4af06c3edf449"
+  },
+  "proved_bindings": 128,
+  "selected_rows": 32,
+  "strict_attempts": 5,
+  "retained_inputs": 1727,
+  "canonical14files_restored": true,
+  "actual_exit": 0,
+  "child_waited": true,
+  "scratch_created": false,
+  "artifact_admitted": false,
+  "release_complete": false,
+  "scope": "Reviewed tk-state-resource-18 declarations and exact Windows e4b9eb92 / Linux fb81c75f installed receipts prove all 128 selected bindings under qualification_index.validate_subject with current contributing proof retention (1060) and Gate A2 resolution (1058r), restoring all 14 canonical preparation JSONs byte-for-byte. Curated qualification branch freeze, same-head 23-job CI, promotion review, scoped admission and verified public delivery remain separate."
+}
