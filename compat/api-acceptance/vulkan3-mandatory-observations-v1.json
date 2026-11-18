@@ -1,0 +1,364 @@
+{
+  "schema": 1,
+  "date": "2026-11-17",
+  "status": "PASS_EIGHT_READBACK_MANDATORY_OBSERVATIONS_NOT_ADMITTED",
+  "coverage_ids": [
+    "FIX-06",
+    "LIF-02",
+    "LIF-04",
+    "API-06",
+    "PLAT-08",
+    "TOOL-01"
+  ],
+  "source_commit": "45aee3e262a0dbb62e3db24369f7b289e1914b2e",
+  "requirements_matrix": {
+    "path": "compat/no-opengl-matrix.json",
+    "sha256": "230b12f3d4ed418cde3b0313fbdea36557b02a61c80a1cf637699d7a9bc50fc4"
+  },
+  "rows": [
+    {
+      "row": "windows-vulkan-headless",
+      "wheel": {
+        "path": "build/artifacts/e4b9eb92e73ff08d5051a7baec3442e63f6d9f9caa6e69efd507a24c5d9871c6/vispy-0.17.0+vulkan.3-cp312-cp312-win_amd64.whl",
+        "sha256": "e4b9eb92e73ff08d5051a7baec3442e63f6d9f9caa6e69efd507a24c5d9871c6"
+      },
+      "environment_id": "4be1722a84182d8eb873bf5d61d9e92bd771074b0b79803849b8609d9c7c1103",
+      "observation": {
+        "path": "@evidence/build/runs/vulkan3-windows-headless-1049/verification.json",
+        "sha256": "d60b8959f3a3049c97c1bdf0e24c7eff48148b071d3931a9575129c9f34b6abc"
+      },
+      "cleanup": {
+        "path": "@evidence/build/runs/vulkan3-windows-headless-1049/cleanup-result.json",
+        "sha256": "12606be067e4f4855cf325d95a385b7daedaa59a981ea28d453701495f99c84f"
+      },
+      "terminal": {
+        "path": "@evidence/build/runs/vulkan3-windows-headless-1049/terminal.json",
+        "sha256": "5ddee66edcfb8027e13e41df910f4de5cdb58d0b0db23b210f3ff4ac425d5afe"
+      },
+      "features": [
+        "clear",
+        "image",
+        "labels",
+        "volume",
+        "markers",
+        "mesh",
+        "compiled-text",
+        "depth-order",
+        "shader-arrays-attributes-lod",
+        "multisample-lines",
+        "recovery",
+        "shutdown-zero-resources"
+      ],
+      "profile": "windows-headless",
+      "selected_attempt": {
+        "path": "@evidence/build/runs/vulkan3-windows-headless-1049/replay-0.json",
+        "sha256": "e8fd814ad98df9e5e040dc968ff5f4926a1344e303d695a65e2c1cb2fe695f7e"
+      }
+    },
+    {
+      "row": "windows-vulkan-qwidget-pyqt6",
+      "wheel": {
+        "path": "build/artifacts/e4b9eb92e73ff08d5051a7baec3442e63f6d9f9caa6e69efd507a24c5d9871c6/vispy-0.17.0+vulkan.3-cp312-cp312-win_amd64.whl",
+        "sha256": "e4b9eb92e73ff08d5051a7baec3442e63f6d9f9caa6e69efd507a24c5d9871c6"
+      },
+      "environment_id": "18666aeea5b6de298c492d9eba461cd57d78c659312cb336493309f68137b73a",
+      "observation": {
+        "path": "@evidence/build/runs/vulkan3-windows-pyqt6-1050/verification.json",
+        "sha256": "be4186771538720f31d0979e34365410ff55ff20c4ba6a675ebe85d935575997"
+      },
+      "cleanup": {
+        "path": "@evidence/build/runs/vulkan3-windows-pyqt6-1050/cleanup-result.json",
+        "sha256": "fef28879a2326243ac06ba1efbd314c7be8192a409812e970b1ec798fb296d2e"
+      },
+      "terminal": {
+        "path": "@evidence/build/runs/vulkan3-windows-pyqt6-1050/terminal.json",
+        "sha256": "28bcc99bc6d4ba5a274a8be1eee12ee15e74567cbd12bf52b5d0499bd69d484f"
+      },
+      "features": [
+        "launch",
+        "initial-render",
+        "update",
+        "interaction",
+        "capture-export",
+        "recovery",
+        "close"
+      ],
+      "profile": "windows-pyqt6",
+      "selected_attempt": {
+        "path": "@evidence/build/runs/vulkan3-windows-pyqt6-1050/replay-0.json",
+        "sha256": "7093a2f87d3b8dab1a806516b5f4f5da163c8e4be117565181c1f359b61acbad"
+      }
+    },
+    {
+      "row": "windows-vulkan-qwidget-pyqt5",
+      "wheel": {
+        "path": "build/artifacts/e4b9eb92e73ff08d5051a7baec3442e63f6d9f9caa6e69efd507a24c5d9871c6/vispy-0.17.0+vulkan.3-cp312-cp312-win_amd64.whl",
+        "sha256": "e4b9eb92e73ff08d5051a7baec3442e63f6d9f9caa6e69efd507a24c5d9871c6"
+      },
+      "environment_id": "c4b874c1a75457b1144e25913f3210f422b904ca7598fc2bc792dab3d4e31104",
+      "observation": {
+        "path": "@evidence/build/runs/vulkan3-windows-pyqt5-1051/verification.json",
+        "sha256": "044c02814326eacdef3421cfdb4f0ec1347596175f60aaedd1f30e829586ab10"
+      },
+      "cleanup": {
+        "path": "@evidence/build/runs/vulkan3-windows-pyqt5-1051/cleanup-result.json",
+        "sha256": "7bdbd5c3ee3ffaec04112871806e7e862a9bacfc5c9cc2f77ff41bfa0e02a69a"
+      },
+      "terminal": {
+        "path": "@evidence/build/runs/vulkan3-windows-pyqt5-1051/terminal.json",
+        "sha256": "edb83e83c315f8bbb1725ccb98cd48ea137edcb285cb685313f80bea2f21acd5"
+      },
+      "features": [
+        "launch",
+        "initial-render",
+        "update",
+        "interaction",
+        "capture-export",
+        "recovery",
+        "close"
+      ],
+      "profile": "windows-pyqt5",
+      "selected_attempt": {
+        "path": "@evidence/build/runs/vulkan3-windows-pyqt5-1051/replay-0.json",
+        "sha256": "dd81c7b791abeed769678ea8dd3c226c9216d39bc1e7c6ca997bdeaf04309cf2"
+      }
+    },
+    {
+      "row": "windows-vulkan-qwidget-pyside6",
+      "wheel": {
+        "path": "build/artifacts/e4b9eb92e73ff08d5051a7baec3442e63f6d9f9caa6e69efd507a24c5d9871c6/vispy-0.17.0+vulkan.3-cp312-cp312-win_amd64.whl",
+        "sha256": "e4b9eb92e73ff08d5051a7baec3442e63f6d9f9caa6e69efd507a24c5d9871c6"
+      },
+      "environment_id": "55fbe1ef50a48e185ceeef6784fbafb8341eddb419a3ccc6a9737084685af9fa",
+      "observation": {
+        "path": "@evidence/build/runs/vulkan3-windows-pyside6-1052/verification.json",
+        "sha256": "c9cde7e83127a670e193aa250b5b6b4a4e1eb3ecd474236403bb0bb012b9a4b4"
+      },
+      "cleanup": {
+        "path": "@evidence/build/runs/vulkan3-windows-pyside6-1052/cleanup-result.json",
+        "sha256": "0f3615041bda0f95a53075de60dac304f67d78a8b99176b9cb54081f16a50e53"
+      },
+      "terminal": {
+        "path": "@evidence/build/runs/vulkan3-windows-pyside6-1052/terminal.json",
+        "sha256": "b2f791509309b488871177ba20dac0ad026e2f065b2796f04cc595bde7fea2b8"
+      },
+      "features": [
+        "launch",
+        "initial-render",
+        "update",
+        "interaction",
+        "capture-export",
+        "recovery",
+        "close"
+      ],
+      "profile": "windows-pyside6",
+      "selected_attempt": {
+        "path": "@evidence/build/runs/vulkan3-windows-pyside6-1052/replay-0.json",
+        "sha256": "9c0e6f816b20980d06ca76e22acb7d3edc0e11d0bcf759a5e3654edc407e2d23"
+      }
+    },
+    {
+      "row": "wsl-linux-lavapipe-x11-qwidget-pyqt6",
+      "wheel": {
+        "path": "build/artifacts/fb81c75f12ab99769faa965728ec18b27b890d0b4b8dd0007c65fe1373850b01/vispy-0.17.0+vulkan.3-cp312-cp312-manylinux_2_39_x86_64.whl",
+        "sha256": "fb81c75f12ab99769faa965728ec18b27b890d0b4b8dd0007c65fe1373850b01"
+      },
+      "environment_id": "57626bc45be3313a35cd1cb36b17cd35b3e303baf6bccc6bc5fabf30e0de9188",
+      "observation": {
+        "path": "@evidence/build/runs/vulkan3-wsl-pyqt6-1053/verification.json",
+        "sha256": "1cf9397c89e35209ebe2404ef0342d994dce6928b0d5f5e99540c96082f084c3"
+      },
+      "cleanup": {
+        "path": "@evidence/build/runs/vulkan3-wsl-pyqt6-1053/cleanup-result.json",
+        "sha256": "b30cf9587f98498b85dd7f74ab586b1165401774da6499a28e00922e2facea0a"
+      },
+      "terminal": {
+        "path": "@evidence/build/runs/vulkan3-wsl-pyqt6-1053/terminal.json",
+        "sha256": "5cd25609f8458b844babe8d8836faaaacd64f23c672f712f51f9530b218538d0"
+      },
+      "features": [
+        "launch",
+        "initial-render",
+        "update",
+        "interaction",
+        "capture-export",
+        "recovery",
+        "close"
+      ],
+      "profile": "wsl-pyqt6",
+      "guest_cleanup": {
+        "path": "@evidence/build/runs/vulkan3-wsl-pyqt6-1053/guest-cleanup-precheck.json",
+        "sha256": "e561cb637e8b7cf4b5f32ec7b2fd927b2d6de87a142cb97d5e1891f9aad95b22"
+      },
+      "selected_attempt": {
+        "path": "@evidence/build/runs/vulkan3-wsl-pyqt6-1053/reports/replay-0.json",
+        "sha256": "3c207c93818911619191255bec66f0fa05e209812be350aa4866c7adcee3c071"
+      }
+    },
+    {
+      "row": "wsl-linux-lavapipe-x11-qwidget-pyqt5",
+      "wheel": {
+        "path": "build/artifacts/fb81c75f12ab99769faa965728ec18b27b890d0b4b8dd0007c65fe1373850b01/vispy-0.17.0+vulkan.3-cp312-cp312-manylinux_2_39_x86_64.whl",
+        "sha256": "fb81c75f12ab99769faa965728ec18b27b890d0b4b8dd0007c65fe1373850b01"
+      },
+      "environment_id": "328e1409349a8f6f4963e8a9277cebd6b71ab9e4798b13567ac3fed4403d52e7",
+      "observation": {
+        "path": "@evidence/build/runs/vulkan3-wsl-pyqt5-1054/verification.json",
+        "sha256": "3956c89000c0218f299c561532a37d4e46482bb497f924602c3919a112ea075a"
+      },
+      "cleanup": {
+        "path": "@evidence/build/runs/vulkan3-wsl-pyqt5-1054/cleanup-result.json",
+        "sha256": "ea28329a4a9144f63b1f4bbe7e9c04750effaebe247cd2772944bf8cfc18604f"
+      },
+      "terminal": {
+        "path": "@evidence/build/runs/vulkan3-wsl-pyqt5-1054/terminal.json",
+        "sha256": "725be6f73f5fe3e453a4ab4d1ddbe11bf9fcc3f77b6b7605cf6bf49882943064"
+      },
+      "features": [
+        "launch",
+        "initial-render",
+        "update",
+        "interaction",
+        "capture-export",
+        "recovery",
+        "close"
+      ],
+      "profile": "wsl-pyqt5",
+      "guest_cleanup": {
+        "path": "@evidence/build/runs/vulkan3-wsl-pyqt5-1054/guest-cleanup-precheck.json",
+        "sha256": "e561cb637e8b7cf4b5f32ec7b2fd927b2d6de87a142cb97d5e1891f9aad95b22"
+      },
+      "selected_attempt": {
+        "path": "@evidence/build/runs/vulkan3-wsl-pyqt5-1054/reports/replay-0.json",
+        "sha256": "6bff52fc2bc897e47910c615effd621dd313f47715e71822e8c503da221d33ab"
+      }
+    },
+    {
+      "row": "wsl-linux-lavapipe-x11-qwidget-pyside6",
+      "wheel": {
+        "path": "build/artifacts/fb81c75f12ab99769faa965728ec18b27b890d0b4b8dd0007c65fe1373850b01/vispy-0.17.0+vulkan.3-cp312-cp312-manylinux_2_39_x86_64.whl",
+        "sha256": "fb81c75f12ab99769faa965728ec18b27b890d0b4b8dd0007c65fe1373850b01"
+      },
+      "environment_id": "f85363506e7b5649e4b6943639332c777d461642caedd28cd07844a5c1c726ee",
+      "observation": {
+        "path": "@evidence/build/runs/vulkan3-wsl-pyside6-1055/verification.json",
+        "sha256": "6f47b3e4d7666492a6624904f862cdf132b798d64bf861a68701e8cbef329a0d"
+      },
+      "cleanup": {
+        "path": "@evidence/build/runs/vulkan3-wsl-pyside6-1055/cleanup-result.json",
+        "sha256": "a6cdcd33d977d1935cc32b195e443069b95617519b7700452283773e0ca1a843"
+      },
+      "terminal": {
+        "path": "@evidence/build/runs/vulkan3-wsl-pyside6-1055/terminal.json",
+        "sha256": "681a364518ab435bed8811ce6b283846df100176f038035bb831f8de0df4a019"
+      },
+      "features": [
+        "launch",
+        "initial-render",
+        "update",
+        "interaction",
+        "capture-export",
+        "recovery",
+        "close"
+      ],
+      "profile": "wsl-pyside6",
+      "guest_cleanup": {
+        "path": "@evidence/build/runs/vulkan3-wsl-pyside6-1055/guest-cleanup-precheck.json",
+        "sha256": "e561cb637e8b7cf4b5f32ec7b2fd927b2d6de87a142cb97d5e1891f9aad95b22"
+      },
+      "selected_attempt": {
+        "path": "@evidence/build/runs/vulkan3-wsl-pyside6-1055/reports/replay-0.json",
+        "sha256": "52f2910dd2877d49def25c5450df0a4d3f8ab7f41a91e2782e20b55e367e7a2c"
+      }
+    },
+    {
+      "row": "wsl-linux-lavapipe-x11-headless",
+      "wheel": {
+        "path": "build/artifacts/fb81c75f12ab99769faa965728ec18b27b890d0b4b8dd0007c65fe1373850b01/vispy-0.17.0+vulkan.3-cp312-cp312-manylinux_2_39_x86_64.whl",
+        "sha256": "fb81c75f12ab99769faa965728ec18b27b890d0b4b8dd0007c65fe1373850b01"
+      },
+      "environment_id": "d42f2e0374484fb27f6d02d598f5bedb9bc06674cd5488c526ef87090fcfdd9c",
+      "observation": {
+        "path": "@evidence/build/runs/vulkan3-wsl-headless-1056/verification.json",
+        "sha256": "000556fc51a7a843f10151e3ea98c6bf175c50a0d60590e82cece2b5eb869ad6"
+      },
+      "cleanup": {
+        "path": "@evidence/build/runs/vulkan3-wsl-headless-1056/cleanup-result.json",
+        "sha256": "ca5b1932cba5b84a57ff405712e5b6a3815e32777b7386e7a5d77c47c854d737"
+      },
+      "terminal": {
+        "path": "@evidence/build/runs/vulkan3-wsl-headless-1056/terminal.json",
+        "sha256": "787c1a9b33aa7787121079ca371b254817f44cb055bd66129a685e932b9cad9a"
+      },
+      "features": [
+        "clear",
+        "image",
+        "labels",
+        "volume",
+        "markers",
+        "mesh",
+        "compiled-text",
+        "depth-order",
+        "shader-arrays-attributes-lod",
+        "multisample-lines",
+        "recovery",
+        "shutdown-zero-resources"
+      ],
+      "profile": "wsl-headless",
+      "guest_cleanup": {
+        "path": "@evidence/build/runs/vulkan3-wsl-headless-1056/guest-cleanup-precheck.json",
+        "sha256": "e561cb637e8b7cf4b5f32ec7b2fd927b2d6de87a142cb97d5e1891f9aad95b22"
+      },
+      "selected_attempt": {
+        "path": "@evidence/build/runs/vulkan3-wsl-headless-1056/reports/replay-0.json",
+        "sha256": "daf8353b2e647eb377eabea5085aa1d62d8d534f557acd59fe36c0a453c2a531"
+      }
+    }
+  ],
+  "attempt_index": {
+    "path": "@evidence/build/runs/vulkan3-mandatory-index-1059/attempt-index.json",
+    "sha256": "6eb495460edbefeea268e1d948dd23b086b9768f812c87494d54e02700eb4002"
+  },
+  "retention_audit": {
+    "path": "@evidence/build/runs/vulkan3-mandatory-index-1059/retention-audit.json",
+    "sha256": "a6eaccd765f8dd920badc4a94c5ee19f70acb3fc671a4be12f6a73a895cc35aa"
+  },
+  "input_inventory": {
+    "path": "@evidence/build/runs/vulkan3-mandatory-index-1059/input-inventory.json",
+    "sha256": "1d24833ed9066c94ca543488b60994c3447bac0bd06aeef8c74278e71378852a"
+  },
+  "tk_state_resource_16_hashes": {
+    "admission-selection.json": "226d694cb169966ab3c35fdc175ff13da17898939f9074a821342af5b2199b7f",
+    "candidate.json": "c75451ab7891c36c6a902ba12cacd319c469cd197557879627d4fa40809dbefc",
+    "coverage.json": "101fda55452bed655ceff99765c7bb95d9bf2fe4851fd82b62284c53808989d8",
+    "execution-ledger.json": "3c5248a2f3a265e7d646f8e1a79dfa9e0844f3fc5a0565d4dce607d123cc868f",
+    "execution.json": "0e7e69c21e82204199b611400524e769dbe7ae46df27b2cc4693e0daa73df054",
+    "linux-archive.json": "606f02e4fe5de3eb38baeaf8aa7a19c8d4da47401f935a8d1d64e6986c0864b7",
+    "linux-native-provenance.json": "6c089baa94b5628bcd783e12726282395f53700e16db18f3f5611805041cf75f",
+    "linux-state-profile.json": "5d553977b04736e329243b573d20da4ab9da2cb5bf68331d5f55a61d703d57c5",
+    "runtime-inputs.json": "beefe7e66602c739f9dea1730344a0b9506bf4fd37000b35a7ff196cbb97d3de",
+    "scope-review.json": "a43bf59cea02f77af755b9f2ece9763b3d37aa7e95c36c1aba2f48d6b6ae3341",
+    "source-review.json": "7a314c913355cbed06c00405e3547180ce0b48b3ff76dab4c060c27b4ec8f9c3",
+    "windows-archive.json": "bc80181922beacaaa27324d8692af9730f5ea0b0cbabdc2b223959dd01d34ea8",
+    "windows-native-provenance.json": "4091861ec1e06a1b76398dba1cf3b5e2af509f419935df4bc3eeb81e76e0ad45",
+    "windows-state-profile.json": "2b8d6b3e4b6fa78c12831b90a61bb69fce3d9fc7a8b33132a54d9a8553d9e0c3"
+  },
+  "mandatory_current_observed": 8,
+  "mandatory_total": 8,
+  "admitted_rows": 0,
+  "strict_replays_passed": 8,
+  "discovery_reports_retained": 8,
+  "failed_strict_attempts": 0,
+  "source_overrides": 0,
+  "canonical14files_unchanged": true,
+  "scratch_absent": true,
+  "reclaimed_bytes": 818104921,
+  "native_rebuilt": false,
+  "artifact_admitted": false,
+  "matrix_modified": false,
+  "remaining": [
+    "Gate 958r independent eight-row retention/attempt review",
+    "Step A4 (961-964) final-head freeze, subject binding, and mandatory promotion join"
+  ],
+  "scope": "Eight finite 0.17.0+vulkan.3 Windows Vulkan/WSL software Vulkan mandatory observations (1049-1056) plus 18-input foreign-origin retention re-audit. S/compat/no-opengl-matrix.json untouched; admitted_rows = 0."
+}

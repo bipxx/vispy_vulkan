@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "kind": "original-linux-ci-native-reuse",
+  "candidate": {
+    "path": "compat/candidates/tk-state-resource-18/candidate.json",
+    "sha256": "c75451ab7891c36c6a902ba12cacd319c469cd197557879627d4fa40809dbefc"
+  },
+  "capture": {
+    "path": "build/runs/vulkan3-linux-artifact-1030/original-capture.json",
+    "sha256": "596abcba798652bc727e46f00992ba7ca55f08f25b69f19e899f5b4199c74416"
+  },
+  "reuse": {
+    "candidate_scope_sha256": "a32db589459e4a5dc3e0e5538c1ba8f8af271bdefa3b8da244d1b3d6c20cf45f",
+    "profile": "wsl-software-tk90-cp31213-development",
+    "capture_sha256": "596abcba798652bc727e46f00992ba7ca55f08f25b69f19e899f5b4199c74416",
+    "production_sha256": "826e4ea572798de02f907cbf06967a1dc3ab8917db10252a04b764c60ee0f912",
+    "evidence_store": {
+      "path": "compat/evidence-stores/secondary-v1.json",
+      "sha256": "b164e3fdc85863a2327b508ea60f8d3068f740cfe90f665aa52905e28bfb3ca5"
+    },
+    "impact": "Fresh original hosted CI run 44205399049 at source 45aee3e2 (0.17.0+vulkan.3 version change; production inputs pyproject.toml and uv.lock), raw wheel 3750999b retagged to manylinux_2_39 fb81c75f in 1033 and observed in 1034/1035. The candidate 18 workflow selector authority was independently reviewed (1026). Independent reuse/source/scope review required; no approval or admission transfers.",
+    "abi": {
+      "tag": "cp312",
+      "build_version": "3.12.8",
+      "build_python_sha256": "0dc3a692fa85fcdb7f1a5877d2adf179809ac417a07ffde2373c832863800a15",
+      "consumer_version": "3.12.13",
+      "consumer_python_sha256": "339de109f072e52523066d97a2b3372e358a10cc00c6a9df62c28a6618061900"
+    }
+  }
+}

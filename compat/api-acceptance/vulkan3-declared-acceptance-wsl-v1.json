@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "run_id": "vulkan3-acceptance-wsl-1046",
+  "date": "2026-11-17",
+  "status": "PASS_WSL_DECLARED_ACCEPTANCE_TWO_TESTS_SIX_PHASES",
+  "source_commit": "45aee3e262a0dbb62e3db24369f7b289e1914b2e",
+  "wheel": {
+    "path": "build/artifacts/fb81c75f12ab99769faa965728ec18b27b890d0b4b8dd0007c65fe1373850b01/vispy-0.17.0+vulkan.3-cp312-cp312-manylinux_2_39_x86_64.whl",
+    "sha256": "fb81c75f12ab99769faa965728ec18b27b890d0b4b8dd0007c65fe1373850b01"
+  },
+  "source_overrides": 0,
+  "installed_members_verified_before_after": 537,
+  "declared_fixtures": [
+    {
+      "nodeid": "tests/native/test_tkinter_state_scenario.py::test_composite_observed_failure_and_recovery_scenario",
+      "cases": 1,
+      "source": {
+        "path": "tests/native/test_tkinter_state_scenario.py",
+        "sha256": "8baaf41769b5ef671fe9349ac5ed85236756224da3aaa9d814aa31e249ffd80e"
+      }
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capture_scenario.py::test_real_tk_capture_observer_scenario",
+      "cases": 1,
+      "source": {
+        "path": "tests/native/test_tkinter_capture_scenario.py",
+        "sha256": "a06eb870b25fe0b814facfd10bfed50db9a43f645873a2eb54a80080a632ab55"
+      }
+    }
+  ],
+  "tests": {
+    "tests": 2,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "shutdown_gauges": {
+    "pending_tickets": 0,
+    "queued_frames": 0,
+    "live_buffer_bytes": 0,
+    "live_cpu_buffer_bytes": 0,
+    "live_texture_bytes": 0,
+    "canvas_texture_bytes": 0,
+    "transient_buffer_bytes": 0,
+    "line_resource_pool_busy_slots": 0,
+    "line_resource_pool_bytes": 0,
+    "host_import_pinned_bytes": 0
+  },
+  "worker": {
+    "path": "@evidence/build/runs/vulkan3-acceptance-wsl-1046/worker.json",
+    "sha256": "ccbbeff4e5748227db04edbcb5bfd491928115a8e4fa2988fbd3c5e50b0a1d1b"
+  },
+  "pytest": {
+    "path": "@evidence/build/runs/vulkan3-acceptance-wsl-1046/pytest.json",
+    "sha256": "8f574911790b9c35fb4a84a60dc7860d0ad14217911b1e71ca98b0945f322ee2"
+  },
+  "actual_exit": 0,
+  "child_pid": 64392,
+  "child_waited": true,
+  "artifact_admitted": false,
+  "scope": "Exact declared composite state/resource and capture-scenario acceptance on the 0.17.0+vulkan.3 cp312 candidate wheel; two pytest tests, all six setup/call/teardown phases; finite installed functional proof only. Strict runtime observer/profile/host admission remains separate."
+}

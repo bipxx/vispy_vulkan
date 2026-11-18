@@ -1,0 +1,214 @@
+{
+  "schema": 1,
+  "date": "2026-11-17",
+  "status": "PASS_SIX_VULKAN3_WHEELS_INSTALLED_FUNCTIONAL_NOT_ADMITTED",
+  "coverage_ids": [
+    "PLAT-02",
+    "API-05",
+    "API-06",
+    "API-06-READBACK-GEOMETRY"
+  ],
+  "version": "0.17.0+vulkan.3",
+  "source_commit": "45aee3e262a0dbb62e3db24369f7b289e1914b2e",
+  "source_freeze": {
+    "path": "@evidence/build/runs/vulkan3-source-freeze-1023/source-freeze.json",
+    "sha256": "c8ebca345c0536da2f225d142f2370de8239b3f349ebe31257dc73b9f762d923"
+  },
+  "wheels": [
+    {
+      "abi": "cp312",
+      "platform": "windows",
+      "tier": "strict-candidate",
+      "wheel": {
+        "name": "vispy-0.17.0+vulkan.3-cp312-cp312-win_amd64.whl",
+        "bytes": 6816164,
+        "sha256": "e4b9eb92e73ff08d5051a7baec3442e63f6d9f9caa6e69efd507a24c5d9871c6"
+      },
+      "installed_gpu_cases": 75,
+      "state_readback": 56,
+      "subpackages_plot": 16,
+      "collections_rendered": "9/9",
+      "jupyter_rfb": 3,
+      "installed_members_verified": 537,
+      "source_overrides": 0,
+      "shutdown_gauges_zero": 10,
+      "run": {
+        "path": "@evidence/build/runs/vulkan3-cp312-win-1028/verification.json",
+        "sha256": "2434888b81fe907ef989cfa45be9e63af5993a061f8aa2ad5a7b5f0a31ab7076"
+      },
+      "device": null,
+      "tk_cases": 14,
+      "tk_run": {
+        "path": "@evidence/build/runs/vulkan3-cp312-win-tk-1029/verification.json",
+        "sha256": "77047c5de0d4743737c6927f62ad0352ca12ba0f5fb5477459b8825ac65e7c3b"
+      }
+    },
+    {
+      "abi": "cp312",
+      "platform": "linux",
+      "tier": "strict-candidate",
+      "wheel": {
+        "name": "vispy-0.17.0+vulkan.3-cp312-cp312-manylinux_2_39_x86_64.whl",
+        "bytes": 10565519,
+        "sha256": "fb81c75f12ab99769faa965728ec18b27b890d0b4b8dd0007c65fe1373850b01"
+      },
+      "installed_gpu_cases": 75,
+      "state_readback": 56,
+      "subpackages_plot": 16,
+      "collections_rendered": "9/9",
+      "jupyter_rfb": 3,
+      "installed_members_verified": 537,
+      "source_overrides": 0,
+      "shutdown_gauges_zero": 10,
+      "run": {
+        "path": "@evidence/build/runs/vulkan3-cp312-wsl-1034/verification.json",
+        "sha256": "24b580351f8e098ad3dde27bbc0d5ef14e7c46350324ef7b2c7a77073510c0da"
+      },
+      "device": null,
+      "tk_cases": 14,
+      "tk_run": {
+        "path": "@evidence/build/runs/vulkan3-cp312-wsl-tk-1035/verification.json",
+        "sha256": "ae8b23b26098a8c34bc3f3d5f967b8428ab3678b712214d0fe0123857a9033e0"
+      }
+    },
+    {
+      "abi": "cp311",
+      "platform": "windows",
+      "tier": "installed-functional",
+      "wheel": {
+        "name": "vispy-0.17.0+vulkan.3-cp311-cp311-win_amd64.whl",
+        "bytes": 6817078,
+        "sha256": "60590ef7023c88f6e57a15ba3ff455d6fa919a572886e22ebf4198b32305b3b0"
+      },
+      "installed_gpu_cases": 75,
+      "state_readback": 56,
+      "subpackages_plot": 16,
+      "collections_rendered": "9/9",
+      "jupyter_rfb": 3,
+      "installed_members_verified": 537,
+      "source_overrides": 0,
+      "shutdown_gauges_zero": 10,
+      "run": {
+        "path": "@evidence/build/runs/vulkan3-win-cp311-1032/verification.json",
+        "sha256": "37ead9fdb8a32dfac58298147cbb381b25f703b9c256f933dd9190d320e94d22"
+      },
+      "device": null,
+      "native_ctests": "44/44"
+    },
+    {
+      "abi": "cp311",
+      "platform": "linux",
+      "tier": "installed-functional",
+      "wheel": {
+        "name": "vispy-0.17.0+vulkan.3-cp311-cp311-manylinux_2_39_x86_64.whl",
+        "bytes": 10568592,
+        "sha256": "6f0149d79d91a9365c7f291ac7e8b1d5e78f24167a822b8f2771c69094367c42"
+      },
+      "installed_gpu_cases": 75,
+      "state_readback": 56,
+      "subpackages_plot": 16,
+      "collections_rendered": "9/9",
+      "jupyter_rfb": 3,
+      "installed_members_verified": 537,
+      "source_overrides": 0,
+      "shutdown_gauges_zero": 10,
+      "run": {
+        "path": "@evidence/build/runs/vulkan3-wsl-cp311-1037/verification.json",
+        "sha256": "faa935cf6791c92d16bf6ac1838df7fde1fe547a32794da0826a2849db9d74a2"
+      },
+      "device": null,
+      "native_ctests": "44/44"
+    },
+    {
+      "abi": "cp313",
+      "platform": "windows",
+      "tier": "installed-functional",
+      "wheel": {
+        "name": "vispy-0.17.0+vulkan.3-cp313-cp313-win_amd64.whl",
+        "bytes": 6815759,
+        "sha256": "7deb265c503d4f979f6ed7f229c83c556023dabca6d7ffb8adc991424802cd87"
+      },
+      "installed_gpu_cases": 75,
+      "state_readback": 56,
+      "subpackages_plot": 16,
+      "collections_rendered": "9/9",
+      "jupyter_rfb": 3,
+      "installed_members_verified": 537,
+      "source_overrides": 0,
+      "shutdown_gauges_zero": 10,
+      "run": {
+        "path": "@evidence/build/runs/vulkan3-win-cp313-1031/verification.json",
+        "sha256": "8393ff622a8f9f0e628acaa50394188d6d7dcd0e9681b5e9c8e2c7706ce7737f"
+      },
+      "device": null,
+      "native_ctests": "44/44"
+    },
+    {
+      "abi": "cp313",
+      "platform": "linux",
+      "tier": "installed-functional",
+      "wheel": {
+        "name": "vispy-0.17.0+vulkan.3-cp313-cp313-manylinux_2_39_x86_64.whl",
+        "bytes": 10565277,
+        "sha256": "f15e50c91952b5ad5db5ad2b115a2147658aef74001bcba6ac30d185a1559000"
+      },
+      "installed_gpu_cases": 75,
+      "state_readback": 56,
+      "subpackages_plot": 16,
+      "collections_rendered": "9/9",
+      "jupyter_rfb": 3,
+      "installed_members_verified": 537,
+      "source_overrides": 0,
+      "shutdown_gauges_zero": 10,
+      "run": {
+        "path": "@evidence/build/runs/vulkan3-wsl-cp313-1038/verification.json",
+        "sha256": "e94a05e42aa2a5f119db260b511423a97aad71fbd456581109496863298d948a"
+      },
+      "device": null,
+      "native_ctests": "44/44"
+    }
+  ],
+  "cp312_native_producers": {
+    "windows": {
+      "run": {
+        "path": "@evidence/build/runs/vulkan3-windows-native-1025/verification.json",
+        "sha256": "d7c88870ac0b9214f9958988a002461df78d14762e8327d354a8416b88202683"
+      },
+      "assembly": {
+        "path": "@evidence/build/runs/vulkan3-windows-wheel-1027/verification.json",
+        "sha256": "b53354149dabb5821e4babb8b32bbdc8ec2f0a1c6bc4432d848bb5bbfe81948a"
+      },
+      "native_ctests": "44/44"
+    },
+    "linux": {
+      "hosted_ci_run": 44205399049,
+      "capture": {
+        "path": "@evidence/build/runs/vulkan3-linux-artifact-1030/linux-wheel.json",
+        "sha256": "6196b22d5f85974875d34d99f1c7f767de829b768baa506caf4b77ab0242f100"
+      },
+      "retag": {
+        "path": "@evidence/build/runs/vulkan3-linux-retag-1033/verification.json",
+        "sha256": "0f087ca28db29853ab8dd5b6f109511fb4e723b26e6b9093a64d62c1d0ac2204"
+      },
+      "reader_review": {
+        "path": "@evidence/build/runs/vulkan3-linux-reader-review-1026/decision.json",
+        "sha256": "77cdef98a0577d9653693f1b0fe9e949912a121038f2c48770513ad9a04270ba"
+      }
+    }
+  },
+  "recorded_failed_attempts": [
+    "vulkan3-source-freeze-1023 attempts 1-2 (script asserts; no commit created)",
+    "vulkan3-cp312-win-1028 attempt 1 (previous-cycle native hash literal in a worker; before any GPU case)",
+    "vulkan3-linux-retag-1033 first cleanup plan refused (missing licenses role); manifest corrected",
+    "vulkan3-wsl-cp313-1038 first cleanup apply refused (child PID reused by a live process); identical plan passed on retry"
+  ],
+  "cp310_gpu_wheels_claimed": false,
+  "cp314_gpu_wheels_claimed": false,
+  "physical_linux_gpu_claimed": false,
+  "colab_rerun": false,
+  "scoped_admitted": false,
+  "artifact_admitted": false,
+  "publicly_delivered": false,
+  "full_inventory_complete": false,
+  "scope": "Six 0.17.0+vulkan.3 wheels built from one frozen source and checked installed: 75 GPU cases each on Windows RTX 4090 or WSL software Vulkan (Mesa lavapipe 9c5c41b3), plus 14 Tk cases on the two cp312 wheels. installed-functional only. Evidence recorded for 0.17.0+vulkan.2 wheels (including Colab T4/L4) is not transferred to these wheels."
+}
