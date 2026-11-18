@@ -1,0 +1,219 @@
+{
+  "schema": 1,
+  "kind": "required-ci-evidence",
+  "repository": "bipxx/vispy_vulkan",
+  "qualification_head": "1a8df91954000a6d891f6cd8fbcb0624a4b66080",
+  "policy_sha256": "9f5953b1400485b65dd30f1579ac82619aced34932613d91d3da13e4bfcf360d",
+  "runs": [
+    {
+      "workflow": ".github/workflows/cpu-contract.yml",
+      "run_id": 44237038106,
+      "attempt": 1,
+      "run": {
+        "path": "compat/candidates/tk-state-resource-18/installed-proofs-1064/ci-1067/44237038106-run.json",
+        "sha256": "d3f2a65a65c1a8b53a4c18726044ecf2d2f878dfca382fe59f85bcf858966f52"
+      },
+      "jobs": {
+        "path": "compat/candidates/tk-state-resource-18/installed-proofs-1064/ci-1067/44237038106-jobs.json",
+        "sha256": "328fafab1338705fe1de2fe18da9a098af1797b4b438fd1f8183b54c7eb2c90c"
+      },
+      "identities": [
+        {
+          "job_id": 134575550029,
+          "report": {
+            "path": "compat/candidates/tk-state-resource-18/installed-proofs-1064/ci-1067/134575550029-identity.json",
+            "sha256": "c8b23efe32bc8c91e2dd06a641162c03c2058b2ccde01deb3d56a23abe421858"
+          }
+        },
+        {
+          "job_id": 134575549996,
+          "report": {
+            "path": "compat/candidates/tk-state-resource-18/installed-proofs-1064/ci-1067/134575549996-identity.json",
+            "sha256": "6d6be5e6b22da87bf60e9b52b66fcc8d497b45238f8332ff588939ad2ab1b979"
+          }
+        },
+        {
+          "job_id": 134575550067,
+          "report": {
+            "path": "compat/candidates/tk-state-resource-18/installed-proofs-1064/ci-1067/134575550067-identity.json",
+            "sha256": "e8ae84ab689da9c12c0767233f62f24bd94ed0bc2793e14787e407e094a364ed"
+          }
+        },
+        {
+          "job_id": 134575549994,
+          "report": {
+            "path": "compat/candidates/tk-state-resource-18/installed-proofs-1064/ci-1067/134575549994-identity.json",
+            "sha256": "0ead71e7bce583b2b40f4325f898775cae0d661309625dae142b924214ed9230"
+          }
+        },
+        {
+          "job_id": 134575549885,
+          "report": {
+            "path": "compat/candidates/tk-state-resource-18/installed-proofs-1064/ci-1067/134575549885-identity.json",
+            "sha256": "023145686eed44db84ee928fa3a929b340c048b9efeb1c951b74ec8ba93ea185"
+          }
+        },
+        {
+          "job_id": 134575550030,
+          "report": {
+            "path": "compat/candidates/tk-state-resource-18/installed-proofs-1064/ci-1067/134575550030-identity.json",
+            "sha256": "b2f916747c1c75bd8200d4cb67cff290e123baec308a10ddd06a78a11f5e207d"
+          }
+        },
+        {
+          "job_id": 134575550052,
+          "report": {
+            "path": "compat/candidates/tk-state-resource-18/installed-proofs-1064/ci-1067/134575550052-identity.json",
+            "sha256": "1ae449d9d55d324ea7d4a7e342946a9fdfc239868406423c018e4e4406bbbe8d"
+          }
+        },
+        {
+          "job_id": 134575549698,
+          "report": {
+            "path": "compat/candidates/tk-state-resource-18/installed-proofs-1064/ci-1067/134575549698-identity.json",
+            "sha256": "75ff696d8b04f17a33690e8a2f9816872afe8732462021dbb44d55405743b57b"
+          }
+        },
+        {
+          "job_id": 134575549998,
+          "report": {
+            "path": "compat/candidates/tk-state-resource-18/installed-proofs-1064/ci-1067/134575549998-identity.json",
+            "sha256": "79ebfd3b7f23804b445f2119c622b52d6afff799329d6a76fe33e0e2c0fb547c"
+          }
+        },
+        {
+          "job_id": 134575550109,
+          "report": {
+            "path": "compat/candidates/tk-state-resource-18/installed-proofs-1064/ci-1067/134575550109-identity.json",
+            "sha256": "9935e1f70f0aa1db4422029ca03d9024dd968fbb9ed2803e5d2f210b76c0abeb"
+          }
+        },
+        {
+          "job_id": 134575549939,
+          "report": {
+            "path": "compat/candidates/tk-state-resource-18/installed-proofs-1064/ci-1067/134575549939-identity.json",
+            "sha256": "54e576395f9b3eb6cfd05e3e4a10f3b7b49197ce03eeb121a2ce55a83057b7cd"
+          }
+        },
+        {
+          "job_id": 134575549974,
+          "report": {
+            "path": "compat/candidates/tk-state-resource-18/installed-proofs-1064/ci-1067/134575549974-identity.json",
+            "sha256": "1e94280ad7f5529616231347b42dd280bcefb4d276827da2e9ae10883c924c7c"
+          }
+        },
+        {
+          "job_id": 134575550028,
+          "report": {
+            "path": "compat/candidates/tk-state-resource-18/installed-proofs-1064/ci-1067/134575550028-identity.json",
+            "sha256": "802f9d3f350c2ee3d118065d604624bd535ac9c992fb94e3057e7d75e6db3cbc"
+          }
+        },
+        {
+          "job_id": 134575549912,
+          "report": {
+            "path": "compat/candidates/tk-state-resource-18/installed-proofs-1064/ci-1067/134575549912-identity.json",
+            "sha256": "0051334742b61e124b3ec035f5c3aa4652cd40f55a196bb52868c0368efd00e5"
+          }
+        },
+        {
+          "job_id": 134575550013,
+          "report": {
+            "path": "compat/candidates/tk-state-resource-18/installed-proofs-1064/ci-1067/134575550013-identity.json",
+            "sha256": "955e57a69c78066da1cc5cd4495adaf5954b5ef786ca820dfba68b1e944831f3"
+          }
+        },
+        {
+          "job_id": 134575550107,
+          "report": {
+            "path": "compat/candidates/tk-state-resource-18/installed-proofs-1064/ci-1067/134575550107-identity.json",
+            "sha256": "915e4c51044f3879d7a4a76e9928dd65e30862e13e5e673e968b3a64b5709d68"
+          }
+        },
+        {
+          "job_id": 134575549894,
+          "report": {
+            "path": "compat/candidates/tk-state-resource-18/installed-proofs-1064/ci-1067/134575549894-identity.json",
+            "sha256": "94b75bb281c821d5b57169adf9adeb4942212fed561117391c20978836cce09c"
+          }
+        },
+        {
+          "job_id": 134575549950,
+          "report": {
+            "path": "compat/candidates/tk-state-resource-18/installed-proofs-1064/ci-1067/134575549950-identity.json",
+            "sha256": "7138359f5e7915f36263b65f1f9fc0a3eae72283eca9caedb93e68b95e69365a"
+          }
+        },
+        {
+          "job_id": 134575549997,
+          "report": {
+            "path": "compat/candidates/tk-state-resource-18/installed-proofs-1064/ci-1067/134575549997-identity.json",
+            "sha256": "160885bb0bbbf2cf4dec7785a16bdf7aa08b8aa60f593d34e0a7d59d6a0124fc"
+          }
+        },
+        {
+          "job_id": 134575550012,
+          "report": {
+            "path": "compat/candidates/tk-state-resource-18/installed-proofs-1064/ci-1067/134575550012-identity.json",
+            "sha256": "4128088c89a190f17fa9f9812ac771e5f47699adeda5d5470c80769c57d3c509"
+          }
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/linux-vulkan.yml",
+      "run_id": 44237038058,
+      "attempt": 1,
+      "run": {
+        "path": "compat/candidates/tk-state-resource-18/installed-proofs-1064/ci-1067/44237038058-run.json",
+        "sha256": "9c5243151871c7f4d90e038c79917f689136cf7db6cff2d0e2999cf5a1e92861"
+      },
+      "jobs": {
+        "path": "compat/candidates/tk-state-resource-18/installed-proofs-1064/ci-1067/44237038058-jobs.json",
+        "sha256": "c27c14dd06f8787ffcb9aad2fa2a3bf825fbbb6257bd63a88b36414057b5c126"
+      },
+      "identities": [
+        {
+          "job_id": 134575549819,
+          "report": {
+            "path": "compat/candidates/tk-state-resource-18/installed-proofs-1064/ci-native/134575549819-identity.json",
+            "sha256": "f85ff3898deda92c9fbde19186e8499a299d86b4e3b4c7387d990625c01b01de"
+          }
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/metal-wheel.yml",
+      "run_id": 44237038063,
+      "attempt": 1,
+      "run": {
+        "path": "compat/candidates/tk-state-resource-18/installed-proofs-1064/ci-1067/44237038063-run.json",
+        "sha256": "c5353703d26c7e9bd86a9810b6f3edb57b2165c4f94580a18293b23dcabb17e3"
+      },
+      "jobs": {
+        "path": "compat/candidates/tk-state-resource-18/installed-proofs-1064/ci-1067/44237038063-jobs.json",
+        "sha256": "88626d917583ad912ed3113bd77cf84d064699f0ca1ddd0058eff23f84b0407b"
+      },
+      "identities": [
+        {
+          "job_id": 134575550176,
+          "report": {
+            "path": "compat/candidates/tk-state-resource-18/installed-proofs-1064/ci-native/134575550176-identity.json",
+            "sha256": "4f9a326fb669f89a1b8d4f2d7d8a7600b355d9754ae5ea33943442c2d6ba7fe4"
+          }
+        },
+        {
+          "job_id": 134575549895,
+          "report": {
+            "path": "compat/candidates/tk-state-resource-18/installed-proofs-1064/ci-native/134575549895-identity.json",
+            "sha256": "e96ae1076dd81b5337e93319a63eafcd17c3b4afdd465856ed102c602e87442b"
+          }
+        }
+      ]
+    }
+  ],
+  "run_history": {
+    "path": "compat/candidates/tk-state-resource-18/installed-proofs-1064/ci-1067/run-history.json",
+    "sha256": "f14b878ddc070466ce0fd125b5f72477e05cfc6da5893505c233fea45de8efc0"
+  }
+}

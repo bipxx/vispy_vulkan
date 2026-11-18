@@ -1,9 +1,9 @@
 # VisPy Vulkan 0.17.0+vulkan.3
 
-Qualification in progress on 2026-11-17; publication pending. The intended release tag is
-`v0.17.0-vulkan.3`. After publication, see the
-[GitHub Release](https://github.com/bipxx/vispy_vulkan/releases/tag/v0.17.0-vulkan.3) for asset
-availability and public-channel delivery checks.
+Published on 2026-11-18 as the
+[GitHub Release](https://github.com/bipxx/vispy_vulkan/releases/tag/v0.17.0-vulkan.3)
+`v0.17.0-vulkan.3`. Public-channel delivery checks are recorded in the release asset
+`delivery.json` and in the [delivery record](../compat/api-acceptance/vulkan3-public-delivery-v1.json).
 
 This successor delivers the reviewed readback-geometry and state-query fixes, the nine
 `vispy.visuals.collections` configurations and the Dawn `jupyter_rfb` backend fixes, and adds
@@ -27,8 +27,8 @@ All wheels are x86_64. The release tag is `v0.17.0-vulkan.3`.
 
 | Wheel | Bytes | SHA256 | Tier |
 | --- | --- | --- | --- |
-| `vispy-0.17.0+vulkan.3-cp312-cp312-win_amd64.whl` | 6,816,164 | `e4b9eb92e73ff08d5051a7baec3442e63f6d9f9caa6e69efd507a24c5d9871c6` | strict |
-| `vispy-0.17.0+vulkan.3-cp312-cp312-manylinux_2_39_x86_64.whl` | 10,565,519 | `fb81c75f12ab99769faa965728ec18b27b890d0b4b8dd0007c65fe1373850b01` | strict |
+| `vispy-0.17.0+vulkan.3-cp312-cp312-win_amd64.whl` | 6,816,164 | `e4b9eb92e73ff08d5051a7baec3442e63f6d9f9caa6e69efd507a24c5d9871c6` | scoped-admitted |
+| `vispy-0.17.0+vulkan.3-cp312-cp312-manylinux_2_39_x86_64.whl` | 10,565,519 | `fb81c75f12ab99769faa965728ec18b27b890d0b4b8dd0007c65fe1373850b01` | scoped-admitted |
 | `vispy-0.17.0+vulkan.3-cp311-cp311-win_amd64.whl` | 6,817,078 | `60590ef7023c88f6e57a15ba3ff455d6fa919a572886e22ebf4198b32305b3b0` | installed-functional |
 | `vispy-0.17.0+vulkan.3-cp311-cp311-manylinux_2_39_x86_64.whl` | 10,568,592 | `6f0149d79d91a9365c7f291ac7e8b1d5e78f24167a822b8f2771c69094367c42` | installed-functional |
 | `vispy-0.17.0+vulkan.3-cp313-cp313-win_amd64.whl` | 6,815,759 | `7deb265c503d4f979f6ed7f229c83c556023dabca6d7ffb8adc991424802cd87` | installed-functional |
@@ -36,8 +36,8 @@ All wheels are x86_64. The release tag is `v0.17.0-vulkan.3`.
 
 Product source is `45aee3e262a0dbb62e3db24369f7b289e1914b2e`.
 
-**Tiers.** *strict* means the CPython 3.12 wheels are the subject of the strict qualification
-below. *installed-functional* means the CPython 3.11 and 3.13 wheels are built from the same
+**Tiers.** *scoped-admitted* means the CPython 3.12 wheels are the subject of the strict
+qualification and scoped admission below. *installed-functional* means the CPython 3.11 and 3.13 wheels are built from the same
 source, pass 44/44 native tests and the same 75 installed GPU cases per platform (Windows RTX 4090;
 WSL software Vulkan), and are delivered through the same channel, but have no strict observer
 rows, no Tk strict cohort and no scoped admission. CPython 3.10 and 3.14 wheels are not provided.
@@ -50,11 +50,12 @@ PyQt6 and PySide6 profiles, on Windows Vulkan and WSL software Vulkan/X11. These
 selected no-OpenGL dependency profiles; the install command alone does not provide those Qt
 profiles. Ordinary upstream Qt or host installs are not covered by this strict claim.
 
-Independent source/scope/native review of the candidate is approved and bound. The remaining
-gates at the time of writing are the same-head required CI jobs, the final promotion review, the
-scoped admission of the 128 criteria and the eight mandatory rows, protected source integration
-and public-channel delivery. This page is updated when they complete; until then nothing here is
-an admitted or delivered claim.
+Independent source/scope/native review of the candidate is approved and bound. All 23
+same-head CI jobs pass on qualification head `1a8df91954000a6d891f6cd8fbcb0624a4b66080`, the independent
+final promotion review is approved, and the 128 criteria and eight mandatory rows are
+scope-admitted for the two CPython 3.12 wheels. The source is integrated by protected merge
+`98fb17ee2c2b19f47f032c22a901ffc544ee1998`. The CPython 3.11 and 3.13 wheels are not part of
+that admission. Scoped admission is a finite milestone, not full API parity.
 
 ## Limits and differences
 
@@ -91,3 +92,20 @@ notices remain attached to every wheel and the source. See `LICENSING.md`,
 `docs/coverage-checklist.md` and the source-local acceptance records under
 `compat/api-acceptance/` (`vulkan3-*`). Finite admission does not complete the 142 broader
 original compatibility obligations.
+
+## Public channel verification — 2026-11-18
+
+All six wheels were installed from the public index with the command above, each in a fresh
+environment, and compared with the released files: 537 installed members equal the exact wheel
+and there are no source overrides.
+
+| ABI | Windows (RTX 4090) | Linux (WSL, glibc 2.39) |
+| --- | --- | --- |
+| CPython 3.11 | exact 64×64 Vulkan clear/readback (3.11.11) | native import (3.11.14) |
+| CPython 3.12 | exact 64×64 Vulkan clear/readback (3.12.8) | native import (3.12.13) |
+| CPython 3.13 | exact 64×64 Vulkan clear/readback (3.13.8) | native import (3.13.8) |
+
+The Linux delivery check does not render; the 75 installed GPU cases per wheel on WSL software
+Vulkan are the separate installed-functional evidence. The index now lists ten hash-pinned links
+and keeps the four vulkan.1 and vulkan.2 links unchanged. See the
+[delivery record](../compat/api-acceptance/vulkan3-public-delivery-v1.json) for asset ids, hashes and limits.

@@ -8,15 +8,15 @@ The [offline CPython 3.12 installation guide](docs/offline-install-cp312.md) des
 
 ## Install
 
-The qualified successor release provides CPython 3.12 wheels for Windows x86_64 and Linux x86_64. See the [GitHub Release](https://github.com/bipxx/vispy_vulkan/releases/tag/v0.17.0-vulkan.2) for asset availability and delivery checks:
+The current release provides CPython 3.11, 3.12 and 3.13 wheels for Windows x86_64 and Linux x86_64 (glibc 2.39 or newer). The CPython 3.12 wheels carry the strict scoped admission; the 3.11 and 3.13 wheels are installed-functional only. See the [GitHub Release](https://github.com/bipxx/vispy_vulkan/releases/tag/v0.17.0-vulkan.3) for asset availability and delivery checks:
 
 ```sh
-pip install "vispy==0.17.0+vulkan.2" --extra-index-url https://bipxx.github.io/vispy_vulkan/simple/
+pip install "vispy==0.17.0+vulkan.3" --extra-index-url https://bipxx.github.io/vispy_vulkan/simple/
 ```
 
-The public channel is verified on Windows (exact Vulkan clear/readback) and Linux (native binary import), with 537 installed members matching each exact wheel. See the [delivery record](compat/api-acceptance/successor-public-delivery-v1.json) for scope and hashes.
+The public channel is verified for all six wheels on Windows (exact Vulkan clear/readback) and Linux (native binary import), with 537 installed members matching each exact wheel. See the [delivery record](compat/api-acceptance/vulkan3-public-delivery-v1.json) for scope and hashes.
 
-Pin the exact local version so a PyPI VisPy release cannot take precedence. See the [release notes](docs/release-0.17.0-vulkan.2.md) for wheel hashes, qualified platforms and limits.
+Pin the exact local version so a PyPI VisPy release cannot take precedence. See the [release notes](docs/release-0.17.0-vulkan.3.md) for wheel hashes, qualified platforms and limits.
 
 ## Build
 
