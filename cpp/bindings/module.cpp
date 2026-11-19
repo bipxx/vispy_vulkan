@@ -756,8 +756,8 @@ NB_MODULE(_dawn, m) {
         if (!read.error.empty() && read.rgba.empty()) {
             throw std::runtime_error(read.error);
         }
-        auto* owner = new std::vector<uint8_t>(std::move(read.rgba));
-        nb::capsule deleter(owner, [](void* ptr) noexcept { delete static_cast<std::vector<uint8_t>*>(ptr); });
+        auto* owner = new ReadbackBytes(std::move(read.rgba));
+        nb::capsule deleter(owner, [](void* ptr) noexcept { delete static_cast<ReadbackBytes*>(ptr); });
         return nb::ndarray<nb::numpy, uint8_t>(
             owner->data(), {static_cast<size_t>(read.height), static_cast<size_t>(read.width), 4},
             deleter);
@@ -776,8 +776,8 @@ NB_MODULE(_dawn, m) {
                 owner->data(), {static_cast<size_t>(read.height), static_cast<size_t>(read.width), channels},
                 deleter));
         }
-        auto* owner = new std::vector<uint8_t>(std::move(read.rgba));
-        nb::capsule deleter(owner, [](void* ptr) noexcept { delete static_cast<std::vector<uint8_t>*>(ptr); });
+        auto* owner = new ReadbackBytes(std::move(read.rgba));
+        nb::capsule deleter(owner, [](void* ptr) noexcept { delete static_cast<ReadbackBytes*>(ptr); });
         return nb::cast(nb::ndarray<nb::numpy, uint8_t>(
             owner->data(), {static_cast<size_t>(read.height), static_cast<size_t>(read.width), channels},
             deleter));
