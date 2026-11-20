@@ -1106,24 +1106,42 @@ class CanvasBackendDesktop(QtBaseCanvasBackend, QWidget):
         """Capture the current scene. Child overlays are not included."""
         # QOpenGLWidget::grabFramebuffer renders before reading its target.
         self._draw_dawn_scene()
-        return self._read_dawn_framebuffer()
+        # The caller owns the returned image independently of the readback.
+        return self._read_dawn_framebuffer().copy()
 
     def _read_dawn_framebuffer(self):
-        """Read an independently owned QImage without triggering another draw."""
+        """Read the frame into a QImage without triggering another draw.
+
+        The image views the freshly owned readback array instead of copying it
+        (the readback presentation path paints it once and may repaint it while
+        the next frame is pending). The array is kept alive by the image itself.
+        Callers that hand the image out must copy it (see grabFramebuffer).
+        """
+        import numpy as np
         from ...gloo.dawn_parser import read_pixels_dawn
-        # The native array is freshly owned and copied into bytes below, so
-        # read_pixels' defensive copy is skipped (B19).
-        image = read_pixels_dawn(None, True, 'color', copy=False)
+        # The native array is freshly owned, so read_pixels' defensive copy is
+        # skipped (B19); no other reference to it exists.
+        image = np.ascontiguousarray(read_pixels_dawn(None, True, 'color', copy=False))
         height, width, _channels = image.shape
-        data = bytes(image.tobytes())
         formats = QtGui.QImage.Format if PYQT6_API else QtGui.QImage
         alpha = self._vispy_canvas.context.config.get('alpha_size', 0) > 0
         # Match Qt's framebuffer image interpretation while keeping the
-        # renderer's byte-ordered RGBA readback and independent ownership.
+        # renderer's byte-ordered RGBA readback.
         fmt = formats.Format_RGBA8888_Premultiplied if alpha else formats.Format_RGBX8888
-        qimage = QtGui.QImage(data, width, height, width * 4, fmt)
+        try:
+            qimage = QtGui.QImage(image.data, width, height, width * 4, fmt)
+        except TypeError:
+            # A binding without buffer-protocol support: previous copying route.
+            qimage = QtGui.QImage(image.tobytes(), width, height, width * 4, fmt)
+            qimage.setDevicePixelRatio(self._ratio())
+            return qimage.copy()
         qimage.setDevicePixelRatio(self._ratio())
-        return qimage.copy()
+        try:
+            # QImage does not reference Python buffers; tie the array's lifetime to it.
+            qimage._dawn_pixels = image
+        except AttributeError:
+            return qimage.copy()
+        return qimage
 
 
 # Select CanvasBackend
