@@ -1,0 +1,171 @@
+{
+  "schema": 1,
+  "kind": "qualification-subject",
+  "manifest_sha256": "3799e98b70559deb109d9501d2888e650a0e4544036683afa1a309c24d1cad93",
+  "product_source_commit": "07de4afa3858d98b2ff9db40c0e351bd20d08e6e",
+  "qualification_head": "15cb085e0c12b57601792bf9e7f4f4c2319ef02d",
+  "candidate": {
+    "path": "compat/candidates/tk-state-resource-19/candidate.json",
+    "sha256": "66c655274326657b36698a2f1578c17e53d2085353fe3f4a997abe108c921138"
+  },
+  "selection": {
+    "path": "compat/candidates/tk-state-resource-19/admission-selection.json",
+    "sha256": "f0421d0c7d5f03a971eba6add1891dfb5b22c7e1f82aa05ca938603a128bca94"
+  },
+  "execution": {
+    "path": "compat/candidates/tk-state-resource-19/execution.json",
+    "sha256": "f3df30c64b110a8bb476baf8fde75ffc62e6b9561e1f5656648145ea829a28de"
+  },
+  "ledger": {
+    "path": "compat/candidates/tk-state-resource-19/execution-ledger.json",
+    "sha256": "2f3c91c9e09ea33f18f5130a0f3256baa75018d0e3e37b7df45a3d280ca0dc00"
+  },
+  "evidence_store": {
+    "path": "compat/evidence-stores/secondary-v1.json",
+    "sha256": "b164e3fdc85863a2327b508ea60f8d3068f740cfe90f665aa52905e28bfb3ca5"
+  },
+  "profiles": [
+    {
+      "profile": "windows-gpu-tk86-cp312-development",
+      "archive": {
+        "path": "compat/candidates/tk-state-resource-19/windows-archive.json",
+        "sha256": "03af0ba91c1fe1a259ec8f80ade51c787bd67c7e744baca3041b0ac5be0d81a2"
+      },
+      "producer": {
+        "path": "compat/candidates/tk-state-resource-19/windows-native-provenance.json",
+        "sha256": "67ea9984a424a0f6aaf4a0c38863fcbe71612edf735467d685840d71b22e4f21"
+      },
+      "producer_retention": {
+        "path": "@evidence/build/runs/vulkan4-proof-retention-1126/retention-record.json",
+        "sha256": "143da97647eac8b2c0f590390bc96f0515de4855636b047c7b91329bc3086e88"
+      },
+      "attempts": [
+        {
+          "id": "vulkan4-windows-strict-1113-tk-state-resource-failures-replay-0",
+          "sequence": 1,
+          "outcome": "failed",
+          "report": {
+            "path": "@evidence/build/runs/vulkan4-windows-strict-1113/tk-state-resource-failures/replay-0.json",
+            "sha256": "cb52b0e21462dc84313737daff764d288adb895ac672f150a9fd9a8feca5e10d"
+          },
+          "workflow": "tk-state-resource-failures",
+          "retention": {
+            "path": "@evidence/build/runs/vulkan4-proof-retention-1126/retention-record.json",
+            "sha256": "143da97647eac8b2c0f590390bc96f0515de4855636b047c7b91329bc3086e88"
+          },
+          "resolution": {
+            "path": "@evidence/build/runs/vulkan4-attempt-review-1124r/attempt-resolution-ce65a04403b613edec374bfe6d8a9bdc80fbe3c86ce278781326d3adaf94e60e.json",
+            "sha256": "9e1e7b6ca1a8cc17ac888665dbaf4a8d084466df4330c08cfad9b514bd110a50"
+          }
+        },
+        {
+          "id": "vulkan4-windows-strict-1113-tk-state-resource-failures-replay-1",
+          "sequence": 2,
+          "outcome": "passed",
+          "report": {
+            "path": "@evidence/build/runs/vulkan4-windows-strict-1113/tk-state-resource-failures/replay-1.json",
+            "sha256": "a52108a0d459a8637afcd45fda96b76e08a8f80ffc422e9f40100d63a16104be"
+          },
+          "workflow": "tk-state-resource-failures",
+          "retention": {
+            "path": "@evidence/build/runs/vulkan4-proof-retention-1126/retention-record.json",
+            "sha256": "143da97647eac8b2c0f590390bc96f0515de4855636b047c7b91329bc3086e88"
+          },
+          "resolution": null
+        },
+        {
+          "id": "vulkan4-windows-strict-1113-tk-capture-formats-replay-0",
+          "sequence": 3,
+          "outcome": "passed",
+          "report": {
+            "path": "@evidence/build/runs/vulkan4-windows-strict-1113/tk-capture-formats/replay-0.json",
+            "sha256": "ab7a1f76737d96a48a1875402ed8ca2a4cb5821d3ffa89e31a54d3c30cd053f9"
+          },
+          "workflow": "tk-capture-formats",
+          "retention": {
+            "path": "@evidence/build/runs/vulkan4-proof-retention-1126/retention-record.json",
+            "sha256": "143da97647eac8b2c0f590390bc96f0515de4855636b047c7b91329bc3086e88"
+          },
+          "resolution": null
+        }
+      ],
+      "selected_attempt": null,
+      "selected_workflow_attempts": [
+        {
+          "workflow": "tk-capture-formats",
+          "attempt": "vulkan4-windows-strict-1113-tk-capture-formats-replay-0"
+        },
+        {
+          "workflow": "tk-state-resource-failures",
+          "attempt": "vulkan4-windows-strict-1113-tk-state-resource-failures-replay-1"
+        }
+      ],
+      "attempt_history": {
+        "path": "@evidence/build/runs/vulkan4-attempt-histories-1124/windows-history.json",
+        "sha256": "1dc4dbb1a84a3453a379cbfce209f3e803589ac3648db20e88d173df6f1ea5e6"
+      }
+    },
+    {
+      "profile": "wsl-software-tk90-cp31213-development",
+      "archive": {
+        "path": "compat/candidates/tk-state-resource-19/linux-archive.json",
+        "sha256": "710efab741a9f57ffe0e84002c9900d8121ca3e0825741779b5aabee93d50e10"
+      },
+      "producer": {
+        "path": "compat/candidates/tk-state-resource-19/linux-native-provenance.json",
+        "sha256": "c885e23f65b694557b78d774b042bbf1c461af403a3f48a4983ea679d28dbda9"
+      },
+      "producer_retention": {
+        "path": "@evidence/build/runs/vulkan4-proof-retention-1126/retention-record.json",
+        "sha256": "143da97647eac8b2c0f590390bc96f0515de4855636b047c7b91329bc3086e88"
+      },
+      "attempts": [
+        {
+          "id": "vulkan4-wsl-strict-1114-tk-state-resource-failures-replay-0",
+          "sequence": 1,
+          "outcome": "passed",
+          "report": {
+            "path": "@evidence/build/runs/vulkan4-wsl-strict-1114/reports/tk-state-resource-failures/replay-0.json",
+            "sha256": "5388560083c07cb9a45a4409852142783e67ca72d3cc0a5be4bcd06967960220"
+          },
+          "workflow": "tk-state-resource-failures",
+          "retention": {
+            "path": "@evidence/build/runs/vulkan4-proof-retention-1126/retention-record.json",
+            "sha256": "143da97647eac8b2c0f590390bc96f0515de4855636b047c7b91329bc3086e88"
+          },
+          "resolution": null
+        },
+        {
+          "id": "vulkan4-wsl-strict-1114-tk-capture-formats-replay-0",
+          "sequence": 2,
+          "outcome": "passed",
+          "report": {
+            "path": "@evidence/build/runs/vulkan4-wsl-strict-1114/reports/tk-capture-formats/replay-0.json",
+            "sha256": "bc35fca138ab1634e54d7fe54fc958aa5888557cc48048bca6cc036cbc65afab"
+          },
+          "workflow": "tk-capture-formats",
+          "retention": {
+            "path": "@evidence/build/runs/vulkan4-proof-retention-1126/retention-record.json",
+            "sha256": "143da97647eac8b2c0f590390bc96f0515de4855636b047c7b91329bc3086e88"
+          },
+          "resolution": null
+        }
+      ],
+      "selected_attempt": null,
+      "selected_workflow_attempts": [
+        {
+          "workflow": "tk-capture-formats",
+          "attempt": "vulkan4-wsl-strict-1114-tk-capture-formats-replay-0"
+        },
+        {
+          "workflow": "tk-state-resource-failures",
+          "attempt": "vulkan4-wsl-strict-1114-tk-state-resource-failures-replay-0"
+        }
+      ],
+      "attempt_history": {
+        "path": "@evidence/build/runs/vulkan4-attempt-histories-1124/linux-history.json",
+        "sha256": "38788a6ccf4d064330e509d044e48a9d82bbec8a988d6fe272fb8482c0fc0916"
+      }
+    }
+  ]
+}

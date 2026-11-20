@@ -1,0 +1,8 @@
+{
+  "schema": 1,
+  "kind": "promotion",
+  "status": "APPROVED",
+  "independent": true,
+  "reviewer": "separate final-promotion review agent (not the author)",
+  "promotion_basis_sha256": "4facfc194e84f46fbdb93826aa9dd19c01999e830047b47519848532c072af9d"
+}

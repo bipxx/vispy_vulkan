@@ -1,8 +1,6 @@
 # VisPy Vulkan 0.17.0+vulkan.4
 
-Qualification in progress on 2026-11-20; publication pending. Nothing on this page is an admitted
-or delivered claim until the gates below complete and this page is updated. The intended release
-tag is `v0.17.0-vulkan.4`.
+Published on 2026-11-20 as [`v0.17.0-vulkan.4`](https://github.com/bipxx/vispy_vulkan/releases/tag/v0.17.0-vulkan.4).
 
 This successor speeds up the CPU readback used to show frames in Qt and Tk windows
 when native window presentation is not used (`qt_presentation='readback'`, Tk raster). It changes:
@@ -33,8 +31,6 @@ readback; most of its per-frame cost is Tk's own image handling.
 
 ## Install
 
-After publication:
-
 ```sh
 pip install "vispy==0.17.0+vulkan.4" --extra-index-url https://bipxx.github.io/vispy_vulkan/simple/
 ```
@@ -47,8 +43,8 @@ All wheels are x86_64.
 
 | Wheel | Bytes | SHA256 | Tier |
 | --- | --- | --- | --- |
-| `vispy-0.17.0+vulkan.4-cp312-cp312-win_amd64.whl` | 6,816,781 | `0138bcb58ad9ad10fbfc34656b8a63b90d2679c02a3e47faf9c844736c304773` | strict candidate |
-| `vispy-0.17.0+vulkan.4-cp312-cp312-manylinux_2_39_x86_64.whl` | 10,566,229 | `e8a61ae7945c214774fab709d76d2adb9bb2f81ce33a3e2cb3f68031deac16be` | strict candidate |
+| `vispy-0.17.0+vulkan.4-cp312-cp312-win_amd64.whl` | 6,816,781 | `0138bcb58ad9ad10fbfc34656b8a63b90d2679c02a3e47faf9c844736c304773` | scoped-admitted |
+| `vispy-0.17.0+vulkan.4-cp312-cp312-manylinux_2_39_x86_64.whl` | 10,566,229 | `e8a61ae7945c214774fab709d76d2adb9bb2f81ce33a3e2cb3f68031deac16be` | scoped-admitted |
 | `vispy-0.17.0+vulkan.4-cp311-cp311-win_amd64.whl` | 6,817,360 | `096d83f2e49b8398ef1c27a0beecc4a3adab2f4291538dfef725458903f01272` | installed-functional |
 | `vispy-0.17.0+vulkan.4-cp311-cp311-manylinux_2_39_x86_64.whl` | 10,569,256 | `8a0afe07c766f5737b2ecb5c0219285ee4c10724699e0b9c0fad99099a624468` | installed-functional |
 | `vispy-0.17.0+vulkan.4-cp313-cp313-win_amd64.whl` | 6,816,506 | `b52018c4d0a3f65305b92c12fa7285a0232145ae389bfefba55b3f249cee10af` | installed-functional |
@@ -56,23 +52,23 @@ All wheels are x86_64.
 
 Product source is `07de4afa3858d98b2ff9db40c0e351bd20d08e6e`.
 
-**Tiers.** *strict candidate* means the CPython 3.12 wheels are the subject of the strict
-qualification below; they become scoped-admitted only after the remaining gates pass.
+**Tiers.** *scoped-admitted* covers the strict qualification below for the two
+CPython 3.12 wheels.
 *installed-functional* means the CPython 3.11 and 3.13 wheels are built from the same source, pass
 44/44 native tests and the same 75 installed GPU cases per platform (Windows RTX 4090; WSL
 software Vulkan), but have no strict observer rows, no Tk strict cohort and no scoped admission.
 CPython 3.10 and 3.14 wheels are not provided.
 
-## Verified observations and remaining gates
+## Verified observations and release gates
 
-For the two CPython 3.12 wheels, observed so far: all 128 selected Tk criteria on the exact wheels,
+For the two CPython 3.12 wheels, the scoped admission covers all 128 selected Tk criteria on the exact wheels,
 and eight mandatory VisPy-level observations (headless and plain QWidget with selected PyQt5,
 PyQt6 and PySide6 profiles, on Windows Vulkan and WSL software Vulkan/X11). These are exact selected
 no-OpenGL dependency profiles; the install command alone does not provide those Qt profiles.
 
-Independent source, candidate, failed-attempt and eight-row reviews are approved. The remaining
-gates are the change-impact review, the same-head required CI jobs, the final promotion review,
-scoped admission, protected source integration and public-channel delivery.
+The independent reviews passed, and all 23 same-head CI jobs passed on qualification head
+`15cb085e0c12b57601792bf9e7f4f4c2319ef02d`. Protected merge of PR #96 integrated the exact qualified tree
+at `9947e1a00816c709abd851773f5232bbbb8aa8db`. The public channel results are recorded in the release asset [`delivery.json`](https://github.com/bipxx/vispy_vulkan/releases/download/v0.17.0-vulkan.4/delivery.json).
 
 ## Limits and differences
 
@@ -94,3 +90,21 @@ This implementation is AGPL-3.0-only. The unchanged original VisPy BSD license a
 notices remain attached to every wheel and the source. See `LICENSING.md`,
 `docs/coverage-checklist.md` and the source-local acceptance records under
 `compat/api-acceptance/` (`vulkan4-*`).
+
+## Public channel verification — 2026-11-20
+
+The public index served all six hash-pinned wheels and preserved the ten earlier links.
+Each public install resolved to the pinned GitHub release asset and matched all 537
+runtime package members, with zero source overrides.
+
+| CPython | Windows x86_64 | Linux x86_64 wheel |
+| --- | --- | --- |
+| 3.11 | Exact 64×64 headless Vulkan clear and readback | Public install and member verification in a cross-platform pip target |
+| 3.12 | Exact 64×64 headless Vulkan clear and readback | Public install and member verification in a cross-platform pip target |
+| 3.13 | Exact 64×64 headless Vulkan clear and readback | Public install and member verification in a cross-platform pip target |
+
+The Windows renders used the RTX 4090 and returned ten zero shutdown gauges per run.
+WSL was inaccessible during channel verification. The Linux channel checks verified
+wheel selection, archive hashes and installed bytes. Linux native import and rendering
+remain covered by the separate pre-publication installed-functional evidence.
+Temporary installs were removed. See the [delivery record](../compat/api-acceptance/vulkan4-public-delivery-v1.json).

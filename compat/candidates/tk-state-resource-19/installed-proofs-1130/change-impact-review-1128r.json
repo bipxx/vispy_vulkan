@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "kind": "change-impact",
+  "status": "APPROVED",
+  "independent": true,
+  "reviewer": "separate review agent (not the author)",
+  "subject_sha256": "3799e98b70559deb109d9501d2888e650a0e4544036683afa1a309c24d1cad93",
+  "qualification_head": "15cb085e0c12b57601792bf9e7f4f4c2319ef02d"
+}

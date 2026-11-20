@@ -1,0 +1,399 @@
+{
+  "schema": 1,
+  "kind": "reviewed-current-mandatory-matrix-admission",
+  "status": "SCOPED_ADMISSION_PASS",
+  "qualification_head": "15cb085e0c12b57601792bf9e7f4f4c2319ef02d",
+  "subject_sha256": "3799e98b70559deb109d9501d2888e650a0e4544036683afa1a309c24d1cad93",
+  "product_source_commit": "07de4afa3858d98b2ff9db40c0e351bd20d08e6e",
+  "subject": {
+    "path": "compat/candidates/tk-state-resource-19/installed-proofs-1130/qualification-subject.json",
+    "sha256": "b4f542b1d2fa2fdf672b82acb2f84735118ab3928808ea391e83feb9da70a2bd"
+  },
+  "impact": {
+    "path": "compat/candidates/tk-state-resource-19/installed-proofs-1130/change-impact-review-1128r.json",
+    "sha256": "ee1fbc149b2b8f433966706962d0361bc0b0414542123e8c45fea663fa2831a0"
+  },
+  "requirements_matrix": {
+    "path": "compat/no-opengl-matrix.json",
+    "sha256": "230b12f3d4ed418cde3b0313fbdea36557b02a61c80a1cf637699d7a9bc50fc4"
+  },
+  "observations": {
+    "path": "@evidence/build/runs/vulkan4-mandatory-index-1125/verification.json",
+    "sha256": "b35c15a60ea037734d1b0595958c54a0be360dd21235cc96dc936aaa61520252"
+  },
+  "attempt_index": {
+    "path": "@evidence/build/runs/vulkan4-mandatory-index-1125/attempt-index.json",
+    "sha256": "311e8c3a9045ec0167788e5029fa8dff3061099e6de36e8dd1cd18e8c3bdcb07"
+  },
+  "retention_audit": {
+    "path": "@evidence/build/runs/vulkan4-mandatory-index-1125/retention-audit.json",
+    "sha256": "9a4ecdfa15658e0b8eb50888dfe56822175fc23069f55f5722e5ac2b37a83913"
+  },
+  "reviewed_basis": {
+    "path": "@evidence/build/runs/vulkan4-mandatory-review-1125r/matrix-basis.json",
+    "sha256": "f5218d3b0cb4cf8581b57b19a6263eadd6065ccfa97e40a2b12f2c8a7d9d762d"
+  },
+  "mandatory_review_decision": {
+    "path": "@evidence/build/runs/vulkan4-mandatory-review-1125r/decision.json",
+    "sha256": "ff012acbb3c274ffbee034643cf084429490a4e97d59eef5b3d45023067ff095"
+  },
+  "selected_wheels": [
+    "0138bcb58ad9ad10fbfc34656b8a63b90d2679c02a3e47faf9c844736c304773",
+    "e8a61ae7945c214774fab709d76d2adb9bb2f81ce33a3e2cb3f68031deac16be"
+  ],
+  "rows": [
+    {
+      "id": "windows-vulkan-headless",
+      "status": "SCOPED_ADMISSION_PASS",
+      "wheel_sha256": "0138bcb58ad9ad10fbfc34656b8a63b90d2679c02a3e47faf9c844736c304773",
+      "environment_id": "0bb5f8eb8419f03931648660b0ae40c042a7b09a31094054fff33a4c0d4f5341",
+      "features": [
+        "clear",
+        "image",
+        "labels",
+        "volume",
+        "markers",
+        "mesh",
+        "compiled-text",
+        "depth-order",
+        "shader-arrays-attributes-lod",
+        "multisample-lines",
+        "recovery",
+        "shutdown-zero-resources"
+      ],
+      "observation": {
+        "path": "@evidence/build/runs/vulkan4-windows-headless-1115/verification.json",
+        "sha256": "91bb19d5249e5cb24036b98f21b1ed3d668524bb3e6d2bfeb3e59203687885be"
+      },
+      "report": {
+        "path": "@evidence/build/runs/vulkan4-windows-headless-1115/replay-0.json",
+        "sha256": "de88a348e055c5185c16908559b2e9b63df2e2307e80458d836d08441984c217"
+      },
+      "worker": {
+        "path": "@evidence/build/runs/vulkan4-windows-headless-1115/replay-0.worker.json",
+        "sha256": "299276463d366491b49adf5d98942305e9f74b97fbe89d1821a9b76115568baa"
+      },
+      "receipt": {
+        "path": "@evidence/build/runs/vulkan4-windows-headless-1115/receipt-0.json",
+        "sha256": "a53bce3863e713bf015a629a22242460527e3f5267ddecbaa644bd9cc2473544"
+      },
+      "cleanup": {
+        "path": "@evidence/build/runs/vulkan4-windows-headless-1115/cleanup-result.json",
+        "sha256": "c1541697e77bb88767ab8203b07bedc5b96a424f68cf8f11d6533253f4172a79"
+      },
+      "terminal": {
+        "path": "@evidence/build/runs/vulkan4-windows-headless-1115/terminal.json",
+        "sha256": "3004f081e55711894f94e4964c76d79589d00077645d14afa2c8b0c4530ef682"
+      }
+    },
+    {
+      "id": "windows-vulkan-qwidget-pyqt6",
+      "status": "SCOPED_ADMISSION_PASS",
+      "wheel_sha256": "0138bcb58ad9ad10fbfc34656b8a63b90d2679c02a3e47faf9c844736c304773",
+      "environment_id": "07480681b8d38e98b8c91b0606b7490219845d7cc2a2a887fd4ecbb6819e87d1",
+      "features": [
+        "launch",
+        "initial-render",
+        "update",
+        "interaction",
+        "capture-export",
+        "recovery",
+        "close"
+      ],
+      "observation": {
+        "path": "@evidence/build/runs/vulkan4-windows-pyqt6-1116/verification.json",
+        "sha256": "3ec63ec0fc9a85c7b2481093a9a77a4a8b745bfe83cf8a08cb4c0b02a941e9e3"
+      },
+      "report": {
+        "path": "@evidence/build/runs/vulkan4-windows-pyqt6-1116/replay-0.json",
+        "sha256": "f95cd612a397c070ac402032bd1594075f622e34b693711b2660a6baf325630d"
+      },
+      "worker": {
+        "path": "@evidence/build/runs/vulkan4-windows-pyqt6-1116/replay-0.worker.json",
+        "sha256": "c55f474c1712918b7002b7f6f26cf2bfd814afc283e7d893038640dc70c06cd3"
+      },
+      "receipt": {
+        "path": "@evidence/build/runs/vulkan4-windows-pyqt6-1116/receipt-0.json",
+        "sha256": "7ecfe8639b6a1e2a9d3848553b14e8b914c97265a8736d905fdcb9aa91df8d9f"
+      },
+      "cleanup": {
+        "path": "@evidence/build/runs/vulkan4-windows-pyqt6-1116/cleanup-result.json",
+        "sha256": "6ad0d47d6d691c09ff2e621cdd8b7562d4a33a0deb52f4e52b2426882a43f997"
+      },
+      "terminal": {
+        "path": "@evidence/build/runs/vulkan4-windows-pyqt6-1116/terminal.json",
+        "sha256": "cf85bead04d02ec5e378d6600edd0d16ac0660d59f828c23611ab97ec24fb306"
+      }
+    },
+    {
+      "id": "windows-vulkan-qwidget-pyqt5",
+      "status": "SCOPED_ADMISSION_PASS",
+      "wheel_sha256": "0138bcb58ad9ad10fbfc34656b8a63b90d2679c02a3e47faf9c844736c304773",
+      "environment_id": "4c3368407f572b3635ba377309d9651c61026da02cf8d5915e942eee0146f180",
+      "features": [
+        "launch",
+        "initial-render",
+        "update",
+        "interaction",
+        "capture-export",
+        "recovery",
+        "close"
+      ],
+      "observation": {
+        "path": "@evidence/build/runs/vulkan4-windows-pyqt5-1117/verification.json",
+        "sha256": "c02aee65048bbe0407951911576143b95c83f5ac030709ad74fb8f9587ad5128"
+      },
+      "report": {
+        "path": "@evidence/build/runs/vulkan4-windows-pyqt5-1117/replay-0.json",
+        "sha256": "2e5316f08ba854c6435e7a60b749b7b7df82923b0553d87e0ed7577423f16ff4"
+      },
+      "worker": {
+        "path": "@evidence/build/runs/vulkan4-windows-pyqt5-1117/replay-0.worker.json",
+        "sha256": "c9781a9c4de30b9bc4c7a143b02e4d50bb366979d7461b2e06e79db64dff543f"
+      },
+      "receipt": {
+        "path": "@evidence/build/runs/vulkan4-windows-pyqt5-1117/receipt-0.json",
+        "sha256": "49fa4b922f7a0f1f8d070b13c49c16866d9b682e9e6f40c2ad0e4eda69c5a34a"
+      },
+      "cleanup": {
+        "path": "@evidence/build/runs/vulkan4-windows-pyqt5-1117/cleanup-result.json",
+        "sha256": "91eeda54ad0fc2cb95c861f24a300a743d6764055da1e74c53819af40990d19b"
+      },
+      "terminal": {
+        "path": "@evidence/build/runs/vulkan4-windows-pyqt5-1117/terminal.json",
+        "sha256": "6a16bc5f8874b7559ddf5007946d1c2a7b2c45b84d16847047df186a42083a7a"
+      }
+    },
+    {
+      "id": "windows-vulkan-qwidget-pyside6",
+      "status": "SCOPED_ADMISSION_PASS",
+      "wheel_sha256": "0138bcb58ad9ad10fbfc34656b8a63b90d2679c02a3e47faf9c844736c304773",
+      "environment_id": "e144f64f6220dec786b722fede1f2d7fee74269a4085d38fa77bcbc8b735cacc",
+      "features": [
+        "launch",
+        "initial-render",
+        "update",
+        "interaction",
+        "capture-export",
+        "recovery",
+        "close"
+      ],
+      "observation": {
+        "path": "@evidence/build/runs/vulkan4-windows-pyside6-1118/verification.json",
+        "sha256": "5763fa92c463987c63e18a521d77e53ce5db1f06823e64c71d515d0ee5c238cf"
+      },
+      "report": {
+        "path": "@evidence/build/runs/vulkan4-windows-pyside6-1118/replay-0.json",
+        "sha256": "90b241aaf165ae1ffadeeaddf4d0fb69f780993f8c659948172f69ab988f2d6b"
+      },
+      "worker": {
+        "path": "@evidence/build/runs/vulkan4-windows-pyside6-1118/replay-0.worker.json",
+        "sha256": "ab47b23a136521bf4664420a1603ac51433c6597677bf1f1f8946e673b81419d"
+      },
+      "receipt": {
+        "path": "@evidence/build/runs/vulkan4-windows-pyside6-1118/receipt-0.json",
+        "sha256": "57f21f38e8bd66990abb3a67d6ec4cfe7d1888dea18cab75fbd1115a7ef4b35f"
+      },
+      "cleanup": {
+        "path": "@evidence/build/runs/vulkan4-windows-pyside6-1118/cleanup-result.json",
+        "sha256": "0e17c2e823a228f2724c8f3579bc2c3978ee6fd319def558607fc67695fda504"
+      },
+      "terminal": {
+        "path": "@evidence/build/runs/vulkan4-windows-pyside6-1118/terminal.json",
+        "sha256": "894b03daf6ba4f9f9dca7836b0d385397a612c98357d308d74532a70990fc20e"
+      }
+    },
+    {
+      "id": "wsl-linux-lavapipe-x11-qwidget-pyqt6",
+      "status": "SCOPED_ADMISSION_PASS",
+      "wheel_sha256": "e8a61ae7945c214774fab709d76d2adb9bb2f81ce33a3e2cb3f68031deac16be",
+      "environment_id": "d53e8798a61e86282fe454a9358486c926f1c01273295c7256132e406d72a150",
+      "features": [
+        "launch",
+        "initial-render",
+        "update",
+        "interaction",
+        "capture-export",
+        "recovery",
+        "close"
+      ],
+      "observation": {
+        "path": "@evidence/build/runs/vulkan4-wsl-pyqt6-1119/verification.json",
+        "sha256": "e0dd88bc9d132e17ecc10dd860bffb10371837225cea6c3c11960ecf877ff4ea"
+      },
+      "report": {
+        "path": "@evidence/build/runs/vulkan4-wsl-pyqt6-1119/reports/replay-0.json",
+        "sha256": "6011354d4588c5461e123d564133a7f6b5713ea224176922feb774c94445986e"
+      },
+      "worker": {
+        "path": "@evidence/build/runs/vulkan4-wsl-pyqt6-1119/reports/replay-0.worker.json",
+        "sha256": "a0a2f272b1c3216ad4b93db85a0b54dee7e873e24be2969eb7b2b26fa7b04407"
+      },
+      "receipt": {
+        "path": "@evidence/build/runs/vulkan4-wsl-pyqt6-1119/reports/receipt-0.json",
+        "sha256": "fc64b93969ae9453a42797bdf798d8e231509ae078ce69733102f1116e44092e"
+      },
+      "cleanup": {
+        "path": "@evidence/build/runs/vulkan4-wsl-pyqt6-1119/cleanup-result.json",
+        "sha256": "7bf312576cf758800bde4d9165f00c2fc5655185d59df5244958571b10d3f23c"
+      },
+      "terminal": {
+        "path": "@evidence/build/runs/vulkan4-wsl-pyqt6-1119/terminal.json",
+        "sha256": "b24ad1d6c0102009a56bc989df6f4a5dd9ceda5d25d0f4a677f0e8814d227a72"
+      }
+    },
+    {
+      "id": "wsl-linux-lavapipe-x11-qwidget-pyqt5",
+      "status": "SCOPED_ADMISSION_PASS",
+      "wheel_sha256": "e8a61ae7945c214774fab709d76d2adb9bb2f81ce33a3e2cb3f68031deac16be",
+      "environment_id": "c1610e0aa3cc6d197b65e49219d9dff1ed7f0531febc65394863dcd8f97a9eaa",
+      "features": [
+        "launch",
+        "initial-render",
+        "update",
+        "interaction",
+        "capture-export",
+        "recovery",
+        "close"
+      ],
+      "observation": {
+        "path": "@evidence/build/runs/vulkan4-wsl-pyqt5-1120/verification.json",
+        "sha256": "3e08249fa24a4ea5296e760ae331298eb03016744959347babf5941d70a9423e"
+      },
+      "report": {
+        "path": "@evidence/build/runs/vulkan4-wsl-pyqt5-1120/reports/replay-0.json",
+        "sha256": "0a822d13e85979f95e3843b2dc5f7980a228f8bb01715cd92477c8913337ea89"
+      },
+      "worker": {
+        "path": "@evidence/build/runs/vulkan4-wsl-pyqt5-1120/reports/replay-0.worker.json",
+        "sha256": "e28e38d39e3f040b132d6c3f8dafd465aa354f61cbf8b9878bd33e4071ddc594"
+      },
+      "receipt": {
+        "path": "@evidence/build/runs/vulkan4-wsl-pyqt5-1120/reports/receipt-0.json",
+        "sha256": "420d14b9e348a0d548238001881ce71018c92522d6010fef501168bd9f66ad5a"
+      },
+      "cleanup": {
+        "path": "@evidence/build/runs/vulkan4-wsl-pyqt5-1120/cleanup-result.json",
+        "sha256": "9abc283b26a2bb67c938e2a12738c6cf859f15b3fc194f7470cd6b09fb40784e"
+      },
+      "terminal": {
+        "path": "@evidence/build/runs/vulkan4-wsl-pyqt5-1120/terminal.json",
+        "sha256": "025be11b297f04610422f9664f1eb281589b4073f8f2cb12af738570611002d0"
+      }
+    },
+    {
+      "id": "wsl-linux-lavapipe-x11-qwidget-pyside6",
+      "status": "SCOPED_ADMISSION_PASS",
+      "wheel_sha256": "e8a61ae7945c214774fab709d76d2adb9bb2f81ce33a3e2cb3f68031deac16be",
+      "environment_id": "1887c121a98f89a731db586eabb2f9c705f0ff470ff918385a308a1724863535",
+      "features": [
+        "launch",
+        "initial-render",
+        "update",
+        "interaction",
+        "capture-export",
+        "recovery",
+        "close"
+      ],
+      "observation": {
+        "path": "@evidence/build/runs/vulkan4-wsl-pyside6-1121/verification.json",
+        "sha256": "b2968741f3e1d3c8dff9c852051031eb60ff20d3082e3df96032989d4d8172b2"
+      },
+      "report": {
+        "path": "@evidence/build/runs/vulkan4-wsl-pyside6-1121/reports/replay-0.json",
+        "sha256": "8070e39a2029daed05fc5e461b78db8deddb195c2281c7b7648ae2fbe08a32b2"
+      },
+      "worker": {
+        "path": "@evidence/build/runs/vulkan4-wsl-pyside6-1121/reports/replay-0.worker.json",
+        "sha256": "4770d0020420b2b7c93b368430e499909cba5f413252d5d67fa53dbecf3a4eb2"
+      },
+      "receipt": {
+        "path": "@evidence/build/runs/vulkan4-wsl-pyside6-1121/reports/receipt-0.json",
+        "sha256": "6e202a7163ddacc9b174897a2486d4d1f42c56953a03239e2641e4b9b9e1cc27"
+      },
+      "cleanup": {
+        "path": "@evidence/build/runs/vulkan4-wsl-pyside6-1121/cleanup-result.json",
+        "sha256": "d1a3e7f869fa8efed74b4048d1be26bbf3d2274e60021a0163d8f656a0c59f11"
+      },
+      "terminal": {
+        "path": "@evidence/build/runs/vulkan4-wsl-pyside6-1121/terminal.json",
+        "sha256": "2038c7abd852531334ad9e4abe877505568e2976a6d611fb86c833079c5cca2c"
+      }
+    },
+    {
+      "id": "wsl-linux-lavapipe-x11-headless",
+      "status": "SCOPED_ADMISSION_PASS",
+      "wheel_sha256": "e8a61ae7945c214774fab709d76d2adb9bb2f81ce33a3e2cb3f68031deac16be",
+      "environment_id": "0358cb0818ae602d3ad19d26d1ab914a7ad29f6f38524f07c7fddbf31fb1dcf1",
+      "features": [
+        "clear",
+        "image",
+        "labels",
+        "volume",
+        "markers",
+        "mesh",
+        "compiled-text",
+        "depth-order",
+        "shader-arrays-attributes-lod",
+        "multisample-lines",
+        "recovery",
+        "shutdown-zero-resources"
+      ],
+      "observation": {
+        "path": "@evidence/build/runs/vulkan4-wsl-headless-1122/verification.json",
+        "sha256": "53afaeeba565605aa502c04c8d913ba2a155b77568448b84ef424d0b6fa8361d"
+      },
+      "report": {
+        "path": "@evidence/build/runs/vulkan4-wsl-headless-1122/reports/replay-0.json",
+        "sha256": "d6f7810ff31a885b1495090c594126c64b18af6e511c6cfbd5e569224af6b0d6"
+      },
+      "worker": {
+        "path": "@evidence/build/runs/vulkan4-wsl-headless-1122/reports/replay-0.worker.json",
+        "sha256": "58295602d7418edb58b87f64d0eb1693f93f00595162cbf89a89e7e8e6bbe0e8"
+      },
+      "receipt": {
+        "path": "@evidence/build/runs/vulkan4-wsl-headless-1122/reports/receipt-0.json",
+        "sha256": "7581874166d2ccad03d91115208954f034eee5e87c9255d485ec226b08c0bb20"
+      },
+      "cleanup": {
+        "path": "@evidence/build/runs/vulkan4-wsl-headless-1122/cleanup-result.json",
+        "sha256": "9f3d11a53d47e4806c62b48b0334c1ff0323953ec541564d86d3102da5e6fdcf"
+      },
+      "terminal": {
+        "path": "@evidence/build/runs/vulkan4-wsl-headless-1122/terminal.json",
+        "sha256": "90d09a0d2b16c8119906cacde58c55db7c37b932d1c7832877c4056618cdf9f0"
+      }
+    }
+  ],
+  "required_rows": 8,
+  "observed_rows": 8,
+  "admitted_rows": 8,
+  "generic_Windows_refusals_preserved": 4,
+  "discovery_reports_remain_UNVERIFIED": 8,
+  "pid_reuse_refusal_in_rows": false,
+  "canonical_historical_matrix_modified": false,
+  "canonical14files_unchanged": true,
+  "required_CI_complete": true,
+  "artifact_admitted": true,
+  "matrix_admitted": true,
+  "scope": "Exact eight reviewed Windows/WSL profiles and selected Tk admission (tk-state-resource-19, wheels 0138bcb5... and e8a61ae7...). Manual foreign-origin basis/refusals refusal remain distinct. Protected integration and distinct public delivery still required; no full parity, Metal graphics or physical Linux GPU/HID claim.",
+  "full_inventory_complete": false,
+  "release_complete": false,
+  "independent_final_review": {
+    "path": "@evidence/build/runs/vulkan4-final-promotion-review-1134r/decision.json",
+    "sha256": "3ee4795e785cf41be43b927c2750857d21a808e596e8a565b8f908c3344b581c"
+  },
+  "promotion_basis": {
+    "path": "compat/candidates/tk-state-resource-19/installed-proofs-1130/promotion-basis-1134.json",
+    "sha256": "73f8897d2230391e3faaf3cadd9b659b341e30ea061b563eb63a8616f7b4f079"
+  },
+  "strict_result": {
+    "path": "@evidence/build/runs/vulkan4-scoped-admission-1135/strict-admission-result.json",
+    "sha256": "f9fdae1e148fd26c51981bf8304b8f9491268fcdf1bc47cc4836ff1202990705"
+  },
+  "original_join": {
+    "path": "@evidence/build/runs/vulkan4-mandatory-promotion-join-1131/matrix-prepromotion-join.json",
+    "sha256": "06b67de00729c5fe27fea6580fe9d7e89ea94589deac517f81d4b607c351b702"
+  },
+  "qualification_index_foreign_retention_acceptance": false
+}

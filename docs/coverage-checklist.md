@@ -2,6 +2,15 @@
 
 ## Latest checkpoint — 2026-11-20
 
+**`0.17.0+vulkan.4` public delivery (D41) — 2026-11-20:**
+- The qualified tree merged in [PR #96](https://github.com/bipxx/vispy_vulkan/pull/96) at `9947e1a00816c709abd851773f5232bbbb8aa8db` after 23 same-head CI checks and independent review. The [scoped admission](../compat/candidates/tk-state-resource-19/installed-proofs-1130/mandatory-matrix-admission-1135.json) covers 128 selected Tk bindings and eight mandatory profiles for the two CPython 3.12 wheels.
+- All six wheels are publicly delivered through the [release](https://github.com/bipxx/vispy_vulkan/releases/tag/v0.17.0-vulkan.4) and [hash-pinned index](https://bipxx.github.io/vispy_vulkan/simple/). The ten earlier index links are preserved. All six public installs matched their pinned hashes and all 537 installed runtime members. Windows CPython 3.11, 3.12 and 3.13 each rendered an exact headless Vulkan frame. Linux checks used cross-platform pip installs because WSL was inaccessible. See the [delivery record](../compat/api-acceptance/vulkan4-public-delivery-v1.json).
+- The two CPython 3.12 wheels are scoped-admitted and publicly delivered. The four CPython 3.11 and 3.13 wheels retain their installed-functional tier and are publicly delivered with zero strict rows. Full inventory remains incomplete.
+
+**User decisions — 2026-11-20**
+- **D40** — Reopen all thirteen D37 items at level A scope and execute them as a swarm: `LIN-02`, `LIF-08`, `BUG-01`, `PLAT-03`, `PLAT-04`, `PLAT-05`, `PLAT-06`, `PLAT-08`, `HOST-04`, `HOST-05`, `PERF-02`, `PERF-03`, and `TOOL-02`. Their D37 dispositions remain in the historical entries.
+- **D41** — Land W1 before W2 with one translation path, fix the capture-count bug, and publish `v0.17.0-vulkan.4`.
+
 **`0.17.0+vulkan.4` qualification progress (readback performance batch) — 2026-11-20:**
 - Scope: the Qt readback presentation path builds its `QImage` on the readback array (`_qt.py`); `read_pixels` reuses a per-canvas staging buffer and leaves its output uninitialized before the row copy (`cpp/runtime.cpp`, `cpp/runtime.hpp`, `cpp/bindings/module.cpp`); the Mesa source pin downloads through Launchpad's `+files` link (same bytes); version `0.17.0+vulkan.4`. Independent source review `1081r` APPROVE (attempt 3, after corrected `PERF-01` evidence and the URL addendum). Freeze `07de4afa…` (`1090`); the first freeze `89bc6252…` (`1082`) is superseded because its fresh Linux producer failed on the dead PPA pool URL.
 - Producers and wheels ([vulkan4-wheels](../compat/api-acceptance/vulkan4-wheels-v1.json)): fresh Windows cp312 native `1092` (`44/44` CTests), hosted Linux run `44647091887` captured in `1098` and retagged in `1099`, Metal `44647094694` captured (`1105`/`1106`, build/CPU only) and both CI reuse pins renewed (`1102` incl. `driver_pin_sha256`, `1107`). Six wheels, each `installed-functional` with `75/75` GPU cases: cp312 `0138bcb5…`/`e8a61ae7…` (strict candidates, plus `14/14` Tk), cp311 `096d83f2…`/`8a0afe07…`, cp313 `b52018c4…`/`1b8f140d…`.
