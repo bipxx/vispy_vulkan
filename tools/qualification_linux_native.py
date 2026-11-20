@@ -57,6 +57,9 @@ CANDIDATE13_SELECTOR_WORKFLOW_SHA256 = '706a9d266d0efa28fefc54b86039a0bec88856cc
 # fresh producer). The fresh producer body and capacity policy are byte-identical
 # to the pinned authority; other selectors or edits remain unsupported.
 CANDIDATE18_SELECTOR_WORKFLOW_SHA256 = 'cf0b7b037141dfdeb086343b8330600f006fb3fbbeb126c2e7dff20582a56356'
+# Exact candidate19 selector in the same inactive reuse arm (the 0.17.0+vulkan.4
+# fresh producer); the same body and capacity policy, no other selectors or edits.
+CANDIDATE19_SELECTOR_WORKFLOW_SHA256 = 'c9286914d387f1f4ad5da7b25b439f273d3031e2fed8272e824160d85c6715b4'
 MEMBERS = {
     'vispy/_dawn.cpython-312-x86_64-linux-gnu.so': '_dawn.cpython-312-x86_64-linux-gnu.so',
     'vispy/visuals/text/_sdf_cpu.cpython-312-x86_64-linux-gnu.so': '_sdf_cpu.cpython-312-x86_64-linux-gnu.so',
@@ -248,7 +251,8 @@ def validate_capture(capture, expected_production, root=ROOT, *, evidence_root=N
             if name == WORKFLOW_PATH:
                 accepted.update((LEGACY_WORKFLOW_SHA256, REUSE_SELECTOR_WORKFLOW_SHA256,
                                  CANDIDATE13_SELECTOR_WORKFLOW_SHA256,
-                                 CANDIDATE18_SELECTOR_WORKFLOW_SHA256))
+                                 CANDIDATE18_SELECTOR_WORKFLOW_SHA256,
+                                 CANDIDATE19_SELECTOR_WORKFLOW_SHA256))
             if name == 'tools/linux_ci_lifecycle.py':
                 accepted.update((LEGACY_COLLECTOR_SHA256, PREVIOUS_COLLECTOR_SHA256))
             if name == 'tools/audit_linux_wheel.py':

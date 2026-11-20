@@ -1,0 +1,268 @@
+{
+  "schema": 1,
+  "date": "2026-11-20",
+  "status": "PASS_READBACK_16_32_SELECTED_INSTALLED_ROW_BINDINGS_NOT_ADMITTED",
+  "candidate": "tk-state-resource-19",
+  "candidate_scope_sha256": "08353ba2f3920bccde803ec296481647ddeec82bde05eb7a05cc687f8b4d05cc",
+  "source_commit": "07de4afa3858d98b2ff9db40c0e351bd20d08e6e",
+  "selected_rows_validated": 32,
+  "criterion_bindings": 128,
+  "raw_gate_checks": 96,
+  "canonical_json_count": 14,
+  "inventory": {
+    "status": "VALID_INCOMPLETE",
+    "features": 158,
+    "rows": 190,
+    "incomplete_required_rows": 142,
+    "required_pairs": 174,
+    "optional_pairs": 616,
+    "nonapplicable_pairs": 0,
+    "reviewed": false
+  },
+  "canonical_preparation_unchanged": true,
+  "execution_scope_unchanged": true,
+  "overlay": {
+    "path": "@evidence/build/runs/vulkan4-installed-bindings-1123/selected-row-overlay.json",
+    "sha256": "a6e9c1a096f6ae3af49d19469ce02dd08b3f9749e1c62af9059426b5e109aadf"
+  },
+  "frozen_inputs": {
+    "path": "@evidence/build/runs/vulkan4-installed-bindings-1123/frozen-inputs.json",
+    "sha256": "508dff42b50b8f563bfa6b02734b6ac43330c009d070f445dd3092cb07cb9aff"
+  },
+  "distribution_audits": {
+    "windows-gpu-tk86-cp312-development": {
+      "path": "@evidence/build/runs/vulkan4-installed-bindings-1123/windows-distribution-audit.json",
+      "sha256": "e43c0d043ab25c8072967e108a126220c9199bc1368fcb7284a0dbc6918f78ad"
+    },
+    "wsl-software-tk90-cp31213-development": {
+      "path": "@evidence/build/runs/vulkan4-installed-bindings-1123/linux-distribution-audit.json",
+      "sha256": "f24917fddadb5f0379be4540c0d9db285c1d44809da05a772777a4647d548606"
+    }
+  },
+  "matched_environment_ids": {
+    "windows-gpu-tk86-cp312-development": "48e5f931e506e94216df0215a8da606c06b8af4fa60457e4ff73bb22061173da",
+    "wsl-software-tk90-cp31213-development": "0358cb0818ae602d3ad19d26d1ab914a7ad29f6f38524f07c7fddbf31fb1dcf1"
+  },
+  "candidate_wheels": {
+    "windows": {
+      "path": "build/artifacts/0138bcb58ad9ad10fbfc34656b8a63b90d2679c02a3e47faf9c844736c304773/vispy-0.17.0+vulkan.4-cp312-cp312-win_amd64.whl",
+      "sha256": "0138bcb58ad9ad10fbfc34656b8a63b90d2679c02a3e47faf9c844736c304773"
+    },
+    "linux": {
+      "path": "build/artifacts/e8a61ae7945c214774fab709d76d2adb9bb2f81ce33a3e2cb3f68031deac16be/vispy-0.17.0+vulkan.4-cp312-cp312-manylinux_2_39_x86_64.whl",
+      "sha256": "e8a61ae7945c214774fab709d76d2adb9bb2f81ce33a3e2cb3f68031deac16be"
+    }
+  },
+  "raw_inputs": {
+    "@evidence/build/runs/vulkan4-windows-strict-1113/tk-state-resource-failures/replay-1.json": "a52108a0d459a8637afcd45fda96b76e08a8f80ffc422e9f40100d63a16104be",
+    "@evidence/build/runs/vulkan4-windows-strict-1113/tk-state-resource-failures/replay-1.worker.json": "02b01d915d8238515be2f09533241ba951b69772328f05d3b0c3db5d1c95fa5a",
+    "@evidence/build/runs/vulkan4-windows-strict-1113/tk-state-resource-failures/receipt-after-replay-0.json": "ef1a0f3a651f4093d1f51b3657a54f0a4721045fc302baca2ef880ab2aec88d2",
+    "@evidence/build/runs/vulkan4-windows-strict-1113/tk-state-resource-failures/receipt.inventory.json": "a35905eb3a3cf8e73f096086fb7371ff50d967c76c6ac3c1dded4b9f4608ea2d",
+    "@evidence/build/runs/vulkan4-windows-strict-1113/tk-state-resource-failures/replay-0.json": "cb52b0e21462dc84313737daff764d288adb895ac672f150a9fd9a8feca5e10d",
+    "@evidence/build/runs/vulkan4-windows-strict-1113/tk-state-resource-failures/replay-0.worker.json": "7770acb8322746d6ae6e9b7abe449c3fab6ff7ee8081cfd992fc8220d78a1850",
+    "build/runs/r2-installed-318/windows/tk-state-resource-1/observer-controls/controls.json": "a6ac5fe0965504eb979bb255b8a0a58ab2b2bd48e2e8c67508177b004c860356",
+    "build/runs/r2-installed-318/windows/tk-state-resource-1/observer-controls/safe.json": "4566f8fe7af2a3586a4e579937cd69ebc97db0d74bd1dc1270eee080f3f3c6ab",
+    "build/runs/r2-installed-318/windows/tk-state-resource-1/observer-controls/resolve.json": "31f25f38a4a8fe2156c250c40ef235a96c0b316ab4ad30fb388208d400498e11",
+    "build/runs/r2-installed-318/windows/tk-state-resource-1/observer-controls/call.json": "5a4721ff0b9a24b4a2f6505d5107b481fc1df90342f2ed02c7ed91c8dad1f3bd",
+    "build/runs/r2-installed-318/windows/tk-state-resource-1/observer-controls/transient.json": "1e48c36a4c3da3505769df6a7b3c834fe25b37711c7ae7ba3d4a59ae8e1cafad",
+    "build/runs/r2-installed-318/windows/tk-state-resource-1/observer-controls/child_call.json": "9ed6e926036b1fecc6a41db587267963b28bda0ba7904211312b19422a60ff9e",
+    "compat/evidence-stores/secondary-v1.json": "b164e3fdc85863a2327b508ea60f8d3068f740cfe90f665aa52905e28bfb3ca5",
+    "@evidence/build/runs/vulkan4-windows-strict-1113/tk-capture-formats/replay-0.json": "ab7a1f76737d96a48a1875402ed8ca2a4cb5821d3ffa89e31a54d3c30cd053f9",
+    "@evidence/build/runs/vulkan4-windows-strict-1113/tk-capture-formats/replay-0.worker.json": "8593f9553eeb11092e14c604465dec0f0c06fc6ad0d6d1a17129469c69271cd5",
+    "@evidence/build/runs/vulkan4-windows-strict-1113/tk-capture-formats/receipt.json": "cc7a5e3ef583816291d3a3fa438511b2c16a9179af4e942e18c6f5948f49f1a4",
+    "@evidence/build/runs/vulkan4-windows-strict-1113/tk-capture-formats/receipt.inventory.json": "a35905eb3a3cf8e73f096086fb7371ff50d967c76c6ac3c1dded4b9f4608ea2d",
+    "@evidence/build/runs/vulkan4-windows-strict-1113/tk-capture-formats/discovery.json": "84d1f9dcdb28afa97bc6bb2b1ede18c1ab52876984f337aeaa5a861edede34dd",
+    "@evidence/build/runs/vulkan4-windows-strict-1113/tk-capture-formats/discovery.worker.json": "407f5defbef44f8df05ea37afa81a11e45590d1178cda4bc9d443becf9401b31",
+    "@evidence/build/runs/vulkan4-wsl-strict-1114/reports/tk-state-resource-failures/replay-0.json": "5388560083c07cb9a45a4409852142783e67ca72d3cc0a5be4bcd06967960220",
+    "@evidence/build/runs/vulkan4-wsl-strict-1114/reports/tk-state-resource-failures/replay-0.worker.json": "ed3266ab2d73ea0f1d4a0fb6cf7d1fdd32401fe06f86367c40657e1ed57d47bb",
+    "@evidence/build/runs/vulkan4-wsl-strict-1114/reports/tk-state-resource-failures/receipt.json": "6652e83e283c9bb7fabe449ca5c813b03a936c23f8b74703213bcaf8b4d1d024",
+    "@evidence/build/runs/vulkan4-wsl-strict-1114/reports/tk-state-resource-failures/receipt.inventory.json": "5cd33a6f60aa4eea284c6de37611cea9cac80d1482aa4f7d180dbe16e5a37ad6",
+    "@evidence/build/runs/vulkan4-wsl-strict-1114/reports/tk-state-resource-failures/discovery.json": "75fdf6547d37d56a781d6334d907894565a4581d3a8561868c7b61be4a0f20f4",
+    "@evidence/build/runs/vulkan4-wsl-strict-1114/reports/tk-state-resource-failures/discovery.worker.json": "cac5dfd4c4baf22b2e333c9a4e05a1f81885dbb85484d2f9395636972d922f30",
+    "@evidence/build/runs/wsl-collector-controls-464/reports/current/controls.json": "2093546be51e4955e8c43a65cec8dfe2b629f68bf53835a77a8a270aa3491708",
+    "@evidence/build/runs/wsl-collector-controls-464/reports/current/safe.json": "c57518bf87ff4102d0aeef17676c24c95e4034ae01bfb485a354813889863ea5",
+    "@evidence/build/runs/wsl-collector-controls-464/reports/current/resolve.json": "c32e8c6b956171968c1f7fd47589f72401248897a46a383d91b897f559d9224d",
+    "@evidence/build/runs/wsl-collector-controls-464/reports/current/call.json": "7c11101979cbc9d758107e6bd423f0f5595c5212f82c65bc5520524384c5a413",
+    "@evidence/build/runs/wsl-collector-controls-464/reports/current/transient.json": "ec4f8dee9408dc74feb0b5f159c488620f4883b5ced5de41cfe53eaaee898563",
+    "@evidence/build/runs/wsl-collector-controls-464/reports/current/child_call.json": "fb3bd668e9673d90dd6a3a36812fa54b5d3320ead97a269e5028f8971f15ae2d",
+    "@evidence/build/runs/wsl-collector-controls-464/reports/current/fragmented_safe.json": "7fa88ad38bed87fbccc647e4f387a51f46ad28275d95e70667c528e13405fd30",
+    "@evidence/build/runs/wsl-collector-controls-464/reports/current/fragmented_resolve.json": "b919c1282defb8937658eb928f92f5a5952988a248438ab1826a36c4ec244ac7",
+    "@evidence/build/runs/wsl-collector-controls-464/reports/current/fragmented_call.json": "ea8e4d2bd340bd64c7ea1e7280758edfdc923a49033dba6d2d3f1e283cb83ab5",
+    "@evidence/build/runs/wsl-collector-controls-464/reports/current/fork_call.json": "788eb81b70431e691d7fe2d2ff345a1d5b127404e708659851e2cc12483cdadb",
+    "@evidence/build/runs/wsl-collector-controls-464/reports/current/sanitized_child_call.json": "22f149468011f03c3bb7f1feb03e7440981600cd73afcb98a790766b5afb0555",
+    "@evidence/build/runs/wsl-collector-controls-464/reports/current/ldconfig_helper.json": "a33bee91d9720588590d1fe23362c4ce63cf96aa0bbcdd586785862ad8f3b7c9",
+    "@evidence/build/runs/wsl-collector-controls-464/reports/current/static_safe.json": "38db0ee61cced2cb9147631abc2c51d3c846dc512aaaa3fc8cdbd54f90c41009",
+    "@evidence/build/runs/wsl-collector-controls-464/reports/current/static_resolve.json": "07ef3d21f3ffa237ab4c823d1086598b2f6a395e6b2efcb68dd38cc95806706d",
+    "@evidence/build/runs/wsl-collector-controls-464/reports/current/static_call.json": "55f88276d608a531852d8e59b3d4570e0f2477b61cad2872c326e294669adc04",
+    "@evidence/build/runs/vulkan4-wsl-strict-1114/reports/tk-capture-formats/replay-0.json": "bc35fca138ab1634e54d7fe54fc958aa5888557cc48048bca6cc036cbc65afab",
+    "@evidence/build/runs/vulkan4-wsl-strict-1114/reports/tk-capture-formats/replay-0.worker.json": "49a034302380ff437979be598669d4dac62db9fb2153fc5eeffd116f06de45ab",
+    "@evidence/build/runs/vulkan4-wsl-strict-1114/reports/tk-capture-formats/receipt.json": "d8f9b089aa100702ab4cf0aefe788514115c6885af3aed719eea676a09412cc5",
+    "@evidence/build/runs/vulkan4-wsl-strict-1114/reports/tk-capture-formats/receipt.inventory.json": "5cd33a6f60aa4eea284c6de37611cea9cac80d1482aa4f7d180dbe16e5a37ad6",
+    "@evidence/build/runs/vulkan4-wsl-strict-1114/reports/tk-capture-formats/discovery.json": "b737e72493d78d7818f2d71598b0bf4d08a1b938995e1cfbc8e598c55e8bd2bc",
+    "@evidence/build/runs/vulkan4-wsl-strict-1114/reports/tk-capture-formats/discovery.worker.json": "c7489ec71c0d12581ea9c2747a4ec0243bf55fb69f35dcea93d73007f1378e49"
+  },
+  "source_inputs": {
+    "compat/candidates/tk-state-resource-19/admission-selection.json": "f0421d0c7d5f03a971eba6add1891dfb5b22c7e1f82aa05ca938603a128bca94",
+    "compat/candidates/tk-state-resource-19/candidate.json": "66c655274326657b36698a2f1578c17e53d2085353fe3f4a997abe108c921138",
+    "compat/candidates/tk-state-resource-19/coverage.json": "164c0b3f2907f011a3b7ea60d47a98290bc70a20473b3d17cf6130bf874b78ae",
+    "compat/candidates/tk-state-resource-19/execution-ledger.json": "3c5248a2f3a265e7d646f8e1a79dfa9e0844f3fc5a0565d4dce607d123cc868f",
+    "compat/candidates/tk-state-resource-19/execution.json": "f3df30c64b110a8bb476baf8fde75ffc62e6b9561e1f5656648145ea829a28de",
+    "compat/candidates/tk-state-resource-19/linux-archive.json": "710efab741a9f57ffe0e84002c9900d8121ca3e0825741779b5aabee93d50e10",
+    "compat/candidates/tk-state-resource-19/linux-native-provenance.json": "c885e23f65b694557b78d774b042bbf1c461af403a3f48a4983ea679d28dbda9",
+    "compat/candidates/tk-state-resource-19/linux-state-profile.json": "d4fa5425af0e0738f1734d91f1761967161a5311d50168a64d05c6032a223077",
+    "compat/candidates/tk-state-resource-19/runtime-inputs.json": "9fd53530003f8225ab10c66a09a91dbce6c5b466c707a9f70da76536027759a4",
+    "compat/candidates/tk-state-resource-19/scope-review.json": "75b7a34c71999fd39cc0d852148e47c254432579e1d7cb3a5135cb4613fa1e3d",
+    "compat/candidates/tk-state-resource-19/source-review.json": "734faf6b67686b23eaa4286a43cd5683c17a0e3c145d3b88ed5ed107f5d04ccd",
+    "compat/candidates/tk-state-resource-19/windows-archive.json": "03af0ba91c1fe1a259ec8f80ade51c787bd67c7e744baca3041b0ac5be0d81a2",
+    "compat/candidates/tk-state-resource-19/windows-native-provenance.json": "67ea9984a424a0f6aaf4a0c38863fcbe71612edf735467d685840d71b22e4f21",
+    "compat/candidates/tk-state-resource-19/windows-state-profile.json": "feec6bd6b5f486b080098e8cc3882133153d3845d5bda88b3eb9e3424812a556"
+  },
+  "source_receipts": [
+    {
+      "path": "compat/candidates/tk-state-resource-19/installed-proofs-1123/windows-gpu-tk86-cp312-development/tk.application.manual.json",
+      "sha256": "f62c98cc3177dca21f76df6d8d2b26f8621d45baa7e6db7cb621d246251e6a14"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-19/installed-proofs-1123/wsl-software-tk90-cp31213-development/tk.application.manual.json",
+      "sha256": "2dd22f7b7ea1da3db4e96dfebd3b8d548c25dabda91b0aae0cc19bb1f9a8ce4a"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-19/installed-proofs-1123/windows-gpu-tk86-cp312-development/tk.backend.raster.json",
+      "sha256": "1b3ddb56a6d6c8cdc104bf3d079b3816b7f8e2c22451ca63e65702d9691813d1"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-19/installed-proofs-1123/wsl-software-tk90-cp31213-development/tk.backend.raster.json",
+      "sha256": "5fe0b5bb0d0d23f54d17c2d711356e88853c9fe5b2c6f76c882a3195828063c1"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-19/installed-proofs-1123/windows-gpu-tk86-cp312-development/tk.buffer.triangle.json",
+      "sha256": "0c930ad6879f5dcb85b5541e831fec1bbc18f9fdf6e8e89102cc37380a9e1c44"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-19/installed-proofs-1123/wsl-software-tk90-cp31213-development/tk.buffer.triangle.json",
+      "sha256": "e34ae6b9b755d143017c4137932dab5f0ec75113275837459aa4ab2ff374c13c"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-19/installed-proofs-1123/windows-gpu-tk86-cp312-development/tk.canvas.basic.json",
+      "sha256": "d78edffd5e3131643ec004c03ad2148d74c743045f84407a6421bf5a96ebd19f"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-19/installed-proofs-1123/wsl-software-tk90-cp31213-development/tk.canvas.basic.json",
+      "sha256": "fc63b34173e7b9bad3850cc334c2a6b0af9ddc61edd5bec93da216d6f9fd02d1"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-19/installed-proofs-1123/windows-gpu-tk86-cp312-development/tk.canvas.recovery.json",
+      "sha256": "3c2f6b2c0787b65c511eaec46ee8c3e0ed5bc541fe151520523ac0fcfbd4899a"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-19/installed-proofs-1123/wsl-software-tk90-cp31213-development/tk.canvas.recovery.json",
+      "sha256": "39a09747627d000ae6597b0f0f44c0aba5bbc972f21a8025105e386d3067be35"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-19/installed-proofs-1123/windows-gpu-tk86-cp312-development/tk.context.current.json",
+      "sha256": "ea75f70e7b75019126bddd52ba8b8bac7a4ceb37fb00ba67e4cd2e1a641e778b"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-19/installed-proofs-1123/wsl-software-tk90-cp31213-development/tk.context.current.json",
+      "sha256": "d0e0f99361f2959788162b5fd58897c81038b740c5fc1793ecd0b1c401ffe55d"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-19/installed-proofs-1123/windows-gpu-tk86-cp312-development/tk.context.shared.json",
+      "sha256": "f003c4246cfda9532df79bb828c5b7bdb4bfaef14a91c52da7c0188cb2d39c51"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-19/installed-proofs-1123/wsl-software-tk90-cp31213-development/tk.context.shared.json",
+      "sha256": "e7d16b326b8f04138231f819abf73ffc0ea0bf411461749d50d72c1bfcef6968"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-19/installed-proofs-1123/windows-gpu-tk86-cp312-development/tk.gl.flush.json",
+      "sha256": "9c8404ff35336493e76a2cec20fe6e37ccd46a4a730b84abfb7d08c4ba5df97a"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-19/installed-proofs-1123/wsl-software-tk90-cp31213-development/tk.gl.flush.json",
+      "sha256": "c46baa6dd4d368cc1cf375c4a7db88afff17ab2687e4b75c5a9860db223aefe1"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-19/installed-proofs-1123/windows-gpu-tk86-cp312-development/tk.object.delete.json",
+      "sha256": "f54335f77f0b6ed8791122d81f1e3daf9f9af6b58a069706704de8f79335555a"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-19/installed-proofs-1123/wsl-software-tk90-cp31213-development/tk.object.delete.json",
+      "sha256": "4e68e2ee05025b9d6cf03945f3975c7f3eef21b09108605ddae55cbf05e67517"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-19/installed-proofs-1123/windows-gpu-tk86-cp312-development/tk.program.texture.json",
+      "sha256": "5bbfae92863ac7e44ca7f724ab221edac7392ca285165fd1845e61ff74fc1adc"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-19/installed-proofs-1123/wsl-software-tk90-cp31213-development/tk.program.texture.json",
+      "sha256": "b0e79b8df0d713ade38f42d63d4ae75b08229206737000b48d77ff196427ace3"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-19/installed-proofs-1123/windows-gpu-tk86-cp312-development/tk.readback.crop-formats.json",
+      "sha256": "4a3f8b916a23a64d12bdbf505728682f0afc18f5f7ef3b769bcba45dc4d36648"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-19/installed-proofs-1123/wsl-software-tk90-cp31213-development/tk.readback.crop-formats.json",
+      "sha256": "2cc25d2545bf28d29ea2063c43444411a752e63f1cbaeb4af118dade3ef64580"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-19/installed-proofs-1123/windows-gpu-tk86-cp312-development/tk.readback.rgba.json",
+      "sha256": "2f0d82cf579b1a82472095fd0332ca985333714872198a55557081f4d6366544"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-19/installed-proofs-1123/wsl-software-tk90-cp31213-development/tk.readback.rgba.json",
+      "sha256": "eb1deef360f138996eff6d9713f4a5cebdb4d4e4eb8ed527f55d5a8e8745a703"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-19/installed-proofs-1123/windows-gpu-tk86-cp312-development/tk.texture.rgba8.json",
+      "sha256": "fa98ae404a3f573ccaf6073971c993daf3dff23932652efc38252c01c7a99d0c"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-19/installed-proofs-1123/wsl-software-tk90-cp31213-development/tk.texture.rgba8.json",
+      "sha256": "cdfe39406e3d877c8c37152fb5ff48cc0cb83e724a102d5ac5a69009c0e66bd5"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-19/installed-proofs-1123/windows-gpu-tk86-cp312-development/tk.timer.once.json",
+      "sha256": "912e2750f090e40acb2e8e4f34bc81386fecf461a2b32fb7e350e72934bab427"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-19/installed-proofs-1123/wsl-software-tk90-cp31213-development/tk.timer.once.json",
+      "sha256": "be0991a4c39c742976bc57e20f9bceba00dac00bbbc1174dc4ca1bcb7b7c217c"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-19/installed-proofs-1123/windows-gpu-tk86-cp312-development/tk.wrappers.raster.json",
+      "sha256": "a2d4f78a36aa0be4ed1bbd9bb85c3eee47bc40951da0f3db0f096ab8b6845435"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-19/installed-proofs-1123/wsl-software-tk90-cp31213-development/tk.wrappers.raster.json",
+      "sha256": "7c8b44419096e675cfeb151509dba06355f52a90a73bd03c6d53475234035269"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-19/installed-proofs-1123/windows-gpu-tk86-cp312-development/tk.wrappers.submission.json",
+      "sha256": "8f8f722ba3e9147fe2504272d0bd8a85095998cedb8a89272bc1b2cae5a78535"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-19/installed-proofs-1123/wsl-software-tk90-cp31213-development/tk.wrappers.submission.json",
+      "sha256": "c29643c579d05cae9c495a8b8ba1221856fba44da32ccdc06cbd1126777f02f7"
+    }
+  ],
+  "artifact_admitted": false,
+  "subject_bound": false,
+  "required_ci_passed": false,
+  "scratch_created": false,
+  "verification": {
+    "path": "@evidence/build/runs/vulkan4-installed-bindings-1123/verification.json",
+    "sha256": "0e36282b6fa8f249e7f828c19c04d94e8722163fc55719559de9fbe19f30b8e2"
+  },
+  "actual_exit": 0,
+  "child_waited": true,
+  "new_windows_candidate_receipts": 16,
+  "new_linux_candidate_receipts": 16,
+  "scope": "All 32 selected rows / 128 criterion bindings / 96 raw gate normalizations validated on exact Windows 0138bcb5 (1113+1111) and WSL Linux e8a61ae7 (1114+1112) candidate wheels for tk-state-resource-19 (07de4af). All 14 canonical preparation JSONs unchanged; 142 required rows remain incomplete. Attempt review, contributing retention, subject proof, curated source freeze, required 23-job CI, scoped admission and public delivery remain separate.",
+  "remaining": [
+    "Complete strict/discovery attempt histories and independent Gate A2 attempt resolution review",
+    "Typed contributing proof retention and guarded 128-binding subject validation",
+    "Isolated-index curated qualification branch freeze, 23-job same-head CI, promotion review, scoped admission and verified public delivery"
+  ]
+}
