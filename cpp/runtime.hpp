@@ -1,7 +1,9 @@
 #pragma once
 
 #include <cstdint>
+#include <memory>
 #include <string>
+#include <utility>
 #include <unordered_map>
 #include <vector>
 #include "runtime_query_timing.hpp"
@@ -268,8 +270,21 @@ struct SurfaceInfo {
     std::string refresh_interval_source = "unconfigured";  // or "display", "default" (rate unknown), "diagnostic"
 };
 
+// Readback bytes are always fully overwritten after resize, so resize leaves
+// them uninitialized instead of zero-filling a whole frame first.
+template <typename T>
+struct DefaultInitAllocator : std::allocator<T> {
+    using std::allocator<T>::allocator;
+    template <typename U> struct rebind { using other = DefaultInitAllocator<U>; };
+    template <typename U> void construct(U* pointer) noexcept { ::new (static_cast<void*>(pointer)) U; }
+    template <typename U, typename... Args> void construct(U* pointer, Args&&... args) {
+        ::new (static_cast<void*>(pointer)) U(std::forward<Args>(args)...);
+    }
+};
+using ReadbackBytes = std::vector<uint8_t, DefaultInitAllocator<uint8_t>>;
+
 struct Readback {
-    std::vector<uint8_t> rgba;
+    ReadbackBytes rgba;
     std::vector<float> floating_rgba;
     int width = 0;
     int height = 0;

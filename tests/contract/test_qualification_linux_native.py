@@ -239,7 +239,7 @@ def test_exact_candidate18_selector_preserves_fresh_production_join(full_capture
 def test_candidate18_authority_does_not_admit_unknown_revisions(full_capture, mutation):
     payload = candidate18_workflow_payload()
     if mutation == 'other-candidate':
-        payload = payload.replace(b'tk-state-resource-18/candidate.json', b'tk-state-resource-19/candidate.json')
+        payload = payload.replace(b'tk-state-resource-18/candidate.json', b'tk-state-resource-20/candidate.json')
     elif mutation == 'fresh-build':
         payload = payload.replace(b'cmake.define.VISPY_CPU_CONTRACTS_ONLY=OFF',
                                   b'cmake.define.VISPY_CPU_CONTRACTS_ONLY=ON')
@@ -250,6 +250,43 @@ def test_candidate18_authority_does_not_admit_unknown_revisions(full_capture, mu
     else:
         payload += b'\n# unreviewed change\n'
     assert native.sha(payload) != 'cf0b7b037141dfdeb086343b8330600f006fb3fbbeb126c2e7dff20582a56356'
+    replace_workflow_source(full_capture, payload)
+    with pytest.raises(ValueError, match='unsupported original Linux capture protocol: '):
+        native.validate_capture(full_capture.finish(), full_capture.production, full_capture.root)
+
+
+def candidate19_workflow_payload():
+    project = Path(__file__).resolve().parents[2]
+    original = (project/'tests/contract/data/linux-native-production-workflow.yml').read_bytes()
+    needle = b'--keep-original-description \\\n              --candidate compat/candidates/tk-state-resource-19/candidate.json'
+    payload = original.replace(b'--keep-original-description', needle)
+    assert payload.replace(needle, b'--keep-original-description') == original
+    assert native.sha(payload) == 'c9286914d387f1f4ad5da7b25b439f273d3031e2fed8272e824160d85c6715b4'
+    return payload
+
+
+def test_exact_candidate19_selector_preserves_fresh_production_join(full_capture):
+    replace_workflow_source(full_capture, candidate19_workflow_payload())
+    result, _ = native.validate_capture(full_capture.finish(), full_capture.production, full_capture.root)
+    assert result['status'] == 'PASS_ORIGINAL_LINUX_NATIVE_JOIN'
+    assert result['native_build_verified'] and not result['artifact_admitted']
+
+
+@pytest.mark.parametrize('mutation', ['other-candidate', 'fresh-build', 'capacity', 'condition', 'comment'])
+def test_candidate19_authority_does_not_admit_unknown_revisions(full_capture, mutation):
+    payload = candidate19_workflow_payload()
+    if mutation == 'other-candidate':
+        payload = payload.replace(b'tk-state-resource-19/candidate.json', b'tk-state-resource-20/candidate.json')
+    elif mutation == 'fresh-build':
+        payload = payload.replace(b'cmake.define.VISPY_CPU_CONTRACTS_ONLY=OFF',
+                                  b'cmake.define.VISPY_CPU_CONTRACTS_ONLY=ON')
+    elif mutation == 'capacity':
+        payload = payload.replace(b'6442450944', b'6442450945')
+    elif mutation == 'condition':
+        payload = payload.replace(b"if: env.NATIVE_MODE == 'fresh'", b"if: env.NATIVE_MODE == 'reuse'", 1)
+    else:
+        payload += b'\n# unreviewed change\n'
+    assert native.sha(payload) != 'c9286914d387f1f4ad5da7b25b439f273d3031e2fed8272e824160d85c6715b4'
     replace_workflow_source(full_capture, payload)
     with pytest.raises(ValueError, match='unsupported original Linux capture protocol: '):
         native.validate_capture(full_capture.finish(), full_capture.production, full_capture.root)

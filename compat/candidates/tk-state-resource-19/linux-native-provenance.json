@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "kind": "original-linux-ci-native-reuse",
+  "candidate": {
+    "path": "compat/candidates/tk-state-resource-19/candidate.json",
+    "sha256": "66c655274326657b36698a2f1578c17e53d2085353fe3f4a997abe108c921138"
+  },
+  "capture": {
+    "path": "build/runs/vulkan4-linux-artifact-1098/original-capture.json",
+    "sha256": "9397311f156c6f03a401bacea7e2526ab50e32e55cf60a6e86f30b031a73e47d"
+  },
+  "reuse": {
+    "candidate_scope_sha256": "08353ba2f3920bccde803ec296481647ddeec82bde05eb7a05cc687f8b4d05cc",
+    "profile": "wsl-software-tk90-cp31213-development",
+    "capture_sha256": "9397311f156c6f03a401bacea7e2526ab50e32e55cf60a6e86f30b031a73e47d",
+    "production_sha256": "2d32356654143d013e44d0a1c91405f898d159a8faf69779705bc19d886165b4",
+    "evidence_store": {
+      "path": "compat/evidence-stores/secondary-v1.json",
+      "sha256": "b164e3fdc85863a2327b508ea60f8d3068f740cfe90f665aa52905e28bfb3ca5"
+    },
+    "impact": "Fresh original hosted CI run 44647091887 at source 07de4afa (0.17.0+vulkan.4; production inputs pyproject.toml, uv.lock and the native readback sources; Mesa source pin URL fixed, same bytes), raw wheel f7add292 retagged to manylinux_2_39 e8a61ae7 in 1099 and observed in 1100/1101. The candidate 19 workflow selector authority was independently reviewed (1086r). Independent reuse/source/scope review required; no approval or admission transfers.",
+    "abi": {
+      "tag": "cp312",
+      "build_version": "3.12.8",
+      "build_python_sha256": "0dc3a692fa85fcdb7f1a5877d2adf179809ac417a07ffde2373c832863800a15",
+      "consumer_version": "3.12.13",
+      "consumer_python_sha256": "339de109f072e52523066d97a2b3372e358a10cc00c6a9df62c28a6618061900"
+    }
+  }
+}

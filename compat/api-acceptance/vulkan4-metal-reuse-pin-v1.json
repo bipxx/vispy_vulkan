@@ -1,0 +1,94 @@
+{
+  "schema": 1,
+  "date": "2026-11-20",
+  "status": "PASS_EXACT_TWO_ARCH_METAL_NATIVE_REUSE_PIN_RENEWAL_NOT_GPU",
+  "coverage_ids": [
+    "PERF-01",
+    "PLAT-04"
+  ],
+  "source_commit": "07de4afa3858d98b2ff9db40c0e351bd20d08e6e",
+  "run_id": 44647094694,
+  "attempt": 1,
+  "source_inputs": 628,
+  "architectures": [
+    {
+      "architecture": "arm64",
+      "artifact": {
+        "artifact_id": 14589523100,
+        "artifact_bytes": 23775830,
+        "artifact_sha256": "76687c2821fe4db6e4f916bd6fa1e3e677d4a9ea143f39e7132b882744cf0532",
+        "max_expanded_bytes": 100663296,
+        "recovered_members": []
+      },
+      "wheel_sha256": "0deebfc7be44dbaf03b53344ef22d26254ad7a8ff434198f9b80b09901db2cba",
+      "source_inventory_origin": {
+        "run_id": 44647094694,
+        "member": "runs/metal-ci-44647094694-1-arm64/source-before.json",
+        "sha256": "8bcd421fbac583fce8d163f8b934f9bec0c2648fd4ac2eda6eb7d353ce564cf7"
+      },
+      "original_validation": {
+        "path": "@evidence/build/runs/vulkan4-metal-arm64-1105/verification.json",
+        "sha256": "536c9ecc28bdf59520a06da9b40d14b7af61ecf77fc70e47ab587348beed94ae"
+      },
+      "cleanup": {
+        "path": "@evidence/build/runs/vulkan4-metal-arm64-1105/cleanup-result.json",
+        "sha256": "f93972a4cbee1115e48785bb29c43d2edda36fc9c1cc5a567c9554f6330544bd"
+      },
+      "installed_cpu_controls": true,
+      "package_changed_members": [],
+      "GPU_qualified": false
+    },
+    {
+      "architecture": "x86_64",
+      "artifact": {
+        "artifact_id": 14592232746,
+        "artifact_bytes": 25740549,
+        "artifact_sha256": "e499e1220c8f10c46ea41f19f3d68093f7ad247f54f559125532e4e2b417f5a5",
+        "max_expanded_bytes": 100663296,
+        "recovered_members": []
+      },
+      "wheel_sha256": "f2518dc3314963fa02b8e0ad0a0804eb68205ee7331ee91f0b6e12332a8bc5fe",
+      "source_inventory_origin": {
+        "run_id": 44647094694,
+        "member": "runs/metal-ci-44647094694-1-x86_64/source-before.json",
+        "sha256": "8bcd421fbac583fce8d163f8b934f9bec0c2648fd4ac2eda6eb7d353ce564cf7"
+      },
+      "original_validation": {
+        "path": "@evidence/build/runs/vulkan4-metal-x64-1106/verification.json",
+        "sha256": "a5af103126ce77ccb9af76a238c31464fb9c7950616f0f447fbf6731a3e79178"
+      },
+      "cleanup": {
+        "path": "@evidence/build/runs/vulkan4-metal-x64-1106/cleanup-result.json",
+        "sha256": "0cd2f9f45446340ca6f1ae411237a92458db8961e6ba88ab20d3c86552721a10"
+      },
+      "installed_cpu_controls": true,
+      "package_changed_members": [],
+      "GPU_qualified": false
+    }
+  ],
+  "whole_run": {
+    "path": "@evidence/build/runs/vulkan4-metal-pin-1107/whole-run.json",
+    "sha256": "95c895bff834361c5aa1a452e70ea10827b297c4a98d3ea026bc40a7f88396e8"
+  },
+  "original_pin": {
+    "path": "@evidence/build/runs/vulkan4-metal-pin-1107/metal-ci-reuse-before.json",
+    "sha256": "5bc2c36449d92d09106d0caa406d93a02ed677a4267a46d4c1c0ad92321e9b96"
+  },
+  "current_pin": {
+    "path": "compat/metal-ci-reuse.json",
+    "sha256": "c3a1e85d42b62c43d4c97a6c2d9ef6f894a43901b9f4b55a53e6e6cb6c805ff3"
+  },
+  "source_inventory_origin": {
+    "run_id": 44647094694,
+    "member": "runs/metal-ci-44647094694-1-arm64/source-before.json",
+    "sha256": "8bcd421fbac583fce8d163f8b934f9bec0c2648fd4ac2eda6eb7d353ce564cf7"
+  },
+  "original_workflow_unchanged": true,
+  "workflow_sha256": "6c051d233db4752d8cda90545398f51d678e55e4737626fbce5a8a4f634b8a97",
+  "native_rebuilt_locally": false,
+  "verifier_changed": false,
+  "Windows_Linux_release_artifacts_changed": false,
+  "artifact_admitted": false,
+  "GPU_qualified": false,
+  "scope": "Both original fresh build/installed CPU/native/archive/package/source/cleanup records validate under unchanged reuse readers. Only the Metal original-production reference is renewed; whole-run success checked. Current Windows4f/Linuxdfe qualifications and canonical preparation remain unchanged. Final combined-source review/CI/impact/promotion/integration/admission/delivery remain pending."
+}

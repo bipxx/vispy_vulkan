@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "kind": "archive-prerequisite",
+  "candidate": {
+    "path": "compat/candidates/tk-state-resource-19/candidate.json",
+    "scope_sha256": "08353ba2f3920bccde803ec296481647ddeec82bde05eb7a05cc687f8b4d05cc"
+  },
+  "profile": "wsl-software-tk90-cp31213-development",
+  "evidence_store": {
+    "path": "compat/evidence-stores/secondary-v1.json",
+    "sha256": "b164e3fdc85863a2327b508ea60f8d3068f740cfe90f665aa52905e28bfb3ca5"
+  },
+  "wheel": {
+    "path": "build/artifacts/e8a61ae7945c214774fab709d76d2adb9bb2f81ce33a3e2cb3f68031deac16be/vispy-0.17.0+vulkan.4-cp312-cp312-manylinux_2_39_x86_64.whl",
+    "sha256": "e8a61ae7945c214774fab709d76d2adb9bb2f81ce33a3e2cb3f68031deac16be"
+  },
+  "native_outputs": [
+    {
+      "member": "vispy/_dawn.cpython-312-x86_64-linux-gnu.so",
+      "file": {
+        "path": "build/artifacts/7b363be9172737e28cb21dad960abe199c340177e9f93f88cbfed1c451157a33/_dawn.cpython-312-x86_64-linux-gnu.so",
+        "sha256": "7b363be9172737e28cb21dad960abe199c340177e9f93f88cbfed1c451157a33"
+      }
+    },
+    {
+      "member": "vispy/visuals/text/_sdf_cpu.cpython-312-x86_64-linux-gnu.so",
+      "file": {
+        "path": "build/artifacts/1e508269c6d8c4a0f9ed041987237c6fef5768eeb1e8174ed1e8eb29f8f7162f/_sdf_cpu.cpython-312-x86_64-linux-gnu.so",
+        "sha256": "1e508269c6d8c4a0f9ed041987237c6fef5768eeb1e8174ed1e8eb29f8f7162f"
+      }
+    },
+    {
+      "member": "vispy/VkLayer_vispy_submit.so",
+      "file": {
+        "path": "build/artifacts/95907606472ffe51bec021d4b28e4717472e40f2cef34cd2590d172575c113d4/VkLayer_vispy_submit.so",
+        "sha256": "95907606472ffe51bec021d4b28e4717472e40f2cef34cd2590d172575c113d4"
+      }
+    },
+    {
+      "member": "vispy/VkLayer_vispy_submit.json",
+      "file": {
+        "path": "build/artifacts/e0762acec9e2df811cbb67e1c25e5c82d9fb76def0101f54fd737464c76786c2/VkLayer_vispy_submit.json",
+        "sha256": "e0762acec9e2df811cbb67e1c25e5c82d9fb76def0101f54fd737464c76786c2"
+      }
+    }
+  ]
+}

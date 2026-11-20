@@ -1,21 +1,21 @@
 {
   "schema": 1,
   "repository": "bipxx/vispy_vulkan",
-  "run_id": 44205402554,
+  "run_id": 44647094694,
   "attempt": 1,
-  "source_head": "45aee3e262a0dbb62e3db24369f7b289e1914b2e",
-  "checked_head": "45aee3e262a0dbb62e3db24369f7b289e1914b2e",
+  "source_head": "07de4afa3858d98b2ff9db40c0e351bd20d08e6e",
+  "checked_head": "07de4afa3858d98b2ff9db40c0e351bd20d08e6e",
   "original_workflow_sha256": "6c051d233db4752d8cda90545398f51d678e55e4737626fbce5a8a4f634b8a97",
   "source_inventory_origin": {
-    "run_id": 44205402554,
-    "member": "runs/metal-ci-44205402554-1-arm64/source-before.json",
-    "sha256": "7d16ae5f68494a13fc9ea26c707fd0fadc20293c5fc3a09a02da2a78467e5989"
+    "run_id": 44647094694,
+    "member": "runs/metal-ci-44647094694-1-arm64/source-before.json",
+    "sha256": "8bcd421fbac583fce8d163f8b934f9bec0c2648fd4ac2eda6eb7d353ce564cf7"
   },
   "source_inputs": {
     "CMakeLists.txt": "6fcbcc1e5d3cc891cb7d30dfb7cc3ca038809a9486e09e24c4a282e27d0216b2",
     "CMakePresets.json": "b10b2d9355ab7926aef1d5a445a9fd06ba8c64234202146eb6f5c1f3748b3ff0",
-    "pyproject.toml": "1982d098e521da79d622eaf52ac6ad4a8aac9c9b78157b69864424a45104a6ba",
-    "uv.lock": "03b5f06b02eaef075b37e18520b03fd1df96a361cc08592859911e08aed1c281",
+    "pyproject.toml": "23576661d74d8992dbb5b44cb71f7ddd651df9a841b0bbf485c13c20068058eb",
+    "uv.lock": "59249030b81446494e098e41f996b5227a92009b4a664b9d66f0ccb9db9e8042",
     "LICENSE": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0",
     "LICENSE-BSD": "a28bb857d763513c810ca843558c12cf97f64b990b855c1ce7f5e291e52fc25c",
     "LICENSING.md": "e8a28d2d2c78d86fa2b6f83284e8f1a32237f87bfd417fd1cdfc84c8f3ce37f5",
@@ -35,7 +35,7 @@
     "cmake/VispyNativeSDKConfig.cmake.in": "f0f77f0e89c144089fd3f6c4566dd3359b0d48a0a824c2dfaeb67265591d1f26",
     "cmake/WindowsCompilerPolicy.cmake": "fa97a81716b2c19a08f3d6cf810890a4246940220f0907e8ee75d125ff998aad",
     "cpp/bindings/command_decode.hpp": "15a9f9c2b11f63ea3b0b5c6c5bf5fd119ff1b01b50a4cc07ea57951b57e993e6",
-    "cpp/bindings/module.cpp": "2e900d97eda5500ae1826591601024497c0b10cffed978d247280ae80dd910d7",
+    "cpp/bindings/module.cpp": "7ebbf9203f48036808ecbc510bbce1c7de4687d0ce158450fb5304a6b80d0590",
     "cpp/bindings/owned_payload.hpp": "b1d6cc12f927bdeca1c06d315a9c75da22b35dd3372d975d8fb54b0e858e1713",
     "cpp/bindings/python_buffer_capture.hpp": "07814aa590ad737c6b940cf236829a1b9a003d4e4482be31757a028578250a82",
     "cpp/platform/native_library.cpp": "956262ccb0bcd0eba8707ae5ea1cfc5ed2f23fdfcaee87094483a15bda1f6e01",
@@ -48,8 +48,8 @@
     "cpp/platform/vk_layer_telemetry.hpp": "5aa439452b8317b58822c1a9202969782706c927d748c98146cd6b3f008ad018",
     "cpp/platform/VkLayer_vispy_submit.json": "c44eec804d458fcb8783ae2fd03dd5104db464007f01de669a4ff17aa33a56aa",
     "cpp/platform/VkLayer_vispy_submit.json.in": "ca054e841a8e99a1db5c9edd453372749f8955b9e8ab8f31ecfedff07e550f92",
-    "cpp/runtime.cpp": "b09ae8e6b62c3832e5ffbab0171a4e6c79ac1b7234a7c4cc18a8a1663f351037",
-    "cpp/runtime.hpp": "7f17d7bff94afca9ff3c76a3a52f9e2062c74e6ea04a0758c0b2374ed4e66704",
+    "cpp/runtime.cpp": "8dd5b8407254c3487cc308f66ffea2bde921fae3c04b7c8d6887ac79fae8ad1e",
+    "cpp/runtime.hpp": "c8be21ab05e51fffa261141855100ff1f2cf7001421f0d2420c8df1acb205830",
     "cpp/runtime_batch_cache.hpp": "936cf5d94d5b6d86ad5c0b4544385d8e47efeea61a925bcbfe6f56a4c874dcae",
     "cpp/runtime_batch_capacity.hpp": "2428de457e084701d66e408caa517f640b774526bfb5853c2438dec69734174c",
     "cpp/runtime_batch_owner.hpp": "f7fd01d5b1d67c0432ad384388f558f2c5847de322f16d451059a1c3a63e7a20",
@@ -113,7 +113,7 @@
     "src/vispy/app/backends/_pyside.py": "ce58dcb545cf0130718263180af9e26d128df8e402fe53966460539926102280",
     "src/vispy/app/backends/_pyside2.py": "a99a416c4566aeaeae5edcbc7e7f9c9a2b56409ca13e9ba80180be302e370a78",
     "src/vispy/app/backends/_pyside6.py": "e8d567c49bac585682400aac92aa591897f1d4905e9ea15815b54c8c536ecce9",
-    "src/vispy/app/backends/_qt.py": "1c68488e862cb1d8b573641a16a6894a97ac434f915773f12ce3708cae85a4cc",
+    "src/vispy/app/backends/_qt.py": "ff0fab87cd9d8dc13ff8963dfe01e6d9cdd6c5449b7a42649b4abac4b5ca6f04",
     "src/vispy/app/backends/_sdl2.py": "e9a778bedaaf0e53e91d390761eccbd2da628312678734d5ab5f1de7ecfb983a",
     "src/vispy/app/backends/_template.py": "cc5cf273be181f23af20bdbacf3da76f5e4cdbb389fe2bac4d54e4505ffcdf90",
     "src/vispy/app/backends/_test.py": "243cd95be6aafb578e335ebbce97f969659e227da5c3a17e93845c0e5ef03361",
@@ -474,7 +474,7 @@
     "src/vispy/util/tests/test_vispy.py": "6a508f9b83dcd291f284b2eb95f9619925595873418d9f0b571f1080e4d691be",
     "src/vispy/util/transforms.py": "2c02206b3611c68e6b9707cf9e187b86686adc44519ce09b46bcd96972d04de1",
     "src/vispy/util/wrappers.py": "42cdf8ed8de7018a480977fa720ec46733cd8d2554ac43f17c0aa65a6f5341bc",
-    "src/vispy/version.py": "e7a29fc7e4670da92a8e4674673c4dda04c885784d4f7513d7a0974a9e5f711d",
+    "src/vispy/version.py": "442b852e38c38dbb7433b6dcae7357244de324f3db0b216a38f00868f4b9b5ab",
     "src/vispy/visuals/__init__.py": "3dcd668099634b67e18ce5165f958ed9aac2f13ec6fd601bc45d25d390f05787",
     "src/vispy/visuals/_scalable_textures.py": "0ac2389093cfa551dd1cdc35fc84a025819dfaa25403710230fa95586ed6540e",
     "src/vispy/visuals/axis.py": "0ff91d658279b735f534eaf2c119f9ee232288e2c92db0b9f4d5be75a6c5837d",
@@ -643,22 +643,22 @@
   },
   "architectures": {
     "arm64": {
-      "artifact_id": 14391023548,
-      "artifact_bytes": 23784362,
-      "artifact_sha256": "4e0c39828a27e4b32e67a0a6805359cc8954d3102188f69f42b3a1925353eda4",
+      "artifact_id": 14589523100,
+      "artifact_bytes": 23775830,
+      "artifact_sha256": "76687c2821fe4db6e4f916bd6fa1e3e677d4a9ea143f39e7132b882744cf0532",
       "max_expanded_bytes": 100663296,
       "recovered_members": []
     },
     "x86_64": {
-      "artifact_id": 14392553230,
-      "artifact_bytes": 25736338,
-      "artifact_sha256": "41a0960d92846ba988051bb09e970902c8ee93f9140ca3ade8777040f90ab1fa",
+      "artifact_id": 14592232746,
+      "artifact_bytes": 25740549,
+      "artifact_sha256": "e499e1220c8f10c46ea41f19f3d68093f7ad247f54f559125532e4e2b417f5a5",
       "max_expanded_bytes": 100663296,
       "recovered_members": []
     }
   },
   "package_metadata_inputs": {
-    "README.md": "f6495489f4cd7873513142f019645de1375be07e31faa1384603c3cec07bcc1e"
+    "README.md": "96eee2f6727c9935049547eea3d64f604f9aede82d89eb39ec04dc06f0a501db"
   },
   "layout": "managed-v1"
 }

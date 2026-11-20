@@ -1,0 +1,214 @@
+{
+  "schema": 1,
+  "date": "2026-11-20",
+  "status": "PASS_SIX_VULKAN4_WHEELS_INSTALLED_FUNCTIONAL_NOT_ADMITTED",
+  "coverage_ids": [
+    "PERF-01",
+    "PLAT-02",
+    "API-05",
+    "API-06"
+  ],
+  "version": "0.17.0+vulkan.4",
+  "source_commit": "07de4afa3858d98b2ff9db40c0e351bd20d08e6e",
+  "source_freeze": {
+    "path": "@evidence/build/runs/vulkan4-source-freeze-1090/source-freeze.json",
+    "sha256": "e3da316a79b766184a01746aa6d70ced6a581c314f7e8bf62840599aca0a757e"
+  },
+  "wheels": [
+    {
+      "abi": "cp312",
+      "platform": "windows",
+      "tier": "strict-candidate",
+      "wheel": {
+        "name": "vispy-0.17.0+vulkan.4-cp312-cp312-win_amd64.whl",
+        "bytes": 6816781,
+        "sha256": "0138bcb58ad9ad10fbfc34656b8a63b90d2679c02a3e47faf9c844736c304773"
+      },
+      "installed_gpu_cases": 75,
+      "state_readback": 56,
+      "subpackages_plot": 16,
+      "collections_rendered": "9/9",
+      "jupyter_rfb": 3,
+      "installed_members_verified": 537,
+      "source_overrides": 0,
+      "shutdown_gauges_zero": 10,
+      "run": {
+        "path": "@evidence/build/runs/vulkan4-cp312-win-1094/verification.json",
+        "sha256": "90053ed12e23d28db463c1358922396edf84a9e19862bf57cbd1c48eb53d1269"
+      },
+      "device": null,
+      "tk_cases": 14,
+      "tk_run": {
+        "path": "@evidence/build/runs/vulkan4-cp312-win-tk-1095/verification.json",
+        "sha256": "2ee7260025b8b0003c598ad315bee458151532460f4812a0ae0fff6c2d0f3891"
+      }
+    },
+    {
+      "abi": "cp312",
+      "platform": "linux",
+      "tier": "strict-candidate",
+      "wheel": {
+        "name": "vispy-0.17.0+vulkan.4-cp312-cp312-manylinux_2_39_x86_64.whl",
+        "bytes": 10566229,
+        "sha256": "e8a61ae7945c214774fab709d76d2adb9bb2f81ce33a3e2cb3f68031deac16be"
+      },
+      "installed_gpu_cases": 75,
+      "state_readback": 56,
+      "subpackages_plot": 16,
+      "collections_rendered": "9/9",
+      "jupyter_rfb": 3,
+      "installed_members_verified": 537,
+      "source_overrides": 0,
+      "shutdown_gauges_zero": 10,
+      "run": {
+        "path": "@evidence/build/runs/vulkan4-cp312-wsl-1100/verification.json",
+        "sha256": "4c01f70dd0be79ddcb8282f19cbbe8f97349003a3a514b225a2ca2bc40019599"
+      },
+      "device": null,
+      "tk_cases": 14,
+      "tk_run": {
+        "path": "@evidence/build/runs/vulkan4-cp312-wsl-tk-1101/verification.json",
+        "sha256": "9d307f04dfc9141b3a7ad418dc07542cfc305dad50c2ae392519f62b1b4e3cc7"
+      }
+    },
+    {
+      "abi": "cp311",
+      "platform": "windows",
+      "tier": "installed-functional",
+      "wheel": {
+        "name": "vispy-0.17.0+vulkan.4-cp311-cp311-win_amd64.whl",
+        "bytes": 6817360,
+        "sha256": "096d83f2e49b8398ef1c27a0beecc4a3adab2f4291538dfef725458903f01272"
+      },
+      "installed_gpu_cases": 75,
+      "state_readback": 56,
+      "subpackages_plot": 16,
+      "collections_rendered": "9/9",
+      "jupyter_rfb": 3,
+      "installed_members_verified": 537,
+      "source_overrides": 0,
+      "shutdown_gauges_zero": 10,
+      "run": {
+        "path": "@evidence/build/runs/vulkan4-win-cp311-1097/verification.json",
+        "sha256": "fd7433ea0a3a6059c92ea0973ccb9f810ab278e98ca5fb83dcfd00ff300ee306"
+      },
+      "device": null,
+      "native_ctests": "44/44"
+    },
+    {
+      "abi": "cp311",
+      "platform": "linux",
+      "tier": "installed-functional",
+      "wheel": {
+        "name": "vispy-0.17.0+vulkan.4-cp311-cp311-manylinux_2_39_x86_64.whl",
+        "bytes": 10569256,
+        "sha256": "8a0afe07c766f5737b2ecb5c0219285ee4c10724699e0b9c0fad99099a624468"
+      },
+      "installed_gpu_cases": 75,
+      "state_readback": 56,
+      "subpackages_plot": 16,
+      "collections_rendered": "9/9",
+      "jupyter_rfb": 3,
+      "installed_members_verified": 537,
+      "source_overrides": 0,
+      "shutdown_gauges_zero": 10,
+      "run": {
+        "path": "@evidence/build/runs/vulkan4-wsl-cp311-1103/verification.json",
+        "sha256": "acd38478393e962a06d61908b099986459ef4193d52c2a7dcffe4f4ee4f883ef"
+      },
+      "device": null,
+      "native_ctests": "44/44"
+    },
+    {
+      "abi": "cp313",
+      "platform": "windows",
+      "tier": "installed-functional",
+      "wheel": {
+        "name": "vispy-0.17.0+vulkan.4-cp313-cp313-win_amd64.whl",
+        "bytes": 6816506,
+        "sha256": "b52018c4d0a3f65305b92c12fa7285a0232145ae389bfefba55b3f249cee10af"
+      },
+      "installed_gpu_cases": 75,
+      "state_readback": 56,
+      "subpackages_plot": 16,
+      "collections_rendered": "9/9",
+      "jupyter_rfb": 3,
+      "installed_members_verified": 537,
+      "source_overrides": 0,
+      "shutdown_gauges_zero": 10,
+      "run": {
+        "path": "@evidence/build/runs/vulkan4-win-cp313-1096/verification.json",
+        "sha256": "177094c7b75dd3a34ce0809efaa38ca3a7ec201ab8eae7763a4366fda663d02f"
+      },
+      "device": null,
+      "native_ctests": "44/44"
+    },
+    {
+      "abi": "cp313",
+      "platform": "linux",
+      "tier": "installed-functional",
+      "wheel": {
+        "name": "vispy-0.17.0+vulkan.4-cp313-cp313-manylinux_2_39_x86_64.whl",
+        "bytes": 10565990,
+        "sha256": "1b8f140d673b8e7cc33f64e208fe738c20e8ff7717cf6e2b346f8d60df7c80f8"
+      },
+      "installed_gpu_cases": 75,
+      "state_readback": 56,
+      "subpackages_plot": 16,
+      "collections_rendered": "9/9",
+      "jupyter_rfb": 3,
+      "installed_members_verified": 537,
+      "source_overrides": 0,
+      "shutdown_gauges_zero": 10,
+      "run": {
+        "path": "@evidence/build/runs/vulkan4-wsl-cp313-1104/verification.json",
+        "sha256": "7db91ad0de0d6d5700d88b5a2799ea69ebbbd69ff22d8114c777c2eda8596a62"
+      },
+      "device": null,
+      "native_ctests": "44/44"
+    }
+  ],
+  "cp312_native_producers": {
+    "windows": {
+      "run": {
+        "path": "@evidence/build/runs/vulkan4-windows-native-1092/verification.json",
+        "sha256": "181c5a74899b9b467c2364383947bac9a5e6627463ec2d3b3945715d053fdd42"
+      },
+      "assembly": {
+        "path": "@evidence/build/runs/vulkan4-windows-wheel-1093/verification.json",
+        "sha256": "1b22d59eac5fbefaea0d6f2134792ea95b2295c072cb7c0d04c842536478b152"
+      },
+      "native_ctests": "44/44"
+    },
+    "linux": {
+      "hosted_ci_run": 44647091887,
+      "capture": {
+        "path": "@evidence/build/runs/vulkan4-linux-artifact-1098/linux-wheel.json",
+        "sha256": "31fc546db463345cae9b3903dec96b78c38c176e9028bc24520a122504596cce"
+      },
+      "retag": {
+        "path": "@evidence/build/runs/vulkan4-linux-retag-1099/verification.json",
+        "sha256": "391514277688ded92826db2ac47a1758f375dec378591fcb4807d91909b0482a"
+      },
+      "reader_review": {
+        "path": "@evidence/build/runs/vulkan4-linux-reader-review-1086r/decision.json",
+        "sha256": "f141386712097ef5d83414fc03c0b9b9ad94522474ccf9074d2da45951c4004b"
+      }
+    }
+  },
+  "recorded_failed_attempts": [
+    "vulkan4-source-freeze-1082 superseded: its fresh Linux producer (run 44645328317) failed because the pinned Mesa source URL returned 404; freeze 1090 adds the reviewed URL fix",
+    "vulkan4-cp312-win-1088 (on the superseded freeze) attempts 1-3 stopped by script asserts (unregistered lease, previous-cycle tree and _sdf_cpu literals) before any GPU case",
+    "vulkan4-wsl-cp313-1104 and vulkan4-wsl-cp311-1103 attempt 1 stopped by the Windows-scratch guard because Metal captures 1105/1106 ran concurrently; reran sequentially",
+    "vulkan4-metal-pin-1107 attempt 1 asserted the pre-vulkan.3 prior pin; corrected to the current pin"
+  ],
+  "cp310_gpu_wheels_claimed": false,
+  "cp314_gpu_wheels_claimed": false,
+  "physical_linux_gpu_claimed": false,
+  "colab_rerun": false,
+  "scoped_admitted": false,
+  "artifact_admitted": false,
+  "publicly_delivered": false,
+  "full_inventory_complete": false,
+  "scope": "Six 0.17.0+vulkan.4 wheels built from one frozen source and checked installed: 75 GPU cases each on Windows RTX 4090 or WSL software Vulkan (Mesa lavapipe 9c5c41b3), plus 14 Tk cases on the two cp312 wheels. installed-functional only. Evidence recorded for earlier wheels (including Colab T4/L4) is not transferred to these wheels."
+}

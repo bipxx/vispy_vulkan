@@ -921,6 +921,11 @@ struct Canvas {
     wgpu::Texture presented;
     wgpu::TextureView presented_view;
     PresentedCapture presented_capture;
+    // Reused MapRead staging buffer for read_canvas; only valid for the device
+    // generation that created it, and always unmapped between reads.
+    wgpu::Buffer readback_staging;
+    uint64_t readback_staging_bytes = 0;
+    uint64_t readback_staging_generation = 0;
     wgpu::BindGroup present_group;
     WGPUTextureView present_group_view = nullptr;
     WGPUBindGroupLayout present_group_layout = nullptr;
@@ -1920,6 +1925,8 @@ struct Engine {
             auto& canvas = entry.second;
             canvas.frame_mark.reset();
             canvas.presented_capture = {};
+            canvas.readback_staging = nullptr;
+            canvas.readback_staging_bytes = 0;
             canvas.color = nullptr;
             canvas.color_view = nullptr;
             canvas.multisampled_color = nullptr;
@@ -8990,8 +8997,20 @@ Readback read_canvas(int canvas_id, int x, int y, int width, int height, bool al
     wgpu::BufferDescriptor bd;
     bd.size = buffer_bytes;
     bd.usage = wgpu::BufferUsage::CopyDst | wgpu::BufferUsage::MapRead;
-    auto buffer = eng.device.CreateBuffer(&bd);
-    ++eng.probe.buffer_allocations;
+    // Repeated reads of one size (the readback presentation path reads every
+    // frame) reuse the canvas's staging buffer instead of allocating a new one.
+    wgpu::Buffer buffer;
+    if (canvas.readback_staging && canvas.readback_staging_bytes == buffer_bytes &&
+        canvas.readback_staging_generation == eng.device_generation &&
+        canvas.readback_staging.GetMapState() == wgpu::BufferMapState::Unmapped) {
+        buffer = canvas.readback_staging;
+    } else {
+        buffer = eng.device.CreateBuffer(&bd);
+        ++eng.probe.buffer_allocations;
+        canvas.readback_staging = buffer;
+        canvas.readback_staging_bytes = buffer_bytes;
+        canvas.readback_staging_generation = eng.device_generation;
+    }
     wgpu::TexelCopyTextureInfo src;
     src.texture = source;
     src.aspect = mode == "stencil" && !sample_zero_stencil ? wgpu::TextureAspect::StencilOnly : wgpu::TextureAspect::All;

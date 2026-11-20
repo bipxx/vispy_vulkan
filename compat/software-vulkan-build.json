@@ -3,7 +3,7 @@
   "name": "mesa-clip-axis-source-build",
   "source": {
     "name": "mesa_26.1.8~kisak1~n.tar.xz",
-    "url": "https://ppa.launchpadcontent.net/kisak/turtle/ubuntu/pool/main/m/mesa/mesa_26.1.8~kisak1~n.tar.xz",
+    "url": "https://launchpad.net/~kisak/+archive/ubuntu/turtle/+files/mesa_26.1.8~kisak1~n.tar.xz",
     "sha256": "81143147557058caa89f7a49475a66246a52983b109ac2a19b3066a4d55e6c53",
     "size": 79447536,
     "roles": [

@@ -1,15 +1,15 @@
 {
   "schema": 1,
   "repository": "bipxx/vispy_vulkan",
-  "run_id": 44205399049,
+  "run_id": 44647091887,
   "attempt": 1,
-  "source_head": "45aee3e262a0dbb62e3db24369f7b289e1914b2e",
-  "artifact_id": 14385451180,
-  "artifact_sha256": "d081d1fe97a352fee2a748920ed14546e0b798d90e2c75b45059626698640680",
-  "artifact_bytes": 43276641,
+  "source_head": "07de4afa3858d98b2ff9db40c0e351bd20d08e6e",
+  "artifact_id": 14589649628,
+  "artifact_sha256": "b1a3df369a96b58c65eacd2db93a14fe5317d4986f4f713fd1111912198716f3",
+  "artifact_bytes": 43282342,
   "max_expanded_bytes": 134217728,
-  "production_sha256": "826e4ea572798de02f907cbf06967a1dc3ab8917db10252a04b764c60ee0f912",
+  "production_sha256": "2d32356654143d013e44d0a1c91405f898d159a8faf69779705bc19d886165b4",
   "driver_sha256": "9c5c41b3a7b9d759b0960c868f10375281798ad084150716d6d122c8789b9e12",
-  "driver_pin_sha256": "46c952cbdeb4de964b6ca127d2b5d7c71b9a566d98e225984059cb123d4c9980",
+  "driver_pin_sha256": "2fdd7a78372d0066b128e39a8963d9d8bbbce40b7a3c649941db6fc5e24c1fe3",
   "recovered_members": []
 }
