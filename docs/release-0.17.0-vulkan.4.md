@@ -108,3 +108,9 @@ WSL was inaccessible during channel verification. The Linux channel checks verif
 wheel selection, archive hashes and installed bytes. Linux native import and rendering
 remain covered by the separate pre-publication installed-functional evidence.
 Temporary installs were removed. See the [delivery record](../compat/api-acceptance/vulkan4-public-delivery-v1.json).
+
+A November 20 follow-up fetched the CPython 3.12 Linux x86_64 wheel via the public
+index. Its SHA-256, `e8a61ae7945c214774fab709d76d2adb9bb2f81ce33a3e2cb3f68031deac16be`,
+matched the index pin and release `delivery.json`. The WSL launcher returned
+`Wsl/E_ACCESSDENIED` before Ubuntu started. The native public install, version import
+and `dawn_headless` software Vulkan pixel check remain pending.
