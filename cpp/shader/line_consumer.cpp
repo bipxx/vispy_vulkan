@@ -300,10 +300,19 @@ void main() {
     if (!vispy_line_consumer_clip(vispy_line_consumer_rows[ids.x].clip_position,
         vispy_line_consumer_rows[ids.y].clip_position, a, b, interval, scale)) return;
     vec2 pa = vispy_line_consumer_window(a), pb = vispy_line_consumer_window(b);
+    const vec2 corners[6] = vec2[6](vec2(0,0), vec2(1,0), vec2(0,1), vec2(0,1), vec2(1,0), vec2(1,1));
+    vec2 corner = corners[gl_VertexIndex];
+#if defined(VISPY_LINE_CONSUMER_MULTISAMPLE) && !defined(VISPY_LINE_CONSUMER_SMOOTH)
+    vec2 delta = pb - pa;
+    float segment_length = length(delta);
+    if (segment_length <= 0.0 || !vispy_line_consumer_finite(segment_length)) return;
+    vec2 normal = vec2(-delta.y, delta.x) / segment_length;
+    vec2 window = mix(pa, pb, corner.x) + normal * ((corner.y - 0.5) * vispy_line_consumer_raster.x);
+#else
     float padding = vispy_line_consumer_raster.x * 0.5 + 1.0;
     vec2 lower = min(pa, pb) - vec2(padding), upper = max(pa, pb) + vec2(padding);
-    const vec2 corners[6] = vec2[6](vec2(0,0), vec2(1,0), vec2(0,1), vec2(0,1), vec2(1,0), vec2(1,1));
-    vec2 window = mix(lower, upper, corners[gl_VertexIndex]);
+    vec2 window = mix(lower, upper, corner);
+#endif
     vec2 ndc = (window - vispy_line_consumer_viewport.xy) / vispy_line_consumer_viewport.zw * 2.0 - 1.0;
     if (!vispy_line_consumer_finite2(ndc)) return;
     // Original GL six-plane clipping precedes expansion. Fragment depth is
@@ -416,7 +425,24 @@ void main() {
     // Coverage is deliberately a value, not a pre-call kill. Neighboring
     // helper pixels must reach the original fragment's derivatives/implicit
     // texture samples after reconstructing their extrapolated inputs.
+#ifdef VISPY_LINE_CONSUMER_MULTISAMPLE
+    // SampleID runs the reconstruction at each raster sample (including the
+    // FragCoord used for interpolation and depth). The input mask composes
+    // raster coverage with the pipeline sample mask and alpha-to-coverage
+    // can further narrow coverage after shading.
+    bool vispy_line_consumer_raster_sample = (uint(gl_SampleMaskIn[0]) & (1u << uint(gl_SampleID))) != 0u;
+#else
+    bool vispy_line_consumer_raster_sample = true;
+#endif
+#ifdef VISPY_LINE_CONSUMER_SMOOTH
+    float vispy_line_consumer_coverage = vispy_line_consumer_smooth(pa, pb, pixel);
+    bool vispy_line_consumer_covered = vispy_line_consumer_raster_sample &&
+        vispy_line_consumer_coverage > vispy_line_consumer_minimum_coverage;
+#elif defined(VISPY_LINE_CONSUMER_MULTISAMPLE)
+    bool vispy_line_consumer_covered = vispy_line_consumer_raster_sample;
+#else
     bool vispy_line_consumer_covered = vispy_line_consumer_aliased(a, b, pixel, interval.y == 1.0);
+#endif
     vec2 delta = pb - pa;
     float squared = dot(delta, delta);
     // This refusal is per primitive, independent of the fragment coordinate.
@@ -634,19 +660,25 @@ std::shared_ptr<const GeneratedLineConsumerArtifact> build_generated_line_consum
         result->original = result->evaluator->original;
         result->policy_identity = generated_line_consumer_policy_identity(*result->evaluator, policy);
         const bool smooth = policy.coverage == LineCoveragePolicy::SmoothAnalytic;
+        const bool multisampled = policy.sample_count == 4;
         if ((policy.sample_count != 1 && policy.sample_count != 4) ||
-            (!smooth && policy.coverage != LineCoveragePolicy::AliasedMajorAxis) ||
+            policy.coverage != line_coverage_policy(smooth, policy.sample_count) ||
             policy.coverage_identity != line_coverage_identity(smooth, policy.sample_count))
-            return fail("explicit one- or four-sample aliased or analytic-smooth policy required");
+            return fail("explicit single-sample aliased/smooth or four-sample rectangle/smooth policy required");
         const auto& evaluator_ref = *result->evaluator; const auto& original = *result->original;
         if (original.point_sprites || original.options.line_evaluator) return fail("original line render snapshot required");
         if (const auto error = fragment_context_error(original.spv_frag); !error.empty()) return fail(error);
         for (const auto* source : {&original.source_vertex, &original.source_fragment})
-            for (const auto& token : tokens(*source)) if (token.text.rfind(prefix, 0) == 0 || token.text == "VISPY_LINE_CONSUMER_ROW_BYTES")
+            for (const auto& token : tokens(*source)) if (token.text.rfind(prefix, 0) == 0 ||
+                    token.text == "VISPY_LINE_CONSUMER_ROW_BYTES" || token.text == "VISPY_LINE_CONSUMER_MULTISAMPLE" ||
+                    token.text == "VISPY_LINE_CONSUMER_SMOOTH")
                 return fail("original source collides with the reserved generated namespace");
         validate_line_output_layout(evaluator_ref.output_row_bytes, evaluator_ref.outputs);
+        // Dawn charges the flat row IDs and, under MSAA, the sample index and input mask.
         if (!limits.max_storage_buffers_per_stage || evaluator_ref.output_row_bytes > limits.max_storage_binding_bytes ||
-            evaluator_ref.output_row_bytes > limits.max_buffer_bytes || limits.max_inter_stage_shader_variables < 1) return fail("actual grants do not admit the two-stage typed row/interface");
+            evaluator_ref.output_row_bytes > limits.max_buffer_bytes ||
+            limits.max_inter_stage_shader_variables < (multisampled ? 3u : 1u))
+            return fail("actual grants do not admit the two-stage typed row/interface");
         result->parameters_offset = original.uniform_bytes;
         if (result->parameters_offset % 16 || result->parameters_offset > UINT32_MAX - 64u)
             return fail("original UBO plus generated parameter extent overflows");
@@ -664,11 +696,13 @@ std::shared_ptr<const GeneratedLineConsumerArtifact> build_generated_line_consum
         const auto block = uniform_block(result->uniforms);
         auto common = "#define VISPY_LINE_CONSUMER_ROW_BYTES " + std::to_string(evaluator_ref.output_row_bytes) +
             "u\n" + block + storage_block(evaluator_ref) + geometry;
-        if (smooth) {
+        if (multisampled) common.insert(0, "#define VISPY_LINE_CONSUMER_MULTISAMPLE\n");
+        if (smooth) common.insert(0, "#define VISPY_LINE_CONSUMER_SMOOTH\n");
+        if (smooth || multisampled) {
             replace_one(common, "vispy_line_consumer_raster.x < 1.0", "vispy_line_consumer_raster.x <= 0.0");
             replace_one(common, "floor(vispy_line_consumer_raster.x) != vispy_line_consumer_raster.x", "false");
-            common += smooth_geometry;
         }
+        if (smooth) common += smooth_geometry;
         result->vertex = "#version 450\n" + common + vertex_main;
         std::string fragment = original.fragment;
         if (fragment.rfind("#version 450\n", 0) != 0) return fail("unexpected canonical fragment version header");
@@ -702,22 +736,7 @@ std::shared_ptr<const GeneratedLineConsumerArtifact> build_generated_line_consum
             "bool vispy_line_consumer_query_helper() {\n"
             "    return vispy_line_consumer_helper_invocation || helperInvocationEXT();\n}\n";
         auto suffix = fragment_main(evaluator_ref, helpers, policy.depth_output);
-        if (policy.sample_count == 4) {
-            // SampleId makes this a sample-rate fragment. On Vulkan FragCoord.xy
-            // then identifies the actual raster sample; no sample pattern is
-            // assumed or synthesized. The output mask retains just that sample.
-            // Keep this before original code so an explicit user sample mask can
-            // still narrow coverage, and preserve the deferred kill/derivatives.
-            const std::string depth_assignment = policy.depth_output ?
-                "    gl_FragDepth = depth;" : "    vispy_line_consumer_fragment_depth = depth;";
-            replace_one(suffix, depth_assignment,
-                "    gl_SampleMask[0] = int(1u << uint(gl_SampleID));\n" + depth_assignment);
-        }
         if (smooth) {
-            replace_one(suffix,
-                "    bool vispy_line_consumer_covered = vispy_line_consumer_aliased(a, b, pixel, interval.y == 1.0);",
-                "    float vispy_line_consumer_coverage = vispy_line_consumer_smooth(pa, pb, pixel);\n"
-                "    bool vispy_line_consumer_covered = vispy_line_consumer_coverage > vispy_line_consumer_minimum_coverage;");
             replace_one(suffix, "    if (!vispy_line_consumer_covered || !vispy_line_consumer_valid) discard;\n",
                 "    if (!vispy_line_consumer_covered || !vispy_line_consumer_valid) discard;\n    " +
                 smooth_color_output(fragment) + ".a *= vispy_line_consumer_coverage;\n");
@@ -792,19 +811,20 @@ GeneratedLineConsumerDraw plan_generated_line_consumer_draw(
     if (!artifact.ok || !artifact.evaluator || artifact.original != artifact.evaluator->original)
         throw std::invalid_argument("line consumer: compiled exact original/evaluator pair required");
     lines::validate_line_draw_slice(selection, slice); state = lines::state(state.width, state.smooth);
-    const bool smooth = artifact.policy.coverage == LineCoveragePolicy::SmoothAnalytic;
-    if (state.smooth != smooth || (!smooth && artifact.policy.coverage != LineCoveragePolicy::AliasedMajorAxis) ||
-        (artifact.policy.sample_count != 1 && artifact.policy.sample_count != 4) ||
-        artifact.policy.coverage_identity != line_coverage_identity(smooth, artifact.policy.sample_count))
+    const auto samples = artifact.policy.sample_count;
+    if ((samples != 1 && samples != 4) ||
+        artifact.policy.coverage != line_coverage_policy(state.smooth, samples) ||
+        artifact.policy.coverage_identity != line_coverage_identity(state.smooth, samples))
         throw std::invalid_argument("line consumer: runtime smoothing/samples must match the compiled coverage policy");
     GeneratedLineConsumerDraw draw;
     draw.parameters.viewport = {representable(viewport.x, "viewport x"), representable(viewport.y, "viewport y"),
         representable(viewport.width, "viewport width", true), representable(viewport.height, "viewport height", true)};
     if (viewport.width < 0 || viewport.height < 0 || framebuffer_height <= 0 || depth_near < 0 || depth_near > 1 ||
         depth_far < 0 || depth_far > 1) throw std::invalid_argument("line consumer: invalid viewport/framebuffer/depth range");
-    const auto rounded_width = smooth ? state.width : std::max(1.0, std::floor(state.width + 0.5));
-    if (rounded_width > 16777216.0) throw std::length_error("line consumer: aliased width exceeds exact shader integer range");
-    draw.parameters.raster = {representable(rounded_width, "width", true), representable(framebuffer_height, "framebuffer height", true),
+    const auto raster_width = artifact.policy.coverage == LineCoveragePolicy::AliasedMajorAxis ?
+        std::max(1.0, std::floor(state.width + 0.5)) : state.width;
+    if (raster_width > 16777216.0) throw std::length_error("line consumer: width exceeds shader range");
+    draw.parameters.raster = {representable(raster_width, "width", true), representable(framebuffer_height, "framebuffer height", true),
         representable(depth_near, "depth near"), representable(depth_far, "depth far")};
     if (!slice.segment_count || !viewport.width || !viewport.height) return draw;
     const auto& rows = selection.rows();
@@ -819,7 +839,7 @@ GeneratedLineConsumerDraw plan_generated_line_consumer_draw(
     draw.render_uniform_bytes = artifact.uniform_bytes;
     if (draw.endpoint_bytes > std::min(limits.max_storage_binding_bytes, limits.max_buffer_bytes) ||
         draw.render_uniform_bytes > std::min(limits.max_uniform_binding_bytes, limits.max_buffer_bytes) ||
-        limits.max_storage_buffers_per_stage < 1 || limits.max_inter_stage_shader_variables < 1 ||
+        limits.max_storage_buffers_per_stage < 1 || limits.max_inter_stage_shader_variables < (samples == 4 ? 3u : 1u) ||
         artifact.output_binding >= limits.max_bindings_per_group)
         throw std::length_error("line consumer: draw exceeds actual grants; partitioning is still open");
     draw.parameters.header = {kGeneratedLineConsumerAbi, static_cast<uint32_t>(rows.size()), artifact.evaluator->output_row_bytes,

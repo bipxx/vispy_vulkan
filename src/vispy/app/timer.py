@@ -63,6 +63,7 @@ class Timer(object):
         self._last_emit_time = None
         self.iter_count = 0
         self.max_iterations = iterations
+        self._run_generation = 0
         if connect is not None:
             self.connect(connect)
         if start:
@@ -118,6 +119,7 @@ class Timer(object):
         if self.running:
             return  # don't do anything if already running
         self.iter_count = 0
+        self._run_generation += 1
         if interval is not None:
             self.interval = interval
         if iterations is not None:
@@ -131,6 +133,7 @@ class Timer(object):
     def stop(self):
         """Stop the timer."""
         self._check_backend_thread()
+        self._run_generation += 1
         try:
             self._backend._vispy_stop()
         finally:
@@ -161,19 +164,29 @@ class Timer(object):
             self.stop()
             return
 
+        generation = self._run_generation
+        iteration = self.iter_count
+
         # compute dt since last event
         now = precision_time()
         dt = now - self._last_emit_time
         elapsed = now - self._first_emit_time
         self._last_emit_time = now
 
-        self.events.timeout(
-            type='timer_timeout',
-            iteration=self.iter_count,
-            elapsed=elapsed,
-            dt=dt,
-            count=self.iter_count)
-        self.iter_count += 1
+        try:
+            self.events.timeout(
+                type='timer_timeout',
+                iteration=iteration,
+                elapsed=elapsed,
+                dt=dt,
+                count=iteration)
+        finally:
+            if self._run_generation == generation:
+                self.iter_count = iteration + 1
+                if (self.max_iterations >= 0 and
+                        self.iter_count >= self.max_iterations and
+                        self.running):
+                    self.stop()
 
     def connect(self, callback):
         """Alias for self.events.timeout.connect()."""

@@ -179,6 +179,7 @@ if(NOT VISPY_CPU_CONTRACTS_ONLY)
         cpp/bindings/module.cpp
         cpp/shader/normalize.cpp
         cpp/shader/glslang_spv.cpp
+        cpp/shader/tint_wgsl.cpp
         cpp/shader/integer_sampling.cpp
         cpp/shader/line_evaluator.cpp
         cpp/shader/line_consumer.cpp
@@ -188,6 +189,11 @@ if(NOT VISPY_CPU_CONTRACTS_ONLY)
     target_include_directories(_dawn PRIVATE
         "${CMAKE_CURRENT_SOURCE_DIR}/cpp"
         "${VISPY_SHADER_INCLUDE_ROOT}"
+        # The SDK supplies the public Tint umbrella header, but that header
+        # references private headers from the matching pinned Dawn source.
+        "${DAWN_SRC}"
+        "${DAWN_SRC}/include"
+        "${DAWN_SRC}/third_party/abseil-cpp"
     )
     target_link_libraries(_dawn PRIVATE
         webgpu_dawn
@@ -201,6 +207,8 @@ if(NOT VISPY_CPU_CONTRACTS_ONLY)
         target_compile_options(_dawn PRIVATE "$<$<COMPILE_LANGUAGE:OBJCXX>:-fobjc-arc>")
     endif()
     if(MSVC)
+        set_source_files_properties(cpp/shader/tint_wgsl.cpp PROPERTIES
+            COMPILE_OPTIONS "/Zc:preprocessor;/utf-8")
         target_compile_options(_dawn PRIVATE /bigobj /EHsc)
         target_compile_definitions(_dawn PRIVATE NOMINMAX WIN32_LEAN_AND_MEAN)
     endif()

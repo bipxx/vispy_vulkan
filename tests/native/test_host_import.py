@@ -1,10 +1,11 @@
 # SPDX-License-Identifier: AGPL-3.0-only
-"""A full texture upload copies straight from its CPU shadow (plan P5; user, 2026-10-31: D26).
+"""Full texture uploads can copy directly from imported host blocks (plan P5).
 
 A DATA payload of at least 1 MiB is captured into a page-aligned host block, which a full update makes the texture's
 CPU shadow. When the device has Dawn's HostMappedPointer feature, a full upload that needs no conversion and whose
 rows are a multiple of 256 bytes copies from that block through an imported buffer, so it makes no staging copy. The
 frame's Ticket holds the block until its copy has retired, and a block is written only while nothing else holds it.
+VISPY_DAWN_CONVERTED_HOST_IMPORT=1 opts aligned RGB-to-RGBA8 full uploads into a separate imported block.
 Imports pin host memory, so they stay within a limit by releasing idle ones. Every other upload keeps the staging
 path, and VISPY_DAWN_HOST_IMPORT=0 turns imports off. Each texture is drawn texel for texel into either half of a
 framebuffer twice its width and read back; the expected counters depend on whether the device has the feature.
@@ -146,6 +147,69 @@ def test_rows_that_are_not_a_multiple_of_256_bytes_upload_through_staging(size):
     canvas.close()
     assert changes(before, after) == {"host_import_copies": 0, "host_import_fallbacks": FRAMES, "host_imports": 0,
                                       "host_import_evictions": 0}
+
+
+def opaque(rgb):
+    result = np.full((*rgb.shape[:2], 4), 255, dtype=np.uint8)
+    result[..., :3] = rgb
+    return result
+
+
+def converted_imports():
+    return os.environ.get("VISPY_DAWN_CONVERTED_HOST_IMPORT") == "1" and imports()
+
+
+@pytest.mark.parametrize("dtype", [np.uint8, np.uint16])
+def test_converted_full_uploads_land_with_and_without_import_capacity(dtype):
+    rng = np.random.default_rng(602)
+    canvas = headless()
+    with canvas:
+        rgb = rng.integers(256, size=(N, N, 3), dtype=np.uint8)
+        # A uint16 multiple of 257 represents the same UNORM value as the original uint8.
+        scale = 257 if dtype is np.uint16 else 1
+        scene = Halves(rgb.astype(dtype) * scale)
+        available = converted_imports()
+        for half, limit in enumerate((1, 0)):
+            _dawn.diagnostic_host_import_limit(limit)
+            try:
+                before = retire()
+                update = rng.integers(256, size=rgb.shape, dtype=np.uint8)
+                np.testing.assert_array_equal(scene.frame(update.astype(dtype) * scale, half), opaque(update))
+                after = retire()
+                direct = available and limit == 0
+                assert after["host_import_copies"] - before["host_import_copies"] == int(direct)
+                assert after["host_import_fallbacks"] - before["host_import_fallbacks"] == int(available and not direct)
+                assert after["host_import_bytes"] - before["host_import_bytes"] == (N * N * 4 if direct else 0)
+            finally:
+                _dawn.diagnostic_host_import_limit(0)
+
+
+def test_aborted_converted_full_upload_is_retried():
+    rng = np.random.default_rng(603)
+    size = 1024  # 4 MiB after conversion, ordered through pooled staging even without imports
+    first, update = rng.integers(256, size=(2, size, size, 3), dtype=np.uint8)
+    canvas = headless()
+    with canvas:
+        scene = Halves(first)
+        np.testing.assert_array_equal(scene.frame(first, 0), opaque(first))
+        scene.texture.set_data(update)
+        _dawn.diagnostic_submission_controls(False, "before-submit")
+        try:
+            with pytest.raises(RuntimeError, match="diagnostic submission failure: before-submit"):
+                with scene.fbo:
+                    scene.draw(1)
+                gloo.flush()
+        finally:
+            _dawn.diagnostic_submission_controls(False, "")
+        before = retire()
+        with scene.fbo:
+            scene.draw(1)
+        left, right = scene.read()
+        np.testing.assert_array_equal(left, opaque(first))
+        np.testing.assert_array_equal(right, opaque(update))
+        after = retire()
+        assert after["texture_uploads"] - before["texture_uploads"] == 1
+        assert after["host_import_copies"] - before["host_import_copies"] == int(converted_imports())
 
 
 def test_a_patch_while_a_full_upload_is_in_flight_copies_its_block():
@@ -317,7 +381,8 @@ print(json.dumps({"host_mapped_pointer": bool(info["host_mapped_pointer"]),
 
 def test_imports_can_be_turned_off():
     env = dict(os.environ, VISPY_DAWN_HOST_IMPORT="0")
-    child = subprocess.run([sys.executable, "-B", "-c", CHILD, json.dumps(sys.path), _dawn.__file__, str(FRAMES)],
+    flags = ["-B", "-S"] if sys.flags.no_site else ["-B"]
+    child = subprocess.run([sys.executable, *flags, "-c", CHILD, json.dumps(sys.path), _dawn.__file__, str(FRAMES)],
                            env=env, capture_output=True, text=True, timeout=120)
     assert child.returncode == 0, child.stderr
     assert json.loads(child.stdout.splitlines()[-1]) == {"host_mapped_pointer": False, "copies": 0,

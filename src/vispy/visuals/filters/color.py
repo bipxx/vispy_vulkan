@@ -152,12 +152,14 @@ class ColorFilter(Filter):
 
 
 class ZColormapFilter(Filter):
-    FRAG_SHADER = """
+    """Color a visual by its local z coordinate."""
+
+    VERT_SHADER = """
         void z_colormap_support() {
             $zval = $position.z;
         }
     """
-    VERT_SHADER = """
+    FRAG_SHADER = """
         void apply_z_colormap() {
             gl_FragColor = $cmap(($zval - $zrange.x) /
                                  ($zrange.y - $zrange.x));
@@ -170,7 +172,11 @@ class ZColormapFilter(Filter):
 
         if isinstance(cmap, str):
             cmap = colormap.get_colormap(cmap)
-        self.cmap = Function(cmap.glsl_map)
+        if isinstance(cmap, colormap.Colormap):
+            self.cmap = Function(cmap._glsl_map_with_bound_lut())
+            self.cmap['lut_sampler'] = cmap.texture_lut()
+        else:
+            self.cmap = Function(cmap.glsl_map)
         self.fshader['cmap'] = self.cmap
         self.fshader['zrange'] = zrange
         self.vshader['zval'] = Varying('v_zval', dtype='float')

@@ -231,6 +231,7 @@ def test_lif05_interleaved_offscreen_fbo_samples1_and_canvas_samples4_mixed_edge
         assert gauges[k] == 0, gauges
 
 
+@pytest.mark.needs_window
 def test_lif05_qt_onscreen_samples4_vs_samples1_readback_and_crop(monkeypatch):
     PyQt6 = pytest.importorskip('PyQt6')
     from PyQt6 import QtCore, QtGui

@@ -633,6 +633,7 @@ class CompoundVisual(BaseVisual):
         visual.transforms = self.transforms
         visual._prepare_transforms(visual)
         self._subvisuals.append(visual)
+        self._bounds_changed()
         visual.events.update.connect(self._subv_update)
         self.update()
 
@@ -646,6 +647,7 @@ class CompoundVisual(BaseVisual):
         """
         visual.events.update.disconnect(self._subv_update)
         self._subvisuals.remove(visual)
+        self._bounds_changed()
         self.update()
 
     def _subv_update(self, event):

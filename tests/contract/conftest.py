@@ -7,10 +7,10 @@ import pytest
 
 
 @pytest.fixture
-def without_current_reviews(monkeypatch, current_preparation):
+def without_current_reviews(monkeypatch, frozen_preparation):
     """Remove reviews only from an in-memory candidate; retain the real verifier."""
     from tools.compatibility_candidate import seal, scope_digest
-    candidate_path = current_preparation['candidate'].resolve()
+    candidate_path = frozen_preparation['candidate'].resolve()
 
     def isolate(module):
         original = module.read_json

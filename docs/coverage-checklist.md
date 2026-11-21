@@ -1,10 +1,41 @@
 # VisPy Vulkan coverage checklist
 
+## Visual inventory source verification (t-visuals-a, 2026-11-19)
+
+- **API-05 / SCI-01 / SCI-02 / SCI-03 / TEX-01 / LIF-01.** The
+  [acceptance module](../tests/visuals/test_annotated_visual_acceptance_gpu.py)
+  recorded 26 passes and two strict expected failures on Windows CPython 3.12
+  with `app='dawn_headless'` over Vulkan. The same run passed 22 lifecycle and
+  API contracts, including both file-backed contracts that had previously
+  failed temporary-directory setup. Source scope is the t-visuals-a fix round
+  on `37d424eb6` (base `15cb085e0`), with the existing native extension
+  SHA-256 `82aca8cea48d844e46d0c766eb1ac6f851d59d4ced9558872a4c62c68ad22916`.
+  [Retained pytest result](D:/vispy-vulkan-managed/build/runs/swarm-t-visuals-a-fix-1/junit.xml)
+- Inventory IDs with passing ordinary and recovery evidence in this profile:
+  `visuals.arrowvisual`, `visuals.axisvisual`, `visuals.basevisual`,
+  `visuals.boxvisual`, `visuals.colorbarvisual`, `visuals.compleximagevisual`
+  (four modes and invalid mode recovery), `visuals.compoundvisual`, `visuals.cubevisual`,
+  `visuals.ellipsevisual`, `visuals.graphvisual`, `visuals.gridlinesvisual`,
+  `visuals.gridmeshvisual`, `visuals.histogramvisual`, `visuals.imagevisual`,
+  `visuals.infinitelinevisual`, `visuals.instancedmeshvisual` (unlit),
+  `visuals.isocurvevisual`, `visuals.isolinevisual`, and `visuals.isosurfacevisual`.
+- Complex-to-real texture switching and smooth shading of a two-coordinate
+  instanced mesh are open. The unchanged inputs reproduce the failures when
+  run with `--runxfail`. WSL and installed-wheel replays are pending.
+  The InstancedMesh and Isocurve X11 replay requires a window. Other gaps
+  include near-limit instanced input and the rotated-camera grid.
+  [Retained failing controls](D:/vispy-vulkan-managed/build/runs/swarm-t-visuals-a-fix-1/failing-controls.log)
+
 ## Latest checkpoint — 2026-11-21
 
 **`0.17.0+vulkan.4` Linux public-channel smoke (`PLAT-02` follow-up) — 2026-11-21:**
 - WSL Ubuntu follow-up ([vulkan4-linux-smoke-1150](D:/vispy-vulkan-managed/build/runs/vulkan4-linux-smoke-1150/AGENT_REPORT.md)) downloaded `vispy-0.17.0+vulkan.4-cp312-cp312-manylinux_2_39_x86_64.whl` (10,566,229 B, SHA-256 `e8a61ae7945c214774fab709d76d2adb9bb2f81ce33a3e2cb3f68031deac16be`) into a clean CPython 3.12 environment, verified `537/537` members with `0` source overrides, imported `vispy.__version__ == "0.17.0+vulkan.4"`, rendered an exact 64×64 RGBA `[17, 33, 65, 255]` clear via `dawn_headless` on `llvmpipe (LLVM 18.1.3, 256 bits)` using pinned Mesa `9c5c41b3` with `10/10` zero Dawn shutdown gauges, and cleaned WSL managed scratch (`PASS_APPLY`, `total_managed_bytes: 0`). Tier boundaries and published release status remain unchanged. See the [release verification](release-0.17.0-vulkan.4.md#public-channel-verification--2026-11-20).
 
+**`swarm/v5-int` gap closure (`source-tested` only) — 2026-11-21:**
+- Native (`cpp/runtime.cpp`) and Python/test gap fixes on `D:/vispy-swarm/wt/v5-int` (base `870320b07`): warm pooled mapped staging (`>= 4 MiB`) for non-host-mapped streamed buffer uploads, `sample_alpha_to_coverage` / `sample_coverage_enabled` reset in `lower_masked_clear`, `ComplexImage` automatic complex/scalar texture format switching, `MeshData` 2D normal zero-padding, `MouseEvent.drag_events()` validation and cycle detection, `dawn_headless` constructor `position`, `Timer` generation tracking across callback restarts, `Qt` `FocusOut` drag reset and `TimerBackend._vispy_timeout` boundary guard, `FlyCamera` idle/detached timer stop and ignored detached key events, `InfiniteLine`/`LinearRegion` named `Color` conversion, `Isoline` sequence `levels` coercion, `test_focus_routing_cpu.py` `-S` flag propagation, `test_window_app_acceptance.py` embedded Tk packing, and declared deviations in `compat/deviations.txt`. All 9 targeted strict `xfail`s removed.
+- **Windows CPython 3.12** ([vulkan5-gap-closure-win-1151](D:/vispy-vulkan-managed/build/runs/vulkan5-gap-closure-win-1151/AGENT_REPORT.md), RTX 4090, `_dawn` SHA-256 `6d99247c9e7fd5ba875e270aa81de6e87b4477ecee8c09521ccc6c439dfd8b88`, frozen ref `79c4ed79d`): `44/44` CTests passed; `341/341` passed (`0` failures, `0` skipped, `0` xfailed) in each of `targeted-default`, `targeted-wgsl`, and `targeted-standard-only`; `1/1` passed in `VISPY_DAWN_HOST_IMPORT=0`; `130/130` (`focus-default`), `130/130` (`focus-wgsl`), and `127/127` runnable (`focus-standard-only`, `3` HostMappedPointer skips, `0` failures) passed on the `1149` 83-ID focus selection; `14/14` passed in `gui-qt-readback` (`PyQt6==6.11.0`); `136/136` runnable passed in `gui-windows` (`VISPY_TEST_WINDOWS=1`, Tk `8.6.12` & `PyQt6==6.11.0`, `18` expected skips: `8` absent `PyQt5`, `8` absent `PySide6`, `2` multi-monitor DPR). Managed cleanup `PASS_APPLY` (`21,498` scratch files removed).
+- **WSL Ubuntu CPython 3.12** ([vulkan5-wsl-gap-closure-1152](D:/vispy-vulkan-managed/build/runs/vulkan5-wsl-gap-closure-1152/AGENT_REPORT.md), owned `Xvfb` + pinned Mesa `9c5c41b3` `llvmpipe`, stripped Linux `_dawn` SHA-256 `90be914022e42154b8d7864f4bdd352191c907edbe50c0c64a478941f98dad63`): `44/44` CTests passed (`PASS_LINUX_RENDERER_CONTRACTS`); `1/1` passed in `linux-buffer-import-vertices-no-host` (`VISPY_DAWN_HOST_IMPORT=0`); `373/374` runnable passed in each of `linux-default`, `linux-wgsl`, and `linux-standard-only` (`3` skipped in `test_instanced_mesh.py` for absent `PyOpenGL`, `0` xfailed, and `1` preserved failure in `tests/parity/test_msaa_generated_lines.py::test_generated_line_alpha_to_coverage` documented in [probe](D:/vispy-vulkan-managed/build/runs/vulkan5-wsl-gap-closure-1152/mesa-alpha-to-coverage-probe.json)). Managed cleanup `PASS_APPLY`, WSL `total_managed_bytes: 0`.
+- Tier status: `source-tested` only on `swarm/v5-int`; no installed-wheel promotion is claimed and `full_inventory_complete` remains `false`.
 ## Latest checkpoint — 2026-11-20
 
 **`0.17.0+vulkan.4` public delivery (D41) — 2026-11-20:**
@@ -16,6 +47,59 @@
 **User decisions — 2026-11-20**
 - **D40** — Reopen all thirteen D37 items at level A scope and execute them as a swarm: `LIN-02`, `LIF-08`, `BUG-01`, `PLAT-03`, `PLAT-04`, `PLAT-05`, `PLAT-06`, `PLAT-08`, `HOST-04`, `HOST-05`, `PERF-02`, `PERF-03`, and `TOOL-02`. Their D37 dispositions remain in the historical entries.
 - **D41** — Land W1 before W2 with one translation path, fix the capture-count bug, and publish `v0.17.0-vulkan.4`.
+
+**Vulkan.5 integration source replay (2026-11-20).** BUG-03 and the headless
+single-present proof require two submissions. The clear and capture mirror
+share submission zero, and the readback copy uses submission one. The tests
+also check that the explicit headless present increments the application
+counter without submitting GPU work. Windows CPython 3.12 with Dawn/Vulkan
+development build `swarm-v5-integration-1` passed the 48-case regression
+selection in the default, WGSL, and standard-only profiles. The selection
+also covers the geometry direction rejection and the buffer-import opt-out.
+[Integration commands and results](D:/vispy-vulkan-managed/build/runs/vulkan5-integration-1147/tests.json).
+
+**Vulkan.5 integration regression repair (2026-11-20, source only).**
+BUG-03 retains the public GLIR capture ordering. The trailing readback finish is
+completed by Dawn's native readback so the clear and capture mirror can still
+share the render submission. Float-backed packed depth reads preserve logical
+24-bit values in the standard-only Dawn profile. Isocurve recomputes empty levels
+and clears its
+geometry. Standard-only mode omits the three orphan-retirement controls that
+require Dawn HostMappedPointer. The large streamed-vertex upload still allocates
+eight Vulkan memory blocks on the warm path when host import is disabled. Main
+reproduces this cost with the same optional feature disabled.
+
+The Windows CPython 3.12 replay uses integration source at `6e31ad4e0` plus the
+repair and the `swarm-v5-regressions-1` native build. Frozen qualification and
+optional-host manifest controls use the matching source inputs from `79c4ed79d`
+through `VISPY_TEST_FROZEN_SOURCE_ROOT`. The recorded results cover the default,
+WGSL, and standard-only Dawn profiles.
+[Regression results](D:/vispy-vulkan-managed/build/runs/vulkan5-regressions-1149/results.json).
+
+**Scene integration re-review, source-only (Windows local) — 2026-11-20:**
+- `API-05`, `API-06`, `SCI-02-CLIP-ALPHA-BLEND`, and `LIF-08` were retested on `swarm/t-scene` after merging `swarm/r-lif08` at `8afe80057` and `swarm/t-fst` at `45a1fad15`. The tested source tree was `0da42583476b0ee2400ae1a85333545d6022890e`, with Windows CPython 3.12, headless Dawn/Vulkan, and reused `_dawn` SHA-256 `82aca8cea48d844e46d0c766eb1ac6f851d59d4ced9558872a4c62c68ad22916`. This is local source evidence. Installed and real-window checks remain open on this delta.
+- `API-05` and `API-06`: 70 passed, including four Magnify/Grid resize cases at default scale, atomic singular-matrix recovery, default resize notification and retry, and two frozen render references. The existing FlyCamera timer test remains a strict expected failure. The initial run had 69 passes, one expected failure, and one failure from the new test's color input, corrected on replay. [Scene result](D:/vispy-vulkan-managed/build/runs/swarm-t-scene-fix-round-2/scene-final-verified.log), [initial scene run](D:/vispy-vulkan-managed/build/runs/swarm-t-scene-fix-round-2/scene.log).
+- `SCI-02-CLIP-ALPHA-BLEND`, `API-05`, and `API-06`: 56 clipping, filter, shader, and transform cases passed. The first attempt had 55 passes and one PNG round-trip fixture setup error due to a denied temp-directory read. It passed with an explicit temp directory inside the retained run. [Final results](D:/vispy-vulkan-managed/build/runs/swarm-t-scene-fix-round-2/clipping-transforms-final.log), [initial results](D:/vispy-vulkan-managed/build/runs/swarm-t-scene-fix-round-2/clipping-transforms.log).
+- `LIF-08`: 73 headless event, simulated fractional DPI, framebuffer, and state-query cases passed. Physical monitor moves and installed qualification remain open. [Backend results](D:/vispy-vulkan-managed/build/runs/swarm-t-scene-fix-round-2/headless-native.log).
+
+**Scene acceptance swarm fix round, source-only (Windows local) - 2026-11-20:**
+- `API-05` and `API-06` record finite scene coverage on the `15cb085e0` qualification base with the t-scene source delta, Windows CPython 3.12 and headless Dawn/Vulkan. The standalone selection recorded 56 passes and six strict expected failures. Only six of 37 `scene.visuals` aliases have render, picking and reparent evidence. FlyCamera timer ownership and atomic singular-matrix recovery remain open. Four headless resize cases pass with the `305fbc097` backend from r-lif08 and have expected failures on the standalone track. The pre-existing native extension has SHA-256 `82aca8cea48d844e46d0c766eb1ac6f851d59d4ced9558872a4c62c68ad22916`. [Scene tests](../tests/scene) and [retained standalone and integration results](D:/vispy-vulkan-managed/build/runs/swarm-t-scene-fix-round).
+- `SCI-02-CLIP-ALPHA-BLEND` records 24 passing cases on the same source profile, including the unchanged ViewBox direct-child rule, filter composition and the grouped overlay reparent/toggle regression. The new regression fails against the qualification-base clipping code. The headless napari 0.9.2 Image visual also passes grouped reparent pixel checks. [Napari smoke log](D:/vispy-vulkan-managed/build/runs/swarm-t-scene-fix-round/napari-smoke-final.log), [regression test](../tests/scene/test_scene_graph_gpu.py) and [retained clipping run](D:/vispy-vulkan-managed/build/runs/swarm-t-scene-fix-round/clipping.log).
+
+**API-05 / API-06 swarm filter, shader and transform acceptance — 2026-11-20:**
+The 22 assigned rows are exercised by the [filter](../tests/visuals/test_filter_acceptance_gpu.py),
+[shader](../tests/shaders/test_composition_acceptance_gpu.py) and
+[transform](../tests/visuals/test_transform_acceptance_gpu.py) cases.
+On the `swarm/t-fst` fix-round source based on `15cb085e0`, Windows CPython 3.12
+Dawn/Vulkan headless passed all 24 acceptance instances (19 GPU, five CPU) and
+35 regression instances with `_dawn` SHA-256
+`82aca8cea48d844e46d0c766eb1ac6f851d59d4ced9558872a4c62c68ad22916`.
+The [initial run](D:/vispy-vulkan-managed/build/runs/swarm-t-fst-fix-round/pytest.log)
+had 58 passes and one color-helper regression, corrected in the
+[final run](D:/vispy-vulkan-managed/build/runs/swarm-t-fst-fix-round-final/junit.xml).
+The [peer resize checks](D:/vispy-vulkan-managed/build/runs/swarm-t-fst-fix-round-final/extra-terminal.txt)
+each passed with one alternate backend source loaded in memory. Installed-wheel
+and WSL replay remain pending.
 
 **`0.17.0+vulkan.4` qualification progress (readback performance batch) — 2026-11-20:**
 - Scope: the Qt readback presentation path builds its `QImage` on the readback array (`_qt.py`); `read_pixels` reuses a per-canvas staging buffer and leaves its output uninitialized before the row copy (`cpp/runtime.cpp`, `cpp/runtime.hpp`, `cpp/bindings/module.cpp`); the Mesa source pin downloads through Launchpad's `+files` link (same bytes); version `0.17.0+vulkan.4`. Independent source review `1081r` APPROVE (attempt 3, after corrected `PERF-01` evidence and the URL addendum). Freeze `07de4afa…` (`1090`); the first freeze `89bc6252…` (`1082`) is superseded because its fresh Linux producer failed on the dead PPA pool URL.
@@ -3059,6 +3143,16 @@ the [consolidated plan](superpowers/plans/2026-10-28-consolidated-plan.md).
   Inventory and selections remain unchanged. No full parent or v2 installed
   acceptance transfers. The corrected pure members are packaged and locally
   checked on Linux (FIX-06); broader API-05/06 acceptance remains open.
+  **2026-11-19 source acceptance (API-02 / API-05 / TEX-01 / LIF-01):**
+  on base `15cb085e0`, Windows `dawn_headless` with the existing cp312 Vulkan
+  module `82aca8cea48d844e46d0c766eb1ac6f851d59d4ced9558872a4c62c68ad22916`
+  passed 16/16 focused tests. `gloo.globject` checks bare-object create/delete
+  through a recording consumer and native buffer retirement, failure and peer
+  redraw. `gloo.texture1d` checks ordered clamp/repeat sampling and subupload
+  refusal/retry. `gloo.textureatlas` checks region sampling and oversized
+  allocation refusal/recovery. `gloo.util` checks offset viewport orientation
+  and malformed input followed by a valid redraw. Both installed-profile test
+  runs remain open. [Commands, initial failure, and test scope](D:/vispy-vulkan-managed/build/runs/vulkan5-integration-1147/reports/t-gloo.md).
 - [x] **API-03 — Scene namespace:** review all 22 `scene` parents, including
   aliases, cameras, viewboxes, transforms, clipping and shared lifetimes.
   **Complete at parent/source-route review scope, 2026-11-07:**
@@ -3074,6 +3168,19 @@ the [consolidated plan](superpowers/plans/2026-10-28-consolidated-plan.md).
   [CPU retry](../build/runs/scene-cpu-361/external-evidence.json).
   Inventory, selections and shipping source remain unchanged. API-05/06 retain
   method/value/event, shader/clipping/picking and exact installed acceptance.
+  **Scene alias source checks (API-03 / API-05 / API-06), 2026-11-19:**
+  [Tests](../tests/visuals/test_scene_visual_aliases_gpu.py) and
+  [headless results](<D:/vispy-vulkan-managed/build/runs/swarm-t2-scene-aliases-fix-1/aliases.log>)
+  cover 37 aliases in 74 cases (68 passed, six strict xfails) on Windows CPython
+  3.12 with `dawn_headless` and the existing `_dawn` binary (`82aca8ce…`).
+  The source is based on `15cb085e0` plus the Graph constructor and alias test
+  changes in this track. Passing cases cover scene traversal, transforms and
+  parent recovery. Image also checks exact stacked and reparented pixels.
+  InfiniteLine and LinearRegion reject named colors, and Isoline rejects list
+  levels. The [failure replay](<D:/vispy-vulkan-managed/build/runs/swarm-t2-scene-aliases-fix-1/input-limitations.log>)
+  reproduces both cases per input. Isosurface traversal passes with NumPy
+  unsigned overflow warnings. Visual-specific raster checks beyond Image,
+  installed-wheel replay and native-window replay remain open for this scope.
 - [x] **API-04 — Visual namespace:** review all 76 `visuals` parents, including
   ordinary rendering, mutations, filters and application-specific visuals.
   **Complete at parent/source-route review scope, 2026-11-07:**
@@ -3091,7 +3198,15 @@ the [consolidated plan](superpowers/plans/2026-10-28-consolidated-plan.md).
   This does not qualify ordinary rendering, all mutations, filters, scientific
   consumers or shader compilation. Original inventory/selection bytes and all
   API-05/06, SHD, state, texture and scientific obligations remain unchanged.
+  2026-11-19 Windows source acceptance on `swarm/t-visuals-b` (base `15cb085e0`)
+  passed 24 Dawn headless cases across 20 reviewed Visual rows. The cases
+  exercise analytic render landmarks and rejected input, visibility, shader
+  failure or device-loss recovery. The per-row report records the exact
+  worktree and native module scope, run results and outstanding installed-profile
+  evidence. [Acceptance tests](../tests/visuals/test_reviewed_visuals_gpu.py),
+  [row results](D:/vispy-vulkan-managed/build/runs/vulkan5-integration-1147/reports/t-visuals-b.md#per-row-results).
 - [x] **API-05 — Method and route reconciliation:** map public methods, wildcard
+  2026-11-20 UTC: The reviewed gap list's 15 color, 21 geometry and 14 I/O rows have source acceptance tests on `swarm/t2-color-geometry-io` based on `15cb085e0`. The post-triage run covers the ordinary and failure cases for 48 rows. The Matplotlib fallback ordinary case and the `MatplotlibColormap` case are pending in a profile with Matplotlib. [Color contracts](../tests/contract/test_color_inventory_acceptance.py), [geometry contracts](../tests/contract/test_geometry_inventory_acceptance.py), [I/O contracts](../tests/contract/test_io_inventory_acceptance.py), [Dawn pixel contract](../tests/visuals/test_discrete_colormap_inventory_gpu.py).
   2026-11-16: [tier1-collections-jupyter-rfb](../compat/api-acceptance/tier1-collections-jupyter-rfb-v1.json) (`2a3ec57f…`, source `3daf19be…`, `1006`–`1013`): `installed-functional` resolution of all `3` former Wave 3 `vispy.visuals.collections` bounds (`9/9` collection configurations rendered across Windows RTX 4090, WSL Mesa `9c5c41b3…`, and Colab `Tesla T4` across `cp311`/`cp312`/`cp313`) plus `app.backend.jupyter-rfb` Dawn lifecycle/readback/HiDPI/CPython-3.14-timer (`3/3` live GPU `0` skipped, `85/85` CPU contracts in `cpu-checks.log` `0ca3ae9b…`); `scoped_admitted: false`, `publicly_delivered: false`, no full upstream parity or browser-frontend claim.
   2026-11-15: [api05-plot-transforms-windows](../compat/api-acceptance/api05-plot-transforms-windows-v1.json) (`4278e1bd…`, `989`) & [api05-plot-transforms-wsl](../compat/api-acceptance/api05-plot-transforms-wsl-v1.json) (`6cd157b0…`, `990`, `16/16` pass/platform): installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb` + Mesa `9c5`); `scoped_admitted: false`; no full upstream parity claim.
   2026-11-15: [sta01-tex01-sci06-windows](../compat/api-acceptance/sta01-tex01-sci06-windows-v1.json), [shd01-06-lin01-windows](../compat/api-acceptance/shd01-06-lin01-windows-v1.json), [sci01-05-windows](../compat/api-acceptance/sci01-05-windows-v1.json), [lif01-07-windows](../compat/api-acceptance/lif01-07-windows-v1.json): installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb Mesa 9c5`); not scoped-admitted, not delivered, no full parity.
@@ -3110,6 +3225,8 @@ the [consolidated plan](superpowers/plans/2026-10-28-consolidated-plan.md).
   and original constructor references fix discovery within the same time limit.
   [Discovery/CPU evidence](../build/runs/api-reconciliation-367/external-evidence.json).
   2026-11-17: closed on its recorded finite scope (D39, user decision 2026-11-17). Supported: the reconciliation record itself — 142 seed parents, 265 aliases and 984 source operation groups catalogued with matching Windows/WSL bytes ([api-method-reconciliation](api-method-reconciliation.md), run `367`), all 984 kept `acceptance=unreviewed` — plus these finite `installed-functional` subsets: the 57-case CPU event model (38 groups / 62 aliases; [event-values](../compat/api-acceptance/event-values-v1.json)); `16/16` subpackage, plot, transform and filter cases per platform on cp312 `9919a280`/`e600b29e` (runs `989`/`990`); and, at source `3daf19be`, `9/9` `vispy.visuals.collections` configurations and `3/3` live `jupyter_rfb` cases on cp311/cp312/cp313 across Windows RTX 4090, WSL Mesa 9c5 and Colab `Tesla T4` ([tier1-collections-jupyter-rfb](../compat/api-acceptance/tier1-collections-jupyter-rfb-v1.json), runs `1006`–`1013`). Excluded and not claimed: acceptance of the 984 catalogued groups or of the method families still listed as needing acceptance; generated-constructor signatures and values; arbitrary dynamic attributes, constants and unlisted operators; arbitrary raw `gloo.gl` interoperability; geometry shaders (refused); browser/JupyterLab frontend execution; cp310/cp314 GPU wheels; full upstream VisPy parity. `scoped_admitted`, `artifact_admitted` and `publicly_delivered` stay `false` for this item. `full_inventory_complete` stays `false`.
+  2026-11-19, source-tested on Windows CPython 3.12, t-app fix round from `289dbcbea` with app runtime restored to `15cb085e0`: CPU base adapter refusal and reuse, extra-button drag history, and clean drag after hover pass. Malformed and cyclic mouse histories remain strict expected failures. The frontend notebook and real Qt/Tk routes await execution. [CPU tests](../tests/app/test_base_mouse_acceptance.py), [browser tests](../tests/app/test_jupyter_rfb_browser.py), [retained results](D:/vispy-vulkan-managed/build/runs/swarm-t-app-fix-1/acceptance.log).
+  2026-11-19 source supplement covers selected public plot, utility and collection cases under API-06. [Source replay](D:/vispy-vulkan-managed/build/runs/swarm-t2-plot-util-collections-fix-final/junit.xml).
 - [x] **API-05-EVENT-VALUES — Finite installed event-model semantics:**
   [method/value record](../compat/api-acceptance/event-values-v1.json) maps finite
   scopes for 38 catalog operation groups / 62 aliases, plus Event/Emitter/Group/Key
@@ -3163,11 +3280,25 @@ the [consolidated plan](superpowers/plans/2026-10-28-consolidated-plan.md).
   Semantic/API acceptance, strict observer/profile gates, current CI, independent
   promotion and publication remain open.
 - [x] **API-06 — Selected API acceptance:** for each claimed finite subset, record
+  2026-11-20 UTC: Post-triage source checks on `swarm/t2-color-geometry-io` based on `15cb085e0` used Windows CPython 3.12 and NumPy 2.5.3. The CPU contracts had 51 passes and two Matplotlib skips. One pixel-checked `dawn_headless` case passed with the existing worktree `_dawn` binary (SHA-256 `82aca8cea48d844e46d0c766eb1ac6f851d59d4ced9558872a4c62c68ad22916`). The existing offline regression suite had 37 passes, three skips, one xfail and the pre-existing `test_meshio` failure because `meshio` was unavailable. [CPU log](file:///D:/vispy-vulkan-managed/build/runs/swarm-t2-color-geometry-io-fix-1/cpu.log), [Dawn log](file:///D:/vispy-vulkan-managed/build/runs/swarm-t2-color-geometry-io-fix-1/gpu.log), [existing-suite log](file:///D:/vispy-vulkan-managed/build/runs/swarm-t2-color-geometry-io-fix-1/legacy.log).
   2026-11-16: [tier1-collections-jupyter-rfb](../compat/api-acceptance/tier1-collections-jupyter-rfb-v1.json) (`2a3ec57f…`) & [plat02-cp311-cp313-wheels](../compat/api-acceptance/plat02-cp311-cp313-wheels-v1.json) (`df12d6ce…`, source `3daf19be…`): `installed-functional` `75/75` GPU cases per ABI (`56` state/readback + `16` `W3-3` `9/9` collections + `3` live `jupyter_rfb`) across `cp311`/`cp312`/`cp313` on Windows RTX 4090 (`1007`–`1009`), WSL Mesa `9c5c41b3…` (`1010`–`1012`), and Colab `Tesla T4` (`1013`, `225/225`), plus `14/14` `cp312` Tk capture/recovery (`1007b`/`1010b`) and unreviewed `tk-state-resource-17` preparation (`1014` `71511a45…`, `reviews: null`); `scoped_admitted: false`, `publicly_delivered: false`.
   2026-11-15: [api05-plot-transforms-windows](../compat/api-acceptance/api05-plot-transforms-windows-v1.json) (`4278e1bd…`, `989`) & [api05-plot-transforms-wsl](../compat/api-acceptance/api05-plot-transforms-wsl-v1.json) (`6cd157b0…`, `990`, `16/16` pass/platform): installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb` + Mesa `9c5`); `scoped_admitted: false`; no full upstream parity claim.
   supported values/formats, ordinary/mutation/failure/recovery behavior, clear
   refusals, documented differences and exact profile evidence. Keep original parent
   obligations intact; review does not itself qualify a parent or create an admission.
+  2026-11-19 (API-05, API-06, STA-01/02) records a finite source replay of
+  [CPU wrapper dispatch](../tests/gloo/test_wrapper_acceptance.py) and
+  [headless gloo rendering and recovery](../tests/gloo/test_wrapper_acceptance_gpu.py).
+  The track tests at base `15cb085e0` plus the wrapper acceptance changes ran on
+  Windows CPython 3.12 with Vulkan via `dawn_headless` and the baseline native
+  module SHA-256 `82aca8cea48d844e46d0c766eb1ac6f851d59d4ced9558872a4c62c68ad22916`.
+  The source replay produced 60 passes and 2 strict expected failures.
+  Scissored 4x MSAA clears inherit sample coverage or alpha-to-coverage from the
+  internal draw and leave the selected pixels uncleared. Managed configuration
+  rejected the Dawn source checksum, so the proposed native change was reverted.
+  Installed replay on Windows and WSL remains open.
+  [Source test log](D:/vispy-vulkan-managed/build/runs/swarm-t2-gloo-wrappers-2/pytest-acceptance.log)
+  [Configure failure](D:/vispy-vulkan-managed/build/runs/swarm-t2-gloo-wrappers-2/configure.log).
   **Partial current-artifact progress:** the three maintained examples have
   exact Linux observations in API-05-DOC and Windows observations under FIX-06.
   The finite CPU event supplement above adds value/dispatch evidence. This proves the named
@@ -3175,6 +3306,8 @@ the [consolidated plan](superpowers/plans/2026-10-28-consolidated-plan.md).
   establish every acceptance mode for every example, all methods, full DPI/input,
   large volumes or other profiles. Their source-discovery catalog remains unchanged.
   2026-11-17: closed on its recorded finite scope (D39, user decision 2026-11-17). Supported, each as an `installed-functional` finite subset with its own record: `75/75` installed cases per environment (`56` state/query/readback, `16` subpackage/plot/transform/filter including `9/9` collections, `3` live `jupyter_rfb`; 63 GPU and 12 CPU-contract cases) on cp311/cp312/cp313 at source `3daf19be` across Windows RTX 4090, WSL Mesa 9c5 and Colab `Tesla T4` ([tier1-collections-jupyter-rfb](../compat/api-acceptance/tier1-collections-jupyter-rfb-v1.json), [plat02-cp311-cp313-wheels](../compat/api-acceptance/plat02-cp311-cp313-wheels-v1.json), runs `1007`–`1013`); `14/14` Tk capture/recovery on cp312 only (`1007b`/`1010b`); the closed children `API-06-CLEAR-ZERO-INSTALLED` (11 cases per profile) and `API-05-EVENT-VALUES` (57 CPU cases); and the named landmark, update/rejection and drag cases of the three maintained examples. Excluded and not claimed: every acceptance mode of every example, all methods and value domains, full DPI/input, large volumes, other profiles, cp310/cp314, Tk cases on cp311/cp313, and full upstream VisPy parity. Release delivery of the readback-geometry change stays tracked under `API-06-READBACK-GEOMETRY` (D38). `scoped_admitted`, `artifact_admitted` and `publicly_delivered` stay `false` for this item. No parent obligation is discharged.
+  2026-11-19, Windows CPython 3.12 source worktree from `289dbcbea` with app runtime restored to `15cb085e0`, `dawn_headless` with in-place `_dawn` SHA-256 `82aca8cea48d844e46d0c766eb1ac6f851d59d4ced9558872a4c62c68ad22916`: 15 headless passes cover app creation/selection, exact canvas pixels, draw failure/re-entry, quit and timer delivery/explicit recovery. Constructor position and in-callback timer restart remain strict expected failures. 33 real window and browser cases were skipped. This run supplies source coverage for these app routes. [Headless tests](../tests/app/test_headless_app_acceptance.py), [window tests](../tests/app/test_window_app_acceptance.py), [retained results](D:/vispy-vulkan-managed/build/runs/swarm-t-app-fix-1/acceptance.log).
+  2026-11-19 — API-05/06 source acceptance for the selected plot, utility, top-level entry-point, and collection cases on Windows CPython 3.12, using `a05bc414e` plus the retained fix delta (qualification base `15cb085e`). The `dawn_headless` extension SHA-256 is `82aca8cea48d844e46d0c766eb1ac6f851d59d4ced9558872a4c62c68ad22916`. The comparison recorded 33 passes and three failures (CollectionView buffer binding, shared-size point pixels, and duplicate Fig widget registration). The fix replay passed 79 cases including four existing GPU regressions, with the live Linux Xvfb 110 DPI case skipped. Installed Windows and WSL replay remains open. [Comparison log](D:/vispy-vulkan-managed/build/runs/swarm-t2-plot-util-collections-fix-probe/pytest.log), [fix replay](D:/vispy-vulkan-managed/build/runs/swarm-t2-plot-util-collections-fix-final/junit.xml), [exact tested delta](D:/vispy-vulkan-managed/build/runs/swarm-t2-plot-util-collections-fix-final/source.patch).
 - [x] **API-06-READBACK-GEOMETRY — Source fixed; released in `0.17.0+vulkan.3`:**
   2026-11-18: closed (D38). The fix is released in `0.17.0+vulkan.3`: the two cp312 wheels (`e4b9eb92…`/`fb81c75f…`) are `scoped-admitted` ([admission](../compat/candidates/tk-state-resource-18/installed-proofs-1064/mandatory-matrix-admission-1069.json), `128` bindings, eight mandatory rows) and all six wheels are `publicly delivered` ([vulkan3-public-delivery](../compat/api-acceptance/vulkan3-public-delivery-v1.json)); cp311/cp313 remain `installed-functional`. Finite scope; no full API parity.
   2026-11-14: explicit negative origins and nonpositive extents now fail before
@@ -3285,6 +3418,8 @@ preserved. Required acceptance detail: SH-1–SH-5 in the
   All tracked gauges are zero; local scratch is removed and evidence rehashed.
   Scope is pinned WSL software Vulkan. Review/profile/release remain pending.
   2026-11-17: closed on its recorded finite scope (D39, user decision 2026-11-17). Supported (`installed-functional`, not scoped-admitted) on `9919a280`/`e600b29e` (Windows RTX 4090, WSL Xvfb Mesa `26.1.8` 9c5, Colab `Tesla T4`/`L4` per [plat03-08-linux-nvidia-colab](../compat/api-acceptance/plat03-08-linux-nvidia-colab-v1.json)): literal-indexed `sampler2D[2][2]` and `isampler2D[2]` arrays through a helper and a macro, single-leaf rebinding, explicit `texture2DLod` level 0 and zero-gradient `texture2DGradEXT` on a single-level texture, with compile refusals for implicit sampling at a runtime index, an out-of-range literal index and the bias form (2 cases); plus, on their own earlier wheels and Windows/WSL only, the 32-case literal scope (`sampler-arrays-v1.json`) and the 75-case one-dimensional runtime-index explicit-LOD/fetch scope on `ba8a54c5`/`4bc3cd77` (`dynamic-explicit-samplers-wip.json`), not re-run on the current wheels. Excluded and not claimed: multidimensional dynamic selection, implicit sampling at dynamic indices, multilevel mip chains and further filter/LOD forms, broader preprocessor forms, sampler-limit diagnostics beyond the recorded binding boundary, and all-family device-loss recovery. No profile admission or full upstream parity is claimed.
+  2026-11-20: W2 source-tested on Windows cp312 RTX 4090 Vulkan, W3 6566e6d7 plus the W2 fix, module c25cb9aa. The opt-in standard profile submits strict and derivative-relaxed shaders as WGSL. The 19 selected texture/shader/line/readback cases passed. Generated-line unfilterable sampling and Linux builds remain open. [run 8 processes](D:/vispy-vulkan-managed/build/runs/swarm-w2-standard-8/verification-processes.json)
+  2026-11-20 — W2 on W1 `051f2751b`, Windows CPython 3.12 Dawn Vulkan development module `68639ec7…`. Stack verification passed 712 shader, marker, state, texture and line cases per profile. W2 uses the W1 Tint translator for both WGSL selectors. [Matrix](D:/vispy-vulkan-managed/build/runs/swarm-w12-stack-2/verification-processes.json)
 
 
 - [x] **SHD-01-LITERAL — Finite installed literal sampler-array scope:**
@@ -3351,6 +3486,16 @@ preserved. Required acceptance detail: SH-1–SH-5 in the
   15/17 retained entries rehashed. The old disk-preflight refusal launched no
   tests and remains separate. [Exact scope and evidence](../compat/api-acceptance/line-side-effect-boundaries-v1.json).
   Parent SHD-05 and independent/profile/release admission remain open.
+
+**W1 opt-in WGSL (SHD-01, SHD-02, SHD-03, SHD-04, SHD-05, LIN-01):**
+2026-11-19: W1 on `15cb085e` passed 1,448 selected cases per shader path with 3,000 byte-identical readbacks.
+[Original W1 comparison](D:/vispy-vulkan-managed/build/runs/swarm-w1-wgsl-validation/readback-comparison.json)
+2026-11-20: W1 stacked on W3 `6566e6d7d`, Windows CPython 3.12 Dawn Vulkan development module `de5c6b49…`.
+The headless shader, native, visual and Gloo groups pass 1,450 cases per path with the default SPIR-V and opt-in WGSL
+selectors. The native group includes the W3 wait timeout and same-canvas pixel recovery. The isolated typed CPU
+group reproduces two existing `glPixelStorei` failures per path. Real-window checks remain open.
+[Build](D:/vispy-vulkan-managed/build/runs/swarm-w12-stack-1/processes.json)
+[Checks](D:/vispy-vulkan-managed/build/runs/swarm-w12-stack-1/verification-processes.json)
 - [x] **SHD-06 — Broader Mesa driver portability:** the patched Mesa9c5 profile
   2026-11-15: [shd01-06-lin01-windows](../compat/api-acceptance/shd01-06-lin01-windows-v1.json), [shd01-06-lin01-wsl](../compat/api-acceptance/shd01-06-lin01-wsl-v1.json): installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb Mesa 9c5`); not scoped-admitted, not delivered, no full parity.
   is admitted for the selected Windows/WSL release. Wider system-driver claims
@@ -3361,6 +3506,8 @@ preserved. Required acceptance detail: SH-1–SH-5 in the
   2026-11-15: [sta01-tex01-sci06-windows](../compat/api-acceptance/sta01-tex01-sci06-windows-v1.json), [sta01-tex01-sci06-wsl](../compat/api-acceptance/sta01-tex01-sci06-wsl-v1.json): installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb Mesa 9c5`); not scoped-admitted, not delivered, no full parity.
   fractional polygon offset, mixed constant blending and stencil combinations.
   2026-11-17: closed on its recorded finite scope (D39, user decision 2026-11-17). Supported (`installed-functional`, not scoped-admitted) on `9919a280`/`e600b29e` (Windows RTX 4090, WSL Xvfb Mesa `26.1.8` 9c5, Colab `Tesla T4`/`L4` per [plat03-08-linux-nvidia-colab](../compat/api-acceptance/plat03-08-linux-nvidia-colab-v1.json)) (4 cases): dither disabled; multisample toggling on single-sample targets and single-sample FBO drawing from a 4x canvas; integer polygon-offset units with factor; constant-colour RGB with constant-alpha A blending; min/max blend equations; one two-sided stencil replace configuration with reversed depth. Explicitly refused with same-canvas recovery and not claimed: enabled dithering, disabled multisampling on a 4x default framebuffer, fractional polygon-offset units on polygons, and mixed constant-alpha/constant-colour RGB factors. Excluded and not claimed: other stencil, blend and offset combinations, and cull/colour-mask/scissor combinations. No profile admission or full upstream parity is claimed.
+  2026-11-20: W2 source-tested on Windows cp312 RTX 4090 Vulkan, W3 6566e6d7 plus the W2 fix, module c25cb9aa. In standard mode, the raster state, timing, submission and MSAA group passed 315 cases, with one unrelated known capture-count xfail and five window cases deselected. The depth/stencil/lifetime group passed 225. [run 8 processes](D:/vispy-vulkan-managed/build/runs/swarm-w2-standard-8/verification-processes.json)
+  2026-11-20 — W2 on W1 `051f2751b`, Windows CPython 3.12 Dawn Vulkan development module `68639ec7…`. The stack's 649 native headless cases passed per profile, including raster state, stencil, depth and MSAA cases. [Matrix](D:/vispy-vulkan-managed/build/runs/swarm-w12-stack-2/verification-processes.json)
 - [x] **STA-02 — Reversed depth, finite installed proof:** all 30 existing
   2026-11-15: [sta01-tex01-sci06-windows](../compat/api-acceptance/sta01-tex01-sci06-windows-v1.json), [sta01-tex01-sci06-wsl](../compat/api-acceptance/sta01-tex01-sci06-wsl-v1.json): installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb Mesa 9c5`); not scoped-admitted, not delivered, no full parity.
   analytic color/depth cases pass without skips on each current v2 wheel:
@@ -3380,6 +3527,8 @@ preserved. Required acceptance detail: SH-1–SH-5 in the
   2026-11-15: [sta01-tex01-sci06-windows](../compat/api-acceptance/sta01-tex01-sci06-windows-v1.json), [sta01-tex01-sci06-wsl](../compat/api-acceptance/sta01-tex01-sci06-wsl-v1.json): installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb Mesa 9c5`); not scoped-admitted, not delivered, no full parity.
   comparison samplers, half precision and NaN behavior across claimed layouts.
   2026-11-17: closed on its recorded finite scope (D39, user decision 2026-11-17). Supported (`installed-functional`, not scoped-admitted) on `9919a280`/`e600b29e` (Windows RTX 4090, WSL Xvfb Mesa `26.1.8` 9c5, Colab `Tesla T4`/`L4` per [plat03-08-linux-nvidia-colab](../compat/api-acceptance/plat03-08-linux-nvidia-colab-v1.json)) (4 cases): nearest `r32i`/`r32ui` `Texture2D` sampling through `isampler2D`/`usampler2D` with sub-region updates; `r32f` NaN/±Inf/-0.0 preservation; linear `r32f` filtering on devices reporting `float32_filterable` (true on all four); `rgba16f` rounding and NaN propagation; `depth_component` as a framebuffer depth attachment; `Texture3D`, `TextureEmulated3D` and `TextureCube` rgba8 nearest sampling. Explicitly refused and not claimed: comparison/shadow samplers and sampling of depth textures, linear filtering of integer textures, integer `Texture3D`, float data or float textures on integer samplers, NaN depth uploads, and mipmapped filtering. Excluded and not claimed: the unfilterable-float32 path (not observed on any tested device) and other integer or float formats. No profile admission or full upstream parity is claimed.
+  2026-11-20: W2 source-tested on Windows cp312 RTX 4090 Vulkan, W3 6566e6d7 plus the W2 fix, module c25cb9aa. Fresh standard-profile children exercise all supported features and the three feature masks. Separate float32-off and norm16-off groups passed 11 each, including analytic pixels after nearest filtering or switching to uint8 storage. [Regression](../tests/native/test_standard_webgpu.py) [run 8 processes](D:/vispy-vulkan-managed/build/runs/swarm-w2-standard-8/verification-processes.json)
+  2026-11-20 — W2 on W1 `051f2751b`, Windows CPython 3.12 Dawn Vulkan development module `68639ec7…`. The stack's profile group passed 18 cases per profile, including fresh-process feature masks and analytic texture recovery. [Matrix](D:/vispy-vulkan-managed/build/runs/swarm-w12-stack-2/verification-processes.json)
 - [x] **LIN-01 — Line partitioning / B6:** prove chunk boundaries, topology,
   2026-11-15: [shd01-06-lin01-windows](../compat/api-acceptance/shd01-06-lin01-windows-v1.json), [shd01-06-lin01-wsl](../compat/api-acceptance/shd01-06-lin01-wsl-v1.json): installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb Mesa 9c5`); not scoped-admitted, not delivered, no full parity.
   endpoint carry, resource limits and retained ordering on claimed routes.
@@ -3387,6 +3536,8 @@ preserved. Required acceptance detail: SH-1–SH-5 in the
 - [x] **LIN-02 — MSAA line coverage / B6 — Deferred:** the unshipped partial patch
   is not production support. Expand only if this deferred feature is selected.
   2026-11-17: closed as not planned (D37, user decision 2026-11-17). MSAA generated-line coverage stays unimplemented; the unshipped partial patch is not production support and no MSAA line-coverage claim is made. Reopen only as a newly selected task with its own acceptance and installed evidence.
+  2026-11-20: reopened under D40 (user decision 2026-11-20). Source-tested on Windows CPython 3.12, Dawn headless/Vulkan, NVIDIA RTX 4090 driver 610.88, with development module `97a2d1d909f0…`. The [MSAA tests](../tests/parity/test_msaa_generated_lines.py) passed 6/6, covering standard-grid fractional-width rectangles, the `line_smooth` toggle and analytic alpha, half-alpha alpha-to-coverage, sample depth and degenerate recovery. Both native contracts passed, including chunk planning and refusal with an insufficient interface grant. The neighboring single-sample suite passed 16/17 and reproduced the baseline `private_state_smooth` reference mismatch. Installed-wheel acceptance and additional platforms remain open. [Source and artifact hashes](D:/vispy-vulkan-managed/build/runs/swarm-r-lin02-4/source-final.json), [MSAA results](D:/vispy-vulkan-managed/build/runs/swarm-r-lin02-4/pytest-msaa.log), [native results](D:/vispy-vulkan-managed/build/runs/swarm-r-lin02-4/ctest.log), [single-sample results](D:/vispy-vulkan-managed/build/runs/swarm-r-lin02-4/pytest-single-sample.log), [baseline mismatch](D:/vispy-vulkan-managed/build/runs/swarm-r-lin02-2/pytest-baseline-single-sample.log).
+  2026-11-21: closed on finite `source-tested` scope (D39 pattern). On `swarm/v5-int`, `test_msaa_generated_lines.py` passed 6/6 and CTests passed 44/44 across `default`, `wgsl`, and `standard-only` on Windows RTX 4090 ([vulkan5-gap-closure-win-1151](D:/vispy-vulkan-managed/build/runs/vulkan5-gap-closure-win-1151/AGENT_REPORT.md), `_dawn` `6d99247c…`), and passed 5/6 with 44/44 CTests across all three profiles on WSL Ubuntu Mesa `9c5c41b3` ([vulkan5-wsl-gap-closure-1152](D:/vispy-vulkan-managed/build/runs/vulkan5-wsl-gap-closure-1152/AGENT_REPORT.md), `_dawn` `90be9140…`). Explicitly excluded: Mesa `llvmpipe` sample-rate `alphaToCoverage` (`test_generated_line_alpha_to_coverage` fails on `llvmpipe` `9c5c41b3` because `llvmpipe` emits `0/4` or `4/4` instead of partial per-sample coverage on `gl_SampleID` shaders; see [probe](D:/vispy-vulkan-managed/build/runs/vulkan5-wsl-gap-closure-1152/mesa-alpha-to-coverage-probe.json)), installed-wheel acceptance, and non-tested platforms or drivers.
 
 ## Scientific workflow reconciliation
 
@@ -3522,6 +3673,17 @@ observations on each claimed profile, not just a successful screenshot.
   overlays/ten zero gauges; borrowed origins unchanged, actual exits0/awaited,
   target cleaned. Logical resources only, not physical-memory or real-surface
   acquisition proof; broader parent and evidence integration remain open.
+- [x] **WEBGPU-W3-WAITS — Shared runtime future wait:** 2026-11-19, source-tested
+  on `swarm/w3-waits` based on `15cb085e0`, development module `2aa183ac99c8…`
+  from `swarm-w3-waits-2` (Windows CPython 3.12, Dawn Vulkan). One direct
+  `WaitAny` remains inside the shared helper. Headless readback/events passed
+  91 cases and lifecycle passed 71, including injected wait timeout, pixel-exact
+  recovery, and explicit device loss (LIF-01 and LIF-05). An initial configure
+  failure from Dawn checkout line endings was retained and resolved. Native
+  surface pacing and presentation capture await windowed verification.
+  [W3 timeout and recovery test](../tests/native/test_readback_rows.py)
+  2026-11-20: W2 source-tested on Windows cp312 RTX 4090 Vulkan, W3 6566e6d7 plus the W2 fix, module c25cb9aa. Bounded blocking waits cover readback and pipeline scope drainage in selected headless tests. The timeout fixture asserts the original color, the injected failure, the recovery color and device-generation stability. Standard mode retains the native TimedWaitAny feature. [Timeout test](../tests/native/test_readback_rows.py) [run 8 processes](D:/vispy-vulkan-managed/build/runs/swarm-w2-standard-8/verification-processes.json)
+  2026-11-20 — W2 on W1 `051f2751b`, Windows CPython 3.12 Dawn Vulkan development module `68639ec7…`. All four stack profiles passed W3's injected readback timeout, pixel-exact same-canvas recovery and stable device-generation check. [Matrix](D:/vispy-vulkan-managed/build/runs/swarm-w12-stack-2/verification-processes.json)
 - [x] **LIF-01 — Native fault coverage / B7:** audit existing fault-injection,
   2026-11-15: [lif01-07-windows](../compat/api-acceptance/lif01-07-windows-v1.json), [lif01-07-wsl](../compat/api-acceptance/lif01-07-wsl-v1.json): installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb Mesa 9c5`); not scoped-admitted, not delivered, no full parity.
   surface-acquisition-failure and physical-memory-accounting evidence; retain any
@@ -3555,6 +3717,9 @@ observations on each claimed profile, not just a successful screenshot.
   2026-11-15: [lif01-07-windows](../compat/api-acceptance/lif01-07-windows-v1.json), [lif01-07-wsl](../compat/api-acceptance/lif01-07-wsl-v1.json): installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb Mesa 9c5`); not scoped-admitted, not delivered, no full parity.
   matrix; single-sample and asymmetric color-resolve proofs remain separate.
   2026-11-17: closed on its recorded finite scope (D39, user decision 2026-11-17). Supported (`installed-functional`, not scoped-admitted) 3 cases per platform on `9919a280`/`e600b29e` ([lif01-07-windows](../compat/api-acceptance/lif01-07-windows-v1.json)/[wsl](../compat/api-acceptance/lif01-07-wsl-v1.json)), sample counts 1 and 4 only: headless diagonal-edge resolve with cropped RGBA/RGB/float colour, sample-discrete depth and stencil crops and invalid-crop refusal; a 1-sample offscreen FBO interleaved with a 4-sample canvas; PyQt6 onscreen readback full/crop equality; plus the 16-case default depth24/stencil8 subset on the earlier `9e4e30cc`/`a2715d26` wheels (`LIF-05-DEFAULT-DEPTH-STENCIL`). Excluded and not claimed: other sample counts, a broader depth/stencil or texture format/feature matrix, presented-display capture, MSAA generated-line coverage (`LIN-02`), MSAA scissor boundaries on unpatched system Mesa `25.2.8`, and profile admission.
+  2026-11-20: W2 source-tested on Windows cp312 RTX 4090 Vulkan, W3 6566e6d7 plus the W2 fix, module c25cb9aa. The explicit headless capture benchmark retains its original expected count. That run recorded a strict xfail after the original Vulkan.4 failure was reproduced on W2 + W3 with 3 queue submissions where 2 are expected. [Raw regression](D:/vispy-vulkan-managed/build/runs/swarm-w2-standard-8/capture-runxfail.log)
+  2026-11-20 — W2 on W1 `051f2751b`, Windows CPython 3.12 Dawn Vulkan development module `68639ec7…`. All four stack profiles reproduce the Vulkan.4 capture-count failure as an ordinary failure. Dawn reports three submissions where the benchmark expects two. [Matrix](D:/vispy-vulkan-managed/build/runs/swarm-w12-stack-2/verification-processes.json)
+  2026-11-19, Windows CPython 3.12 source worktree from `289dbcbea` with app runtime restored to `15cb085e0`, `dawn_headless` and in-place `_dawn` SHA-256 `82aca8cea48d844e46d0c766eb1ac6f851d59d4ced9558872a4c62c68ad22916`: the single-sample resize and shared-peer simulated device-loss cases pass with exact RGBA pixels. The MSAA and installed-profile evidence remains the previously recorded finite scope. [Headless tests](../tests/app/test_headless_app_acceptance.py), [retained results](D:/vispy-vulkan-managed/build/runs/swarm-t-app-fix-1/acceptance.log).
 - [x] **LIF-06-QT-WINDOWS — Finite8-case installed PyQt6 input subset:**
   2026-11-14, [736](../compat/api-acceptance/qt-input-windows-v1.json) verifies
   toolkit-generated payload/rendering/handled-state/target-isolation cases on
@@ -3627,6 +3792,8 @@ observations on each claimed profile, not just a successful screenshot.
   duplicate successful Submit. Keep835's original1MiB pinned failure unchanged.
   This is logical pin lifetime evidence, not physical GPU memory accounting.
   Combined integration, strict Tk/profile admission and delivery remain open.
+  2026-11-20: W2 source-tested on Windows cp312 RTX 4090 Vulkan, W3 6566e6d7 plus the W2 fix, module c25cb9aa. The opt-in profile suppresses HostMappedPointer, including with host import requested, and passes 14 selected host import, staging and upload cases. [Host-import tests](../tests/native/test_host_import.py) [run 8 processes](D:/vispy-vulkan-managed/build/runs/swarm-w2-standard-8/verification-processes.json)
+  2026-11-20 — W2 on W1 `051f2751b`, Windows CPython 3.12 Dawn Vulkan development module `68639ec7…`. The stack passed the host-import, staging and upload checks across all four profiles, including device-loss recovery. [Matrix](D:/vispy-vulkan-managed/build/runs/swarm-w12-stack-2/verification-processes.json)
 - [x] **LIF-06-QT-FOCUS — Selected contract integrated, admitted and delivered:**
   Current completion, 2026-11-14: the selected finite contract is integrated,
   admitted and delivered at source275888b5/qualifier90348a8/merge76cc5e8c,
@@ -3723,20 +3890,70 @@ observations on each claimed profile, not just a successful screenshot.
   D7 documents these as untested. New cross-monitor/DPI claims require their own
   selected acceptance and installed evidence.
   2026-11-17: closed as not planned (D37, user decision 2026-11-17). Cross-monitor moves and fractional DPI stay untested and unclaimed (D7); the only evidence is the programmatic single-display `QT_SCALE_FACTOR=1.5` subset above, with `physical_multimonitor_claimed: false` and `physical_hid_claimed: false`. Reopen only as a newly selected task with its own acceptance and installed evidence.
+  2026-11-20: reopened by user decision D40. Windows CPython 3.12 source testing
+  on `swarm/r-lif08` (base `15cb085e`, existing Dawn module `82aca8ce…`) passed
+  all 5 opt-in headless cases for simulated 1.25×, 1.5×, 1.75× and 2.0× drawable
+  sizing, viewport, pixel readback and logical pointer routing. The headless
+  scene and native run passed 88 cases, and the additional framebuffer run
+  passed 24. Physical monitor moves and installed qualification remain open.
+  [Regression tests](../tests/native/test_headless_fractional_dpi.py),
+  [source and artifact identity](D:/vispy-vulkan-managed/build/runs/swarm-r-lif08-fix-round/source.txt),
+  [scene and native results](D:/vispy-vulkan-managed/build/runs/swarm-r-lif08-fix-round/pytest.log),
+  [framebuffer results](D:/vispy-vulkan-managed/build/runs/swarm-r-lif08-fix-round/push-fbo.log).
+  2026-11-21: closed on finite `source-tested` programmatic fractional-DPI scope (D39 pattern). On `swarm/v5-int`, `test_headless_fractional_dpi.py` passed 5/5 across `default`, `wgsl`, and `standard-only` on both Windows ([vulkan5-gap-closure-win-1151](D:/vispy-vulkan-managed/build/runs/vulkan5-gap-closure-win-1151/AGENT_REPORT.md)) and WSL Ubuntu ([vulkan5-wsl-gap-closure-1152](D:/vispy-vulkan-managed/build/runs/vulkan5-wsl-gap-closure-1152/AGENT_REPORT.md)), alongside the earlier `12/12` `QT_SCALE_FACTOR=1.5` multi-binding installed subset. Physical cross-monitor moves (`physical_multimonitor_claimed: false`), physical HID (`physical_hid_claimed: false`), and updated installed qualification remain explicitly excluded.
 - [x] **BUG-01 — Rare Windows startup stall / B22 — Open:** identify the closer,
   add a cause-specific regression and retain exact-profile recurrence evidence.
   It is documented rather than release-blocking under D33; a recurrence makes it
   release-blocking again. Use the external watcher; no generic retry/workaround.
   2026-11-17: closed as not planned (D37, user decision 2026-11-17). The rare Windows startup stall stays documented and unresolved (D33): its cause is not identified and no regression test exists. No workaround or retry is added. A recurrence reopens this item and makes it release-blocking again; use the external watcher (D20) to capture it.
+  2026-11-19: `swarm/r-bug01` source investigation (base `15cb085e0`, Windows RTX 4090, Vulkan, worktree `_dawn` SHA-256 `82aca8cea48d844e46d0c766eb1ac6f851d59d4ced9558872a4c62c68ad22916`). The `dawn_headless` campaign passed 64/64 launches at the 300-second deadline. An earlier launch timed out at 15 seconds after reaching `reading_pixels`. Both campaigns recorded zero pool losses. [300-second campaign](D:/vispy-vulkan-managed/build/runs/swarm-r-bug01-2/campaign/summary.json), [15-second campaign](D:/vispy-vulkan-managed/build/runs/swarm-r-bug01-1/campaign/summary.json).
+  2026-11-20: reopened for investigation under **D40** (user decision 2026-11-20 to reopen the D37 items). D33 still governs release blocking if the historical stall recurs. The fix-round Windows CPython 3.12 source check passed 17 watcher and harness contracts using CPU tests and real Windows job objects. The cause, exact Qt/OLE startup profile and installed-wheel behavior remain unverified. [Watcher contracts](../tests/contract/test_pool_watch_external.py), [harness contracts](../tests/contract/test_repro_headless_startup.py), [test output](D:/vispy-vulkan-managed/build/runs/swarm-r-bug01-fix-round/pytest.txt).
+  2026-11-21: closed on finite investigation and external-watcher scope (D39 pattern): 64/64 300-second `dawn_headless` launches passed with 0 pool losses alongside 17 watcher/harness contracts. The root cause of the historical Windows stall remains unidentified and unreproduced; no workaround or retry is added, and any recurrence immediately reopens `BUG-01` as release-blocking under D33.
 - [x] **BUG-02 — Historical PyQt5 OLE hang / B12 — Audit:** determine whether it
   shares B22's cause or needs a separate disposition.
   2026-11-17: closed on its recorded finite scope (D39, user decision 2026-11-17). [bug02-ole-hang-disposition](../compat/api-acceptance/bug02-ole-hang-disposition-v1.json) (run `959`) records it as `separate-historical-unreproduced-preserved`: distinct from BUG-01's profile, not reproduced on current wheels, original evidence preserved. No cause is claimed.
+- [x] **BUG-03 — Headless frame capture submission count.**
+  2026-11-20: Vulkan.4 base `15cb085e0` submitted the scene, pixel copy and
+  headless presentation conversion separately. Python readback now flushes GLIR
+  before native readback drains pending work. A measured headless canvas color
+  capture encodes the actual conversion with that work and publishes its
+  prepared image at explicit present when no intervening draw supersedes it.
+  Source-tested on Windows CPython 3.12 with headless Dawn/Vulkan using
+  `swarm-t3-capture-count-2` native module `377868c6…` from base
+  `15cb085e0` plus the track patch. The unchanged regression passes with two
+  submissions, both render passes assigned to submission 0, and exact pixels.
+  All 11 headless frame tests, 127 related native tests and three CTests pass.
+  Installed-wheel and windowed verification remain open for this change.
+  [Baseline failure record](D:/vispy-vulkan-managed/build/runs/swarm-w2-standard-8/capture-process.json)
+  and [development build and test evidence](D:/vispy-vulkan-managed/build/runs/vulkan5-integration-1147/reports/t3-capture-count.md).
 
 ## Host integrations
 
 Host rows are optional under D32. Hot-swap uses stock hosts with only VisPy
 replaced; strict profiles may use the recorded host patches. They are different
 claims and must not borrow each other's gates.
+
+2026-11-19: [napari source acceptance suite](../tests/hosts/test_napari_acceptance.py).
+On the `15cb085e0` source base with the window tests from `dab147201`, all 28
+cases [collected](D:/vispy-vulkan-managed/build/runs/swarm-t2-napari-fix-1/collection.txt)
+and [skipped with `needs-window`](D:/vispy-vulkan-managed/build/runs/swarm-t2-napari-fix-1/host-contracts.txt)
+in the prescribed local environment (napari 0.9.2, PyQt6 6.11.0). The 38 fixture
+and reference contracts passed. Acceptance of both paths per inventory row
+remains open in the pinned napari 0.10.0 PyQt6/Dawn profile with a visible DPR-1 canvas.
+
+- `host.napari.camera-input`, `host.napari.image-layer`, `host.napari.labels-layer`,
+  `host.napari.labels-painting`, `host.napari.layer-controls`, `host.napari.multiple-canvases`,
+  `host.napari.open-viewer`
+- `host.napari.points-layer`, `host.napari.screenshots`, `host.napari.shapes-layer`,
+  `host.napari.surface-layer`, `host.napari.tracks-layer`, `host.napari.vectors-layer`,
+  `host.napari.volume-rendering`
+
+2026-11-19: Two [headless ISO tests](../tests/parity/test_volume_iso_recovery.py)
+[passed](D:/vispy-vulkan-managed/build/runs/swarm-t2-napari-fix-1/headless-iso.txt)
+on the `15cb085e0` source renderer and existing local `_dawn.cp312-win_amd64.pyd`
+(`82aca8ce…`). They cover one upstream OpenGL ISO landmark and a synthetic
+cube's MIP-to-ISO switch after device loss. This evidence applies to the
+headless source renderer for the `host.napari.volume-rendering` worklist.
 
 - [x] **HOST-01 — Napari 0.10 migration:** successor fixtures, version-specific
   2026-11-15: [host01-06-current-wheels](../compat/api-acceptance/host01-06-current-wheels-v1.json): installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb Mesa 9c5`); not scoped-admitted, not delivered, no full parity; HOST-01 is hot-swap only.
@@ -3813,6 +4030,25 @@ claims and must not borrow each other's gates.
   2026-11-15: [plat03-08-linux-nvidia-colab](../compat/api-acceptance/plat03-08-linux-nvidia-colab-v1.json) (`b8a5bd8e…`, runs `998` `1bbfe275…`, `999` `c6aec5e3…`, `1000` `747a7b0c…`, hygiene `1001` `7a26baec…`): adds two Linux physical NVIDIA cells (`Tesla T4` Turing `117/117` + `31/31` and `NVIDIA L4` Ada Lovelace `136/136` at `installed-functional`, plus `11/11` `installed-experimental` `W3-1` native Tk X11 WSI on `T4`) on driver `580.82.07` / Vulkan `1.4.312` / `Xvfb :99` (`e600b29e…`); parent `PLAT-08` stays open (`[ ]`) for non-NVIDIA vendors/drivers (AMD RADV, Intel ANV, Apple/MoltenVK; `non_nvidia_linux_gpus_claimed: false`), Mesa NVK and other driver branches, physical scanout/HID/multi-monitor, and strict release admission (`scoped_admitted: false`).
   2026-11-17: closed as not planned (D37, user decision 2026-11-17). The hardware claim stays bounded to the recorded cells above (Windows `NVIDIA GeForce RTX 4090`; Linux NVIDIA `Tesla T4` and `L4` under `Xvfb`; WSL software Vulkan on the pinned Mesa). Other vendors, models and driver versions are not available here and are not claimed; evidence does not transfer to them. Reopen only as a newly selected task with its own acceptance and installed evidence.
 
+- [x] **PLAT-09 — Browser WebGPU and Pyodide:** 2026-11-19, W0
+  feasibility spike from base `15cb085e0`, using Pyodide 314.0.7,
+  Emscripten 5.0.3 and Dawn `01940842` (Wasm `1d884aa6…`).
+  Chrome 157.0.8103.79 on NVIDIA Lovelace with ANGLE D3D11 and the sandbox
+  disabled passed six standalone checks for canvas clear, MeshVisual draw,
+  and JSPI readback cancellation and recovery. The browser WGSL came from
+  Tint translating SPIR-V recompiled from VisPy's normalized GLSL by
+  `@webgpu/glslang`. SwiftShader returned no adapter.
+  [Retained browser result](D:/vispy-vulkan-managed/build/runs/swarm-w0-spike-1/browser-final-waited.log)
+
+  2026-11-20 follow-up used the worktree `_dawn` binding (`82aca8ce…`) on
+  Windows `dawn_headless` to dump the same mesh's native SPIR-V. Tint
+  rejected the malformed control and translated both native stages into
+  WGSL that matched the retained browser inputs byte for byte.
+  A full Pyodide cross-build, VisPy browser backend and browser release
+  qualification remain open.
+  [Native translation log](D:/vispy-vulkan-managed/build/runs/swarm-w0-spike-native-spirv-2/translation.log)
+  2026-11-21: closed on finite W0 feasibility-spike scope (D39 pattern: 6/6 standalone browser checks on Pyodide 314.0.7 / Emscripten 5.0.3 / Dawn `01940842` / Chrome 157 plus byte-exact native SPIR-V to WGSL match). Full Pyodide cross-build, a VisPy browser backend, SwiftShader adapter support, and browser release qualification remain excluded and out of scope.
+
 ## Performance, tooling and evidence hygiene
 
 Lab-grade input-to-visible scanout parity and exact OpenGL rasterizer parity stay
@@ -3826,12 +4062,29 @@ criteria; software timestamps do not establish physical display scanout latency.
   2026-11-19: source-tested only (not in any released wheel): the Qt readback presentation path builds its QImage directly on the readback array (kept alive by the image) instead of copying it twice; `grabFramebuffer` still returns an independent copy. On the released cp312 Windows wheel with only `_qt.py` swapped (run `qt-readback-copies-1076`, RTX 4090, PyQt6 6.11.0): pixels exact against `read_pixels` at 1920x1080 and 3840x1901, image build 10.86 -> 4.51 ms and 27.08 -> 15.07 ms, `repaint` 19.46 -> 7.59 ms and 50.78 -> 30.72 ms (one run each, medians of 40). PySide6 6.12.0, PyQt5 5.15.11 and PyQt6 6.11.0 (run `qt-readback-bindings-1078`, 1920x1080) take the no-copy route with exact pixels; Qt test files pass per file in their expected mode with and without the change (run `dev-native-refresh-1077`).
   2026-11-19: Qt paint format measured (PyQt6, RTX 4090 desktop, plain QWidget, medians of 50): painting a readback-sized frame costs about 2 ms at 1920x1080 and 7.5-11 ms at 3840x1900, and the current RGBX8888 source is as fast as or faster than RGB32/ARGB32_Premultiplied, so a GPU-side swizzle to Qt's native order is not pursued. The remaining readback cost is the GPU wait and transfer.
   2026-11-19: source-tested only, native: `read_canvas` reuses a per-canvas MapRead staging buffer (same size, same device generation, unmapped; dropped on device reset or canvas deletion) and leaves its output bytes uninitialized before the row copy, which writes every byte. A render-wait split showed the readback cost is not GPU completion (about 0.05 ms) but buffer allocation and CPU copies. The reused buffer stays allocated per canvas (about 33 MB at 3840x2160) until a differently sized read, device reset or canvas deletion, and is not counted in the live-buffer gauges between reads. Evidence (run `readback-native-evidence-1084`, with its scripts, raw logs and `summary.json` retained; the released vulkan.3 `_dawn` `4545a2d0...` against the dev build `3a68bc8a...` of run `dev-readback-native-1080`, which is not a producer): `read_pixels` 4.54 -> 2.69 ms at 1920x1080 and 14.49 -> 9.53 ms at 3840x1900; Qt readback repaint with the Qt change 9.69 -> 6.40 ms and 32.76 -> 27.72 ms (single runs, medians of 40; absolute values vary between sessions); pixels exact for both modules. Two per-file reruns of the Tk test files fail 3 tests each with either module, with a different set on every rerun (flaky Tk tests, not attributable to the change); `tests/qt` fails the same sets with both modules in both presentation modes (run 1080).
+  2026-11-20: W2 source-tested on Windows cp312 RTX 4090 Vulkan, W3 6566e6d7 plus the W2 fix, module c25cb9aa. Four processes completed 48 measured frames per profile on one upload-heavy workload. The blocking W3 helper measured 4.987 ms default and 5.012 ms standard median wall time, with 4.883 ms mean process CPU in each. Real-window performance remains open. [Samples](D:/vispy-vulkan-managed/build/runs/swarm-w2-standard-8/benchmark-processes.json)
 - [x] **PERF-02 — Remaining optional upload work / P5:** conversions such as RGB
   to RGBA into imported blocks are not covered by the direct-upload optimization.
   2026-11-17: closed as not planned (D37, user decision 2026-11-17). RGB-to-RGBA and other converting uploads keep the staging path; the direct-upload result (P5) is not generalized to them. Select only if a measurement justifies it.
+  2026-11-19: historical Windows development results at base `15cb085e0`. The first rebuild failed the vendored Dawn byte check before compilation and managed cleanup passed. The second, using the pinned blob bytes, passed two native contracts and 14 headless tests. Its timings showed faster upload CPU time at 1536² RGB8 alongside variable frame times. [Failed configure](D:/vispy-vulkan-managed/build/runs/swarm-r-perf02-1/configure.log), [native contracts](D:/vispy-vulkan-managed/build/runs/swarm-r-perf02-2/ctest.log), [headless results](D:/vispy-vulkan-managed/build/runs/swarm-r-perf02-benchmark/rebuilt-pytest.log), [benchmark results](D:/vispy-vulkan-managed/build/runs/swarm-r-perf02-benchmark/rebuilt.log).
+  2026-11-20: reopened under D40 (user decision 2026-11-20 to reopen the selected D37 items). PERF-02 stays open. The opt-in `VISPY_DAWN_CONVERTED_HOST_IMPORT=1` covers resident 2D RGB8 and RGB uint16 full uploads converting to RGBA8 with aligned rows and an available host import. The default uses staging for these conversions. [Headless tests](../tests/native/test_host_import.py).
+  2026-11-20: source-tested on Windows cp312, RTX 4090, Dawn Vulkan headless. The development module `c3bbe133a217…` built from base `15cb085e0` and the retained source patch passed 2 CTests, 14 headless tests in each switch setting and 3 converted-upload tests with the master import switch disabled. The exact-pixel checks cover normal uploads, import-capacity fallback and aborted-submission recovery. Two low-utilization runs per setting measured 1536² RGB8 frame medians of 80.68–83.61 ms with the default path and 3.91–4.44 ms with the opt-in, combining faster RGB8 expansion and direct upload. The 520² unaligned RGB8 control used staging in every run. Timings cover this benchmark and hardware profile. Installed and release coverage remain open. [Source patch](D:/vispy-vulkan-managed/build/runs/swarm-r-perf02-3/native-source.patch), [native evidence](D:/vispy-vulkan-managed/build/runs/swarm-r-perf02-3/ctest.log), [headless and benchmark logs](D:/vispy-vulkan-managed/build/runs/swarm-r-perf02-fix-validation/).
+  2026-11-21: closed on finite `source-tested` scope (D39 pattern) covering opt-in `VISPY_DAWN_CONVERTED_HOST_IMPORT=1` (aligned 2D RGB8/RGB16-to-RGBA8 full uploads) plus warm pooled mapped staging (`>= 4 MiB`) for non-host-mapped streamed buffer uploads on `swarm/v5-int`: `test_buffer_import.py` (8/8) and `test_host_import.py` (11/11) passed across `default`, `wgsl`, and `standard-only` plus `test_buffer_import.py[vertices]` under `VISPY_DAWN_HOST_IMPORT=0` on Windows ([vulkan5-gap-closure-win-1151](D:/vispy-vulkan-managed/build/runs/vulkan5-gap-closure-win-1151/AGENT_REPORT.md)) and WSL Ubuntu ([vulkan5-wsl-gap-closure-1152](D:/vispy-vulkan-managed/build/runs/vulkan5-wsl-gap-closure-1152/AGENT_REPORT.md)). Default staging for unaligned/other conversions and installed-wheel qualification remain explicitly excluded.
 - [x] **PERF-03 — Remaining optional buffer work / P6:** batched draw routes still
   upload in the pass; do not generalize the streamed-buffer improvement to them.
   2026-11-17: closed as not planned (D37, user decision 2026-11-17). Batched draw routes keep uploading inside the pass; the streamed-buffer result (P6) is not generalized to them. Select only if a measurement justifies it.
+  2026-11-20 (D40, user decision to reopen the D37 items). Investigation
+  complete for the ordered two-face stencil route. This item remains closed
+  as not planned for implementation. The 2026-11-19 source-worktree baseline
+  used `15cb085e0` and the supplied Windows RTX 4090 Vulkan `_dawn` binary
+  (SHA-256 `82aca8cea48d844e46d0c766eb1ac6f851d59d4ced9558872a4c62c68ad22916`).
+  At 6,000 and 24,000 triangles, median fresh/resident frame times were
+  21.14/11.96 ms and 104.67/58.65 ms. Median CPU upload times were 1.59 ms
+  and 9.77 ms. GPU-side upload cost and grant-driven ordinary and point routes
+  remain unmeasured. The baseline leaves a P6 speedup undetermined.
+  [6,000 triangles](D:/vispy-vulkan-managed/build/runs/swarm-r-perf03-baseline/typical.json),
+  [24,000 triangles](D:/vispy-vulkan-managed/build/runs/swarm-r-perf03-baseline/stress.json),
+  [stencil correctness and recovery](D:/vispy-vulkan-managed/build/runs/swarm-r-perf03-baseline/pytest-focused.log).
 - [x] **PERF-04 — Cold builds and peak memory / B14:** obtain bounded measurements
   and reconcile the historical 16 review-finding regressions if making these claims.
   2026-11-17: closed on its recorded finite scope (D39, user decision 2026-11-17). [perf04-cold-build-reconciliation](../compat/api-acceptance/perf04-cold-build-reconciliation-v1.json) (run `959`) reconciles the 16 historical review-finding regressions against current suites. Cold-build time and peak memory are not measured and no claim about them is made.
@@ -3853,6 +4106,26 @@ criteria; software timestamps do not establish physical display scanout latency.
 - [x] **TOOL-02 — Compiler-output caching / B13 — Optional:** select only a cache
   design that preserves input/toolchain identities and the shared disk budget.
   2026-11-17: closed as not planned (D37, user decision 2026-11-17). No compiler-output cache is built; CI's wheel-reuse mode covers the current need. Reopen only as a newly selected task with its own acceptance and installed evidence.
+  2026-11-20: reopened under D40 for opt-in portable render GLSL-to-SPIR-V
+  reuse with `VISPY_DAWN_COMPILER_CACHE=1`. The process-local Windows x64
+  development scope is 32 entries and 4 MiB of charged memory.
+  Run `swarm-r-tool02-5` uses the Vulkan.4 Windows x64 SDK with the source
+  delta [retained here](D:/vispy-vulkan-managed/build/runs/swarm-r-tool02-5/source.patch)
+  against `15cb085e0` and native module SHA-256
+  `3abae9c9241a6ba4ebb204407e211015896c86a5f6031d981ae9f26e975a0dbd`.
+  Four [native contracts](D:/vispy-vulkan-managed/build/runs/swarm-r-tool02-5/ctest.log)
+  and 18 [Dawn headless cases](D:/vispy-vulkan-managed/build/runs/swarm-r-tool02-5/headless-pytest.log)
+  passed, including the cache control and original cold timing test. The
+  frame-submission assertion also failed on the [Vulkan.4 baseline](D:/vispy-vulkan-managed/build/runs/swarm-r-tool02-5/baseline-headless-pytest.log).
+  The [counter-dependent CPU run](D:/vispy-vulkan-managed/build/runs/swarm-r-tool02-5/counter-cpu-pytest.log)
+  passed 266 cases and failed four on missing pinned endpoint fixtures.
+  [Run 4](D:/vispy-vulkan-managed/build/runs/swarm-r-tool02-4/configure.log)
+  stopped on Dawn checkout line endings and was cleaned before run 5.
+  The [timing comparison](D:/vispy-vulkan-managed/build/runs/swarm-r-tool02-5/shader-first-draw-comparison.json)
+  shows faster same-process draws after explicit portable-cache eviction,
+  with no established fresh-process speedup. Endpoint GPU, installed-wheel
+  and release qualification remain open.
+  2026-11-21: closed on finite `source-tested` opt-in `VISPY_DAWN_COMPILER_CACHE=1` scope (D39 pattern: process-local 32-entry / 4 MiB portable render GLSL-to-SPIR-V cache, CTests 44/44 passing on both Windows [vulkan5-gap-closure-win-1151](D:/vispy-vulkan-managed/build/runs/vulkan5-gap-closure-win-1151/AGENT_REPORT.md) and WSL Ubuntu [vulkan5-wsl-gap-closure-1152](D:/vispy-vulkan-managed/build/runs/vulkan5-wsl-gap-closure-1152/AGENT_REPORT.md)). Persistent on-disk caching, fresh-process speedup claims, endpoint GPU caching, and installed-wheel qualification remain explicitly excluded.
 - [x] **TOOL-03 — Legacy cleanup receipt / B17:** audit/reconcile the missing
   historical compiler-cache cleanup receipt. Do not repeat the cleanup or claim
   reclaimed bytes without proof.

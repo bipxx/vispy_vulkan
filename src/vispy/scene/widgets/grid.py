@@ -161,11 +161,18 @@ class Grid(Widget):
         widget : Widget
             The Widget to remove
         """
-        self._grid_widgets = dict((key, val)
-                                  for (key, val) in self._grid_widgets.items()
-                                  if val[-1] != widget)
-
-        self._need_solver_recreate = True
+        for key, (row, col, _, _, child) in self._grid_widgets.items():
+            if child is widget:
+                del self._grid_widgets[key]
+                if self._cells[row].get(col) is widget:
+                    del self._cells[row][col]
+                    if not self._cells[row]:
+                        del self._cells[row]
+                self._need_solver_recreate = True
+                if widget.parent is self:
+                    widget.parent = None
+                self.update()
+                return
 
     def resize_widget(self, widget, row_span, col_span):
         """Resize a widget in the grid to new dimensions.

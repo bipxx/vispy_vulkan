@@ -3,8 +3,8 @@
 import gc
 import weakref
 
+from vispy.gloo import GLObject
 from vispy.gloo.glir import GlirQueue
-from vispy.gloo.globject import GLObject
 
 
 class Parser:
@@ -17,6 +17,45 @@ class Parser:
 
     def retire_orphaned(self, ids):
         self.retired.extend(ids)
+
+
+def test_base_globject_creation_has_unique_stable_public_ids():
+    parser = Parser()
+    first, peer = GLObject(), GLObject()
+    first_id, peer_id = first.id, peer.id
+    assert first_id != peer_id
+    first.glir.associate(peer.glir)
+    first.glir.flush(parser)
+    assert (first.id, peer.id) == (first_id, peer_id)
+    assert parser.batches == [[('CREATE', first_id, 'DummyGlirType'),
+                               ('CREATE', peer_id, 'DummyGlirType')]]
+
+
+def test_base_globject_double_delete_and_collection_preserve_peer():
+    parser = Parser()
+    first, peer = GLObject(), GLObject()
+    first_id, peer_id = first.id, peer.id
+    peer_queue = peer.glir
+    first.glir.associate(peer_queue)
+    peer_queue.flush(parser)
+
+    first_ref = weakref.ref(first)
+    first.delete()
+    first.delete()
+    assert first.id == first_id
+    del first
+    gc.collect()
+    assert first_ref() is None
+    assert peer.id == peer_id
+    assert peer.glir is peer_queue
+    peer_queue.flush(parser)
+    assert parser.batches[1:] == [[('DELETE', first_id)]]
+    assert parser.retired == []
+
+    peer.delete()
+    peer_queue.flush(parser)
+    assert parser.batches[-1] == [('DELETE', peer_id)]
+    assert parser.retired == []
 
 
 def test_orphan_retires_deletes_once_without_replaying_other_commands():

@@ -50,11 +50,14 @@ class VisualNode(Node):
 
         If *clipper* is None, then remove any clippers for *node*.
         """
-        if node in self._clippers:
-            self.detach(self._clippers.pop(node))
+        previous = self._clippers.get(node)
+        if clipper is previous:
+            return
+        if previous is not None:
+            self.detach(previous)
         if clipper is not None:
             self.attach(clipper)
-            self._clippers[node] = clipper
+        super()._set_clipper(node, clipper)
 
     @property
     def picking(self):

@@ -26,6 +26,7 @@ def _records(canvas_id, count):
     return records
 
 
+@pytest.mark.needs_window
 @pytest.mark.parametrize("vsync", [False, True])
 def test_actual_qt_presentations_have_owned_nonblocking_frame_timestamps(vsync):
     canvas = app.Canvas(app="pyqt6", size=(32, 24), show=True, vsync=vsync)
@@ -132,6 +133,7 @@ def _check_gpu_record(record, configuration, submission_count, pass_count):
     assert record["pass_sum_ns"] == sum(row["elapsed_ns"] for row in record["passes"])
 
 
+@pytest.mark.needs_window
 def test_opt_in_gpu_queries_cover_twelve_actual_qt_render_and_conversion_frames():
     canvas = app.Canvas(app="pyqt6", size=(32, 24), show=True, vsync=False)
     canvas_id = canvas._backend._dawn_canvas_id
@@ -350,6 +352,53 @@ def test_gpu_frame_counts_explicit_capture_copy_submissions_without_fabricating_
         canvas.close()
 
 
+@pytest.mark.parametrize("redraw", [False, True])
+def test_headless_capture_preserves_last_present_and_recovers_from_invalid_crop(redraw):
+    canvas = app.Canvas(app="dawn_headless", size=(8, 8), show=False)
+    canvas_id = canvas._backend._dawn_canvas_id
+    try:
+        canvas.set_current()
+        gloo.clear(color=(0, 0, 1, 1))
+        canvas.context.flush_commands()
+        _dawn.present(canvas_id)
+        _dawn.finish(canvas_id)
+        # read_presented exposes the last published image in BGRA order.
+        assert np.all(_dawn.read_presented(canvas_id, 0, 0, 8, 8) == [255, 0, 0, 255])
+        configuration = _dawn.benchmark_configure_gpu_timing(canvas_id)
+        _dawn.benchmark_begin_frame(canvas_id, 0)
+        gloo.set_viewport(0, 0, 8, 8)
+        gloo.clear(color=(1, 0, 0, 1))
+        before = _dawn.probe()
+        with pytest.raises(RuntimeError, match="rectangle exceeds target bounds"):
+            gloo.read_pixels((-1, 0, 8, 8))
+        assert _dawn.probe()["dawn_queue_submits"] == before["dawn_queue_submits"]
+        assert np.all(gloo.read_pixels() == [255, 0, 0, 255])
+        captured = _dawn.probe()
+        assert captured["dawn_queue_submits"] == before["dawn_queue_submits"] + 2
+        assert captured["application_presents"] == before["application_presents"]
+        assert _dawn.benchmark_completions(canvas_id) == []
+        with pytest.raises(RuntimeError, match="canvas work is unresolved"):
+            _dawn.read_presented(canvas_id, 0, 0, 8, 8)
+        if redraw:
+            gloo.clear(color=(0, 1, 0, 1))
+            canvas.context.flush_commands()
+        _dawn.present(canvas_id)
+        completion = _records(canvas_id, 1)[0]
+        record = _gpu_records(canvas_id, 1)[0]
+        _check_gpu_record(record, configuration, submission_count=2 + redraw, pass_count=2 + 2 * redraw)
+        assert completion["submission_count"] == 2 + redraw
+        assert completion["status"] == "success" and not completion["presented"]
+        assert _dawn.probe()["application_presents"] == before["application_presents"] + 1
+        expected = [0, 255, 0, 255] if redraw else [0, 0, 255, 255]
+        if configuration["supported"]:
+            assert np.all(_dawn.read_presented(canvas_id, 0, 0, 8, 8) == expected)
+        else:
+            with pytest.raises(RuntimeError, match="did not retire successfully"):
+                _dawn.read_presented(canvas_id, 0, 0, 8, 8)
+    finally:
+        canvas.close()
+
+
 def test_actual_vulkan_allocation_handle_bytes_and_frees_survive_device_loss():
     # Start a fresh device to make these actual allocation deltas independent
     # of slabs retained by earlier tests. Pinned Dawn dedicates allocations
@@ -516,6 +565,7 @@ def test_texture_conversion_and_upload_time_track_dirty_data_and_preserve_warm_r
         canvas.close()
 
 
+@pytest.mark.needs_window
 def test_shown_scene_python_hooks_attribute_twelve_actual_presentations():
     from vispy import scene
     from vispy.gloo import dawn_parser

@@ -4,6 +4,7 @@
 # Distributed under the terms of the new BSD License.
 # -----------------------------------------------------------------------------
 
+from . base import namespace
 from . group import Group
 from . viewport import Viewport
 
@@ -29,11 +30,11 @@ class SVG(Group):
         return self._xml()
 
     def _xml(self, prefix=""):
-        s = "<svg "
+        s = '<svg xmlns="%s" ' % namespace[1:-1]
         s += 'id="%s" ' % self._id
         s += self._viewport.xml
         s += self._transform.xml
-        s += "\n"
+        s += ">\n"
         for item in self._items:
             s += item._xml(prefix=prefix + "    ") + "\n"
         s += "</svg>\n"

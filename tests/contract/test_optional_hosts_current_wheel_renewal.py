@@ -544,7 +544,7 @@ def test_w3_4a_qt_multibinding_current_wheels_manifests_contract() -> None:
         assert b"\r" not in raw and _sha256_bytes(raw) == tmod["sha256"]
 
 
-def test_w3_4a_api05_plot_transforms_current_wheels_manifests_contract() -> None:
+def test_w3_4a_api05_plot_transforms_current_wheels_manifests_contract(frozen_source_root) -> None:
     win_doc, _ = _read_lf_json("compat/api-acceptance/api05-plot-transforms-windows-v1.json")
     wsl_doc, _ = _read_lf_json("compat/api-acceptance/api05-plot-transforms-wsl-v1.json")
 
@@ -601,7 +601,7 @@ def test_w3_4a_api05_plot_transforms_current_wheels_manifests_contract() -> None
         }
         for rel_p, m_entry in mods.items():
             assert m_entry["sha256"] == wave3_historical_mod_hashes[rel_p]
-            disk_p = REPO_ROOT / rel_p
+            disk_p = frozen_source_root / rel_p
             assert disk_p.is_file()
             raw = disk_p.read_bytes()
             assert b"\r" not in raw and _sha256_bytes(raw) == w5_mods[rel_p]["sha256"]
@@ -630,7 +630,7 @@ WAVE5_EXPECTED_WHEEL_SHA256S = {
 }
 
 
-def _validate_wave5_tier1_and_plat02_manifests(tier1: dict, plat02: dict) -> None:
+def _validate_wave5_tier1_and_plat02_manifests(tier1: dict, plat02: dict, source_root: Path) -> None:
     for doc, expected_id in (
         (tier1, "tier1-collections-jupyter-rfb-v1"),
         (plat02, "plat02-cp311-cp313-wheels-v1"),
@@ -663,7 +663,7 @@ def _validate_wave5_tier1_and_plat02_manifests(tier1: dict, plat02: dict) -> Non
     _require(isinstance(rfiles, list) and len(rfiles) == 6, "tier1 runtime_files must have 6 entries")
     for rf in rfiles:
         _require(rf.get("line_endings") == "CRLF", f"runtime file {rf} must record CRLF")
-        disk_p = REPO_ROOT / rf["path"]
+        disk_p = source_root / rf["path"]
         _require(disk_p.is_file(), f"missing runtime file {rf['path']}")
         raw = disk_p.read_bytes()
         _require(
@@ -677,7 +677,7 @@ def _validate_wave5_tier1_and_plat02_manifests(tier1: dict, plat02: dict) -> Non
     _require(isinstance(tmods, list) and len(tmods) == 3, "tier1 test_modules must have 3 entries")
     for tm in tmods:
         _require(tm.get("line_endings") == "LF", f"test module {tm} must record LF")
-        disk_p = REPO_ROOT / tm["path"]
+        disk_p = source_root / tm["path"]
         _require(disk_p.is_file(), f"missing test module {tm['path']}")
         raw = disk_p.read_bytes()
         _require(
@@ -771,13 +771,13 @@ def _validate_wave5_tier1_and_plat02_manifests(tier1: dict, plat02: dict) -> Non
         )
 
 
-def test_w5_tier1_collections_jupyter_rfb_and_plat02_wheels_manifests_contract() -> None:
+def test_w5_tier1_collections_jupyter_rfb_and_plat02_wheels_manifests_contract(frozen_source_root) -> None:
     tier1, _ = _read_lf_json("compat/api-acceptance/tier1-collections-jupyter-rfb-v1.json")
     plat02, _ = _read_lf_json("compat/api-acceptance/plat02-cp311-cp313-wheels-v1.json")
-    _validate_wave5_tier1_and_plat02_manifests(tier1, plat02)
+    _validate_wave5_tier1_and_plat02_manifests(tier1, plat02, frozen_source_root)
 
 
-def test_w3_4a_local_secondary_evidence_store_and_negative_fail_closed_controls() -> None:
+def test_w3_4a_local_secondary_evidence_store_and_negative_fail_closed_controls(frozen_source_root) -> None:
     manifest_paths = (
         "compat/no-opengl-optional-hosts-current-v1.json",
         "compat/api-acceptance/tk-native-current-wheels-v1.json",
@@ -863,22 +863,22 @@ def test_w3_4a_local_secondary_evidence_store_and_negative_fail_closed_controls(
     bad_plat02_closed = copy.deepcopy(w5_plat02)
     bad_plat02_closed["plat02_closed"] = True
     with pytest.raises(ValueError, match="plat02_closed"):
-        _validate_wave5_tier1_and_plat02_manifests(w5_tier1, bad_plat02_closed)
+        _validate_wave5_tier1_and_plat02_manifests(w5_tier1, bad_plat02_closed, frozen_source_root)
 
     bad_w5_admitted = copy.deepcopy(w5_tier1)
     bad_w5_admitted["scoped_admitted"] = True
     with pytest.raises(ValueError, match="scoped_admitted"):
-        _validate_wave5_tier1_and_plat02_manifests(bad_w5_admitted, w5_plat02)
+        _validate_wave5_tier1_and_plat02_manifests(bad_w5_admitted, w5_plat02, frozen_source_root)
 
     bad_w5_cmat = copy.deepcopy(w5_tier1)
     bad_w5_cmat["collections_runtime_matrix"]["PathCollection_raw"]["status"] = "error"
     with pytest.raises(ValueError, match="PathCollection_raw"):
-        _validate_wave5_tier1_and_plat02_manifests(bad_w5_cmat, w5_plat02)
+        _validate_wave5_tier1_and_plat02_manifests(bad_w5_cmat, w5_plat02, frozen_source_root)
 
     bad_w5_sw = copy.deepcopy(w5_plat02)
     bad_w5_sw["colab_tesla_t4_summary"]["software"] = True
     with pytest.raises(ValueError, match="colab_tesla_t4_summary"):
-        _validate_wave5_tier1_and_plat02_manifests(w5_tier1, bad_w5_sw)
+        _validate_wave5_tier1_and_plat02_manifests(w5_tier1, bad_w5_sw, frozen_source_root)
 
 
 __all__ = [name for name in dir() if name.startswith("test_")]

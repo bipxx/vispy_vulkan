@@ -369,5 +369,6 @@ CompileInfo compile_variant(const std::string& vertex, const std::string& fragme
                             bool has_depth, bool point_sprites, bool allow_non_uniform_derivatives = false);
 std::vector<std::string> debug_trace();
 void lose_device();
+void diagnostic_timeout_next_readback();
 void shutdown_runtime();
 std::string runtime_revision();

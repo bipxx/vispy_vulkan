@@ -1,6 +1,12 @@
 # -*- coding: utf-8 -*-
-"""Offscreen Dawn canvas. No Qt and no OpenGL context."""
+"""Offscreen Dawn canvas. No Qt and no OpenGL context.
 
+Use `backend_kwargs={'device_pixel_ratio': ratio}` to simulate the initial
+display scale, and `canvas.native.set_device_pixel_ratio(ratio)` to simulate
+moving to a differently scaled display. Mouse event positions are logical.
+"""
+
+import math
 import time
 import weakref
 
@@ -14,6 +20,7 @@ _timers = weakref.WeakSet()
 available = True
 testable = True
 why_not = None
+which = "Dawn headless"
 
 capability = dict(
     title=True,
@@ -34,6 +41,17 @@ capability = dict(
 
 def _set_config(c):
     return c
+
+
+def _validate_device_pixel_ratio(ratio):
+    ratio = float(ratio)
+    if not math.isfinite(ratio) or ratio <= 0:
+        raise ValueError("device_pixel_ratio must be finite and positive")
+    return ratio
+
+
+def _scaled_size(size, ratio):
+    return tuple(round(dimension * ratio) for dimension in size)
 
 
 class ApplicationBackend(BaseApplicationBackend):
@@ -89,7 +107,11 @@ class TimerBackend(BaseTimerBackend):
 
 
 class CanvasBackend(BaseCanvasBackend):
-    def __init__(self, vispy_canvas, **kwargs):
+    def __init__(self, vispy_canvas, *, device_pixel_ratio=None, **kwargs):
+        self._simulated_device_pixel_ratio = (
+            None if device_pixel_ratio is None
+            else _validate_device_pixel_ratio(device_pixel_ratio)
+        )
         BaseCanvasBackend.__init__(self, vispy_canvas)
         p = self._process_backend_kwargs(kwargs)
         self._closed = False
@@ -97,16 +119,22 @@ class CanvasBackend(BaseCanvasBackend):
         _canvases.add(self)
         self._size = (int(p.size[0]), int(p.size[1]))
         self._physical_size = self._size
-        self._position = (0, 0)
+        self._position = (
+            (0, 0) if p.position is None else (int(p.position[0]), int(p.position[1]))
+        )
         self._title = p.title
         self._visible = bool(p.show)
         self._fullscreen = False
+        if self._simulated_device_pixel_ratio is not None:
+            self._physical_size = _scaled_size(self._size, self._simulated_device_pixel_ratio)
         p.context.shared.add_ref("dawn-headless", self)
         from vispy import _dawn
 
         samples = int(p.context.config.get("samples", 0) or 0)
         self._samples = samples
-        self._dawn_canvas_id = int(_dawn.register_canvas(self._size[0], self._size[1], samples, bool(p.vsync)))
+        self._dawn_canvas_id = int(_dawn.register_canvas(
+            *self._physical_size, samples, bool(p.vsync)
+        ))
         from ...gloo.dawn_parser import install_gl_queries
 
         install_gl_queries()
@@ -130,11 +158,25 @@ class CanvasBackend(BaseCanvasBackend):
         self._title = title
 
     def _vispy_set_size(self, w, h):
-        self._size = (int(w), int(h))
-        self._physical_size = self._size
+        self._resize((int(w), int(h)), self._simulated_device_pixel_ratio)
+
+    def set_device_pixel_ratio(self, ratio):
+        """Simulate a display-scale change at the current logical size."""
+        self._resize(self._size, _validate_device_pixel_ratio(ratio))
+
+    def _resize(self, size, ratio):
+        if size == self._size and ratio == self._simulated_device_pixel_ratio:
+            return
+        physical_size = size if ratio is None else _scaled_size(size, ratio)
         from vispy import _dawn
 
-        _dawn.configure_canvas(int(self._dawn_canvas_id), int(w), int(h), self._samples)
+        if physical_size != self._physical_size:
+            _dawn.configure_canvas(self._dawn_canvas_id, *physical_size, self._samples)
+        self._size = size
+        self._physical_size = physical_size
+        self._simulated_device_pixel_ratio = ratio
+        self._vispy_canvas.events.resize(size=size, physical_size=physical_size)
+        self._vispy_update()
 
     def _vispy_set_position(self, x, y):
         self._position = (int(x), int(y))

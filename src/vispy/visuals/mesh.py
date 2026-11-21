@@ -111,6 +111,7 @@ class MeshVisual(Visual):
 
         # Define buffers
         self._vertices = VertexBuffer(np.zeros((0, 3), dtype=np.float32))
+        self.shared_program.vert['position'] = self._vertices
         self._cmap = CubeHelixColormap()
         self._clim = 'auto'
 
@@ -183,14 +184,18 @@ class MeshVisual(Visual):
         meshdata : instance of MeshData | None
             The meshdata.
         """
-        if meshdata is not None:
-            self._meshdata = meshdata
-        else:
-            self._meshdata = MeshData(vertices=vertices, faces=faces,
-                                      vertex_colors=vertex_colors,
-                                      face_colors=face_colors,
-                                      vertex_values=vertex_values)
-        self._bounds = self._meshdata.get_bounds()
+        if meshdata is None:
+            if vertices is not None:
+                shape = np.shape(vertices)
+                if len(shape) not in (2, 3) or shape[-1] not in (2, 3):
+                    raise ValueError('Vertex data must end in 2 or 3 coordinates.')
+            meshdata = MeshData(vertices=vertices, faces=faces,
+                                vertex_colors=vertex_colors,
+                                face_colors=face_colors,
+                                vertex_values=vertex_values)
+        bounds = meshdata.get_bounds()
+        self._meshdata = meshdata
+        self._bounds = bounds
         self._bounds_changed()
         if color is not None:
             self._color = Color(color)
@@ -346,8 +351,6 @@ class MeshVisual(Visual):
             colors = colors.astype(np.float32)
         else:
             colors = self._color.rgba
-
-        self.shared_program.vert['position'] = self._vertices
 
         self.shared_program['texture2D_LUT'] = self._cmap.texture_lut()
 

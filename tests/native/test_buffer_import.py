@@ -369,7 +369,7 @@ print(json.dumps({"host_mapped_pointer": bool(info["host_mapped_pointer"]), **mo
 
 def test_imports_can_be_turned_off():
     env = dict(os.environ, VISPY_DAWN_HOST_IMPORT="0")
-    child = subprocess.run([sys.executable, "-B", "-c", CHILD, json.dumps(sys.path), _dawn.__file__, str(FRAMES)],
+    child = subprocess.run([sys.executable, "-B", "-S", "-c", CHILD, json.dumps(sys.path), _dawn.__file__, str(FRAMES)],
                            env=env, capture_output=True, text=True, timeout=120)
     assert child.returncode == 0, child.stderr
     assert json.loads(child.stdout.splitlines()[-1]) == {"host_mapped_pointer": False, "buffer_import_copies": 0,

@@ -10,8 +10,9 @@ import math
 from tools.fixture_native_paint_frames import RESIDENT as RESIDENT_COUNTERS
 
 UNSUBMITTED_INDEX = 2**64 - 1
-HEADLESS_CAPTURE = dict(submissions=3, pass_kinds=['clear', 'present_capture'],
-                        pass_submission_indices=[0, 2], implicit_presents=0)
+# Group the clear and mirror pass in the first submission. The readback copy is second.
+HEADLESS_CAPTURE = dict(submissions=2, pass_kinds=['clear', 'present_capture'],
+                        pass_submission_indices=[0, 0], implicit_presents=0)
 
 
 def layout(intermediate=False):

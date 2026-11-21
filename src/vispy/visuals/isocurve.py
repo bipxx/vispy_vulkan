@@ -174,6 +174,10 @@ class IsocurveVisual(LineVisual):
                     np.empty((0, 4)))
 
     def _levels_to_colors(self):
+        if not len(self._levels):
+            self._lc = np.empty((0, 4))
+            return
+
         # computes ColorArrays for given levels
         # try _color_lev as colormap, except as everything else
         try:

@@ -57,8 +57,8 @@ def pack_ieee(value):
     pack: array
         packed interpolation kernel
     """
-    return np.fromstring(value.tobytes(),
-                         np.ubyte).reshape((value.shape + (4,)))
+    packed = np.frombuffer(value.tobytes(), np.ubyte).copy()
+    return packed.reshape(value.shape + (4,))
 
 
 def load_spatial_filters(packed=True):

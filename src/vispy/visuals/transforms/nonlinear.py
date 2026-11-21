@@ -64,9 +64,9 @@ class LogTransform(BaseTransform):
     @property
     def base(self):
         """
-        *base* is a tuple (x, y, z) containing the log base that should be
-        applied to each axis of the input vector. If any axis has a base <= 0,
-        then that axis is not affected.
+        *base* gives the logarithm base for each axis. Values below -1
+        select exponentiation with the absolute base. Values from -1 to 1
+        leave the corresponding axis unchanged.
         """
         return self._base.copy()
 
@@ -77,14 +77,14 @@ class LogTransform(BaseTransform):
 
     @arg_to_array
     def map(self, coords, base=None):
-        ret = np.empty(coords.shape, coords.dtype)
+        ret = coords.astype(np.result_type(coords.dtype, np.float32), copy=True)
         if base is None:
             base = self.base
         for i in range(min(ret.shape[-1], 3)):
             if base[i] > 1.0:
                 ret[..., i] = np.log(coords[..., i]) / np.log(base[i])
             elif base[i] < -1.0:
-                ret[..., i] = -base[i] ** coords[..., i]
+                ret[..., i] = (-base[i]) ** coords[..., i]
             else:
                 ret[..., i] = coords[..., i]
         return ret
@@ -146,7 +146,7 @@ class PolarTransform(BaseTransform):
     @arg_to_array
     def imap(self, coords):
         ret = np.empty(coords.shape, coords.dtype)
-        ret[..., 0] = np.arctan2(coords[..., 0], coords[..., 1])
+        ret[..., 0] = np.arctan2(coords[..., 1], coords[..., 0])
         ret[..., 1] = (coords[..., 0]**2 + coords[..., 1]**2) ** 0.5
         for i in range(2, coords.shape[-1]):  # copy any further axes
             ret[..., i] = coords[..., i]

@@ -1,11 +1,23 @@
 # -*- coding: utf-8 -*-
 """GLIR parser that forwards filtered commands to the Dawn extension."""
 
+from contextvars import ContextVar
 import operator
 
 import numpy as np
 
 from .glir import BaseGlirParser
+
+
+_finishing_for_readback = ContextVar("_finishing_for_readback", default=False)
+
+
+def _finish_for_readback(context):
+    token = _finishing_for_readback.set(True)
+    try:
+        context.finish()
+    finally:
+        _finishing_for_readback.reset(token)
 
 
 def _freeze(value, arrays):
@@ -279,13 +291,21 @@ class DawnGlirParser(BaseGlirParser):
                 yield command
 
         try:
-            if hasattr(_dawn, "_capture_upload") and hasattr(_dawn, "_execute_owned"):
+            owned = hasattr(_dawn, "_capture_upload") and hasattr(_dawn, "_execute_owned")
+            if owned:
                 stats = dict(captures=0, bytes=0, fallback_dtypes=0, fallback_exports=0)
                 packed, arrays = pack_commands(tracked_commands(), native_capture=_dawn._capture_upload,
                                                capture_stats=stats)
-                _dawn._execute_owned(int(self.canvas_id), packed, arrays, stats)
             else:
                 packed, arrays = pack_commands(tracked_commands())
+            # Only the finish appended by readback delegates completion to
+            # native readback. Earlier explicit finishes retain their semantics.
+            if (_finishing_for_readback.get() and packed and
+                    packed[-1] == ("FUNC", "glFinish")):
+                packed[-1] += ("readback",)
+            if owned:
+                _dawn._execute_owned(int(self.canvas_id), packed, arrays, stats)
+            else:
                 _dawn.execute(int(self.canvas_id), packed, arrays)
         except BaseException as error:
             # The queue was consumed before parse; neither a missing canvas nor
@@ -323,7 +343,7 @@ def read_pixels_dawn(viewport, alpha, mode, out_type="unsigned_byte", copy=True)
     use_current_viewport = viewport is None
     if use_current_viewport:
         # Apply queued viewport updates before resolving the default region.
-        canvas.context.finish()
+        _finish_for_readback(canvas.context)
         viewport = _dawn.viewport(int(canvas._backend._dawn_canvas_id))
     viewport = np.asarray(viewport, dtype=int)
     if viewport.ndim != 1 or viewport.size != 4:
@@ -342,7 +362,7 @@ def read_pixels_dawn(viewport, alpha, mode, out_type="unsigned_byte", copy=True)
     if x < 0 or y < 0:
         raise RuntimeError("read_pixels rectangle exceeds target bounds")
     if not use_current_viewport:
-        canvas.context.finish()
+        _finish_for_readback(canvas.context)
     canvas_id = int(getattr(canvas._backend, "_dawn_canvas_id", 0) or 0)
     image = _dawn.read_pixels(canvas_id, x, y, width, height, bool(alpha),
                               out_type in ("float", np.float32), mode)
