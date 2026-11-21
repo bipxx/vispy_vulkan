@@ -114,3 +114,12 @@ index. Its SHA-256, `e8a61ae7945c214774fab709d76d2adb9bb2f81ce33a3e2cb3f68031dea
 matched the index pin and release `delivery.json`. The WSL launcher returned
 `Wsl/E_ACCESSDENIED` before Ubuntu started. The native public install, version import
 and `dawn_headless` software Vulkan pixel check remain pending.
+
+A November 21 WSL Ubuntu follow-up (`vulkan4-linux-smoke-1150`) completed that
+CPython 3.12 Linux public-channel smoke: downloading `vispy-0.17.0+vulkan.4-cp312-cp312-manylinux_2_39_x86_64.whl`
+(SHA-256 `e8a61ae7945c214774fab709d76d2adb9bb2f81ce33a3e2cb3f68031deac16be`) into a clean
+CPython 3.12 environment verified all `537/537` package members with zero source overrides,
+imported `vispy.__version__ == "0.17.0+vulkan.4"`, rendered an exact 64×64 RGBA `[17, 33, 65, 255]`
+clear via `dawn_headless` on `llvmpipe (LLVM 18.1.3, 256 bits)` using pinned Mesa `9c5c41b3`
+with 10/10 zero Dawn shutdown gauges, and cleaned WSL managed scratch (`PASS_APPLY`,
+`total_managed_bytes: 0`). Existing admission and release-tier boundaries remain unchanged.

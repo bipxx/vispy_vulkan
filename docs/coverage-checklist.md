@@ -1,5 +1,10 @@
 # VisPy Vulkan coverage checklist
 
+## Latest checkpoint — 2026-11-21
+
+**`0.17.0+vulkan.4` Linux public-channel smoke (`PLAT-02` follow-up) — 2026-11-21:**
+- WSL Ubuntu follow-up ([vulkan4-linux-smoke-1150](D:/vispy-vulkan-managed/build/runs/vulkan4-linux-smoke-1150/AGENT_REPORT.md)) downloaded `vispy-0.17.0+vulkan.4-cp312-cp312-manylinux_2_39_x86_64.whl` (10,566,229 B, SHA-256 `e8a61ae7945c214774fab709d76d2adb9bb2f81ce33a3e2cb3f68031deac16be`) into a clean CPython 3.12 environment, verified `537/537` members with `0` source overrides, imported `vispy.__version__ == "0.17.0+vulkan.4"`, rendered an exact 64×64 RGBA `[17, 33, 65, 255]` clear via `dawn_headless` on `llvmpipe (LLVM 18.1.3, 256 bits)` using pinned Mesa `9c5c41b3` with `10/10` zero Dawn shutdown gauges, and cleaned WSL managed scratch (`PASS_APPLY`, `total_managed_bytes: 0`). Tier boundaries and published release status remain unchanged. See the [release verification](release-0.17.0-vulkan.4.md#public-channel-verification--2026-11-20).
+
 ## Latest checkpoint — 2026-11-20
 
 **`0.17.0+vulkan.4` public delivery (D41) — 2026-11-20:**
