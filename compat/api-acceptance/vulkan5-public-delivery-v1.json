@@ -1,0 +1,456 @@
+{
+  "schema": 1,
+  "date": "2026-11-22",
+  "status": "PASS_VULKAN5_PUBLIC_DELIVERY_SIX_WHEELS",
+  "coverage_ids": [
+    "PERF-01",
+    "PLAT-02",
+    "API-05",
+    "API-06"
+  ],
+  "version": "0.17.0+vulkan.5",
+  "release_url": "https://github.com/bipxx/vispy_vulkan/releases/tag/v0.17.0-vulkan.5",
+  "release_id": 454293375,
+  "published_at": "2026-11-22T08:03:18Z",
+  "index_url": "https://bipxx.github.io/vispy_vulkan/simple/",
+  "index_commit": "9fdb8068f3f089f772d85bf19359e943bf134592",
+  "index_blob_before": "18ca819d0cdb4e17fa29645487bbcaa3433f3362",
+  "index_blob": "bce9ca9e2e05b3f33dfcd99ecfd0ef02670a8bd3",
+  "product_source_commit": "9576e7f3031c51b4674667c5725c5b0a8afde864",
+  "qualification_head": "e1b2f1ef1084f857f4fb08fe14a12355851f43de",
+  "release_source_merge": "3be0b9e47c955c95e85a193585a27cac2a7309a3",
+  "wheels": [
+    {
+      "name": "vispy-0.17.0+vulkan.5-cp312-cp312-win_amd64.whl",
+      "bytes": 6834429,
+      "sha256": "be5da8bc3db92aca682110b8f9f0896b5984945b50d1fc1d8269386c6cf0973a",
+      "abi": "cp312",
+      "platform": "windows",
+      "tier": "scoped-admitted + publicly-delivered",
+      "strict_rows": 4,
+      "in_128_binding_admission": true,
+      "release_asset_id": 778337549,
+      "release_asset_digest": "sha256:be5da8bc3db92aca682110b8f9f0896b5984945b50d1fc1d8269386c6cf0973a",
+      "url": "https://github.com/bipxx/vispy_vulkan/releases/download/v0.17.0-vulkan.5/vispy-0.17.0%2Bvulkan.5-cp312-cp312-win_amd64.whl",
+      "index_href": "https://github.com/bipxx/vispy_vulkan/releases/download/v0.17.0-vulkan.5/vispy-0.17.0%2Bvulkan.5-cp312-cp312-win_amd64.whl#sha256=be5da8bc3db92aca682110b8f9f0896b5984945b50d1fc1d8269386c6cf0973a",
+      "public_install": {
+        "version": "0.17.0+vulkan.5",
+        "python": "3.12.8",
+        "installed_members_verified": 537,
+        "source_overrides": 0,
+        "clear_exact": true,
+        "rendered": true,
+        "native_import": true,
+        "shutdown_gauges": {
+          "pending_tickets": 0,
+          "queued_frames": 0,
+          "live_buffer_bytes": 0,
+          "live_cpu_buffer_bytes": 0,
+          "live_texture_bytes": 0,
+          "canvas_texture_bytes": 0,
+          "transient_buffer_bytes": 0,
+          "line_resource_pool_busy_slots": 0,
+          "line_resource_pool_bytes": 0,
+          "host_import_pinned_bytes": 0
+        },
+        "device": "NVIDIA GeForce RTX 4090",
+        "backend": "Vulkan",
+        "abi": "cp312",
+        "platform": "windows",
+        "downloaded_url": "https://github.com/bipxx/vispy_vulkan/releases/download/v0.17.0-vulkan.5/vispy-0.17.0%2Bvulkan.5-cp312-cp312-win_amd64.whl",
+        "sha256": "be5da8bc3db92aca682110b8f9f0896b5984945b50d1fc1d8269386c6cf0973a",
+        "result": {
+          "path": "@evidence/build/runs/vulkan5-channel-smoke-1201/windows-cp312-verification.json",
+          "sha256": "f07a1f0253e19f23b1c0992b4909307b9501296a2e5966542ce51709e01bc764"
+        },
+        "pip_report": {
+          "path": "@evidence/build/runs/vulkan5-channel-smoke-1201/windows-cp312-pip-report.json",
+          "sha256": "a8f5e5561c80c4f060aae57a3d7c28b85cf1a200a4f9f850221414ef69b69064"
+        },
+        "processes": {
+          "path": "@evidence/build/runs/vulkan5-channel-smoke-1201/windows-cp312-install-process.json",
+          "sha256": "e6b018a29f1474c285b7f80177125ae885e25144e1331e8c643a093ea4569a1d"
+        }
+      }
+    },
+    {
+      "name": "vispy-0.17.0+vulkan.5-cp312-cp312-manylinux_2_39_x86_64.whl",
+      "bytes": 10579198,
+      "sha256": "d9a23bf22deab3724b1b67de4ca83a5152d4074255d8d6bee2ba70576ffdd253",
+      "abi": "cp312",
+      "platform": "linux",
+      "tier": "scoped-admitted + publicly-delivered",
+      "strict_rows": 4,
+      "in_128_binding_admission": true,
+      "release_asset_id": 778337553,
+      "release_asset_digest": "sha256:d9a23bf22deab3724b1b67de4ca83a5152d4074255d8d6bee2ba70576ffdd253",
+      "url": "https://github.com/bipxx/vispy_vulkan/releases/download/v0.17.0-vulkan.5/vispy-0.17.0%2Bvulkan.5-cp312-cp312-manylinux_2_39_x86_64.whl",
+      "index_href": "https://github.com/bipxx/vispy_vulkan/releases/download/v0.17.0-vulkan.5/vispy-0.17.0%2Bvulkan.5-cp312-cp312-manylinux_2_39_x86_64.whl#sha256=d9a23bf22deab3724b1b67de4ca83a5152d4074255d8d6bee2ba70576ffdd253",
+      "public_install": {
+        "version": "0.17.0+vulkan.5",
+        "python": "3.12.8",
+        "installed_members_verified": 537,
+        "source_overrides": 0,
+        "clear_exact": true,
+        "rendered": true,
+        "native_import": true,
+        "device": "llvmpipe (LLVM 18.1.3, 256 bits)",
+        "backend": "Vulkan",
+        "software": true,
+        "shutdown_gauges": {
+          "pending_tickets": 0,
+          "queued_frames": 0,
+          "live_buffer_bytes": 0,
+          "live_cpu_buffer_bytes": 0,
+          "live_texture_bytes": 0,
+          "canvas_texture_bytes": 0,
+          "transient_buffer_bytes": 0,
+          "line_resource_pool_busy_slots": 0,
+          "line_resource_pool_bytes": 0,
+          "host_import_pinned_bytes": 0
+        },
+        "abi": "cp312",
+        "platform": "linux",
+        "downloaded_url": "https://github.com/bipxx/vispy_vulkan/releases/download/v0.17.0-vulkan.5/vispy-0.17.0%2Bvulkan.5-cp312-cp312-manylinux_2_39_x86_64.whl",
+        "sha256": "d9a23bf22deab3724b1b67de4ca83a5152d4074255d8d6bee2ba70576ffdd253",
+        "result": {
+          "path": "@evidence/build/runs/vulkan5-channel-smoke-1201/linux-cp312-verification.json",
+          "sha256": "dd421916cd2a237a1c8b605032bd0c1e2b9814251c7e969c4bebd14428adc0fe"
+        },
+        "pip_report": {
+          "path": "@evidence/build/runs/vulkan5-channel-smoke-1201/linux-cp312-pip-report.json",
+          "sha256": "4e3310e5c88cc4de784d275e9ab7175003735cc4cd94488ab72122607b1d0b5f"
+        },
+        "processes": {
+          "path": "@evidence/build/runs/vulkan5-channel-smoke-1201/linux-cp312-install-process.json",
+          "sha256": "6a28c6e69dec0f81424c99bc5dc657c2623b237b4ade86516128408dfaffca12"
+        }
+      }
+    },
+    {
+      "name": "vispy-0.17.0+vulkan.5-cp311-cp311-win_amd64.whl",
+      "bytes": 6835125,
+      "sha256": "f0ecad9fa66cebf14a661c43e80edcdfa4dc01c6ec7112dd0afb010f94f41758",
+      "abi": "cp311",
+      "platform": "windows",
+      "tier": "installed-functional + publicly-delivered",
+      "strict_rows": 0,
+      "in_128_binding_admission": false,
+      "release_asset_id": 778337551,
+      "release_asset_digest": "sha256:f0ecad9fa66cebf14a661c43e80edcdfa4dc01c6ec7112dd0afb010f94f41758",
+      "url": "https://github.com/bipxx/vispy_vulkan/releases/download/v0.17.0-vulkan.5/vispy-0.17.0%2Bvulkan.5-cp311-cp311-win_amd64.whl",
+      "index_href": "https://github.com/bipxx/vispy_vulkan/releases/download/v0.17.0-vulkan.5/vispy-0.17.0%2Bvulkan.5-cp311-cp311-win_amd64.whl#sha256=f0ecad9fa66cebf14a661c43e80edcdfa4dc01c6ec7112dd0afb010f94f41758",
+      "public_install": {
+        "version": "0.17.0+vulkan.5",
+        "python": "3.11.11",
+        "installed_members_verified": 537,
+        "source_overrides": 0,
+        "clear_exact": true,
+        "rendered": true,
+        "native_import": true,
+        "shutdown_gauges": {
+          "pending_tickets": 0,
+          "queued_frames": 0,
+          "live_buffer_bytes": 0,
+          "live_cpu_buffer_bytes": 0,
+          "live_texture_bytes": 0,
+          "canvas_texture_bytes": 0,
+          "transient_buffer_bytes": 0,
+          "line_resource_pool_busy_slots": 0,
+          "line_resource_pool_bytes": 0,
+          "host_import_pinned_bytes": 0
+        },
+        "device": "NVIDIA GeForce RTX 4090",
+        "backend": "Vulkan",
+        "abi": "cp311",
+        "platform": "windows",
+        "downloaded_url": "https://github.com/bipxx/vispy_vulkan/releases/download/v0.17.0-vulkan.5/vispy-0.17.0%2Bvulkan.5-cp311-cp311-win_amd64.whl",
+        "sha256": "f0ecad9fa66cebf14a661c43e80edcdfa4dc01c6ec7112dd0afb010f94f41758",
+        "result": {
+          "path": "@evidence/build/runs/vulkan5-channel-smoke-1201/windows-cp311-verification.json",
+          "sha256": "ae8736849f68cde22023d43df29294d3641ad67c5a6516058855aef1bacb6994"
+        },
+        "pip_report": {
+          "path": "@evidence/build/runs/vulkan5-channel-smoke-1201/windows-cp311-pip-report.json",
+          "sha256": "949c7d77e95f081a34617f6debcb67e878870258addb2a1375ee05eb4cdb2be3"
+        },
+        "processes": {
+          "path": "@evidence/build/runs/vulkan5-channel-smoke-1201/windows-cp311-install-process.json",
+          "sha256": "89b7ad87a58bcc4c2ed6047f6ae06890942d6ddd8d4da92cd102be8a5bb0fdd9"
+        }
+      }
+    },
+    {
+      "name": "vispy-0.17.0+vulkan.5-cp311-cp311-manylinux_2_39_x86_64.whl",
+      "bytes": 10582138,
+      "sha256": "c9d4919a8902d5a4e1f995f6c682361bc522221fddd12374a69daa52997a218f",
+      "abi": "cp311",
+      "platform": "linux",
+      "tier": "installed-functional + publicly-delivered",
+      "strict_rows": 0,
+      "in_128_binding_admission": false,
+      "release_asset_id": 778337552,
+      "release_asset_digest": "sha256:c9d4919a8902d5a4e1f995f6c682361bc522221fddd12374a69daa52997a218f",
+      "url": "https://github.com/bipxx/vispy_vulkan/releases/download/v0.17.0-vulkan.5/vispy-0.17.0%2Bvulkan.5-cp311-cp311-manylinux_2_39_x86_64.whl",
+      "index_href": "https://github.com/bipxx/vispy_vulkan/releases/download/v0.17.0-vulkan.5/vispy-0.17.0%2Bvulkan.5-cp311-cp311-manylinux_2_39_x86_64.whl#sha256=c9d4919a8902d5a4e1f995f6c682361bc522221fddd12374a69daa52997a218f",
+      "public_install": {
+        "version": "0.17.0+vulkan.5",
+        "python": "3.11.14",
+        "installed_members_verified": 537,
+        "source_overrides": 0,
+        "clear_exact": true,
+        "rendered": true,
+        "native_import": true,
+        "device": "llvmpipe (LLVM 18.1.3, 256 bits)",
+        "backend": "Vulkan",
+        "software": true,
+        "shutdown_gauges": {
+          "pending_tickets": 0,
+          "queued_frames": 0,
+          "live_buffer_bytes": 0,
+          "live_cpu_buffer_bytes": 0,
+          "live_texture_bytes": 0,
+          "canvas_texture_bytes": 0,
+          "transient_buffer_bytes": 0,
+          "line_resource_pool_busy_slots": 0,
+          "line_resource_pool_bytes": 0,
+          "host_import_pinned_bytes": 0
+        },
+        "abi": "cp311",
+        "platform": "linux",
+        "downloaded_url": "https://github.com/bipxx/vispy_vulkan/releases/download/v0.17.0-vulkan.5/vispy-0.17.0%2Bvulkan.5-cp311-cp311-manylinux_2_39_x86_64.whl",
+        "sha256": "c9d4919a8902d5a4e1f995f6c682361bc522221fddd12374a69daa52997a218f",
+        "result": {
+          "path": "@evidence/build/runs/vulkan5-channel-smoke-1201/linux-cp311-verification.json",
+          "sha256": "98437b34e8e285230a13747b32f78d5ef36530a868460f39aeecc169bc80d689"
+        },
+        "pip_report": {
+          "path": "@evidence/build/runs/vulkan5-channel-smoke-1201/linux-cp311-pip-report.json",
+          "sha256": "81b951eada814506cab6107462f422c0ec51a3f1d4481be4fc1d8945b5fb7959"
+        },
+        "processes": {
+          "path": "@evidence/build/runs/vulkan5-channel-smoke-1201/linux-cp311-install-process.json",
+          "sha256": "83786fe74be227f2bbdf4b9e67708b9f0929cbf151584a1edf4fa085aa59aa39"
+        }
+      }
+    },
+    {
+      "name": "vispy-0.17.0+vulkan.5-cp313-cp313-win_amd64.whl",
+      "bytes": 6834006,
+      "sha256": "8dedab24bb0fee1fb54b35788bead64e314e8ae180de76e650a4fbaf9a67f69f",
+      "abi": "cp313",
+      "platform": "windows",
+      "tier": "installed-functional + publicly-delivered",
+      "strict_rows": 0,
+      "in_128_binding_admission": false,
+      "release_asset_id": 778337546,
+      "release_asset_digest": "sha256:8dedab24bb0fee1fb54b35788bead64e314e8ae180de76e650a4fbaf9a67f69f",
+      "url": "https://github.com/bipxx/vispy_vulkan/releases/download/v0.17.0-vulkan.5/vispy-0.17.0%2Bvulkan.5-cp313-cp313-win_amd64.whl",
+      "index_href": "https://github.com/bipxx/vispy_vulkan/releases/download/v0.17.0-vulkan.5/vispy-0.17.0%2Bvulkan.5-cp313-cp313-win_amd64.whl#sha256=8dedab24bb0fee1fb54b35788bead64e314e8ae180de76e650a4fbaf9a67f69f",
+      "public_install": {
+        "version": "0.17.0+vulkan.5",
+        "python": "3.13.8",
+        "installed_members_verified": 537,
+        "source_overrides": 0,
+        "clear_exact": true,
+        "rendered": true,
+        "native_import": true,
+        "shutdown_gauges": {
+          "pending_tickets": 0,
+          "queued_frames": 0,
+          "live_buffer_bytes": 0,
+          "live_cpu_buffer_bytes": 0,
+          "live_texture_bytes": 0,
+          "canvas_texture_bytes": 0,
+          "transient_buffer_bytes": 0,
+          "line_resource_pool_busy_slots": 0,
+          "line_resource_pool_bytes": 0,
+          "host_import_pinned_bytes": 0
+        },
+        "device": "NVIDIA GeForce RTX 4090",
+        "backend": "Vulkan",
+        "abi": "cp313",
+        "platform": "windows",
+        "downloaded_url": "https://github.com/bipxx/vispy_vulkan/releases/download/v0.17.0-vulkan.5/vispy-0.17.0%2Bvulkan.5-cp313-cp313-win_amd64.whl",
+        "sha256": "8dedab24bb0fee1fb54b35788bead64e314e8ae180de76e650a4fbaf9a67f69f",
+        "result": {
+          "path": "@evidence/build/runs/vulkan5-channel-smoke-1201/windows-cp313-verification.json",
+          "sha256": "a926dd9490c444aa2678db7285e111f5d0e972f950951235aee3a834d12e52cf"
+        },
+        "pip_report": {
+          "path": "@evidence/build/runs/vulkan5-channel-smoke-1201/windows-cp313-pip-report.json",
+          "sha256": "7dd097c7e5b18be45d25958bef5a822e77b432338208acad399c490986912946"
+        },
+        "processes": {
+          "path": "@evidence/build/runs/vulkan5-channel-smoke-1201/windows-cp313-install-process.json",
+          "sha256": "9f785a741e46cf38e78a1f97a676c11561010864183db8e8d0150733d9981ed5"
+        }
+      }
+    },
+    {
+      "name": "vispy-0.17.0+vulkan.5-cp313-cp313-manylinux_2_39_x86_64.whl",
+      "bytes": 10578888,
+      "sha256": "072a6dacea5112134146d431783685e7bca11d070c6e406f6be27968dde48168",
+      "abi": "cp313",
+      "platform": "linux",
+      "tier": "installed-functional + publicly-delivered",
+      "strict_rows": 0,
+      "in_128_binding_admission": false,
+      "release_asset_id": 778337660,
+      "release_asset_digest": "sha256:072a6dacea5112134146d431783685e7bca11d070c6e406f6be27968dde48168",
+      "url": "https://github.com/bipxx/vispy_vulkan/releases/download/v0.17.0-vulkan.5/vispy-0.17.0%2Bvulkan.5-cp313-cp313-manylinux_2_39_x86_64.whl",
+      "index_href": "https://github.com/bipxx/vispy_vulkan/releases/download/v0.17.0-vulkan.5/vispy-0.17.0%2Bvulkan.5-cp313-cp313-manylinux_2_39_x86_64.whl#sha256=072a6dacea5112134146d431783685e7bca11d070c6e406f6be27968dde48168",
+      "public_install": {
+        "version": "0.17.0+vulkan.5",
+        "python": "3.13.8",
+        "installed_members_verified": 537,
+        "source_overrides": 0,
+        "clear_exact": true,
+        "rendered": true,
+        "native_import": true,
+        "device": "llvmpipe (LLVM 18.1.3, 256 bits)",
+        "backend": "Vulkan",
+        "software": true,
+        "shutdown_gauges": {
+          "pending_tickets": 0,
+          "queued_frames": 0,
+          "live_buffer_bytes": 0,
+          "live_cpu_buffer_bytes": 0,
+          "live_texture_bytes": 0,
+          "canvas_texture_bytes": 0,
+          "transient_buffer_bytes": 0,
+          "line_resource_pool_busy_slots": 0,
+          "line_resource_pool_bytes": 0,
+          "host_import_pinned_bytes": 0
+        },
+        "abi": "cp313",
+        "platform": "linux",
+        "downloaded_url": "https://github.com/bipxx/vispy_vulkan/releases/download/v0.17.0-vulkan.5/vispy-0.17.0%2Bvulkan.5-cp313-cp313-manylinux_2_39_x86_64.whl",
+        "sha256": "072a6dacea5112134146d431783685e7bca11d070c6e406f6be27968dde48168",
+        "result": {
+          "path": "@evidence/build/runs/vulkan5-channel-smoke-1201/linux-cp313-verification.json",
+          "sha256": "c91142c41b7e7ecf91b366bf6551da3a8b49612d29e31670c35589e25eca7a8e"
+        },
+        "pip_report": {
+          "path": "@evidence/build/runs/vulkan5-channel-smoke-1201/linux-cp313-pip-report.json",
+          "sha256": "2b7594f7b009c9d05dc5800eba0a2b7e31c8ed0f67beb6f100e0df57d03239a6"
+        },
+        "processes": {
+          "path": "@evidence/build/runs/vulkan5-channel-smoke-1201/linux-cp313-install-process.json",
+          "sha256": "90cf35402168b2c832d138b6a5c29f96c7d856c3b5b7476384ed00c77d3f7105"
+        }
+      }
+    }
+  ],
+  "admitted_tk_criteria": 128,
+  "admitted_mandatory_vispy_profiles": 8,
+  "admission_applies_to": "the two cp312 wheels only",
+  "required_qualification_ci_jobs": 23,
+  "installed_functional_record": {
+    "path": "compat/api-acceptance/vulkan5-wheels-v1.json",
+    "sha256": "b922864f8c15578b6a3403655897fa31094716fe275de58278cba54a990fe8f6"
+  },
+  "windows_channel": {
+    "abis": [
+      "cp311",
+      "cp312",
+      "cp313"
+    ],
+    "vulkan_clear_exact": true,
+    "frame_size": [
+      64,
+      64
+    ],
+    "expected_rgba": [
+      17,
+      33,
+      65,
+      255
+    ],
+    "device": "NVIDIA GeForce RTX 4090",
+    "shutdown_gauges_zero": 10
+  },
+  "linux_channel": {
+    "abis": [
+      "cp311",
+      "cp312",
+      "cp313"
+    ],
+    "native_abi_import": true,
+    "gpu_rendered_in_delivery_smoke": true,
+    "vulkan_clear_exact": true,
+    "frame_size": [
+      64,
+      64
+    ],
+    "expected_rgba": [
+      17,
+      33,
+      65,
+      255
+    ],
+    "device": "llvmpipe (LLVM 18.1.3, 256 bits)",
+    "mesa_driver_sha256": "9c5c41b3a7b9d759b0960c868f10375281798ad084150716d6d122c8789b9e12",
+    "mode": "native wsl isolated venv",
+    "shutdown_gauges_zero": 10
+  },
+  "licensing": {
+    "implementation": "AGPL-3.0-only",
+    "original_vispy_bsd_attached_unchanged": true,
+    "third_party_notices_attached": true
+  },
+  "index_asset_links": 22,
+  "previous_version_links_preserved": 16,
+  "older_releases_unchanged": true,
+  "temporary_channel_installs_removed": true,
+  "cp310_wheels_provided": false,
+  "cp314_wheels_provided": false,
+  "cp311_cp313_strict_rows": 0,
+  "physical_linux_gpu_claimed": false,
+  "colab_rerun": false,
+  "selected_artifact_delivery_complete": true,
+  "full_inventory_complete": false,
+  "recorded_failures": [
+    "Closed superseded PR #100 (release/vulkan5-qualified-1192, commit bdc7d29e976a726378d7cab4d157234d9f101c88): all 5 CPU windows-x86_64, software-vulkan, and Metal arm64/x86_64 jobs passed, while the 15 non-Windows CPU contract jobs failed qualification_gate zero-skip policy on tests/contract/test_pool_watch_external.py:194 (@pytest.mark.skipif). Replaced skipif with the non-Windows --timeout parser check and re-froze PR #101 (e1b2f1ef...).",
+    "vulkan5-channel-smoke-1201 WSL first venv attempt with python3.12 -m venv --copies exited 127 because copied UV libpython rpath did not resolve outside UV bin/; passed cleanly across cp311/cp312/cp313 with standard venv + symlink unlinking prior to hygiene cleanup.",
+    "Earlier non-relabelled source/strict attempts remain preserved under their original run directories (1147/attempt1-no-network, 1166/attempt1, 1173 superseded archive, 1174/attempt1, 1177/attempt1, and 1176 tk-state-resource-failures/replay-0 UNVERIFIED on six Defender DLLs with 1187r APPROVED)."
+  ],
+  "raw_evidence": {
+    "merge": {
+      "path": "@evidence/build/runs/vulkan5-protected-merge-1199/verification.json",
+      "sha256": "b4daad7cf2d86b5a0849ff6f55e2146dea85e42f6cc397c18e2af37544cc6700"
+    },
+    "admission": {
+      "path": "@evidence/build/runs/vulkan5-scoped-admission-1198/verification.json",
+      "sha256": "bf9d066cda0d0403192fd28bf0edd90075b6487d3369f629ff1abb51ef08acd1"
+    },
+    "final_review": {
+      "path": "@evidence/build/runs/vulkan5-final-promotion-review-1197r/decision.json",
+      "sha256": "0cb979f694f55cc615f56bec30dcc95e70c2a5ec424766fc7de405b14ca8c7f5"
+    },
+    "published": {
+      "path": "@evidence/build/runs/vulkan5-publication-1200/published.json",
+      "sha256": "79e94d768148fd7c4feb7144ac69d5b6338d52bb2044cebd0da298db0b06a7ab"
+    },
+    "index_pushed": {
+      "path": "@evidence/build/runs/vulkan5-publication-1200/index-pushed.json",
+      "sha256": "67998290c40e1d2b836db3d7526ad3509a063608ecbeb9fa10b2d0da6d2305ae"
+    },
+    "index_live": {
+      "path": "@evidence/build/runs/vulkan5-publication-1200/index-live.json",
+      "sha256": "0ef81225b9f28035e068c98924542ed604723f6dd968c85b6b9772aa0ae2b669"
+    },
+    "channel_cleanup": {
+      "path": "@evidence/build/runs/vulkan5-channel-smoke-1201/cleanup-result.json",
+      "sha256": "ec90b21df71d6b4a470a2fe8f31957aec1f5d2e302e3c297043f52f31789f4f2"
+    },
+    "channel_cleanup_windows": {
+      "path": "@evidence/build/runs/vulkan5-channel-smoke-1201/cleanup-result-win.json",
+      "sha256": "5517222c53ea62e67db64eb85f92b194a29327f88a8d3208508eee0d0b03c9aa"
+    },
+    "channel_cleanup_wsl": {
+      "path": "@evidence/build/runs/vulkan5-channel-smoke-1201/cleanup-result-wsl.json",
+      "sha256": "b245d5d9d099137912e55d77a1681ee066c1109ce9bae7de777e62027d07b59e"
+    }
+  }
+}

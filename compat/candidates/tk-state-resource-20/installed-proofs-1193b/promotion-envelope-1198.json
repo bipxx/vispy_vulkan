@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "kind": "promotion-envelope",
+  "subject": {
+    "path": "compat/candidates/tk-state-resource-20/installed-proofs-1193b/qualification-subject.json",
+    "sha256": "306b39ef9d9e62b9ff200610d06b396bbfe463e2e7d603a7f2265b8963cc1ec3"
+  },
+  "basis": {
+    "path": "compat/candidates/tk-state-resource-20/installed-proofs-1193b/promotion-basis-1197.json",
+    "sha256": "533c4f6d558a5014beb5a128e0df502c25a7fbdac2fd9daa8c0d4d80c9837951"
+  },
+  "review": {
+    "path": "compat/candidates/tk-state-resource-20/installed-proofs-1193b/promotion-review-1197r.json",
+    "sha256": "d266d6fbfde81098e1e7a1501355ab4bb5c3baf4ee193acd5c5661d2b62e4a01"
+  }
+}
