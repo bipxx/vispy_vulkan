@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "kind": "change-impact",
+  "status": "APPROVED",
+  "independent": true,
+  "reviewer": "independent-gate-a4-impact-reviewer-1191rb",
+  "subject_sha256": "8144610bd09deb629a0fad72c576a3aa8e0b3b55e07fa1e58bcea48c16d394b6",
+  "qualification_head": "e1b2f1ef1084f857f4fb08fe14a12355851f43de"
+}

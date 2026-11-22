@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "kind": "ci-job-identity",
+  "repository": "bipxx/vispy_vulkan",
+  "run_id": 44994548303,
+  "attempt": 1,
+  "job_key": "build",
+  "job_name": "Metal wheel x86_64 CPython 3.12.8",
+  "event": "pull_request",
+  "source_head": "e1b2f1ef1084f857f4fb08fe14a12355851f43de",
+  "checked_head": "3a3a3eff8216eaa6d8c6e715398677168aa13958",
+  "parents": [
+    "8a983d7198ff90130ceafa19f7e28b22ebdd9a7f",
+    "e1b2f1ef1084f857f4fb08fe14a12355851f43de"
+  ],
+  "workflow": {
+    "path": ".github/workflows/metal-wheel.yml",
+    "sha256": "6c051d233db4752d8cda90545398f51d678e55e4737626fbce5a8a4f634b8a97"
+  },
+  "collector_sha256": "d16bc66a51e8381296e77e2c3bea6e63a2ffa186bb38fd2f7f51c80e41437cc0"
+}

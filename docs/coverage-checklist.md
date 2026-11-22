@@ -26,6 +26,13 @@
   include near-limit instanced input and the rotated-camera grid.
   [Retained failing controls](D:/vispy-vulkan-managed/build/runs/swarm-t-visuals-a-fix-1/failing-controls.log)
 
+## Latest checkpoint — 2026-11-22
+
+**`0.17.0+vulkan.5` public delivery — 2026-11-22:**
+- The qualified tree (`519aaf3b…`, head `e1b2f1ef…` after replacing `@pytest.mark.skipif` in `tests/contract/test_pool_watch_external.py:194` with the non-Windows `--timeout` parser check; superseded PR #100 preserved) merged in [PR #101](https://github.com/bipxx/vispy_vulkan/pull/101) at `3be0b9e47c955c95e85a193585a27cac2a7309a3` after 23/23 same-head CI checks and Gate A4/A5 independent reviews (`1191rb`, `1197r` APPROVED). The [scoped admission](../compat/candidates/tk-state-resource-20/installed-proofs-1193b/mandatory-matrix-admission-1198.json) (`1198`) covers 128 selected Tk bindings and eight mandatory profiles for the two CPython 3.12 wheels with all 14 canonical JSONs untouched.
+- All six wheels are publicly delivered through the [release](https://github.com/bipxx/vispy_vulkan/releases/tag/v0.17.0-vulkan.5) and [hash-pinned index](https://bipxx.github.io/vispy_vulkan/simple/) (`1200`, `9fdb8068…`), preserving all 16 earlier links (`22` total). Public installs for Windows and WSL Ubuntu CPython 3.11, 3.12, and 3.13 (`1201`) each verified `537/537` members (`0` source overrides), rendered exact `64×64` `[17, 33, 65, 255]` headless Vulkan clear/readback (Windows RTX 4090; WSL Mesa `9c5c41b3` `llvmpipe`), returned `10/10` zero shutdown gauges, and cleaned temporary scratch (`PASS_CLEANUP`). See `delivery.json` (`1202`) and [compat/api-acceptance/vulkan5-public-delivery-v1.json](../compat/api-acceptance/vulkan5-public-delivery-v1.json).
+- Tier boundaries remain strict: the two CPython 3.12 wheels are `scoped-admitted + publicly delivered`; the four CPython 3.11 and 3.13 wheels retain `installed-functional + publicly delivered` with 0 strict rows. CPython 3.10/3.14 wheels, physical Linux GPU, Metal graphics, and full upstream parity are not claimed (`full_inventory_complete: false`).
+
 ## Latest checkpoint — 2026-11-21
 
 **`0.17.0+vulkan.5` qualification progress — 2026-11-21:**
