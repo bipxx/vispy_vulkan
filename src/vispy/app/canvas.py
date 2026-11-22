@@ -740,9 +740,18 @@ class MouseEvent(Event):
 
         event = self
         events = []
+        seen = set()
         while True:
             # mouse_press events can only be the start of a trail
-            if event is None or event.type == 'mouse_press':
+            if event is None:
+                break
+            if not isinstance(event, MouseEvent):
+                raise TypeError("MouseEvent drag history entries must be MouseEvent instances")
+            event_id = id(event)
+            if event_id in seen:
+                raise ValueError("MouseEvent drag history contains a cycle")
+            seen.add(event_id)
+            if event.type == 'mouse_press':
                 break
             events.append(event)
             event = event.last_event

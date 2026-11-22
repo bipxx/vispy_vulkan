@@ -54,5 +54,6 @@ class Fig(SceneCanvas):
     def __getitem__(self, idxs):
         """Get an axis"""
         pw = self._grid.__getitem__(idxs)
-        self._plot_widgets += [pw]
+        if pw not in self._plot_widgets:
+            self._plot_widgets.append(pw)
         return pw

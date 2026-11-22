@@ -86,6 +86,8 @@ class SceneCanvas(app.Canvas, Frozen):
         allows the scale factor to be adjusted for testing.
     bgcolor : Color
         The background color to use.
+    backend_kwargs : dict | None
+        Additional options passed to the canvas backend.
 
     See also
     --------
@@ -121,7 +123,8 @@ class SceneCanvas(app.Canvas, Frozen):
                  show=False, autoswap=True, app=None, create_native=True,
                  vsync=False, resizable=True, decorate=True, fullscreen=False,
                  config=None, shared=None, keys=None, parent=None, dpi=None,
-                 always_on_top=False, px_scale=1, bgcolor='black'):
+                 always_on_top=False, px_scale=1, bgcolor='black',
+                 backend_kwargs=None):
         self._scene = None
         # A default widget that follows the shape of the canvas
         self._central_widget = None
@@ -142,7 +145,7 @@ class SceneCanvas(app.Canvas, Frozen):
         super(SceneCanvas, self).__init__(
             title, size, position, show, autoswap, app, create_native, vsync,
             resizable, decorate, fullscreen, config, shared, keys, parent, dpi,
-            always_on_top, px_scale)
+            always_on_top, px_scale, backend_kwargs=backend_kwargs)
         self.events.mouse_press.connect(self._process_mouse_event)
         self.events.mouse_move.connect(self._process_mouse_event)
         self.events.mouse_release.connect(self._process_mouse_event)
@@ -262,8 +265,17 @@ class SceneCanvas(app.Canvas, Frozen):
         # Set up a framebuffer to render to
         offset = (0, 0) if region is None else region[:2]
         csize = self.size if region is None else region[2:]
-        s = self.pixel_scale
-        size = tuple([int(x * s) for x in csize]) if size is None else size
+        if getattr(self._backend, '_simulated_device_pixel_ratio', None) is not None:
+            # Simulated Dawn DPI rounds the drawable independently on each axis.
+            sx, sy = (physical / logical for physical, logical in
+                      zip(self.physical_size, self.size))
+            offset = (offset[0] * sx, offset[1] * sy)
+            csize = self.physical_size if region is None else (csize[0] * sx, csize[1] * sy)
+            if size is None:
+                size = tuple(round(dimension) for dimension in csize)
+        else:
+            s = self.pixel_scale
+            size = tuple([int(x * s) for x in csize]) if size is None else size
         fbo = gloo.FrameBuffer(color=gloo.RenderBuffer(size[::-1]),
                                depth=gloo.RenderBuffer(size[::-1]))
 
@@ -636,6 +648,8 @@ class SceneCanvas(app.Canvas, Frozen):
         else:
             fb, origin, fb_size = self._fb_stack[-1]
             fb_rect = origin + fb_size
+            if getattr(self._backend, '_simulated_device_pixel_ratio', None) is not None:
+                fb_size = fb.color_buffer.shape[:2][::-1]
 
         if len(self._vp_stack) == 0:
             viewport = None

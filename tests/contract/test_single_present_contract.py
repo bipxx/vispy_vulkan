@@ -118,8 +118,8 @@ def test_single_present_failures_never_claim_a_deferred_autoswap_present(submiss
 
 
 def test_current_capture_contract_keeps_readback_presentation_free():
-    assert current.HEADLESS_CAPTURE == dict(submissions=3, pass_kinds=['clear', 'present_capture'],
-        pass_submission_indices=[0, 2], implicit_presents=0)
+    assert current.HEADLESS_CAPTURE == dict(submissions=2, pass_kinds=['clear', 'present_capture'],
+        pass_submission_indices=[0, 0], implicit_presents=0)
 
 
 @pytest.mark.parametrize('damage', [None, 'hidden-submit', 'hidden-present', 'hidden-wait',

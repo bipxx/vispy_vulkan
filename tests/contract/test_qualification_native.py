@@ -172,13 +172,13 @@ def test_unrelated_preparation_and_qualification_changes_do_not_change_compiler_
     assert qn.production_inputs(changed) != original
 
 
-def test_real_native_input_scope_includes_cpp_harness_and_shader_corpus(current_preparation):
-    candidate = qn.read_json(current_preparation['candidate'])
-    runtime = qn.read_json(qn.ROOT / candidate['runtime_inputs']['path'])
+def test_real_native_input_scope_includes_cpp_harness_and_shader_corpus(frozen_preparation, frozen_source_root):
+    candidate = qn.read_json(frozen_preparation['candidate'])
+    runtime = qn.read_json(frozen_source_root / candidate['runtime_inputs']['path'])
     inputs = qn.source_inputs(runtime)
     for name in ('cpp/runtime.cpp', 'src/vispy/visuals/text/_sdf_cpu.pyx',
                  'tests/shaders/normalization_contract.cpp', 'tests/shaders/corpus/function-blue.frag'):
-        assert inputs[name] == qn.sha((qn.ROOT / name).read_bytes())
+        assert inputs[name] == qn.sha((frozen_source_root / name).read_bytes())
 
 
 def record_stub(candidate):
@@ -192,12 +192,13 @@ def record_stub(candidate):
             'source_inputs': [{'path':'cpp/unit.cpp','file':ref}]}
 
 
-def test_real_candidate_cannot_reach_sdk_or_proofs_without_review(monkeypatch, without_current_reviews):
+def test_real_candidate_cannot_reach_sdk_or_proofs_without_review(
+        monkeypatch, without_current_reviews, frozen_source_root):
     path = without_current_reviews(qn)
-    ref = {'path': path.relative_to(qn.ROOT).as_posix(), 'sha256': qn.sha(path.read_bytes())}
+    ref = {'path': path.relative_to(frozen_source_root).as_posix(), 'sha256': qn.sha(path.read_bytes())}
     monkeypatch.setattr(qn, 'validate_sdk', lambda *args: pytest.fail('unreviewed producer reached SDK verifier'))
     with pytest.raises(qn.InventoryError, match='source and scope review remain pending'):
-        qn.validate_record(record_stub(ref))
+        qn.validate_record(record_stub(ref), frozen_source_root)
 
 
 @pytest.mark.parametrize('kind,string_binding', [('source', False), ('scope', False), ('source', True)])

@@ -22,6 +22,57 @@ void require(bool value, const std::string& message) {
     if (!value) throw std::runtime_error(message);
 }
 
+void compiler_output_cache() {
+    const std::string vert = "#version 450\nlayout(location=3) in vec2 p; "
+        "void main(){ gl_Position=vec4(p,0,1); }";
+    const std::string frag = "#version 450\nlayout(location=0) out vec4 color; "
+        "void main(){ color=vec4(0.25); }";
+    const auto cold = compile_vulkan_glsl_cached(vert, frag, true, "compiler-v1");
+    require(cold.ok && cold.parse_calls == 2 && cold.link_calls == 1 && cold.spirv_stages == 2, cold.log);
+    require(cold.vertex_input_locations == std::vector<uint32_t>{3}, "active input was declared at location 3");
+    auto hit = compile_vulkan_glsl_cached(vert, frag, true, "compiler-v1");
+    require(hit.ok && hit.parse_calls == 0 && hit.link_calls == 0 && hit.spirv_stages == 0 &&
+            hit.parse_ns == 0 && hit.link_ns == 0 && hit.spirv_ns == 0 && hit.resource_reflect_ns == 0,
+            "compiler hit must not replay past work");
+    require(hit.vertex.words == cold.vertex.words && hit.fragment.words == cold.fragment.words &&
+            hit.vertex_input_locations == cold.vertex_input_locations, "hit preserves output and input reflection");
+    hit.vertex.words.front() = 0;
+    require(compile_vulkan_glsl_cached(vert, frag, true, "compiler-v1").vertex.words.front() == 0x07230203u,
+            "callers cannot mutate cached words");
+
+    const auto no_cleanup = compile_vulkan_glsl_cached(vert, frag, false, "compiler-v1");
+    require(no_cleanup.ok && no_cleanup.parse_calls == 2 && no_cleanup.vertex_input_locations.empty(),
+            "vertex cleanup option invalidates the compiler key");
+    const auto new_version = compile_vulkan_glsl_cached(vert, frag, true, "compiler-v2");
+    require(new_version.ok && new_version.parse_calls == 2 && new_version.vertex.words == cold.vertex.words,
+            "toolchain identity change forces a rebuild");
+    const auto new_fragment = compile_vulkan_glsl_cached(vert, frag + "\n// compiler source edit", true, "compiler-v1");
+    const auto new_vertex = compile_vulkan_glsl_cached(vert + "\n// compiler source edit", frag, true, "compiler-v1");
+    require(new_vertex.ok && new_fragment.ok && new_vertex.parse_calls == 2 && new_fragment.parse_calls == 2,
+            "each full compiler input participates in the key");
+
+    const std::string broken = "#version 450\nlayout(location=0) out vec4 color; "
+        "void main(){ color=unknown_cache_token; }";
+    const std::string oversized_identity(4u * 1024u * 1024u + 1, 'x');
+    for (int i = 0; i < 2; ++i) {
+        const auto bad = compile_vulkan_glsl_cached(vert, broken, true, "compiler-v1");
+        require(!bad.ok && bad.parse_calls == 2 && bad.fragment.log.find("unknown_cache_token") != std::string::npos,
+                "failed compile is diagnosed and not stored in the compiler cache");
+        const auto oversized = compile_vulkan_glsl_cached(vert, frag, true, oversized_identity);
+        require(oversized.ok && oversized.parse_calls == 2 && oversized.vertex.words == cold.vertex.words,
+                "an oversized entry recompiles and preserves output");
+    }
+    require(compile_vulkan_glsl_cached(vert, frag, true, "compiler-v1").parse_calls == 0,
+            "a rejected source leaves a successful neighbor usable");
+    for (int i = 0; i < 32; ++i) {
+        const auto other = compile_vulkan_glsl_cached(vert, frag, true, "compiler-evict-" + std::to_string(i));
+        require(other.ok && other.parse_calls == 2, "new compiler namespace misses");
+    }
+    const auto evicted = compile_vulkan_glsl_cached(vert, frag, true, "compiler-v1");
+    require(evicted.ok && evicted.parse_calls == 2 && evicted.fragment.words == cold.fragment.words,
+            "bounded cache rebuilds an evicted output");
+}
+
 void identity_and_provenance() {
     NormalizeOptions options;
     auto first = portable_shader_identity("ab", "c", options, pins);
@@ -809,6 +860,7 @@ int main() {
         attribute_binding_contract();
         dimension_metadata_counts_toward_storage();
         identity_and_provenance();
+        compiler_output_cache();
         device_loss_preserves_portable();
         bounded_ownership_and_failures();
         per_stage_resource_limits();

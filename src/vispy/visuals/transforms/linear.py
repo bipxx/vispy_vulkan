@@ -395,8 +395,9 @@ class MatrixTransform(BaseTransform):
 
     @matrix.setter
     def matrix(self, m):
+        inverse = np.linalg.inv(m)
         self._matrix = m
-        self._inv_matrix = None
+        self._inv_matrix = inverse
         self.shader_map()
         self.shader_imap()
         self.update()

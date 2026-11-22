@@ -337,6 +337,17 @@ class FlyCamera(PerspectiveCamera):
         if self._speed.any() or roll_angle or self._update_from_mouse:
             self._update_from_mouse = False
             self.view_changed()
+        elif not self._acc.any() and self._timer.running:
+            self._timer.stop()
+
+    def _viewbox_unset(self, viewbox):
+        self._acc[:] = 0
+        self._brake[:] = 0
+        self._speed[:] = 0
+        self._update_from_mouse = False
+        if self._timer.running:
+            self._timer.stop()
+        PerspectiveCamera._viewbox_unset(self, viewbox)
 
     def viewbox_key_event(self, event):
         """The ViewBox key event handler
@@ -346,6 +357,8 @@ class FlyCamera(PerspectiveCamera):
         event : instance of Event
             The event.
         """
+        if self._viewbox is None:
+            return
         PerspectiveCamera.viewbox_key_event(self, event)
 
         if event.handled or not self.interactive:

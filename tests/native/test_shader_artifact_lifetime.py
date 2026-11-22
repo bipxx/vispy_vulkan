@@ -10,6 +10,43 @@ VERTEX = "attribute vec2 a_position; void main(){gl_Position=vec4(a_position,0.,
 FRAGMENT = "uniform vec4 u_retained_color; void main(){gl_FragColor=u_retained_color;}"
 
 
+def test_first_draw_reuses_compiler_output_without_aliasing_portable_artifacts(monkeypatch):
+    monkeypatch.setenv("VISPY_DAWN_COMPILER_CACHE", "1")
+    canvas = app.Canvas(app="dawn_headless", size=(4, 4), show=False)
+    try:
+        canvas.set_current()
+        gloo.set_viewport(0, 0, 4, 4)
+        positions = gloo.VertexBuffer(np.array([[-1, -1], [3, -1], [-1, 3]], np.float32))
+        vertex = VERTEX.replace("a_position", "compiler_cache_pos")
+        red = "void main(){gl_FragColor=vec4(1.,0.,0.000023,1.);}"
+        green = "void main(){gl_FragColor=vec4(0.,1.,0.000023,1.);}"
+
+        def draw(fragment, expected, parse_calls):
+            program = gloo.Program(vertex, fragment)
+            program["compiler_cache_pos"] = positions
+            before = _dawn.probe()
+            program.draw("triangles")
+            assert np.all(gloo.read_pixels((0, 0, 4, 4)) == expected)
+            after = _dawn.probe()
+            assert after["portable_shader_misses"] - before["portable_shader_misses"] == 1
+            assert after["shader_parse_calls"] - before["shader_parse_calls"] == parse_calls
+            assert after["shader_link_calls"] - before["shader_link_calls"] == parse_calls // 2
+            assert after["shader_spirv_stages"] - before["shader_spirv_stages"] == parse_calls
+
+        draw(red, [255, 0, 0, 255], 2)
+        draw("// a different composer origin\n" + red, [255, 0, 0, 255], 0)
+        draw(green, [0, 255, 0, 255], 2)
+        before = _dawn.probe()
+        failed = _dawn.compile_variant(vertex, "void main(){\ngl_FragColor=compiler_cache_missing;\n}")
+        assert not failed["ok"] and failed["mapped_line"] == 2
+        assert "compiler_cache_missing" in failed["fragment_log"]
+        assert _dawn.probe()["shader_parse_calls"] - before["shader_parse_calls"] == 2
+
+        draw("// corrected composer source\n" + green, [0, 255, 0, 255], 0)
+    finally:
+        canvas.close()
+
+
 def test_retained_program_survives_deleted_shader_objects_and_device_loss():
     canvas = app.Canvas(app="dawn_headless", size=(4, 4), show=False)
     try:

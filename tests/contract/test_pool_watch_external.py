@@ -4,6 +4,7 @@ from collections import defaultdict
 from types import SimpleNamespace
 import json
 import struct
+import subprocess
 import sys
 
 import pytest
@@ -29,7 +30,7 @@ class Fake:
     def type_names(self):
         return {21: 'Event', 24: 'Semaphore', 35: 'TpWorkerFactory'}
 
-    def members(self):
+    def members(self, *, strict=False):
         if not self.looks:
             return []
         return self.looks.pop(0) if len(self.looks) > 1 else self.looks[0]
@@ -53,9 +54,9 @@ class Fake:
         return limit is not None and self.reads[process] >= limit
 
 
-def run(api, root=4242):
+def run(api, root=4242, *, deadline=None):
     events = []
-    watcher.watch(api, root, lambda **fields: events.append(fields), 0, 0.0)
+    watcher.watch(api, root, lambda **fields: events.append(fields), 0, 0.0, deadline)
     return events
 
 
@@ -100,9 +101,45 @@ def test_a_new_job_member_is_adopted_and_watched_and_a_non_member_is_not():
     assert events[3]['now'] == 'Semaphore' and events[3]['handle'] == 40
 
 
+def test_job_members_are_checked_again_after_the_last_observed_process_exits():
+    api = Fake({100: [[(40, 35)], None], 200: [[(44, 35)], None]},
+               members=[[100], [100], [200], [200], []])
+    events = run(api, root=100, deadline=float('inf'))
+    assert [(event['event'], event['pid']) for event in events] == [
+        ('watching', 100), ('adopted', 200), ('watching', 200)]
+
+
+def test_failed_membership_query_is_only_fatal_in_strict_mode():
+    api = watcher.Windows.__new__(watcher.Windows)
+    api.job = 1
+    api.job_buffer = bytes(16)
+    api.kernel32 = SimpleNamespace(QueryInformationJobObject=lambda *args: False)
+    api.ctypes = SimpleNamespace(get_last_error=lambda: 5, WinError=OSError)
+    assert api.members() == []
+    with pytest.raises(OSError, match='5'):
+        api.members(strict=True)
+
+
+def test_missing_factory_type_exits_immediately_unless_a_deadline_is_set(monkeypatch):
+    api = Fake({}, members=[[100], []])
+    monkeypatch.setattr(api, 'type_names', lambda: {21: 'Event'})
+    assert [(event['event'], event['pid']) for event in run(api, root=100)] == [
+        ('no_own_worker_factory', 100)]
+    assert api.looks == [[100], []]
+
+    events = []
+    monkeypatch.setattr(watcher.time, 'perf_counter', lambda: 2.0)
+    with pytest.raises(subprocess.TimeoutExpired):
+        watcher.watch(api, 100, lambda **fields: events.append(fields), 0, 0.0, deadline=1.0)
+    assert events == [
+        dict(event='no_own_worker_factory', pid=100, seconds=2.0),
+        dict(event='timeout', seconds=2.0, active_pids=[100]),
+    ]
+
+
 def test_launch_mode_watches_a_real_child_and_returns_its_exit_code(tmp_path):
     output = tmp_path / 'events.jsonl'
-    code = watcher.main(['--output', str(output), '--', sys.executable, '-c',
+    code = watcher.main(['--output', str(output), '--', sys.executable, '-B', '-S', '-c',
                          'import sys, time; time.sleep(0.3); sys.exit(3)'])
     events = [json.loads(line) for line in output.read_text(encoding='utf-8').splitlines()]
     print('events', events)
@@ -139,7 +176,7 @@ kernel32.TerminateProcess(wintypes.HANDLE(-1), 7)
 
 def test_launch_mode_records_a_real_lost_default_pool(tmp_path):
     output = tmp_path / 'events.jsonl'
-    command = [sys.executable, '-c', CLOSER] if sys.platform == 'win32' else [sys.executable, '-c', 'raise SystemExit(7)']
+    command = [sys.executable, '-B', '-S', '-c', CLOSER if sys.platform == 'win32' else 'raise SystemExit(7)']
     code = watcher.main(['--output', str(output), '--', *command])
     events = [json.loads(line) for line in output.read_text(encoding='utf-8').splitlines()]
     print('events', events)
@@ -152,6 +189,42 @@ def test_launch_mode_records_a_real_lost_default_pool(tmp_path):
         assert events[-1]['event'] == 'target_exit' and events[-1]['returncode'] == 7
     else:
         assert [event['event'] for event in events] == ['unsupported_platform']
+
+
+def test_timeout_waits_for_the_owned_job_then_a_fresh_launch_passes(tmp_path, capsys):
+    output = tmp_path / 'timeout.jsonl'
+    if sys.platform != 'win32':
+        with pytest.raises(SystemExit) as exc:
+            watcher.main(['--output', str(output), '--timeout', '1', '--', sys.executable,
+                          '-B', '-S', '-c', 'import time; time.sleep(60)'])
+        assert exc.value.code == 2
+        assert '--timeout requires a Windows launch' in capsys.readouterr().err
+        assert not output.exists()
+        return
+    code = watcher.main(['--output', str(output), '--timeout', '1', '--', sys.executable,
+                         '-B', '-S', '-c', 'import time; time.sleep(60)'])
+    events = [json.loads(line) for line in output.read_text(encoding='utf-8').splitlines()]
+    assert code == 124
+    timeout, exit_event = events[-2:]
+    assert timeout['event'] == 'timeout' and exit_event['pid'] in timeout['active_pids']
+    assert exit_event['event'] == 'target_exit' and exit_event['child_waited']
+    assert exit_event['returncode'] == 124
+    api = watcher.Windows()
+    for pid in timeout['active_pids']:
+        process = api.open(pid)
+        if process:
+            try:
+                assert api.exited(process)
+            finally:
+                api.close(process)
+
+    recovery = tmp_path / 'recovery.jsonl'
+    assert watcher.main(['--output', str(recovery), '--timeout', '5', '--', sys.executable,
+                         '-B', '-S', '-c', 'import time; time.sleep(0.3)']) == 0
+    events = [json.loads(line) for line in recovery.read_text(encoding='utf-8').splitlines()]
+    assert any(event['event'] == 'watching' for event in events)
+    assert all(event['event'] != 'timeout' for event in events)
+    assert events[-1]['event'] == 'target_exit' and events[-1]['returncode'] == 0
 
 
 def launch_model(monkeypatch, failure=None):

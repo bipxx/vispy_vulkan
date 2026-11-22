@@ -2,6 +2,7 @@
 
 #include <cstdint>
 #include <string>
+#include <string_view>
 #include <vector>
 #include "shader/normalize.hpp"
 
@@ -42,6 +43,10 @@ struct SpvCompile {
 // GlslangToSpv. TShader::preprocess is intentionally not called.
 SpvCompile compile_vulkan_glsl(const std::string& vertex, const std::string& fragment,
                               bool vertex_input_cleanup = false);
+
+// Cache successful render compiler output within the caller's pinned toolchain.
+SpvCompile compile_vulkan_glsl_cached(const std::string& vertex, const std::string& fragment,
+                                     bool vertex_input_cleanup, std::string_view compiler_identity);
 
 // Conservative ordinary stencil fallback admission over validated FINAL modules.
 // It does not inherit the line evaluator's separate shader policy.

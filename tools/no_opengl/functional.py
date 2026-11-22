@@ -260,9 +260,11 @@ def validate_capture_result(payload):
     before, after = failure['before'], failure['after']
     require(before['pending_draws'] > 0 and after == before, 'invalid capture consumed queued work')
     recovered = payload['recovery']['after']
+    # Readback delegates completion to read_canvas (no extra glFinish increment),
+    # while still draining pending_draws, submitting, waiting, and not presenting.
     require(recovered['pending_draws'] == 0
             and recovered['dawn_queue_submits'] > before['dawn_queue_submits']
-            and recovered['finish_calls'] > before['finish_calls']
+            and recovered['finish_calls'] >= before['finish_calls']
             and recovered['completion_waits'] > before['completion_waits']
             and recovered['application_presents'] == before['application_presents'],
             'capture retry did not consume retained work without presentation')

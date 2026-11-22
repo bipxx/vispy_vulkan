@@ -388,7 +388,7 @@ def test(label='full', extra_arg_string='', coverage=False):
                          'not \'%s\'' % (known_types, backend_names, label))
     # remove troublesome backends
     # see https://github.com/vispy/vispy/issues/2009
-    backend_names.remove('tkinter')
+    backend_names = [name for name in backend_names if name != 'tkinter']
 
     # figure out what we actually need to run
     runs = []

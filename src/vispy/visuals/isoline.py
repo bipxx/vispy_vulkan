@@ -83,7 +83,7 @@ def iso_mesh_line(vertices, tris, vertex_data, levels):
                 lines = point
                 connects = np.arange(0, nbr*2).reshape((nbr, 2))
                 vertex_level = np.zeros(len(point)) + lev
-                level_index = np.array(len(point))
+                level_index = np.array([len(point)])
 
             vertex_level = vertex_level.reshape((vertex_level.size, 1))
 
@@ -115,7 +115,7 @@ class IsolineVisual(LineVisual):
         self._data = None
         self._vertices = None
         self._tris = None
-        self._levels = levels
+        self._levels = None if levels is None else np.asarray(levels)
         self._color_lev = color_lev
         self._need_color_update = True
         self._need_recompute = True
@@ -125,7 +125,6 @@ class IsolineVisual(LineVisual):
         self._li = None
         self._lc = None
         self._cl = None
-        self._update_color_lev = False
         kwargs['antialias'] = False
         LineVisual.__init__(self, method='gl', **kwargs)
         self.set_data(vertices=vertices, tris=tris, data=data)
@@ -137,7 +136,7 @@ class IsolineVisual(LineVisual):
 
     @levels.setter
     def levels(self, levels):
-        self._levels = levels
+        self._levels = None if levels is None else np.asarray(levels)
         self._need_recompute = True
         self.update()
 
@@ -226,16 +225,21 @@ class IsolineVisual(LineVisual):
         if self._need_recompute:
             self._v, self._c, self._vl, self._li = iso_mesh_line(
                 self._vertices, self._tris, self._data, self._levels)
-            self._levels_to_colors()
-            self._compute_iso_color()
-            LineVisual.set_data(self, pos=self._v, connect=self._c,
-                                color=self._cl)
+            if self._v is not None and len(self._v):
+                self._levels_to_colors()
+                self._compute_iso_color()
+                LineVisual.set_data(self, pos=self._v, connect=self._c,
+                                    color=self._cl)
+                self._need_color_update = False
             self._need_recompute = False
+
+        if self._v is None or not len(self._v):
+            return False
 
         if self._need_color_update:
             self._levels_to_colors()
             self._compute_iso_color()
             LineVisual.set_data(self, color=self._cl)
-            self._update_color_lev = False
+            self._need_color_update = False
 
         return LineVisual._prepare_draw(self, view)

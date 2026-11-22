@@ -2,10 +2,30 @@
 import numpy as np
 import pytest
 
-from vispy import app, gloo
+from vispy import _dawn, app, gloo
 from vispy.gloo.dawn_parser import read_pixels_dawn
 
 pytestmark = pytest.mark.gpu
+
+
+def test_slow_readback_times_out_and_same_canvas_recovers():
+    with app.Canvas(app="dawn_headless", size=(4, 3), show=False):
+        viewport = (0, 0, 4, 3)
+        gloo.clear(color=(1, 0, 0, 1))
+        np.testing.assert_array_equal(
+            gloo.read_pixels(viewport), np.full((3, 4, 4), (255, 0, 0, 255), dtype=np.uint8)
+        )
+        generation = _dawn.probe()["device_generation"]
+
+        gloo.clear(color=(0, 1, 0, 1))
+        _dawn.diagnostic_timeout_next_readback()
+        with pytest.raises(RuntimeError, match="Dawn callback wait timed out"):
+            gloo.read_pixels(viewport)
+
+        np.testing.assert_array_equal(
+            gloo.read_pixels(viewport), np.full((3, 4, 4), (0, 255, 0, 255), dtype=np.uint8)
+        )
+        assert _dawn.probe()["device_generation"] == generation
 
 
 def test_color_reads_return_every_stored_byte_with_and_without_alpha():

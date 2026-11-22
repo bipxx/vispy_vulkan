@@ -547,45 +547,64 @@ inline TexturePreparation describe_texture_preparation(const TextureData& data,c
     result.requires_unorm16 = description.storage == Storage::Unorm16;
     return {std::move(result),description,count,input_component,input_pixel,texture_source_is_direct(data,description)};
 }
-inline PreparedTexture prepare_texture(const TextureData& data,const TextureData* allocation=nullptr) {
+inline void convert_texture(const TextureData& data, const TexturePreparation& layout, uint8_t* target,
+                            bool expand_rgb8 = false) {
     using namespace texture_detail;
-    auto layout=describe_texture_preparation(data,allocation);
-    auto result=std::move(layout.descriptor);
-    const auto& description=layout.storage;
-    const auto count=layout.count,input_component=layout.input_component,input_pixel=layout.input_pixel;
-    if (layout.direct) {
-        // Preserve float bits (including signed zero and NaN payloads), exact
-        // categorical identity, and avoid per-texel conversion for resident
-        // image/volume uploads already in their native format.
-        if (shadow_size(data) == 0) result.bytes.assign(multiply(count, result.texel_size), 0);
-        else result.bytes.assign(shadow_data(data), shadow_data(data) + shadow_size(data));
-        return result;
+    const auto& description = layout.storage;
+    if (expand_rgb8) {
+        // Normalizing these bytes and rounding them back to Unorm8 is exact.
+        const auto* resident = shadow_data(data);
+        for (size_t pixel = 0; pixel < layout.count; ++pixel) {
+            const auto* source = resident + pixel * 3;
+            auto* rgba = target + pixel * 4;
+            rgba[0] = source[0];
+            rgba[1] = source[1];
+            rgba[2] = source[2];
+            rgba[3] = 255;
+        }
+        return;
     }
-    result.bytes.resize(multiply(count, result.texel_size));
-    std::vector<uint8_t> zero(input_pixel, 0);
-    for (size_t pixel = 0; pixel < count; ++pixel) {
-        const uint8_t* source = shadow_size(data) == 0 ? zero.data() : shadow_data(data) + pixel * input_pixel;
+    std::vector<uint8_t> zero(layout.input_pixel, 0);
+    for (size_t pixel = 0; pixel < layout.count; ++pixel) {
+        const uint8_t* source = shadow_size(data) == 0 ? zero.data() : shadow_data(data) + pixel * layout.input_pixel;
         double values[4] = {0, 0, 0, 1};
         for (int channel = 0; channel < data.channels; ++channel)
-            values[channel] = storage_value(source + channel * input_component, data.dtype, description);
+            values[channel] = storage_value(source + channel * layout.input_component, data.dtype, description);
         if (description.semantic == "luminance") { values[1] = values[0]; values[2] = values[0]; }
         else if (description.semantic == "luminance_alpha") { values[3] = values[1]; values[1] = values[0]; values[2] = values[0]; }
         else if (description.semantic == "alpha") { values[3] = values[0]; values[0] = values[1] = values[2] = 0; }
         for (int channel = 0; channel < description.channels; ++channel)
-            encode(result.bytes.data() + pixel * result.texel_size + channel * description.component_bytes, values[channel], description);
+            encode(target + pixel * layout.descriptor.texel_size + channel * description.component_bytes,
+                   values[channel], description);
     }
-    return result;
+}
+
+inline PreparedTexture prepare_texture(const TextureData& data, TexturePreparation layout) {
+    auto& result = layout.descriptor;
+    if (layout.direct && shadow_size(data)) {
+        // Preserve float bits (including signed zero and NaN payloads) and exact categorical identity.
+        result.bytes.assign(shadow_data(data), shadow_data(data) + shadow_size(data));
+    } else {
+        result.bytes.resize(texture_detail::multiply(layout.count, result.texel_size));
+        if (!layout.direct) convert_texture(data, layout, result.bytes.data());
+    }
+    return std::move(result);
+}
+
+inline PreparedTexture prepare_texture(const TextureData& data, const TextureData* allocation = nullptr) {
+    return prepare_texture(data, describe_texture_preparation(data, allocation));
 }
 
 namespace vispy::textures {
 class FullUpload {
     PreparedTexture prepared_;
     const std::vector<uint8_t>* borrowed_=nullptr;
-    vispy::memory::HostBytes host_;  // a direct upload's host block, held for the upload (plan P5)
+    vispy::memory::HostBytes host_;  // borrowed CPU shadow (P5)
+    vispy::memory::HostBytes converted_host_;
     const uint8_t* address_=nullptr;
     size_t byte_count_=0;
     int width_=0,height_=0,depth_=0;
-    friend FullUpload prepare_full_upload(const TextureData&,const TextureData*);
+    friend FullUpload prepare_full_upload(const TextureData&, const TextureData*, size_t);
     void check_source() const {
         if(borrowed_ && (borrowed_->data()!=address_ || borrowed_->size()!=byte_count_))
             throw texture_detail::error("borrowed upload source storage changed");
@@ -598,30 +617,61 @@ public:
     FullUpload& operator=(const FullUpload&)=delete;
     const PreparedTexture& prepared() const {return prepared_;}
     bool is_borrowed() const {return borrowed_!=nullptr||host_!=nullptr;}
-    // The shadow's host block when this upload copies it unchanged; the GPU can copy from its import.
-    const vispy::memory::HostBytes& host_block() const {return host_;}
-    const uint8_t* data() const {check_source();return is_borrowed()?address_:prepared_.bytes.data();}
-    size_t size() const {check_source();return is_borrowed()?byte_count_:prepared_.bytes.size();}
+    // The GPU can copy directly from the imported host block.
+    const vispy::memory::HostBytes& host_block() const {return converted_host_ ? converted_host_ : host_;}
+    const uint8_t* data() const {
+        check_source();
+        if (converted_host_) return converted_host_->data();
+        return is_borrowed() ? address_ : prepared_.bytes.data();
+    }
+    size_t size() const {
+        check_source();
+        if (converted_host_) return converted_host_->size();
+        return is_borrowed() ? byte_count_ : prepared_.bytes.size();
+    }
     int width() const {return width_;}
     int height() const {return height_;}
     int depth() const {return depth_;}
 };
 
-inline FullUpload prepare_full_upload(const TextureData& data,const TextureData* allocation=nullptr) {
+inline FullUpload prepare_full_upload(const TextureData& data, const TextureData* allocation = nullptr,
+                                      size_t max_converted_host_bytes = 0) {
     auto layout=describe_texture_preparation(data,allocation);
     FullUpload upload;
     upload.width_=data.width;upload.height_=data.height;upload.depth_=data.depth;
     if(layout.direct && data.host) {
         upload.prepared_=std::move(layout.descriptor);
         upload.host_=data.host;upload.address_=data.host->data();upload.byte_count_=data.host->size();
+        return upload;
     } else if(layout.direct && !data.pixels.empty()) {
         upload.prepared_=std::move(layout.descriptor);
         upload.borrowed_=&data.pixels;upload.address_=data.pixels.data();upload.byte_count_=data.pixels.size();
-    } else upload.prepared_=prepare_texture(data,allocation);
+        return upload;
+    }
+    if (max_converted_host_bytes && data.dimensions == 2 && data.channels == 3 && shadow_size(data) &&
+        layout.storage.semantic == "rgb" && layout.storage.storage == texture_detail::Storage::Unorm8 &&
+        (data.dtype == "u8" || data.dtype == "u16") &&
+        (static_cast<size_t>(data.width) * layout.descriptor.texel_size) % 256u == 0) {
+        const auto bytes = texture_detail::multiply(layout.count, layout.descriptor.texel_size);
+        if (bytes >= vispy::memory::HostBlockPool::min_bytes && bytes <= max_converted_host_bytes) {
+            try {
+                upload.converted_host_ = vispy::memory::HostBlockPool::shared().take(bytes);
+            } catch (const std::bad_alloc&) {
+                // Try ordinary staging if a page-aligned allocation is unavailable.
+            }
+            if (upload.converted_host_ && upload.converted_host_->capacity() <= max_converted_host_bytes) {
+                convert_texture(data, layout, upload.converted_host_->data(), data.dtype == "u8");
+                upload.prepared_ = std::move(layout.descriptor);
+                return upload;
+            }
+            upload.converted_host_.reset();
+        }
+    }
+    upload.prepared_ = prepare_texture(data, std::move(layout));
     return upload;
 }
-FullUpload prepare_full_upload(TextureData&&,const TextureData* =nullptr)=delete;
-FullUpload prepare_full_upload(const TextureData&&,const TextureData* =nullptr)=delete;
+FullUpload prepare_full_upload(TextureData&&, const TextureData* = nullptr, size_t = 0) = delete;
+FullUpload prepare_full_upload(const TextureData&&, const TextureData* = nullptr, size_t = 0) = delete;
 
 template<class Consume>
 inline void with_upload_rows(const FullUpload& upload,Consume&& consume) {
@@ -731,13 +781,22 @@ inline vispy::shader::IntegerSamplePolicy snapshot_integer_sample_policy(
             wrap(descriptor.addressModeU), wrap(descriptor.addressModeV), true, true};
 }
 
-inline wgpu::Sampler create_sampler(const wgpu::Device& device, const TextureData& data) {
+inline wgpu::Sampler create_sampler(const wgpu::Device& device, const TextureData& data,
+                                    bool use_texture_formats_tier1 = false) {
     const auto description = texture_detail::describe(data);
     const bool linear = data.min_filter == "linear" || data.mag_filter == "linear";
     if (description.storage == texture_detail::Storage::Float32 && linear && !device.HasFeature(wgpu::FeatureName::Float32Filterable))
         throw texture_detail::error("linear float32 sampling requires granted Float32Filterable feature");
-    if (description.storage == texture_detail::Storage::Unorm16 && !device.HasFeature(wgpu::FeatureName::Unorm16TextureFormats))
-        throw texture_detail::error("unorm16 storage requires granted Unorm16TextureFormats feature");
+    if (description.storage == texture_detail::Storage::Unorm16) {
+        if (use_texture_formats_tier1) {
+            if (!device.HasFeature(wgpu::FeatureName::TextureFormatsTier1))
+                throw texture_detail::error("unorm16 storage requires granted TextureFormatsTier1 (Unorm16TextureFormats)");
+            if (linear)
+                throw texture_detail::error("unorm16 storage with TextureFormatsTier1 requires nearest sampling");
+        } else if (!device.HasFeature(wgpu::FeatureName::Unorm16TextureFormats)) {
+            throw texture_detail::error("unorm16 storage requires granted Unorm16TextureFormats feature");
+        }
+    }
     const auto descriptor = prepare_sampler_descriptor(data);
     return device.CreateSampler(&descriptor);
 }

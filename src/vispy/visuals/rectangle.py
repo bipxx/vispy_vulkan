@@ -60,7 +60,7 @@ class RectangleVisual(PolygonVisual):
                                border_width=border_width, **kwargs)
 
         self._mesh.mode = 'triangle_fan'
-        self._regen_pos()
+        self._regen_pos(self._radius)
         self._update()
 
     @staticmethod
@@ -75,16 +75,14 @@ class RectangleVisual(PolygonVisual):
                                  " (got %s of length %d)" % (type(radius),
                                                              len(radius)))
 
-            if (radius > np.ones(4) * hw).all():
-                raise ValueError('Radius of curvature cannot be greater than\
-                                  half of min(width, height)')
             radius = np.array(radius, dtype=np.float32)
-
         else:
-            if radius > hw:
-                raise ValueError('Radius of curvature cannot be greater than\
-                                  half of min(width, height)')
             radius = np.ones(4) * radius
+        if (radius < 0).any():
+            raise ValueError('Radius of curvature cannot be negative')
+        if (radius > hw).all():
+            raise ValueError('Radius of curvature cannot be greater than '
+                             'half of min(width, height)')
 
         num_segments = (radius / hw * 500.).astype(int)
 
@@ -146,7 +144,7 @@ class RectangleVisual(PolygonVisual):
     def center(self, center):
         """The center of the ellipse"""
         self._center = center
-        self._regen_pos()
+        self._regen_pos(self._radius)
         self._update()
 
     @property
@@ -159,7 +157,7 @@ class RectangleVisual(PolygonVisual):
         if height <= 0.:
             raise ValueError('Height must be positive')
         self._height = height
-        self._regen_pos()
+        self._regen_pos(self._radius)
         self._update()
 
     @property
@@ -172,7 +170,7 @@ class RectangleVisual(PolygonVisual):
         if width <= 0.:
             raise ValueError('Width must be positive')
         self._width = width
-        self._regen_pos()
+        self._regen_pos(self._radius)
         self._update()
 
     @property
@@ -182,13 +180,13 @@ class RectangleVisual(PolygonVisual):
 
     @radius.setter
     def radius(self, radius):
+        self._regen_pos(radius)
         self._radius = radius
-        self._regen_pos()
         self._update()
 
-    def _regen_pos(self):
+    def _regen_pos(self, radius):
         vertices = self._generate_vertices(center=self._center,
-                                           radius=self._radius,
+                                           radius=radius,
                                            height=self._height,
                                            width=self._width)
         # don't use the center point and only use X/Y coordinates

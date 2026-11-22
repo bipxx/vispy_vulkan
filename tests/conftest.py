@@ -1,3 +1,4 @@
+import os
 from pathlib import Path, PurePosixPath
 import shlex
 
@@ -5,9 +6,25 @@ import pytest
 
 
 @pytest.fixture
+def frozen_source_root():
+    """Source input for frozen evidence controls, including full hash validation."""
+    return Path(os.environ.get('VISPY_TEST_FROZEN_SOURCE_ROOT',
+                               Path(__file__).resolve().parents[1])).resolve()
+
+
+@pytest.fixture
+def frozen_preparation(frozen_source_root):
+    """Use the CI preparation selected by the frozen source snapshot."""
+    return preparation_paths(frozen_source_root)
+
+
+@pytest.fixture
 def current_preparation():
     """Use the explicit CI preparation selection, never a historical default."""
-    root = Path(__file__).resolve().parents[1]
+    return preparation_paths(Path(__file__).resolve().parents[1])
+
+
+def preparation_paths(root):
     lines = (root / '.github/workflows/cpu-contract.yml').read_text(encoding='utf-8').splitlines()
     commands = {
         'candidate': ('tools/compatibility_candidate.py', '--candidate'),

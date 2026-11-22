@@ -538,9 +538,12 @@ def test_api05_app_timer_single_shot_repeating_and_restart_contracts():
         assert timer.running is True
         assert timer.iter_count == 2
         timer._timeout()
-        assert timer.running is True
+        # Final max_iterations tick auto-stops immediately after firing the 3rd callback.
+        assert timer.running is False
+        assert t_backend.started is False
         assert timer.iter_count == 3
-        # Next tick observes iter_count >= max_iterations and auto-stops without firing a 4th callback.
+        assert len(stops) == 2
+        # Calling _timeout() again after auto-stop is a no-op.
         timer._timeout()
         assert timer.running is False
         assert t_backend.started is False
@@ -550,13 +553,14 @@ def test_api05_app_timer_single_shot_repeating_and_restart_contracts():
         # 1 stop during running interval update + 1 stop when max_iterations is reached.
         assert len(stops) == 2
 
-        # Restarting as single-shot resets iter_count and stops on the following tick after 1 callback.
+        # Restarting as single-shot resets iter_count and stops immediately on that 1st callback.
         timer.start(interval=0.02, iterations=1)
         assert timer.iter_count == 0
         assert timer.max_iterations == 1
         assert timer.running is True
         timer._timeout()
         assert timer.iter_count == 1
+        assert timer.running is False
         timer._timeout()
         assert timer.running is False
         assert timer.iter_count == 1

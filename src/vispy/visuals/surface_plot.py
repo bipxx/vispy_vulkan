@@ -165,14 +165,14 @@ class SurfacePlotVisual(MeshVisual):
 
         colors = self._prepare_mesh_colors(colors)
         update_colors = colors is not None
-        if update_colors:
-            self.__meshdata.set_vertex_colors(colors)
         if update_faces:
             self.__meshdata.set_faces(self.__faces)
         if update_vertices:
             self.__meshdata.set_vertices(
                 self.__vertices.reshape(self.__vertices.shape[0] *
                                         self.__vertices.shape[1], 3))
+        if update_colors:
+            self.__meshdata.set_vertex_colors(colors)
         if update_faces or update_vertices or update_colors:
             MeshVisual.set_data(self, meshdata=self.__meshdata)
 

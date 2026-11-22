@@ -810,6 +810,7 @@ NB_MODULE(_dawn, m) {
        nb::arg("allow_non_uniform_derivatives") = false);
     m.def("debug_trace", []() { return debug_trace(); });
     m.def("lose_device", &lose_device);
+    m.def("diagnostic_timeout_next_readback", &diagnostic_timeout_next_readback);
     m.def("shutdown", &shutdown_runtime);
     // Release devices and dispatch their callbacks while Python and Dawn's
     // process globals are still alive, before native static destruction.

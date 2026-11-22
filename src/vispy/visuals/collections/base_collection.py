@@ -78,7 +78,7 @@ class Item(object):
     def indices(self, data):
         if self._indices is None:
             raise ValueError("Item has no indices")
-        start = self._parent.vertices._items[self._key][0]
+        start = self._parent._vertices_list._items[self._key][0]
         self._indices[...] = np.array(data) + start
 
     @property
@@ -95,7 +95,7 @@ class Item(object):
         """Get a specific uniforms value"""
         if key in self._vertices.dtype.names:
             return self._vertices[key]
-        elif key in self._uniforms.dtype.names:
+        elif self._uniforms is not None and key in self._uniforms.dtype.names:
             return self._uniforms[key]
         else:
             raise IndexError("Unknown key ('%s')" % key)
@@ -104,7 +104,7 @@ class Item(object):
         """Set a specific uniforms value"""
         if key in self._vertices.dtype.names:
             self._vertices[key] = value
-        elif key in self._uniforms.dtype.names:
+        elif self._uniforms is not None and key in self._uniforms.dtype.names:
             self._uniforms[key] = value
         else:
             raise IndexError("Unknown key")
@@ -341,16 +341,13 @@ class BaseCollection(object):
     def __getitem__(self, key):
         """ """
         # WARNING
-        # Here we want to make sure to use buffers and texture (instead of
-        # lists) since only them are aware of any external modification.
+        # Whole vertex fields are buffer views, while individual items use
+        # the CPU arrays that feed the buffers.
         if self._need_update:
             self._update()
 
         V = self._vertices_buffer
-        idxs = None
         U = None
-        if self._indices_list is not None:
-            idxs = self._indices_buffer
         if self._uniforms_list is not None:
             U = self._uniforms_texture.data.ravel().view(self.utype)
 
@@ -369,13 +366,9 @@ class BaseCollection(object):
 
         # Getting individual item
         elif isinstance(key, int):
-            vstart, vend = self._vertices_list._items[key]
-            vertices = V[vstart:vend]
-            indices = None
+            vertices = self._vertices_list[key]
+            indices = None if self._indices_list is None else self._indices_list[key]
             uniforms = None
-            if idxs is not None:
-                istart, iend = self._indices_list._items[key]
-                indices = idxs[istart:iend]
 
             if U is not None:
                 ustart, uend = self._uniforms_list._items[key]
@@ -470,7 +463,8 @@ class BaseCollection(object):
 
             # shape[2] = float count is only used in vertex shader code
             texture = texture.reshape(shape[0], shape[1], 4)
-            self._uniforms_texture = Texture2D(texture)
+            # Dawn's default normalized format clips shared values such as point sizes.
+            self._uniforms_texture = Texture2D(texture, internalformat="rgba32f")
             self._uniforms_texture.data = texture
             self._uniforms_texture.interpolation = 'nearest'
 
