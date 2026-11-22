@@ -88,7 +88,8 @@ def test_original_provenance_semantic_rejections(change):
         qe.validate_join(ownership, checksum, frozen, status, terminal, commands, ctest, outputs, binaries)
 
 
-def test_original_record_needs_review_before_any_old_origin_is_consumed(monkeypatch, without_current_reviews):
+def test_original_record_needs_review_before_any_old_origin_is_consumed(
+        without_current_reviews, frozen_source_root):
     # Exercise the real gate with reviews removed only from its in-memory input.
     candidate = without_current_reviews(qe)
     ref = {'path': 'unit-only-unused.json', 'sha256': '0' * 64}
@@ -97,10 +98,10 @@ def test_original_record_needs_review_before_any_old_origin_is_consumed(monkeypa
                         'frozen_sha256': '0' * 64, 'outputs_sha256': '0' * 64, 'impact': 'unit only'}}
     for name in ('candidate', 'ownership', 'frozen', 'status', 'terminal', 'preparation', 'sdk', 'cache', 'ctest', 'binaries'):
         record[name] = ref
-    record['candidate'] = {'path': candidate.relative_to(qe.ROOT).as_posix(), 'sha256': qe.sha(candidate.read_bytes())}
+    record['candidate'] = {'path': candidate.relative_to(frozen_source_root).as_posix(), 'sha256': qe.sha(candidate.read_bytes())}
     for name in ('guard_tools', 'source_inputs', 'harness_inputs'): record[name] = [{'path': 'unit', 'file': ref}]
     record['commands'] = [{'phase': 'unit', 'command': ref, 'log': ref}]
     record['outputs'] = [{'member': 'unit', 'file': ref}]
     record['projects'] = [{'target': 'unit', 'before': ref, 'after': ref}]
     with pytest.raises(qe.InventoryError, match='source and scope review remain pending'):
-        qe.validate_record(record)
+        qe.validate_record(record, frozen_source_root)

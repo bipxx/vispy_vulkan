@@ -14,7 +14,7 @@ namespace vispy::shader {
 
 inline constexpr uint32_t kLineConsumerAbi = 1;
 
-enum class LineCoveragePolicy { AliasedMajorAxis, SmoothReference, SmoothAnalytic };
+enum class LineCoveragePolicy { AliasedMajorAxis, SmoothReference, SmoothAnalytic, MultisampleRectangle };
 struct LineConsumerPolicy {
     LineCoveragePolicy coverage = LineCoveragePolicy::AliasedMajorAxis;
     uint32_t sample_count = 1;
@@ -346,15 +346,17 @@ inline constexpr const char* kAliasedLineCoverageIdentity =
 // Portable single-sample approximation, not a driver-specific GL rasterizer.
 inline constexpr const char* kSmoothLineCoverageIdentity =
     "analytic-butt-rectangle-separable-pixel-overlap-alpha-v1";
-// Functional multisampling uses the rasterizer's actual sample coordinates.
-// It deliberately has a different identity from the single-sample GL model.
-inline constexpr const char* kAliasedLineCoverage4Identity =
-    "functional-msaa4-sample-rate-symbolic-diamond-major-axis-v1";
-inline constexpr const char* kSmoothLineCoverage4Identity =
-    "functional-msaa4-sample-rate-analytic-pixel-overlap-alpha-v1";
+inline constexpr const char* kMultisampleLineCoverageIdentity =
+    "msaa4-rasterized-butt-rectangle-sample-rate-v1";
+inline constexpr const char* kMultisampleSmoothLineCoverageIdentity =
+    "msaa4-analytic-pixel-overlap-alpha-sample-rate-v1";
+inline LineCoveragePolicy line_coverage_policy(bool smooth, uint32_t samples) {
+    if (smooth) return LineCoveragePolicy::SmoothAnalytic;
+    return samples == 4 ? LineCoveragePolicy::MultisampleRectangle : LineCoveragePolicy::AliasedMajorAxis;
+}
 inline const char* line_coverage_identity(bool smooth, uint32_t samples) {
     if (samples == 1) return smooth ? kSmoothLineCoverageIdentity : kAliasedLineCoverageIdentity;
-    if (samples == 4) return smooth ? kSmoothLineCoverage4Identity : kAliasedLineCoverage4Identity;
+    if (samples == 4) return smooth ? kMultisampleSmoothLineCoverageIdentity : kMultisampleLineCoverageIdentity;
     throw std::invalid_argument("line consumer: sample count must be one or four");
 }
 
@@ -367,7 +369,8 @@ inline std::string generated_line_consumer_policy_identity(
     if (!evaluator.original) throw std::invalid_argument("line consumer policy requires an original");
     if (!policy.sample_count || policy.coverage_identity.empty() ||
         (policy.coverage != LineCoveragePolicy::AliasedMajorAxis && policy.coverage != LineCoveragePolicy::SmoothReference &&
-         policy.coverage != LineCoveragePolicy::SmoothAnalytic))
+         policy.coverage != LineCoveragePolicy::SmoothAnalytic &&
+         policy.coverage != LineCoveragePolicy::MultisampleRectangle))
         throw std::invalid_argument("line consumer policy identity is incomplete");
     const auto& original = *evaluator.original;
     std::string key = "vispy-generated-line-consumer-policy-v5;abi=2;typed-storage-both-stages;"

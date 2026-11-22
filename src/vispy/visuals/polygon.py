@@ -66,7 +66,7 @@ class PolygonVisual(CompoundVisual):
         self.freeze()
 
     def _update(self):
-        if self._pos is None:
+        if self._pos is None or len(self._pos) == 0:
             return
         if not self._color.is_blank and self._triangulate:
             data = PolygonData(vertices=np.array(self._pos, dtype=np.float32))
@@ -90,6 +90,9 @@ class PolygonVisual(CompoundVisual):
 
             self._border.update()
 
+    def _prepare_draw(self, view):
+        return self._pos is not None and len(self._pos) != 0
+
     @property
     def pos(self):
         """The vertex position of the polygon."""
@@ -99,6 +102,8 @@ class PolygonVisual(CompoundVisual):
     def pos(self, pos):
         self._pos = pos
         self._update()
+        if pos is None or len(pos) == 0:
+            self.update()
 
     @property
     def color(self):

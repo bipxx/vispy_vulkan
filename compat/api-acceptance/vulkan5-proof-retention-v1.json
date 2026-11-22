@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "date": "2026-11-21",
+  "status": "PASS_PREPARATION20_CONTRIBUTING_RETENTION_NOT_SUBJECT_ADMISSION",
+  "coverage_ids": [
+    "FIX-04",
+    "FIX-06",
+    "API-06",
+    "LIF-01",
+    "LIF-05",
+    "LIF-07",
+    "TOOL-01"
+  ],
+  "candidate": "tk-state-resource-20",
+  "source_commit": "9576e7f3031c51b4674667c5725c5b0a8afde864",
+  "retention_record": {
+    "path": "@evidence/build/runs/vulkan5-proof-retention-1189/retention-record.json",
+    "sha256": "5e5343c0d708591a9a29be1711f7bb4fd39ebd6aba77afb98beea94d13dc4671"
+  },
+  "post_cleanup": {
+    "path": "@evidence/build/runs/vulkan5-proof-retention-1189/post-cleanup.json",
+    "sha256": "9f6fd632ae56be43cb4eb8d25479d068ec9929ab92fd0b64fe0d53f648289169"
+  },
+  "retained_inputs": 1721,
+  "both_native_and_archives_validated": true,
+  "canonical_json_count": 14,
+  "selected_rows": 32,
+  "exact_strict_attempts": 5,
+  "failed_attempts_preserved": 1,
+  "actual_exit": 0,
+  "child_waited": true,
+  "scratch_absent": true,
+  "native_rebuilt": false,
+  "artifact_admitted": false,
+  "subject_bound": false,
+  "scope": "Contributing immutable inputs for tk-state-resource-20 reverified in place across all 14 canonical JSONs, 8 scratch-cleaned contributing runs, 32 installed row receipts, 5 strict workflow attempts, Gate A2 resolution (1187r), and licenses. Canonical execution-ledger.json excluded for guarded materialization in 1190."
+}

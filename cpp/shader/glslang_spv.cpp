@@ -12,6 +12,7 @@
 #include <chrono>
 #include <cstring>
 #include <functional>
+#include <list>
 #include <mutex>
 #include <map>
 #include <limits>
@@ -269,6 +270,96 @@ void ensure_process() {
     static std::once_flag initialized;
     std::call_once(initialized, [] { glslang::InitializeProcess(); });
 }
+
+const std::string& compiler_version() {
+    static const auto version = [] {
+        const auto glslang_version = glslang::GetVersion();
+        return std::to_string(glslang_version.major) + "." + std::to_string(glslang_version.minor) + "." +
+            std::to_string(glslang_version.patch) + glslang_version.flavor + ";" + spvSoftwareVersionDetailsString();
+    }();
+    return version;
+}
+
+size_t stage_bytes(const SpvStage& stage) {
+    return stage.words.capacity() * sizeof(uint32_t) + stage.log.capacity() + 1;
+}
+
+size_t output_bytes(const SpvCompile& output) {
+    return stage_bytes(output.vertex) + stage_bytes(output.fragment) + output.log.capacity() + 1 +
+        output.resource_usage.capacity() * sizeof(SpvResourceUsage) +
+        output.vertex_input_locations.capacity() * sizeof(uint32_t);
+}
+
+// This process-local cache owns at most 32 render entries and 4 MiB of
+// charged bytes. Caller-owned copies and compiler temporaries are separate.
+class CompilerOutputCache {
+public:
+    SpvCompile get(const std::string& vertex, const std::string& fragment,
+                   bool cleanup, std::string_view identity) {
+        if (vertex.size() > byte_limit_ || fragment.size() > byte_limit_ ||
+            identity.size() > byte_limit_) {
+            return compile_vulkan_glsl(vertex, fragment, cleanup);
+        }
+        const auto& version = compiler_version();
+        const std::hash<std::string_view> hash;
+        const auto vertex_hash = hash(vertex);
+        const auto fragment_hash = hash(fragment);
+        const auto find = [&] {
+            return std::find_if(entries_.begin(), entries_.end(), [&](const Entry& entry) {
+                return entry.vertex_hash == vertex_hash && entry.fragment_hash == fragment_hash &&
+                    entry.cleanup == cleanup && entry.version == version && entry.identity == identity &&
+                    entry.vertex == vertex && entry.fragment == fragment;
+            });
+        };
+        {
+            std::lock_guard lock(mutex_);
+            const auto found = find();
+            if (found != entries_.end()) {
+                entries_.splice(entries_.begin(), entries_, found);
+                return found->output;
+            }
+        }
+
+        auto output = compile_vulkan_glsl(vertex, fragment, cleanup);
+        if (!output.ok) return output;
+
+        Entry entry{vertex, fragment, version, std::string(identity), vertex_hash, fragment_hash, cleanup, output};
+        entry.output.parse_ns = entry.output.link_ns = entry.output.spirv_ns = entry.output.resource_reflect_ns = 0;
+        entry.output.parse_calls = entry.output.link_calls = entry.output.spirv_stages = 0;
+        entry.bytes = sizeof(Entry) + 2 * sizeof(void*) + 4 +
+            entry.vertex.capacity() + entry.fragment.capacity() + entry.version.capacity() +
+            entry.identity.capacity() + output_bytes(entry.output);
+        if (entry.bytes > byte_limit_) return output;
+
+        std::lock_guard lock(mutex_);
+        const auto found = find();
+        if (found != entries_.end()) {
+            // Another caller filled the entry. Still report the work done here.
+            entries_.splice(entries_.begin(), entries_, found);
+            return output;
+        }
+        while (entries_.size() >= 32 || bytes_ > byte_limit_ - entry.bytes) {
+            bytes_ -= entries_.back().bytes;
+            entries_.pop_back();
+        }
+        entries_.push_front(std::move(entry));
+        bytes_ += entries_.front().bytes;
+        return output;
+    }
+
+private:
+    struct Entry {
+        std::string vertex, fragment, version, identity;
+        size_t vertex_hash, fragment_hash;
+        bool cleanup;
+        SpvCompile output;
+        size_t bytes = 0;
+    };
+    static constexpr size_t byte_limit_ = 4u * 1024u * 1024u;
+    size_t bytes_ = 0;
+    std::mutex mutex_;
+    std::list<Entry> entries_;
+};
 
 bool parse_shader(glslang::TShader& shader, EShLanguage stage, const std::string& source,
                   std::string& log) {
@@ -739,6 +830,12 @@ SpvCompile compile_vulkan_glsl(const std::string& vertex, const std::string& fra
     result.ok = result.vertex.ok && result.fragment.ok;
     result.log = result.vertex.log + result.fragment.log;
     return result;
+}
+
+SpvCompile compile_vulkan_glsl_cached(const std::string& vertex, const std::string& fragment,
+                                     bool vertex_input_cleanup, std::string_view compiler_identity) {
+    static CompilerOutputCache cache;
+    return cache.get(vertex, fragment, vertex_input_cleanup, compiler_identity);
 }
 
 bool reflect_uniform_layout(const std::vector<uint32_t>& words,

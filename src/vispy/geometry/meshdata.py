@@ -19,6 +19,13 @@ def _fix_colors(colors):
     return colors
 
 
+def _ensure_3d_vertices(vertices):
+    if vertices is not None and vertices.shape[-1] == 2:
+        pad = np.zeros(vertices.shape[:-1] + (1,), dtype=vertices.dtype)
+        return np.concatenate((vertices, pad), axis=-1)
+    return vertices
+
+
 def _compute_face_normals(vertices):
     if vertices.shape[1:] != (3, 3):
         raise ValueError("Expected (N, 3, 3) array of vertices repeated on"
@@ -257,6 +264,8 @@ class MeshData(object):
             v = self._vertices
         else:
             return None
+        if not v.size:
+            return None
         bounds = [(v[:, ax].min(), v[:, ax].max()) for ax in range(v.shape[1])]
         return bounds
 
@@ -347,7 +356,7 @@ class MeshData(object):
             raise ValueError("Invalid indexing mode. Accepts: None, 'faces'")
 
         if self._face_normals is None:
-            vertices = self.get_vertices(indexed='faces')
+            vertices = _ensure_3d_vertices(self.get_vertices(indexed='faces'))
             self._face_normals = _compute_face_normals(vertices)
 
         if indexed == 'faces' and self._face_normals_indexed_by_faces is None:
@@ -379,7 +388,7 @@ class MeshData(object):
         if self._vertex_normals is None:
             face_normals = self.get_face_normals()
             faces = self.get_faces()
-            vertices = self.get_vertices()
+            vertices = _ensure_3d_vertices(self.get_vertices())
             self._vertex_normals = _compute_vertex_normals(face_normals, faces,
                                                            vertices)
 

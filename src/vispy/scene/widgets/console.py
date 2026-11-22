@@ -179,7 +179,7 @@ class Console(Widget):
         wrap : str
             If True, long messages will be wrapped to span multiple lines.
         """
-        self._visual.write(text)
+        self._visual.write(text, wrap=wrap)
 
     @property
     def text_color(self):
@@ -295,8 +295,9 @@ class ConsoleVisual(Visual):
         if hasattr(self, '_bytes_012'):
             self._bytes_012.fill(0)
             self._bytes_345.fill(0)
-        self._text_lines = [] * self._n_rows
+        self._text_lines = []
         self._pending_writes = []
+        self.update()
 
     def write(self, text='', wrap=True):
         """Write text and scroll

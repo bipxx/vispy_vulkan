@@ -50,7 +50,7 @@ def isosurface(data, level):
     cut_edges = np.zeros([x+1 for x in index.shape]+[3], dtype=np.uint32)
     edges = edge_table[index]
     for i, shift in enumerate(edge_shifts[:12]):        
-        slices = [slice(shift[j], cut_edges.shape[j]+(shift[j]-1)) 
+        slices = [slice(shift[j], cut_edges.shape[j] + int(shift[j]) - 1)
                   for j in range(3)]
         cut_edges[slices[0], slices[1], slices[2], shift[3]] += edges & 2**i
 

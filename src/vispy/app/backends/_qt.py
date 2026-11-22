@@ -651,6 +651,14 @@ class QtBaseCanvasBackend(BaseCanvasBackend):
     def keyReleaseEvent(self, ev):
         self._keyEvent(self._vispy_canvas.events.key_release, ev)
 
+    @_guard_dawn_input_callback
+    def focusOutEvent(self, ev):
+        mouse_data = getattr(self, '_vispy_mouse_data', None)
+        if self._vispy_canvas is not None and mouse_data is not None:
+            for name in mouse_data:
+                mouse_data[name] = None
+        super(QtBaseCanvasBackend, self).focusOutEvent(ev)
+
     def _handle_native_gesture_event(self, ev):
         if self._vispy_canvas is None:
             return
@@ -1168,4 +1176,15 @@ class TimerBackend(BaseTimerBackend, QtCore.QTimer):
         self.stop()
 
     def _vispy_timeout(self):
-        self._vispy_timer._timeout()
+        try:
+            self._vispy_timer._timeout()
+        except Exception as error:
+            hook = sys.excepthook
+            if hook is not sys.__excepthook__:
+                try:
+                    hook(type(error), error, error.__traceback__)
+                except Exception:
+                    logger.error('Dawn Qt timer exception hook failed', exc_info=True)
+                else:
+                    return
+            _record_dawn_application_error('timer', error, 'timeout')

@@ -291,3 +291,41 @@ mandatory and `PENDING`. The next step is to instrument and wait:
 
 The next natural recurrence should then identify the closing process, or the
 closing thread's start module if that thread is still running.
+
+## Headless restart harness (BUG-01)
+
+`tools/repro_headless_startup.py` launches one fresh, externally watched
+Windows process per attempt. Each worker opens a `dawn_headless` canvas,
+checks every pixel of a 16 × 16 opaque blue frame, closes the canvas, and shuts
+down Dawn. A passing attempt requires the watcher to observe a factory in the
+renderer PID and record the launcher's successful exit and wait.
+
+With the prepared interpreter and worktree source on `PYTHONPATH`, run
+`python -B -S tools/repro_headless_startup.py --output <new-directory> --attempts 64 --timeout 300 --interval 0.005`.
+Keep the new directory in the retained run. The campaign stops on the first
+anomaly. Each attempt retains the command, renderer stage markers, watcher
+events, and worker output. The watcher terminates and waits for its owned job
+if the deadline expires. The summary preserves watcher and child exit codes,
+the last renderer stage, and any recorded pool loss.
+
+This profile exercises renderer startup and shutdown in isolation. The
+historical stall occurred during window startup in Qt/OLE. A loss before
+the watcher's first snapshot or a close followed by reuse as another
+worker factory between samples may escape detection.
+
+The 15-second run spent 10.45 seconds in the worker before `starting_canvas`
+and another 0.37 seconds before `reading_pixels`. At the deadline the pixel
+check was still unrecorded. This stage covers making the canvas current,
+clearing, and reading pixels. The markers do not isolate which call was
+running. [Worker stages](D:/vispy-vulkan-managed/build/runs/swarm-r-bug01-1/campaign/001/progress.jsonl).
+
+Six of the 64 successful launches at the 300-second deadline took over
+15 seconds on the watcher clock. In the longest, attempt 036, the renderer
+recorded `finished` at 12.95 seconds on its own clock. The watcher adopted
+a `cmd.exe` descendant at 19.03 seconds and reported the completed job wait
+at 27.50 seconds on its clock. The logs show startup and process-exit delays
+but supply no descendant command line or native wait chain. The coordinator
+would need a real window to replay the historical Qt/OLE profile.
+[300-second summary](D:/vispy-vulkan-managed/build/runs/swarm-r-bug01-2/campaign/summary.json),
+[attempt 036 worker stages](D:/vispy-vulkan-managed/build/runs/swarm-r-bug01-2/campaign/036/progress.jsonl),
+[attempt 036 watcher events](D:/vispy-vulkan-managed/build/runs/swarm-r-bug01-2/campaign/036/watcher.jsonl).

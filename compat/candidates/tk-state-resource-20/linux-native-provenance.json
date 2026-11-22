@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "kind": "original-linux-ci-native-reuse",
+  "candidate": {
+    "path": "compat/candidates/tk-state-resource-20/candidate.json",
+    "sha256": "702f4190aecf4dbcce05e65f7fe5e9ce1e860f980c8fffa11bd1485dfc4cba6f"
+  },
+  "capture": {
+    "path": "build/runs/vulkan5-linux-artifact-1161/original-capture.json",
+    "sha256": "c2890c2c074cdf371d3f10e08d9667cc6c8239fc8ea85be2a4b52ed0222b2b27"
+  },
+  "reuse": {
+    "candidate_scope_sha256": "43171e01b0993e927f4f8bc88a5a8acfe1e76ef7c7a19ec12e7ca9cd535bb6e0",
+    "profile": "wsl-software-tk90-cp31213-development",
+    "capture_sha256": "c2890c2c074cdf371d3f10e08d9667cc6c8239fc8ea85be2a4b52ed0222b2b27",
+    "production_sha256": "9873670c1759c57343f7801e1b70488ff9f655dba49ca0571a956198bce831af",
+    "evidence_store": {
+      "path": "compat/evidence-stores/secondary-v1.json",
+      "sha256": "b164e3fdc85863a2327b508ea60f8d3068f740cfe90f665aa52905e28bfb3ca5"
+    },
+    "impact": "Fresh original hosted CI run 44956811839 at source 9576e7f3 (0.17.0+vulkan.5; added cpp/shader/tint_wgsl.cpp and cpp/shader/tint_wgsl.hpp plus updated CMakeLists.txt, pyproject.toml, uv.lock, cpp/*, src/*; pinned Mesa 9c5c41b3 unchanged), raw wheel 6cb89093 retagged to manylinux_2_39 d9a23bf2 in 1162 and observed in 1163/1164. Candidate 20 workflow/reader updates reviewed in 1153r; preparation20-1171b adds tools/no_opengl/functional.py readback-delegated capture completion update. Independent reuse/source/scope review required; no approval or admission transfers.",
+    "abi": {
+      "tag": "cp312",
+      "build_version": "3.12.8",
+      "build_python_sha256": "0dc3a692fa85fcdb7f1a5877d2adf179809ac417a07ffde2373c832863800a15",
+      "consumer_version": "3.12.13",
+      "consumer_python_sha256": "339de109f072e52523066d97a2b3372e358a10cc00c6a9df62c28a6618061900"
+    }
+  }
+}

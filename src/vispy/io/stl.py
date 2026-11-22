@@ -15,12 +15,12 @@ class HeaderError(Exception):
 
 
 # define a numpy datatype for the data section of a binary STL file
-_stl_dtype = np.dtype([('normals', np.float32, (3)),
-                       ('vertices', np.float32, (3, 3)),
-                       ('attributes', np.uint16)])
+_stl_dtype = np.dtype([('normals', '<f4', (3,)),
+                       ('vertices', '<f4', (3, 3)),
+                       ('attributes', '<u2')])
 # define a numpy datatype for the header of a binary STL file
 _stl_dtype_header = np.dtype([('header', np.void, 80),
-                              ('face_count', np.int32)])
+                              ('face_count', '<u4')])
 
 
 def load_stl(file_obj, file_type=None):
@@ -78,7 +78,8 @@ def load_stl_binary(file_obj):
     if len(header_data) < header_length:
         raise HeaderError('Binary STL file not long enough to contain header!')
 
-    header = np.fromstring(header_data, dtype=_stl_dtype_header)
+    header = np.frombuffer(header_data, dtype=_stl_dtype_header)
+    face_count = int(header['face_count'][0])
 
     # now we check the length from the header versus the length of the file
     # data_start should always be position 84, but hard coding that felt ugly
@@ -95,7 +96,7 @@ def load_stl_binary(file_obj):
     # of the file doesn't match the header, the loaded version is almost
     # certainly going to be garbage.
     len_data = data_end - data_start
-    len_expected = header['face_count'] * _stl_dtype.itemsize
+    len_expected = face_count * _stl_dtype.itemsize
 
     # this check is to see if this really is a binary STL file.
     # if we don't do this and try to load a file that isn't structured properly
@@ -106,8 +107,8 @@ def load_stl_binary(file_obj):
 
     # all of our vertices will be loaded in order due to the STL format,
     # so faces are just sequential indices reshaped.
-    faces = np.arange(header['face_count'] * 3).reshape((-1, 3))
-    blob = np.fromstring(file_obj.read(), dtype=_stl_dtype)
+    faces = np.arange(face_count * 3).reshape((-1, 3))
+    blob = np.frombuffer(file_obj.read(), dtype=_stl_dtype).copy()
 
     result = {'vertices': blob['vertices'].reshape((-1, 3)),
               'face_normals': blob['normals'].reshape((-1, 3)),

@@ -95,4 +95,5 @@ class PanZoomTransform(STTransform):
         event : instance of Event
             The event.
         """
-        self.zoom(np.exp(event.delta * (0.01, -0.01)), event.pos)
+        center = self.canvas_tr.map(event.pos)
+        self.zoom(np.exp(event.delta * (0.01, -0.01)), center)

@@ -50,7 +50,7 @@ class ComplexImageVisual(ImageVisual):
         if kwargs.get("clim", "auto") == "auto" and self._data_is_complex:
             kwargs["clim"] = self._calc_complex_clim(data)
 
-        kwargs["texture_format"] = "r32f" if self._data_is_complex else "r32f"
+        kwargs["texture_format"] = "auto" if data is not None else "r32f"
         if self._data_is_complex:
             data = self._convert_complex_to_float_view(data)
         super().__init__(data=data, **kwargs)
@@ -59,9 +59,13 @@ class ComplexImageVisual(ImageVisual):
         texture_kwargs = {}
         if self._data_is_complex:
             texture_kwargs["format"] = "rg"
-        return super()._init_texture(data, texture_format, **texture_kwargs)
+        tex = super()._init_texture(data, texture_format, **texture_kwargs)
+        if hasattr(tex, "_auto_texture_format"):
+            tex._auto_texture_format = True
+        return tex
 
     def set_data(self, image):
+        was_complex = self._data_is_complex
         data = np.asarray(image)
         if np.iscomplexobj(data):
             #  Turn the texture into an rg32f texture
@@ -74,8 +78,12 @@ class ComplexImageVisual(ImageVisual):
             # data was complex but was already converted to 32-bit float
             # should really only occur from __init__
             self._data_is_complex = True
+            self._texture._format = "rg"
         else:
+            self._data_is_complex = False
             self._texture._format = None
+        if self._data_is_complex != was_complex:
+            self._need_colortransform_update = True
         return super().set_data(data)
 
     @staticmethod

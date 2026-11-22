@@ -274,14 +274,11 @@ class Widget(Compound):
 
     @stretch.setter
     def stretch(self, s):
-        self._stretch = [float(s[0]), float(s[1])]
-
-        if self._stretch[0] == 0:
+        stretch = [float(s[0]), float(s[1])]
+        if 0 in stretch:
             raise RuntimeError("received 0 as stretch parameter: %s", s)
 
-        if self._stretch[1] == 0:
-            raise RuntimeError("received 0 as stretch parameter: %s", s)
-
+        self._stretch = stretch
         self._update_layout()
 
     def _update_layout(self):

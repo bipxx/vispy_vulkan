@@ -7,9 +7,9 @@ import pytest
 from tools import compatibility_qualification as q
 
 
-def current_review_applied(execution, candidate):
+def current_review_applied(execution, candidate, root):
     """A bound approval alone does not apply scoped ledger review flags."""
-    ledger = q.read_json(q.ROOT / execution['execution']['path'])
+    ledger = q.read_json(root / execution['execution']['path'])
     selected = {(pair['feature'], pair['profile']) for pair in candidate['pairs']}
     return all(candidate['reviews'].values()) and all(
         pair['reviewed'] for pair in ledger['applicability']
@@ -84,26 +84,28 @@ def test_semantic_selection_controls(change, message):
         q.expand_selection(requests, mappings, ledger)
 
 
-def test_current_selection_is_incomplete_and_preserves_both_profiles(current_preparation):
-    record = q.read_json(current_preparation['selection'])
-    result = q.validate_selection(record)
+def test_current_selection_is_incomplete_and_preserves_both_profiles(frozen_preparation, frozen_source_root):
+    root = frozen_source_root
+    record = q.read_json(frozen_preparation['selection'])
+    result = q.validate_selection(record, root)
     assert len(result['requested']) == len(result['closure']) == 128
     assert len({key['profile'] for key in result['closure']}) == 2
-    execution = q.read_json(q.ROOT / record['execution_map']['path'])
-    candidate, _, _ = q.load_inputs(execution, q.ROOT)
-    expected_review = current_review_applied(execution, candidate)
+    execution = q.read_json(root / record['execution_map']['path'])
+    candidate, _, _ = q.load_inputs(execution, root)
+    expected_review = current_review_applied(execution, candidate, root)
     assert result['reviewed'] is expected_review
     assert not any(result[key] for key in ('admitted', 'qualified', 'full_inventory_complete'))
     if expected_review:
-        assert q.validate_selection(record, require_reviewed=True) == result
+        assert q.validate_selection(record, root, require_reviewed=True) == result
     else:
         with pytest.raises(q.InventoryError, match='review remains pending'):
-            q.validate_selection(record, require_reviewed=True)
+            q.validate_selection(record, root, require_reviewed=True)
 
 
 @pytest.mark.parametrize('change', ['omit-recovery', 'wrong-profile', 'stale-map', 'unknown-field'])
-def test_resealed_real_selection_rejects_scope_changes(change, current_preparation):
-    record = deepcopy(q.read_json(current_preparation['selection']))
+def test_resealed_real_selection_rejects_scope_changes(change, frozen_preparation, frozen_source_root):
+    root = frozen_source_root
+    record = deepcopy(q.read_json(frozen_preparation['selection']))
     if change == 'omit-recovery':
         record['closure'].pop()
     elif change == 'wrong-profile':
@@ -114,18 +116,19 @@ def test_resealed_real_selection_rejects_scope_changes(change, current_preparati
         record['admitted'] = True
     q.seal(record)
     with pytest.raises(q.InventoryError):
-        q.validate_selection(record)
+        q.validate_selection(record, root)
 
 
-def test_current_cli_does_not_write_and_strict_review_validates_actual_approvals(capsys, current_preparation):
-    CURRENT = current_preparation['selection']
+def test_current_cli_does_not_write_and_strict_review_validates_actual_approvals(capsys, frozen_preparation, frozen_source_root):
+    root = frozen_source_root
+    CURRENT = frozen_preparation['selection']
     before = CURRENT.read_bytes()
     record = q.read_json(CURRENT)
-    execution = q.read_json(q.ROOT / record['execution_map']['path'])
-    candidate, _, _ = q.load_inputs(execution, q.ROOT)
-    expected_review = current_review_applied(execution, candidate)
-    assert q.main(['--selection', str(CURRENT)]) == 0
-    assert q.main(['--selection', str(CURRENT), '--require-reviewed']) == (0 if expected_review else 1)
+    execution = q.read_json(root / record['execution_map']['path'])
+    candidate, _, _ = q.load_inputs(execution, root)
+    expected_review = current_review_applied(execution, candidate, root)
+    assert q.main(['--root', str(root), '--selection', str(CURRENT)]) == 0
+    assert q.main(['--root', str(root), '--selection', str(CURRENT), '--require-reviewed']) == (0 if expected_review else 1)
     assert CURRENT.read_bytes() == before
     assert ('"reviewed": true' if expected_review else 'review remains pending') in capsys.readouterr().out
 
@@ -140,11 +143,12 @@ def test_historical_default_is_immutable_and_rejects_current_tool_claims(capsys)
 
 
 @pytest.mark.parametrize('binding', ['exact', 'wrong', 'absent'])
-def test_selection_binding_extends_existing_scope_approval(monkeypatch, binding, current_preparation):
+def test_selection_binding_extends_existing_scope_approval(monkeypatch, binding, frozen_preparation, frozen_source_root):
     # Synthetic existing-review disposition only; never a real approval record.
-    record = q.read_json(current_preparation['selection'])
-    execution = q.read_json(q.ROOT / record['execution_map']['path'])
-    candidate, coverage, baseline = q.load_inputs(execution, q.ROOT)
+    root = frozen_source_root
+    record = q.read_json(frozen_preparation['selection'])
+    execution = q.read_json(root / record['execution_map']['path'])
+    candidate, coverage, baseline = q.load_inputs(execution, root)
     candidate = deepcopy(candidate)
     reference = {'path': 'unit-only-review.json', 'sha256': '0' * 64}
     candidate['reviews']['scope'] = reference
@@ -154,12 +158,12 @@ def test_selection_binding_extends_existing_scope_approval(monkeypatch, binding,
     original_read, original_ref = q.read_json, q.file_ref
     monkeypatch.setattr(q, 'validate_execution', lambda *a, **kw: {'reviewed': True})
     monkeypatch.setattr(q, 'load_inputs', lambda *a, **kw: (candidate, coverage, baseline))
-    marker = q.ROOT / reference['path']
+    marker = root / reference['path']
     monkeypatch.setattr(q, 'file_ref', lambda root, ref: marker if ref == reference else original_ref(root, ref))
     monkeypatch.setattr(q, 'read_json', lambda path: review if path == marker else original_read(path))
     if binding == 'exact':
-        result = q.validate_selection(record, require_reviewed=True)
+        result = q.validate_selection(record, root, require_reviewed=True)
         assert result['reviewed'] and not result['admitted']
     else:
         with pytest.raises(q.InventoryError, match='pending or stale'):
-            q.validate_selection(record, require_reviewed=True)
+            q.validate_selection(record, root, require_reviewed=True)

@@ -92,11 +92,13 @@ class GraphVisual(CompoundVisual):
 
         CompoundVisual.__init__(self, [self._edges, self._nodes])
 
+        arrow_kwargs = {} if arrow_type is None else {"arrow_type": arrow_type}
         self.set_data(adjacency_mat, line_color=line_color,
-                      line_width=line_width, arrow_type=arrow_type,
+                      line_width=line_width,
                       arrow_size=arrow_size, node_symbol=node_symbol,
                       node_size=node_size, border_color=border_color,
-                      face_color=face_color, border_width=border_width)
+                      face_color=face_color, border_width=border_width,
+                      **arrow_kwargs)
 
     @property
     def adjacency_matrix(self):
@@ -196,6 +198,7 @@ class GraphVisual(CompoundVisual):
                 raise ValueError("Adjacency matrix should be square.")
 
             self._adjacency_mat = adjacency_mat
+            self.reset_layout()
 
         for k in self._arrow_attributes:
             if k in kwargs:

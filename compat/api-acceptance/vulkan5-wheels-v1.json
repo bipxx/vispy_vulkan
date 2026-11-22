@@ -1,0 +1,211 @@
+{
+  "schema": 1,
+  "date": "2026-11-21",
+  "status": "PASS_SIX_VULKAN5_WHEELS_INSTALLED_FUNCTIONAL_NOT_ADMITTED",
+  "coverage_ids": [
+    "PERF-01",
+    "PLAT-02",
+    "API-05",
+    "API-06"
+  ],
+  "version": "0.17.0+vulkan.5",
+  "source_commit": "9576e7f3031c51b4674667c5725c5b0a8afde864",
+  "source_freeze": {
+    "path": "@evidence/build/runs/vulkan5-source-freeze-1153/source-freeze.json",
+    "sha256": "dcea6cc43b961b9a6615f5ca5eacb960d4e085f10e7d3f470271a6c227a272ed"
+  },
+  "wheels": [
+    {
+      "abi": "cp312",
+      "platform": "windows",
+      "tier": "strict-candidate",
+      "wheel": {
+        "name": "vispy-0.17.0+vulkan.5-cp312-cp312-win_amd64.whl",
+        "bytes": 6834429,
+        "sha256": "be5da8bc3db92aca682110b8f9f0896b5984945b50d1fc1d8269386c6cf0973a"
+      },
+      "installed_gpu_cases": 75,
+      "state_readback": 56,
+      "subpackages_plot": 16,
+      "collections_rendered": "9/9",
+      "jupyter_rfb": 3,
+      "installed_members_verified": 537,
+      "source_overrides": 0,
+      "shutdown_gauges_zero": 10,
+      "run": {
+        "path": "@evidence/build/runs/vulkan5-cp312-win-1157/verification.json",
+        "sha256": "04b13ed79d40fe84900fa85bc1d05af36d39f595b0118e58e86b1516caf56aba"
+      },
+      "device": "NVIDIA GeForce RTX 4090",
+      "tk_cases": 14,
+      "tk_run": {
+        "path": "@evidence/build/runs/vulkan5-cp312-win-tk-1158/verification.json",
+        "sha256": "107d7f8b640ec545513ed458d7db30d18557ea153bec7f81a5c28ef454d69c4b"
+      }
+    },
+    {
+      "abi": "cp312",
+      "platform": "linux",
+      "tier": "strict-candidate",
+      "wheel": {
+        "name": "vispy-0.17.0+vulkan.5-cp312-cp312-manylinux_2_39_x86_64.whl",
+        "bytes": 10579198,
+        "sha256": "d9a23bf22deab3724b1b67de4ca83a5152d4074255d8d6bee2ba70576ffdd253"
+      },
+      "installed_gpu_cases": 75,
+      "state_readback": 56,
+      "subpackages_plot": 16,
+      "collections_rendered": "9/9",
+      "jupyter_rfb": 3,
+      "installed_members_verified": 537,
+      "source_overrides": 0,
+      "shutdown_gauges_zero": 10,
+      "run": {
+        "path": "@evidence/build/runs/vulkan5-cp312-wsl-1163/verification.json",
+        "sha256": "bd3509879078fc0e42a0c9e33a47c63aad68e70ad58f52786d04ec301c91f1db"
+      },
+      "device": "llvmpipe (LLVM 18.1.3, 256 bits)",
+      "tk_cases": 14,
+      "tk_run": {
+        "path": "@evidence/build/runs/vulkan5-cp312-wsl-tk-1164/verification.json",
+        "sha256": "6fb39908aeffeea16348680b96675d2d43513e3ca48dad9c55ba5584d59b862d"
+      }
+    },
+    {
+      "abi": "cp311",
+      "platform": "windows",
+      "tier": "installed-functional",
+      "wheel": {
+        "name": "vispy-0.17.0+vulkan.5-cp311-cp311-win_amd64.whl",
+        "bytes": 6835125,
+        "sha256": "f0ecad9fa66cebf14a661c43e80edcdfa4dc01c6ec7112dd0afb010f94f41758"
+      },
+      "installed_gpu_cases": 75,
+      "state_readback": 56,
+      "subpackages_plot": 16,
+      "collections_rendered": "9/9",
+      "jupyter_rfb": 3,
+      "installed_members_verified": 537,
+      "source_overrides": 0,
+      "shutdown_gauges_zero": 10,
+      "run": {
+        "path": "@evidence/build/runs/vulkan5-win-cp311-1160/verification.json",
+        "sha256": "d62b2f164fc9cae14e1ff56c649c4de379dbb6ac4f13d65550bbf86445b6adb8"
+      },
+      "device": "NVIDIA GeForce RTX 4090",
+      "native_ctests": "44/44"
+    },
+    {
+      "abi": "cp311",
+      "platform": "linux",
+      "tier": "installed-functional",
+      "wheel": {
+        "name": "vispy-0.17.0+vulkan.5-cp311-cp311-manylinux_2_39_x86_64.whl",
+        "bytes": 10582138,
+        "sha256": "c9d4919a8902d5a4e1f995f6c682361bc522221fddd12374a69daa52997a218f"
+      },
+      "installed_gpu_cases": 75,
+      "state_readback": 56,
+      "subpackages_plot": 16,
+      "collections_rendered": "9/9",
+      "jupyter_rfb": 3,
+      "installed_members_verified": 537,
+      "source_overrides": 0,
+      "shutdown_gauges_zero": 10,
+      "run": {
+        "path": "@evidence/build/runs/vulkan5-wsl-cp311-1166/verification.json",
+        "sha256": "5ec0e6f7de3f1aa49fd10436cd6fe10e6d9439467965ff7466e56fdb3dc7e2ea"
+      },
+      "device": "llvmpipe (LLVM 18.1.3, 256 bits)",
+      "native_ctests": "44/44"
+    },
+    {
+      "abi": "cp313",
+      "platform": "windows",
+      "tier": "installed-functional",
+      "wheel": {
+        "name": "vispy-0.17.0+vulkan.5-cp313-cp313-win_amd64.whl",
+        "bytes": 6834006,
+        "sha256": "8dedab24bb0fee1fb54b35788bead64e314e8ae180de76e650a4fbaf9a67f69f"
+      },
+      "installed_gpu_cases": 75,
+      "state_readback": 56,
+      "subpackages_plot": 16,
+      "collections_rendered": "9/9",
+      "jupyter_rfb": 3,
+      "installed_members_verified": 537,
+      "source_overrides": 0,
+      "shutdown_gauges_zero": 10,
+      "run": {
+        "path": "@evidence/build/runs/vulkan5-win-cp313-1159/verification.json",
+        "sha256": "e2d0b00c69a42617a44ee300667aaf7429d669a8dcd0504d081ab442bf81c1d1"
+      },
+      "device": "NVIDIA GeForce RTX 4090",
+      "native_ctests": "44/44"
+    },
+    {
+      "abi": "cp313",
+      "platform": "linux",
+      "tier": "installed-functional",
+      "wheel": {
+        "name": "vispy-0.17.0+vulkan.5-cp313-cp313-manylinux_2_39_x86_64.whl",
+        "bytes": 10578888,
+        "sha256": "072a6dacea5112134146d431783685e7bca11d070c6e406f6be27968dde48168"
+      },
+      "installed_gpu_cases": 75,
+      "state_readback": 56,
+      "subpackages_plot": 16,
+      "collections_rendered": "9/9",
+      "jupyter_rfb": 3,
+      "installed_members_verified": 537,
+      "source_overrides": 0,
+      "shutdown_gauges_zero": 10,
+      "run": {
+        "path": "@evidence/build/runs/vulkan5-wsl-cp313-1167/verification.json",
+        "sha256": "b78da63b0ca0ce36bf29f536acaacc643348734481af26bbe9582110aafa5bf5"
+      },
+      "device": "llvmpipe (LLVM 18.1.3, 256 bits)",
+      "native_ctests": "44/44"
+    }
+  ],
+  "cp312_native_producers": {
+    "windows": {
+      "run": {
+        "path": "@evidence/build/runs/vulkan5-windows-native-1155/verification.json",
+        "sha256": "a3f63cbb42f0dc4c6c36d0d95b9d62d5efa3327da2774cf8c418d5ef19e4835d"
+      },
+      "assembly": {
+        "path": "@evidence/build/runs/vulkan5-windows-wheel-1156/verification.json",
+        "sha256": "b0179b9cc1612aa5715d1cc578761d8b7ec4ba565ab1bd61f3c74bfe58397959"
+      },
+      "native_ctests": "44/44"
+    },
+    "linux": {
+      "hosted_ci_run": 44956811839,
+      "capture": {
+        "path": "@evidence/build/runs/vulkan5-linux-artifact-1161/linux-wheel.json",
+        "sha256": "7292206df6f94b40a826851d0a89160c8824306e35de67839c33de3d0a3f5479"
+      },
+      "retag": {
+        "path": "@evidence/build/runs/vulkan5-linux-retag-1162/verification.json",
+        "sha256": "fb16c46869dc16eda29e971fb224a8d061c5917011ebc125b8b467cbea15af5f"
+      },
+      "reader_review": {
+        "path": "@evidence/build/runs/vulkan5-source-review-1153r/decision.json",
+        "sha256": "3900c7221b63850019a7a7a564107464b04586cca78e4a827e4b718c35fe2058"
+      }
+    }
+  },
+  "recorded_failed_attempts": [
+    "vulkan5-wsl-cp311-1166 attempt 1 stopped at controller.py:734 with NameError (missing import struct) after building and retagging the cp311 wheel and before any GPU case; cleaned up with PASS_APPLY, logs preserved under vulkan5-wsl-cp311-1166/attempt1/, script fixed (alongside 1167), and reran cleanly"
+  ],
+  "cp310_gpu_wheels_claimed": false,
+  "cp314_gpu_wheels_claimed": false,
+  "physical_linux_gpu_claimed": false,
+  "colab_rerun": false,
+  "scoped_admitted": false,
+  "artifact_admitted": false,
+  "publicly_delivered": false,
+  "full_inventory_complete": false,
+  "scope": "Six 0.17.0+vulkan.5 wheels built from one frozen source and checked installed: 75 GPU cases each on Windows RTX 4090 or WSL software Vulkan (Mesa lavapipe 9c5c41b3), plus 14 Tk cases on the two cp312 wheels. installed-functional only. Evidence recorded for earlier wheels (including Colab T4/L4) is not transferred to these wheels."
+}

@@ -118,7 +118,14 @@ class Node(object):
 
         If *clipper* is None, then remove any clippers for *node*.
         """
-        pass
+        if clipper is self._clippers.get(node):
+            return
+        if clipper is None:
+            del self._clippers[node]
+        else:
+            self._clippers[node] = clipper
+        for child in self.children:
+            child._set_clipper(node, clipper)
 
     @property
     def clip_children(self):
@@ -134,7 +141,7 @@ class Node(object):
         self._clip_children = clip
 
         for ch in self.children:
-            ch._set_clipper(self, self.clipper) 
+            ch._set_clipper(self, self.clipper if clip else None)
 
     @property
     def clipper(self):
@@ -201,11 +208,10 @@ class Node(object):
             self._parent = weakref.ref(parent)
             parent._add_child(self)
             # inherit clippers from parents
-            p = parent
-            while p is not None:
-                if p.clip_children:
-                    self._set_clipper(p, p.clipper)
-                p = p.parent
+            for owner, clipper in parent._clippers.items():
+                self._set_clipper(owner, clipper)
+            if parent.clip_children:
+                self._set_clipper(parent, parent.clipper)
 
         self.events.parent_change(new=parent, old=prev)
         self._update_trsys(None)

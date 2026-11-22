@@ -307,6 +307,7 @@ class _GLLineVisual(Visual):
     def __init__(self, parent):
         self._parent = parent
         self._pos_vbo = gloo.VertexBuffer()
+        self._pos_dims = None
         self._color_vbo = gloo.VertexBuffer()
         self._connect_ibo = gloo.IndexBuffer()
         self._connect = None
@@ -344,9 +345,14 @@ class _GLLineVisual(Visual):
             if self._parent._pos is None:
                 return False
             pos = np.ascontiguousarray(self._parent._pos, dtype=np.float32)
+            dims = pos.shape[-1]
+            to_vec4 = self._ensure_vec4_func(dims)
+            if self._pos_dims is not None and self._pos_dims != dims:
+                self._pos_vbo = gloo.VertexBuffer()
             self._pos_vbo.set_data(pos)
+            self._pos_dims = dims
             self._program.vert['position'] = self._pos_vbo
-            self._program.vert['to_vec4'] = self._ensure_vec4_func(pos.shape[-1])
+            self._program.vert['to_vec4'] = to_vec4
             self._parent._changed['pos'] = False
 
         if self._parent._changed['color']:

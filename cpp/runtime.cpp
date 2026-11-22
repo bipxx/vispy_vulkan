@@ -3,6 +3,7 @@
 #include "shader/glslang_spv.hpp"
 #include "shader/artifact.hpp"
 #include "shader/normalize.hpp"
+#include "shader/tint_wgsl.hpp"
 #include "runtime_texture.hpp"
 #include "runtime_owned_texture.hpp"
 #include "runtime_byte_recycler.hpp"
@@ -107,6 +108,38 @@ const char* error_type_name(wgpu::ErrorType type) {
     }
 }
 
+constexpr auto callback_timeout_ns = 30'000'000'000ull;
+
+enum class WaitOutcome { Completed, TimedOut, DeviceLost, Error };
+
+// Keep the blocking Dawn operation here so a future async implementation can
+// replace it without changing callback ownership or operation-specific checks.
+WaitOutcome wait_for_future(const wgpu::Instance& instance, wgpu::Future future,
+                            uint64_t timeout_ns, const wgpu::Device& device = nullptr,
+                            bool simulate_timeout = false) {
+    if (!instance || !future.id) return WaitOutcome::Error;
+    wgpu::FutureWaitInfo info{};
+    info.future = future;
+    // Withhold delivery as if completion fell past the deadline. Dawn still
+    // owns the actual callback, including when the caller cancels the operation.
+    const auto status = simulate_timeout ? wgpu::WaitStatus::TimedOut :
+        instance.WaitAny(1, &info, timeout_ns);
+    if (device && dawn::native::IsDeviceLost(device.Get())) return WaitOutcome::DeviceLost;
+    if (status == wgpu::WaitStatus::TimedOut) return WaitOutcome::TimedOut;
+    if (status == wgpu::WaitStatus::Success && info.completed) return WaitOutcome::Completed;
+    return WaitOutcome::Error;
+}
+
+const char* wait_error(WaitOutcome outcome) {
+    switch (outcome) {
+        case WaitOutcome::Completed: return "Dawn callback wait returned without a result";
+        case WaitOutcome::TimedOut: return "Dawn callback wait timed out";
+        case WaitOutcome::DeviceLost: return "Dawn device lost during callback wait";
+        case WaitOutcome::Error: return "Dawn callback wait failed";
+    }
+    return "Dawn callback wait failed";
+}
+
 struct BackendShaderLog {
     std::mutex mutex;
     std::ofstream stream;
@@ -133,6 +166,14 @@ struct BackendShaderLog {
     }
 };
 
+bool standard_webgpu_requested() {
+    static const bool enabled = [] {
+        const char* value = std::getenv("VISPY_DAWN_STANDARD_ONLY");
+        return value && std::string_view(value) == "1";
+    }();
+    return enabled;
+}
+
 // All callback storage exists before begin(). Pop uses a noncapturing callback
 // and transfers its preallocated owner, so timeout never leaves stack userdata.
 class PipelineCreationScopes {
@@ -153,7 +194,7 @@ class PipelineCreationScopes {
     std::array<std::shared_ptr<Result>, 3> results;
     std::array<std::unique_ptr<std::shared_ptr<Result>>, 3> owners;
     std::array<wgpu::Future, 3> futures{};
-    std::array<wgpu::WaitStatus, 3> waits{};
+    std::array<WaitOutcome, 3> waits{WaitOutcome::Error, WaitOutcome::Error, WaitOutcome::Error};
     size_t open = 0;
     bool drained = false;
 
@@ -189,7 +230,7 @@ class PipelineCreationScopes {
         }
         for (size_t index = results.size(); index-- > 0;)
             if (futures[index].id)
-                waits[index] = instance.WaitAny(futures[index], 30'000'000'000ull);
+                waits[index] = wait_for_future(instance, futures[index], callback_timeout_ns);
         drained = true;
         if (marker_open) { marker("END"); marker_open = false; }
     }
@@ -229,9 +270,8 @@ public:
         };
         for (size_t index = results.size(); index-- > 0;) {
             const auto& result = *results[index];
-            if (waits[index] != wgpu::WaitStatus::Success || !result.done.load()) {
-                append("error-scope callback wait failed (WaitStatus=" +
-                    std::to_string(static_cast<uint32_t>(waits[index])) + ")");
+            if (waits[index] != WaitOutcome::Completed || !result.done.load()) {
+                append(std::string("error-scope: ") + wait_error(waits[index]));
             } else if (result.status != wgpu::PopErrorScopeStatus::Success ||
                        result.type != wgpu::ErrorType::NoError || result.message_failed) {
                 append(std::string(error_type_name(result.type)) + " (PopErrorScopeStatus=" +
@@ -241,12 +281,9 @@ public:
         }
         // A lost Dawn device can return synthetic clean pops. Its lost future
         // must therefore refuse admission even when every scope says NoError.
-        wgpu::FutureWaitInfo loss{};
-        loss.future = lost;
-        const auto loss_status = instance.WaitAny(1, &loss, 0);
-        if (loss.completed) append("device lost during creation");
-        else if (loss_status != wgpu::WaitStatus::Success && loss_status != wgpu::WaitStatus::TimedOut)
-            append("device-loss observation failed");
+        const auto loss_status = wait_for_future(instance, lost, 0);
+        if (loss_status == WaitOutcome::Completed) append("device lost during creation");
+        else if (loss_status != WaitOutcome::TimedOut) append("device-loss observation failed");
         return errors;
     }
 };
@@ -301,6 +338,7 @@ struct Artifact : vispy::shader::DeviceShaderArtifact<
     // vertex/fragment pipeline. Each DRAW route admits its own device interface.
     bool linked = false;
     bool ordinary_attempted = false;
+    std::vector<wgpu::BindGroupLayoutEntry> ordinary_bind_entries;
     wgpu::ShaderModule line_module;
     wgpu::BindGroupLayout line_bind_layout;
     wgpu::PipelineLayout line_pipeline_layout;
@@ -872,6 +910,7 @@ struct QueuedFrame {
     std::optional<FrameMark> mark;
     bool present = false;
     uint64_t id = 0, generation = 0;
+    bool prepare_capture = false;
 };
 
 struct Ticket;
@@ -921,6 +960,7 @@ struct Canvas {
     wgpu::Texture presented;
     wgpu::TextureView presented_view;
     PresentedCapture presented_capture;
+    PresentedCapture prepared_capture;
     // Reused MapRead staging buffer for read_canvas; only valid for the device
     // generation that created it, and always unmapped between reads.
     wgpu::Buffer readback_staging;
@@ -965,6 +1005,11 @@ static bool host_import_requested() {
     return !(value && std::string_view(value) == "0");
 }
 
+static bool converted_host_import_requested() {
+    const char* value = std::getenv("VISPY_DAWN_CONVERTED_HOST_IMPORT");
+    return value && std::string_view(value) == "1";
+}
+
 // A pooled, host-mapped buffer for a full texture upload (Engine::stage_texture_rows). queue.WriteTexture
 // makes Dawn allocate and fill a dedicated staging buffer per call above its 4 MiB ring: 64 MiB per frame for a
 // 4096x4096 float32 image (run perf-profile-261). A lease is unmapped and owned by its submission's Ticket while
@@ -1006,8 +1051,15 @@ struct Ticket {
     std::vector<wgpu::Buffer> transient_buffers;
     std::vector<std::shared_ptr<StagingLease>> staging;  // full-upload staging in flight
     std::vector<vispy::memory::HostBytes> host_blocks;  // host blocks this frame's copies read (plan P5)
-    // Plan P6: revisions this frame copies from their blocks' imports, uploaded once the frame is submitted.
-    std::vector<std::pair<std::shared_ptr<BufferRev>, uint64_t>> imported_buffers;
+    struct PendingBufferUpload {
+        std::shared_ptr<BufferRev> rev;
+        uint64_t revision;
+        bool host_imported;
+        uint64_t bytes;
+    };
+    // Plan P6: revisions this frame copies before its pass begins (via HostMappedPointer import or pooled staging),
+    // uploaded once the frame is submitted.
+    std::vector<PendingBufferUpload> imported_buffers;
     std::optional<NativeLinePool::BatchReservation> line_resources;
     bool submission_owner_retained = false;
     bool diagnostic_retirement_counted = false;
@@ -1054,6 +1106,9 @@ struct DeviceCallbacks {
 };
 
 struct Engine {
+    const bool standard_only = standard_webgpu_requested();
+    bool specialize_texture_layout = false;
+    bool validate_texture_features_before_allocation = false;
     std::mutex mu;
     bool device_ready = false;
     bool device_lost = false;
@@ -1075,6 +1130,7 @@ struct Engine {
     std::unordered_map<int, Canvas> canvases;
     std::vector<std::string> trace;
     NativeShaderCache shader_artifacts;
+    vispy::shader::TintWgslCache tint_wgsl;
     uint64_t device_generation = 0;
     uint64_t next_ticket = 1;
     uint64_t next_queued_frame = 1;
@@ -1141,6 +1197,7 @@ struct Engine {
     std::shared_ptr<std::atomic<bool>> hold_submission_completions =
         std::make_shared<std::atomic<bool>>(false);
     std::string diagnostic_submit_failure;
+    bool diagnostic_readback_timeout = false;
     std::deque<std::shared_ptr<FrameMark::Queries>> query_frames;
     std::deque<std::shared_ptr<FrameMark::Queries>> frame_works;
     std::unordered_map<int, std::deque<BenchmarkCompletion>> completion_records;
@@ -1366,11 +1423,14 @@ struct Engine {
         auto frame = ticket.queries;
         const auto presented_canvas = canvases.find(ticket.canvas_id);
         if (presented_canvas != canvases.end()) {
-            auto& image = presented_canvas->second.presented_capture;
-            if (image.valid && status != "success" &&
+            for (auto* capture : {&presented_canvas->second.presented_capture,
+                                  &presented_canvas->second.prepared_capture}) {
+                auto& image = *capture;
+                if (image.valid && status != "success" &&
                     ((ticket.id && ticket.id <= image.ticket) || (ticket.id && ticket.id == image.diagnostic_ticket) ||
                      (frame && frame == image.owner))) image = {};
-            else if (image.valid && ticket.id == image.ticket && status == "success") image.producer_retired = true;
+                else if (image.valid && ticket.id == image.ticket && status == "success") image.producer_retired = true;
+            }
         }
         // User cancellation changes the capture/frame result, not successful
         // native payload validity. A native validation/queue failure or loss
@@ -1423,6 +1483,8 @@ struct Engine {
         frame->work.close(monotonic_ns());
         frame->final_requested = true;
         auto found = canvases.find(frame->canvas_id);
+        if (found != canvases.end() && found->second.prepared_capture.owner == frame)
+            found->second.prepared_capture = {};
         if (found != canvases.end() && found->second.frame_mark &&
             found->second.frame_mark->queries == frame && !found->second.active_paint_token)
             found->second.frame_mark.reset();
@@ -1831,7 +1893,10 @@ struct Engine {
         if (callback_failed) {
             // An unattributed asynchronous validation error is not successful
             // capture provenance, even after its exception has been caught.
-            for (auto& [id, canvas] : canvases) canvas.presented_capture = {};
+            for (auto& [id, canvas] : canvases) {
+                canvas.presented_capture = {};
+                canvas.prepared_capture = {};
+            }
             throw std::runtime_error("Dawn: " + last_error);
         }
     }
@@ -1862,10 +1927,11 @@ struct Engine {
         update_work_peaks();
     }
 
-    bool wait_result(wgpu::Future future, const std::shared_ptr<AsyncResult>& result) {
-        auto status = instance.WaitAny(future, 30'000'000'000ull);
-        if (status != wgpu::WaitStatus::Success || !result->done.load()) {
-            last_error = "Dawn callback wait failed or timed out";
+    bool wait_result(wgpu::Future future, const std::shared_ptr<AsyncResult>& result,
+                     bool simulate_timeout = false) {
+        const auto outcome = wait_for_future(instance, future, callback_timeout_ns, device, simulate_timeout);
+        if (outcome != WaitOutcome::Completed || !result->done.load()) {
+            last_error = wait_error(outcome);
             return false;
         }
         if (!result->ok) last_error = result->error;
@@ -1925,6 +1991,7 @@ struct Engine {
             auto& canvas = entry.second;
             canvas.frame_mark.reset();
             canvas.presented_capture = {};
+            canvas.prepared_capture = {};
             canvas.readback_staging = nullptr;
             canvas.readback_staging_bytes = 0;
             canvas.color = nullptr;
@@ -2031,6 +2098,7 @@ struct Engine {
         for (const auto& ticket : tickets)
             if (ticket->callback_received.load()) ticket->complete.store(true);
         diagnostic_submit_failure.clear();
+        diagnostic_readback_timeout = false;
         // Cancel before explicit shutdown waits and destruction; those are not
         // measured allocation events. Never strand the layer's active token.
         if (memory_window_token) close_memory_window(true);
@@ -2071,6 +2139,7 @@ struct Engine {
         query_segments.clear();
         objects.clear();
         shader_artifacts.clear();
+        tint_wgsl.clear();
         tickets.clear();
         line_pool.reset();
         line_canary = nullptr;
@@ -2152,6 +2221,7 @@ struct Engine {
 
     void retire_surface(Canvas& canvas) {
         canvas.presented_capture = {};
+        canvas.prepared_capture = {};
         const bool drain_native_owner = canvas.surface_owner &&
             vispy::platform::native_surface_requires_retirement_drain(canvas.surface_owner->descriptor().kind);
         if (drain_native_owner) {
@@ -2242,16 +2312,17 @@ struct Engine {
         // only allows such APIs; it changes nothing the runtime already uses.
         const char* unsafe_toggles[] = {"allow_unsafe_apis"};
         wgpu::DawnTogglesDescriptor instance_toggles;
-        if (host_import_requested()) {
+        if (!standard_only && host_import_requested()) {
             instance_toggles.enabledToggleCount = 1;
             instance_toggles.enabledToggles = unsafe_toggles;
             native_desc.nextInChain = &instance_toggles;
         }
-        wgpu::InstanceFeatureName features[] = {wgpu::InstanceFeatureName::ShaderSourceSPIRV,
-                                               wgpu::InstanceFeatureName::TimedWaitAny};
+        wgpu::InstanceFeatureName features[] = {wgpu::InstanceFeatureName::TimedWaitAny,
+                                               wgpu::InstanceFeatureName::ShaderSourceSPIRV};
         wgpu::InstanceDescriptor desc;
         desc.nextInChain = &native_desc;
-        desc.requiredFeatureCount = 2;
+        // Dawn's bounded blocking waits require TimedWaitAny on native backends.
+        desc.requiredFeatureCount = standard_only ? 1 : std::size(features);
         desc.requiredFeatures = features;
         release_surfaces();
         release_retired_buffers(true);
@@ -2327,13 +2398,13 @@ struct Engine {
         const char* disabled_toggles[] = {"vulkan_use_d32s8"};
         const char* diagnostic_toggles[] = {"dump_shaders"};
         std::shared_ptr<BackendShaderLog> backend_log;
-        if (const char* path = std::getenv("VISPY_DAWN_BACKEND_SHADER_DUMP"); path && *path) {
+        if (const char* path = std::getenv("VISPY_DAWN_BACKEND_SHADER_DUMP"); !standard_only && path && *path) {
             backend_log = std::make_shared<BackendShaderLog>(std::filesystem::u8path(path));
             backend_shader_logs.push_back(backend_log);
         }
         current_backend_shader_log = backend_log;
         wgpu::DawnTogglesDescriptor depth_policy;
-        if (vispy::platform::default_backend() == wgpu::BackendType::Vulkan) {
+        if (!standard_only && vispy::platform::default_backend() == wgpu::BackendType::Vulkan) {
             depth_policy.disabledToggleCount = 1;
             depth_policy.disabledToggles = disabled_toggles;
         }
@@ -2345,11 +2416,22 @@ struct Engine {
             device_desc.nextInChain = &depth_policy;
         device_desc.requiredLimits = &limits;
         std::vector<wgpu::FeatureName> device_features;
-        for (auto feature : {wgpu::FeatureName::Float32Filterable,
-                             wgpu::FeatureName::Unorm16TextureFormats, wgpu::FeatureName::TimestampQuery}) {
-            if (adapter.HasFeature(feature)) device_features.push_back(feature);
+        const char* feature_mask = std::getenv("VISPY_DAWN_DISABLE_FEATURE");
+        const std::string_view disabled_feature = feature_mask ? feature_mask : "";
+        specialize_texture_layout = standard_only || disabled_feature == "Float32Filterable";
+        validate_texture_features_before_allocation = specialize_texture_layout ||
+            disabled_feature == "Unorm16TextureFormats";
+        // The standardized tier covers the normalized 16-bit formats used here.
+        const auto norm16 = standard_only ? wgpu::FeatureName::TextureFormatsTier1 :
+                                           wgpu::FeatureName::Unorm16TextureFormats;
+        for (const auto& [feature, name] : {
+                 std::pair{wgpu::FeatureName::Float32Filterable, "Float32Filterable"},
+                 std::pair{norm16, "Unorm16TextureFormats"},
+                 std::pair{wgpu::FeatureName::TimestampQuery, "TimestampQuery"}}) {
+            if ((disabled_feature != name) && adapter.HasFeature(feature))
+                device_features.push_back(feature);
         }
-        if (host_import_requested() && adapter.HasFeature(wgpu::FeatureName::HostMappedPointer)) {
+        if (!standard_only && host_import_requested() && adapter.HasFeature(wgpu::FeatureName::HostMappedPointer)) {
             wgpu::DawnHostMappedPointerLimits host_limits;
             wgpu::Limits adapter_limits;
             adapter_limits.nextInChain = &host_limits;
@@ -2409,7 +2491,7 @@ struct Engine {
         info.max_buffer_size = limits.maxBufferSize;
         info.max_uniform_buffer_size = limits.maxUniformBufferBindingSize;
         info.float32_filterable = device.HasFeature(wgpu::FeatureName::Float32Filterable);
-        info.unorm16_texture_formats = device.HasFeature(wgpu::FeatureName::Unorm16TextureFormats);
+        info.unorm16_texture_formats = device.HasFeature(norm16);
         info.timestamp_query = device.HasFeature(wgpu::FeatureName::TimestampQuery);
         info.host_mapped_pointer = device.HasFeature(wgpu::FeatureName::HostMappedPointer);
         info.host_import_limit = host_import_limit;
@@ -2504,6 +2586,7 @@ struct Engine {
             return;
         }
         target.presented_capture = {};
+        target.prepared_capture = {};
         target.present_group = nullptr;
         wgpu::TextureDescriptor td;
         td.size = {static_cast<uint32_t>(target.width), static_cast<uint32_t>(target.height), 1};
@@ -2545,19 +2628,31 @@ struct Engine {
             std::to_string(target.width) + "x" + std::to_string(target.height));
     }
 
-    wgpu::ShaderModule make_spirv_module(const std::vector<uint32_t>& words,
-                                        SpirvDerivativeMode derivative_mode, const char* label = nullptr) {
+    wgpu::ShaderModule make_compiled_module(const std::vector<uint32_t>& words,
+                                           SpirvDerivativeMode derivative_mode, const char* label) {
         HostTimer timer(probe.shader_module_creation_ns);
         ++probe.shader_module_creations;
+        // Shader source selection is process-wide, like the device cache policy.
+        static const bool use_wgsl = [] {
+            const char* path = std::getenv("VISPY_DAWN_SHADER_PATH");
+            return path && std::string_view(path) == "wgsl";
+        }();
+        wgpu::ShaderModuleDescriptor descriptor;
+        descriptor.label = label;
+        if (standard_only || use_wgsl) {
+            auto source = tint_wgsl.translate(words, derivative_mode, label);
+            wgpu::ShaderSourceWGSL wgsl;
+            wgsl.code = {source->data(), source->size()};
+            descriptor.nextInChain = &wgsl;
+            return device.CreateShaderModule(&descriptor);
+        }
         wgpu::DawnShaderModuleSPIRVOptionsDescriptor derivative_options;
         derivative_options.allowNonUniformDerivatives = derivative_mode == SpirvDerivativeMode::AllowNonUniform;
         wgpu::ShaderSourceSPIRV spirv;
         spirv.nextInChain = &derivative_options;
         spirv.code = words.data();
         spirv.codeSize = static_cast<uint32_t>(words.size());
-        wgpu::ShaderModuleDescriptor descriptor;
         descriptor.nextInChain = &spirv;
-        descriptor.label = label;
         // Both chained descriptors and the retained words remain alive through
         // the synchronous call. Every SPIR-V caller supplies a captured policy.
         return device.CreateShaderModule(&descriptor);
@@ -2857,10 +2952,18 @@ struct Engine {
         PipelineCreationScopes creation(instance, device, "ordinary graphics " + artifact->portable->cache_key,
             current_backend_shader_log, creation_generation);
         creation.begin();
-        artifact->vert_module = make_spirv_module(artifact->portable->spv_vert,
-            artifact->portable->derivative_mode, "ordinary vertex/main");
-        artifact->frag_module = make_spirv_module(artifact->portable->spv_frag,
-            artifact->portable->derivative_mode, "ordinary fragment/main");
+        try {
+            artifact->vert_module = make_compiled_module(artifact->portable->spv_vert,
+                artifact->portable->derivative_mode, "ordinary vertex/main");
+            artifact->frag_module = make_compiled_module(artifact->portable->spv_frag,
+                artifact->portable->derivative_mode, "ordinary fragment/main");
+        } catch (const std::exception& exception) {
+            artifact->vert_module = nullptr;
+            artifact->frag_module = nullptr;
+            artifact->error = error = exception.what();
+            refresh_artifact(*artifact);
+            return;
+        }
         std::vector<wgpu::BindGroupLayoutEntry> entries;
         if (!artifact->portable->uniforms.empty() && artifact->portable->uniform_stage_mask) {
             wgpu::BindGroupLayoutEntry entry;
@@ -2910,6 +3013,7 @@ struct Engine {
         bgl.entryCount = entries.size();
         bgl.entries = entries.data();
         artifact->bind_layout = device.CreateBindGroupLayout(&bgl);
+        if (specialize_texture_layout) artifact->ordinary_bind_entries = std::move(entries);
         wgpu::PipelineLayoutDescriptor pld;
         pld.bindGroupLayoutCount = 1;
         pld.bindGroupLayouts = &artifact->bind_layout;
@@ -3113,7 +3217,7 @@ struct Engine {
         PipelineCreationScopes creation(instance, device, "line evaluator compute " + evaluator.cache_key,
             current_backend_shader_log, creation_generation);
         creation.begin();
-        original->line_module = make_spirv_module(evaluator.spv, evaluator.derivative_mode,
+        original->line_module = make_compiled_module(evaluator.spv, evaluator.derivative_mode,
             "line evaluator compute/main");
         std::vector<wgpu::BindGroupLayoutEntry> entries;
         auto buffer_entry = [&](uint32_t binding, wgpu::BufferBindingType type, uint64_t minimum) {
@@ -3226,9 +3330,9 @@ struct Engine {
         const auto vertex_label = prefix + " vertex/main";
         const auto fragment_label = prefix + " fragment/main";
         descriptor.label = prefix.c_str();
-        auto vertex = make_spirv_module(consumer->vertex_spv, consumer->original->derivative_mode,
+        auto vertex = make_compiled_module(consumer->vertex_spv, consumer->original->derivative_mode,
             vertex_label.c_str());
-        auto fragment = make_spirv_module(consumer->fragment_spv, consumer->original->derivative_mode,
+        auto fragment = make_compiled_module(consumer->fragment_spv, consumer->original->derivative_mode,
             fragment_label.c_str());
         auto layout = device.CreateBindGroupLayout(&descriptor);
         record->error = finish_pipeline_creation(creation, creation_generation);
@@ -3372,9 +3476,8 @@ struct Engine {
                 sizeof(DrawSnap) + sizeof(LineWork) + sizeof(Record) * 4 + 128) > control_budget)
             throw std::length_error("lines: chunk input/control representation exceeds explicit budget");
         vispy::shader::LineConsumerPolicy policy;
-        policy.coverage = captured.selection.state.smooth ? vispy::shader::LineCoveragePolicy::SmoothAnalytic :
-                                                          vispy::shader::LineCoveragePolicy::AliasedMajorAxis;
         policy.sample_count = static_cast<uint32_t>(snap.state.sample_count);
+        policy.coverage = vispy::shader::line_coverage_policy(captured.selection.state.smooth, policy.sample_count);
         policy.depth_output = bool(snap.depth_view) || bool(snap.depth_attachment);
         policy.coverage_identity = vispy::shader::line_coverage_identity(
             captured.selection.state.smooth, policy.sample_count);
@@ -3535,9 +3638,8 @@ struct Engine {
         }
         vispy::lines::LineConsumerSelection selection(selected.primitive, selected.selection());
         vispy::shader::LineConsumerPolicy policy;
-        policy.coverage = selected.state.smooth ? vispy::shader::LineCoveragePolicy::SmoothAnalytic :
-                                                vispy::shader::LineCoveragePolicy::AliasedMajorAxis;
         policy.sample_count = static_cast<uint32_t>(snap.state.sample_count);
+        policy.coverage = vispy::shader::line_coverage_policy(selected.state.smooth, policy.sample_count);
         policy.depth_output = bool(snap.depth_view) || bool(snap.depth_attachment);
         policy.coverage_identity = vispy::shader::line_coverage_identity(
             selected.state.smooth, policy.sample_count);
@@ -4171,10 +4273,10 @@ struct Engine {
         return buffer;
     }
 
-    // Plan P6: whether the frame being encoded already copies this revision from its block's import.
+    // Plan P6: whether the frame being encoded already copies this revision before its pass begins.
     static bool imported_in(const Ticket* ticket, const BufferRev& rev) {
         return ticket && std::any_of(ticket->imported_buffers.begin(), ticket->imported_buffers.end(),
-            [&rev](const auto& entry) { return entry.first.get() == &rev && entry.second == rev.revision; });
+            [&rev](const auto& entry) { return entry.rev.get() == &rev && entry.revision == rev.revision; });
     }
 
     void upload_revision(BufferRev& rev, wgpu::BufferUsage usage, const Ticket* ticket = nullptr) {
@@ -4197,47 +4299,71 @@ struct Engine {
         probe.geometry_upload_bytes += bytes.size();
     }
 
-    // Plan P6: a revision whose bytes are a host block is copied on the GPU from the block's import, before the pass
-    // that reads it begins, and the Ticket holds the block until the copy has retired. The copy reaches the GPU with
-    // the frame's commands, so the revision counts as uploaded once the frame is submitted (commit_buffer_imports).
-    // False leaves the upload to upload_revision in the pass: the bytes are a vector, their size is not a multiple of
-    // 4, or the block has no import (host_import).
+    // Plan P6: before a draw's pass begins, copy revisions from a host-mapped block import when available, or
+    // through a pooled mapped staging buffer when the payload fits the staging pool (>= staging_min_bytes) so warm
+    // streamed uploads without HostMappedPointer avoid per-frame buffer/memory allocations.
     bool import_revision(const std::shared_ptr<BufferRev>& rev, wgpu::BufferUsage usage,
                          const wgpu::CommandEncoder& encoder, Ticket& ticket) {
-        if (!rev->host || (rev->gpu && (rev->gpu_revision == rev->revision || imported_in(&ticket, *rev))))
+        if (rev->gpu && (rev->gpu_revision == rev->revision || imported_in(&ticket, *rev)))
             return false;
-        const uint64_t size = rev->host->size();
-        if (!size || size % 4) return false;
-        auto source = host_import(*rev->host, &ticket);
-        if (!source) return false;
-        HostTimer timer(probe.buffer_upload_cpu_ns);
-        if (!rev->gpu) rev->gpu = revision_buffer(size, usage);
-        encoder.CopyBufferToBuffer(source, 0, rev->gpu, 0, size);
-        ticket.host_blocks.push_back(rev->host);
-        ticket.imported_buffers.push_back({rev, rev->revision});
-        return true;
+        if (info.host_mapped_pointer && rev->host) {
+            const uint64_t size = rev->host->size();
+            if (size && size % 4 == 0) {
+                if (auto source = host_import(*rev->host, &ticket)) {
+                    HostTimer timer(probe.buffer_upload_cpu_ns);
+                    if (!rev->gpu) rev->gpu = revision_buffer(size, usage);
+                    encoder.CopyBufferToBuffer(source, 0, rev->gpu, 0, size);
+                    ticket.host_blocks.push_back(rev->host);
+                    ticket.imported_buffers.push_back({rev, rev->revision, true, size});
+                    return true;
+                }
+            }
+        }
+        const auto bytes = rev->bytes();
+        if (bytes.size() >= staging_min_bytes && bytes.size() <= staging_max_request) {
+            HostTimer timer(probe.buffer_upload_cpu_ns);
+            const uint64_t copy_size = (bytes.size() + 3u) & ~uint64_t{3};
+            if (auto lease = acquire_staging(copy_size)) {
+                std::memcpy(lease->mapped, bytes.data(), bytes.size());
+                if (copy_size > bytes.size())
+                    std::memset(static_cast<uint8_t*>(lease->mapped) + bytes.size(), 0, copy_size - bytes.size());
+                lease->buffer.Unmap();
+                lease->mapped = nullptr;
+                if (!rev->gpu) rev->gpu = revision_buffer(bytes.size(), usage);
+                encoder.CopyBufferToBuffer(lease->buffer, 0, rev->gpu, 0, copy_size);
+                ticket.staging.push_back(std::move(lease));
+                ticket.imported_buffers.push_back({rev, rev->revision, false, bytes.size()});
+                return true;
+            }
+        }
+        return false;
     }
 
     // Plan P6: before a draw's pass begins, its vertex streams and index buffer are copied from their blocks'
-    // imports where they can be, so that the pass finds them uploaded. The batched routes upload in the pass.
+    // imports or pooled staging where they can be, so that the pass finds them uploaded. The batched routes upload in the pass.
     void import_draw_buffers(const DrawSnap& snap, const wgpu::CommandEncoder& encoder, Ticket& ticket) {
-        if (!info.host_mapped_pointer || !snap.artifact || snap.count <= 0 || snap.instances <= 0 ||
+        if (!snap.artifact || snap.count <= 0 || snap.instances <= 0 ||
                 snap.batch_inputs || snap.point_batch_inputs) return;
         for (size_t v = 0; v < snap.vertex_streams.size() && v < snap.vertices.size(); ++v)
             if (snap.vertices[v]) import_revision(snap.vertices[v], wgpu::BufferUsage::Vertex, encoder, ticket);
         if (snap.index) import_revision(snap.index, wgpu::BufferUsage::Index, encoder, ticket);
     }
 
-    // Plan P6: after Queue.Submit, the revisions this frame copied from imports are uploaded. The list then holds them
-    // no longer, so that a revision only the Ticket holds is seen to die with it (keep_retired_buffers).
+    // Plan P6: after Queue.Submit, the revisions this frame copied before its pass are uploaded. The list then holds
+    // them no longer, so that a revision only the Ticket holds is seen to die with it (keep_retired_buffers).
     void commit_buffer_imports(Ticket& ticket) {
-        for (const auto& [rev, revision] : ticket.imported_buffers) {
-            if (rev->revision != revision) continue;
-            rev->gpu_revision = revision;
+        for (const auto& entry : ticket.imported_buffers) {
+            if (entry.rev->revision != entry.revision) continue;
+            entry.rev->gpu_revision = entry.revision;
             ++probe.buffer_uploads;
-            probe.geometry_upload_bytes += rev->size();
-            ++probe.buffer_import_copies;
-            probe.buffer_import_bytes += rev->size();
+            probe.geometry_upload_bytes += entry.bytes;
+            if (entry.host_imported) {
+                ++probe.buffer_import_copies;
+                probe.buffer_import_bytes += entry.bytes;
+            } else {
+                if (entry.rev->host) ++probe.buffer_import_fallbacks;
+                probe.copy_bytes += entry.bytes;
+            }
         }
         ticket.imported_buffers.clear();
     }
@@ -4763,6 +4889,22 @@ struct Engine {
         snap.first = 0;
     }
 
+    bool needs_unfilterable_binding(wgpu::TextureFormat format) const {
+        using Format = wgpu::TextureFormat;
+        switch (format) {
+        case Format::R32Float:
+        case Format::RG32Float:
+        case Format::RGBA32Float:
+            return !info.float32_filterable;
+        case Format::R16Unorm:
+        case Format::RG16Unorm:
+        case Format::RGBA16Unorm:
+            return standard_only;
+        default:
+            return false;
+        }
+    }
+
     wgpu::RenderPipeline draw_pipeline(DrawSnap& snap, const RenderState* selected_state = nullptr) {
         auto render_state = selected_state ? *selected_state : snap.state;
         // GL ignores stencil testing when the logical FBO has no stencil bits.
@@ -4811,6 +4953,18 @@ struct Engine {
             key << ":stream=" << stream.stride << ',' << stream.instance;
         for (size_t n = 0; n < snap.bindings.size(); ++n)
             key << ":field=" << snap.vertex_slots.at(n) << ',' << snap.bindings[n].offset;
+        std::vector<std::pair<uint32_t, uint32_t>> unfilterable;
+        if (!consumer_render && specialize_texture_layout) {
+            const auto& samplers = art.portable->samplers;
+            for (size_t i = 0; i < std::min(snap.textures.size(), samplers.size()); ++i) {
+                const auto& sampler = samplers[i];
+                if (sampler.sample_scalar == ShaderScalarType::Float &&
+                        needs_unfilterable_binding(snap.textures[i]->texture.GetFormat())) {
+                    unfilterable.emplace_back(sampler.texture_binding, sampler.sampler_binding);
+                    key << ":unfilterable=" << sampler.texture_binding;
+                }
+            }
+        }
         const auto cache_key = key.str();
         auto& variants = selected_consumer ? selected_consumer->variants : art.variants;
         if (auto found = variants.find(cache_key); found != variants.end()) {
@@ -4845,6 +4999,21 @@ struct Engine {
         layout_desc.label = role.c_str();
         layout_desc.bindGroupLayoutCount = 1;
         layout_desc.bindGroupLayouts = consumer_render ? &selected_consumer->bind_layout : &art.bind_layout;
+        wgpu::BindGroupLayout specialized_layout;
+        if (!unfilterable.empty()) {
+            auto entries = art.ordinary_bind_entries;
+            for (auto& entry : entries) {
+                for (const auto& [texture, sampler] : unfilterable) {
+                    if (entry.binding == texture) entry.texture.sampleType = wgpu::TextureSampleType::UnfilterableFloat;
+                    if (entry.binding == sampler) entry.sampler.type = wgpu::SamplerBindingType::NonFiltering;
+                }
+            }
+            wgpu::BindGroupLayoutDescriptor descriptor;
+            descriptor.entryCount = entries.size();
+            descriptor.entries = entries.data();
+            specialized_layout = device.CreateBindGroupLayout(&descriptor);
+            layout_desc.bindGroupLayouts = &specialized_layout;
+        }
         auto layout = device.CreatePipelineLayout(&layout_desc);
         wgpu::ColorTargetState color;
         color.format = snap.attachment ? snap.attachment->texture.GetFormat() : wgpu::TextureFormat::RGBA8Unorm;
@@ -4924,6 +5093,8 @@ struct Engine {
         snap.state.blend_enabled = false;
         snap.state.cull_enabled = false;
         snap.state.polygon_offset_fill = false;
+        snap.state.sample_alpha_to_coverage = false;
+        snap.state.sample_coverage_enabled = false;
         if (!clear_color) snap.state.color_mask.fill(false);
         snap.state.depth_test = clear_depth;
         snap.state.depth_mask = clear_depth;
@@ -4964,7 +5135,7 @@ struct Engine {
 
     void refresh_sampler(TextureRev& rev) {
         const auto descriptor = sampler_texture_descriptor(rev, rev.allocation_descriptor.get());
-        rev.sampler = create_sampler(device, descriptor);
+        rev.sampler = create_sampler(device, descriptor, standard_only);
     }
 
     uint64_t pending_depth_upload_passes(const std::shared_ptr<TextureRev>& rev,
@@ -5508,7 +5679,13 @@ struct Vertex { @builtin(position) position: vec4f, @location(0) uv: vec2f }
         {
             HostTimer timer(probe.texture_conversion_ns);
             if (partial) partial_prepared = prepare_region(*rev.allocation_descriptor, rev.updates.front().data);
-            else full_upload = vispy::textures::prepare_full_upload(rev, rev.allocation_descriptor.get());
+            else {
+                const size_t max_converted_host_bytes = encoder && ticket && info.host_mapped_pointer &&
+                    converted_host_import_requested() ?
+                    std::min(info.max_buffer_size, staging_max_request) : 0;
+                full_upload = vispy::textures::prepare_full_upload(rev, rev.allocation_descriptor.get(),
+                                                                  max_converted_host_bytes);
+            }
         }
         const PreparedTexture& prepared = partial ? partial_prepared : full_upload.prepared();
         wgpu::TextureDescriptor td;
@@ -5522,6 +5699,8 @@ struct Vertex { @builtin(position) position: vec4f, @location(0) uv: vec2f }
         td.usage = wgpu::TextureUsage::TextureBinding | wgpu::TextureUsage::CopyDst |
                    wgpu::TextureUsage::CopySrc;
         if (rev.dimensions == 2) td.usage |= wgpu::TextureUsage::RenderAttachment;
+        // Validate opt-in feature restrictions before storing a texture handle.
+        if (validate_texture_features_before_allocation && !rev.sampler) refresh_sampler(rev);
         if (!rev.texture || rev.texture.GetFormat() != prepared.format) {
             rev.texture = device.CreateTexture(&td);
             rev.allocation_token = std::make_shared<int>(0);
@@ -5607,9 +5786,8 @@ struct Vertex { @builtin(position) position: vec4f, @location(0) uv: vec2f }
             ticket->ordered_uploads.push_back({&rev, rev.revision, rev.updates.size(), upload_bytes, copied_bytes});
             return;
         }
-        // Plan P5: an upload that copies its shadow's host block unchanged reads the block through its import, when
-        // its rows need no padding. The Ticket holds the block until the copy has retired, so nothing writes it
-        // meanwhile; the copy is ordered as a staged one.
+        // Plan P5: copy aligned rows directly from the imported shadow or conversion output. The Ticket holds
+        // the block until the copy has retired, so nothing writes it meanwhile.
         if (const auto& block = full_upload.host_block()) {
             const size_t row_bytes = texture_detail::multiply(static_cast<size_t>(rev.width), prepared.texel_size);
             wgpu::Buffer source;
@@ -5946,9 +6124,9 @@ void main() {
         PipelineCreationScopes creation(instance, device, prefix + " graphics",
             current_backend_shader_log, creation_generation);
         creation.begin();
-        auto vert_module = make_spirv_module(spv.vertex.words, SpirvDerivativeMode::AllowNonUniform,
+        auto vert_module = make_compiled_module(spv.vertex.words, SpirvDerivativeMode::AllowNonUniform,
             "presentation vertex/main");
-        auto frag_module = make_spirv_module(spv.fragment.words, SpirvDerivativeMode::AllowNonUniform,
+        auto frag_module = make_compiled_module(spv.fragment.words, SpirvDerivativeMode::AllowNonUniform,
             "presentation fragment/main");
         wgpu::BindGroupLayoutEntry entries[2];
         entries[0].binding = 0;
@@ -6143,19 +6321,16 @@ void main() {
         if (waited && !waited->callback_received.load()) {
             ++(ahead ? probe.present_render_ahead_waits : probe.present_pacing_waits);
             HostTimer timer(probe.present_pacing_wait_ns);
-            if (instance.WaitAny(waited->completion_future, 250'000'000ull) != wgpu::WaitStatus::Success)
+            if (wait_for_future(instance, waited->completion_future, 250'000'000ull, device)
+                    != WaitOutcome::Completed)
                 ++probe.present_pacing_timeouts;
         }
         target.paced_return_ns = monotonic_ns();
     }
 
-    void record_presented_capture(Canvas& target, const Ticket& ticket, bool mirrored,
-                                  const wgpu::Texture& surface_texture) {
-        if (ticket.queries && (!ticket.queries->work.failure.empty() ||
-                ticket.queries->failure != vispy::timing::Status::Pending || !ticket.queries->error.empty())) {
-            target.presented_capture = {};
-            return;
-        }
+    PresentedCapture make_presented_capture(const Canvas& target, const Ticket& ticket, bool mirrored,
+                                            const wgpu::Texture& surface_texture,
+                                            const wgpu::Texture& mirror, const wgpu::TextureView& mirror_view) {
         PresentedCapture capture;
         capture.valid = true;
         capture.native_surface = bool(surface_texture);
@@ -6165,14 +6340,25 @@ void main() {
         capture.device_generation = device_generation;
         capture.surface_generation = target.surface_generation;
         capture.width = target.width; capture.height = target.height; capture.samples = target.samples;
-        capture.output_width = surface_texture ? surface_texture.GetWidth() : target.presented.GetWidth();
-        capture.output_height = surface_texture ? surface_texture.GetHeight() : target.presented.GetHeight();
-        capture.output_format = surface_texture ? surface_texture.GetFormat() : target.presented.GetFormat();
+        capture.output_width = surface_texture ? surface_texture.GetWidth() : mirror.GetWidth();
+        capture.output_height = surface_texture ? surface_texture.GetHeight() : mirror.GetHeight();
+        capture.output_format = surface_texture ? surface_texture.GetFormat() : mirror.GetFormat();
         capture.source = target.color; capture.source_view = target.color_view;
-        capture.mirror = target.presented; capture.mirror_view = target.presented_view;
+        capture.mirror = mirror; capture.mirror_view = mirror_view;
         capture.surface = target.surface.Get();
         capture.surface_owner = target.surface_owner.get();
-        target.presented_capture = std::move(capture);
+        return capture;
+    }
+
+    void record_presented_capture(Canvas& target, const Ticket& ticket, bool mirrored,
+                                  const wgpu::Texture& surface_texture) {
+        if (ticket.queries && (!ticket.queries->work.failure.empty() ||
+                ticket.queries->failure != vispy::timing::Status::Pending || !ticket.queries->error.empty())) {
+            target.presented_capture = {};
+            return;
+        }
+        target.presented_capture = make_presented_capture(
+            target, ticket, mirrored, surface_texture, target.presented, target.presented_view);
     }
 
     bool presented_capture_context_matches(const Canvas& target) const {
@@ -6246,7 +6432,7 @@ void main() {
             finalize_query_frame(ticket->queries);
     }
 
-    void submit_canvas(Canvas& target, bool present, bool queued_only = false) {
+    void submit_canvas(Canvas& target, bool present, bool queued_only = false, bool prepare_capture = false) {
         HostTimer submit_timer(probe.native_submit_ns);
         if (target.width <= 0 || target.height <= 0 || !target.alive) {
             cancel_canvas_frames(target, "cancelled", "zero drawable before frame submission");
@@ -6256,6 +6442,21 @@ void main() {
         if (!init_device()) throw std::runtime_error("frame submission: device unavailable");
         poll();
         if (!device_ready) throw std::runtime_error("frame submission: device lost before encoding");
+        auto& prepared = target.prepared_capture;
+        if (present && !queued_only && prepared.valid && prepared.producer_retired &&
+                target.frame_mark && prepared.owner == target.frame_mark->queries &&
+                prepared.owner->work.failure.empty() &&
+                !target.active_paint_token && !target.surface && !target.surface_owner &&
+                target.pending.empty() && target.queued_frames.empty() && !target.clear_pending) {
+            // Publish the converted mirror at the explicit logical present.
+            // The final counter snapshot still belongs to the real copy submission.
+            // Timing feature availability affects diagnostic reads, not reuse.
+            target.presented = prepared.mirror;
+            target.presented_view = prepared.mirror_view;
+            target.presented_capture = std::exchange(prepared, {});
+            ++probe.application_presents;
+            return;
+        }
         if (!queued_only && (!target.pending.empty() || target.clear_pending || present)) {
             if (target.queued_frames.size() >= frame_slots)
                 throw std::runtime_error("frame queue full; process events before recording another submission");
@@ -6264,7 +6465,7 @@ void main() {
             auto mark = target.frame_mark;
             if (mark && mark->queries) mark->queries->work.enqueue(frame_slots);
             try { target.queued_frames.push_back({std::move(target.pending), mark, present,
-                                                 next_queued_frame, device_generation}); }
+                                                 next_queued_frame, device_generation, prepare_capture}); }
             catch (...) {
                 if (mark && mark->queries) mark->queries->work.discard_queued(1);
                 throw;
@@ -6343,6 +6544,8 @@ void main() {
             draws.push_back(clear_only);
             update_work_peaks();
         }
+        prepared = {};
+        prepare_capture = batch.prepare_capture && !present && !target.surface && !target.surface_owner;
         target.swapchain_current = false;
         wgpu::CommandEncoder encoder = device.CreateCommandEncoder();
         ++probe.command_encoders;
@@ -6387,7 +6590,8 @@ void main() {
             }
             ~EncodingScope() { close(); }
         } encoding_scope(device, ticket, endpoint_passes != 0 || depth_upload_passes != 0);
-        attach_frame(*ticket, owner, draws.size() + endpoint_passes + depth_upload_passes + (present ? 2 : 0));
+        attach_frame(*ticket, owner, draws.size() + endpoint_passes + depth_upload_passes +
+                     (present ? 2 : size_t(prepare_capture)));
         size_t line_resource_index = 0;
         for (auto& snap : draws) {
             NativeLineSlot* line_slot = nullptr;
@@ -6472,8 +6676,6 @@ void main() {
                 const bool consumer_render = snap.line_work && snap.line_work->consumer;
                 const auto& render_samplers = consumer_render ? snap.line_work->consumer->samplers :
                                                                 snap.artifact->portable->samplers;
-                const auto& render_layout = consumer_render ? snap.line_work->consumer_device->bind_layout :
-                                                               snap.artifact->bind_layout;
                 const int vw = snap.viewport[2] < 0 ? snap.target_width : snap.viewport[2];
                 const int vh = snap.viewport[3] < 0 ? snap.target_height : snap.viewport[3];
                 const double viewport_y = double(snap.viewport[1]);
@@ -6498,6 +6700,9 @@ void main() {
                 const auto face1 = snap.stencil_face_split ? stencil_face_state(snap.state, stencil_route, 1) : face0;
                 const auto pipeline0 = draw_pipeline(snap, &face0);
                 const auto pipeline1 = snap.stencil_face_split ? draw_pipeline(snap, &face1) : pipeline0;
+                const auto render_layout = consumer_render ? snap.line_work->consumer_device->bind_layout :
+                    specialize_texture_layout ? pipeline0.GetBindGroupLayout(0) :
+                                                                  snap.artifact->bind_layout;
                 pass.SetPipeline(pipeline0);
                 const auto blend_constant = blend_constant_for_state(snap.state);
                 pass.SetBlendConstant(&blend_constant);
@@ -6683,6 +6888,20 @@ void main() {
             }
             probe.application_presents++;
         }
+        wgpu::Texture prepared_mirror;
+        wgpu::TextureView prepared_view;
+        if (prepare_capture) {
+            // Keep the last presented image readable until the new one is published.
+            wgpu::TextureDescriptor descriptor;
+            descriptor.size = {static_cast<uint32_t>(target.width), static_cast<uint32_t>(target.height), 1};
+            descriptor.format = target.presented.GetFormat();
+            descriptor.usage = wgpu::TextureUsage::RenderAttachment | wgpu::TextureUsage::CopySrc;
+            prepared_mirror = device.CreateTexture(&descriptor);
+            ++probe.texture_allocations;
+            prepared_view = prepared_mirror.CreateView();
+            ticket->owned_textures.push_back(prepared_mirror);
+            blit_present(encoder, target, prepared_view, ticket.get(), "present_capture");
+        }
         resolve_ticket_queries(encoder, *ticket);
         wgpu::CommandBuffer commands = encoder.Finish();
         encoding_scope.close();
@@ -6700,6 +6919,8 @@ void main() {
             throw;
         }
         track_submission(ticket);
+        if (prepare_capture)
+            prepared = make_presented_capture(target, *ticket, true, {}, prepared_mirror, prepared_view);
         log("dawn Queue.Submit count=" + std::to_string(probe.dawn_queue_submits));
         if (target.present_swapchain && target.surface) {
             if (target.surface.Present() != wgpu::Status::Success) {
@@ -6976,6 +7197,7 @@ void main() {
             count_target(canvas.multisampled_color);
             count_target(canvas.depth);
             count_target(canvas.presented);
+            count_target(canvas.prepared_capture.mirror);
             for (const auto& snap : canvas.pending) count_snapshot(snap);
             for (const auto& frame : canvas.queued_frames)
                 for (const auto& snap : frame.draws) count_snapshot(snap);
@@ -7080,7 +7302,7 @@ void main() {
         } while (!target.queued_frames.empty() || !target.pending.empty() || target.clear_pending);
     }
 
-    void finish_target(Canvas& target, bool present) {
+    void finish_target(Canvas& target, bool present, bool prepare_capture = false) {
         update_work_peaks();
         if (target.width <= 0 || target.height <= 0) {
             cancel_canvas_frames(target, "cancelled", "zero drawable before complete frame retirement");
@@ -7097,7 +7319,7 @@ void main() {
         }
         bool requested = false;
         do {
-            submit_canvas(target, present, requested);
+            submit_canvas(target, present, requested, prepare_capture);
             requested = true;
             if (queue) wait_queue();
         } while (!target.queued_frames.empty() || !target.pending.empty());
@@ -7478,8 +7700,16 @@ static void execute_commands_impl(int canvas_id, const std::vector<Command>& com
                 eng.update_work_peaks();
                 canvas.swapchain_current = false;
             } else if (name == "glFinish") {
-                eng.probe.finish_calls++;
-                eng.finish_target(canvas, false);
+                // The trailing readback marker preserves the GLIR finish at
+                // capture while read_canvas drains the pending draws and can
+                // prepare the presented mirror in the same submission.
+                const bool readback = command_index + 1 == commands.size() &&
+                    cmd.args.size() == 2 && cmd.args[1].kind == Value::Kind::Str &&
+                    cmd.args[1].s == "readback";
+                if (!readback) {
+                    eng.probe.finish_calls++;
+                    eng.finish_target(canvas, false);
+                }
             } else if (name == "glFlush") {
                 eng.flush_target(canvas);
             } else {
@@ -8927,8 +9157,13 @@ Readback read_canvas(int canvas_id, int x, int y, int width, int height, bool al
         result.error = "missing canvas";
         return result;
     }
-    eng.finish_target(it->second, false);
     auto& canvas = it->second;
+    const auto owner = canvas.frame_mark ? canvas.frame_mark->queries : nullptr;
+    const bool prepare_capture = owner && owner->measured && !canvas.active_paint_token &&
+        !canvas.surface && !canvas.surface_owner && !canvas.fbo && mode == "color" &&
+        x >= 0 && y >= 0 && width > 0 && height > 0 &&
+        int64_t(x) + width <= canvas.width && int64_t(y) + height <= canvas.height;
+    eng.finish_target(canvas, false, prepare_capture);
     HostTimer submit_timer(eng.probe.native_submit_ns);
     auto encoder = eng.device.CreateCommandEncoder();
     ++eng.probe.command_encoders;
@@ -8973,6 +9208,11 @@ Readback read_canvas(int canvas_id, int x, int y, int width, int height, bool al
         result.error = "read_pixels rectangle exceeds target bounds";
         return result;
     }
+    // Depth24PlusStencil8 can be backed by D32FloatS8 on Vulkan. Return
+    // the logical OpenGL 24-bit values without a Dawn toggle in standard mode.
+    const bool normalize_packed_depth = mode == "depth" &&
+        source.GetFormat() == wgpu::TextureFormat::Depth24PlusStencil8 &&
+        eng.info.depth_stencil_storage == "depth32_float_stencil8";
     const bool sample_zero_stencil = mode == "stencil" && source.GetSampleCount() > 1;
     if (mode != "color" && source.GetSampleCount() > 1)
         source = eng.encode_sample_zero_capture(source, encoder, *ticket, mode == "stencil");
@@ -9036,7 +9276,10 @@ Readback read_canvas(int canvas_id, int x, int y, int width, int height, bool al
             wait->done.store(true);
         });
     ++eng.probe.completion_waits;
-    if (!eng.wait_result(future, wait)) {
+    if (!eng.wait_result(future, wait, std::exchange(eng.diagnostic_readback_timeout, false))) {
+        // Cancel a pending map (or release a completed one) before the next
+        // read tries to reuse this canvas's staging buffer.
+        if (buffer.GetMapState() != wgpu::BufferMapState::Unmapped) buffer.Unmap();
         result.error = eng.last_error;
         return result;
     }
@@ -9060,7 +9303,11 @@ Readback read_canvas(int canvas_id, int x, int y, int width, int height, bool al
             continue;
         }
         for (int col = 0; col < width; ++col) {
-            const auto color = read_color(srcp + static_cast<size_t>(col) * format.texel_bytes, format);
+            auto color = read_color(srcp + static_cast<size_t>(col) * format.texel_bytes, format);
+            if (normalize_packed_depth) {
+                constexpr double depth24_max = (1u << 24) - 1;
+                color[0] = static_cast<float>(std::round(color[0] * depth24_max) / depth24_max);
+            }
             const size_t offset = (static_cast<size_t>(row) * width + col) * channels;
             for (int channel = 0; channel < channels; ++channel) {
                 if (floating) result.floating_rgba[offset + channel] = mode == "stencil" ?
@@ -9272,6 +9519,12 @@ void lose_device() {
         eng.device.ForceLoss(wgpu::DeviceLostReason::Unknown, "forced device loss for recovery qualification");
         eng.poll();
     }
+}
+
+void diagnostic_timeout_next_readback() {
+    auto& eng = engine();
+    std::lock_guard<std::mutex> lock(eng.mu);
+    eng.diagnostic_readback_timeout = true;
 }
 
 void shutdown_runtime() {
