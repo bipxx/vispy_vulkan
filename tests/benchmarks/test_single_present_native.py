@@ -271,7 +271,8 @@ def test_public_headless_capture_keeps_finish_presentation_free_and_tracks_all_s
         evidence.batch('readback-while-request-open', early_rows, early_maps)
         assert early_rows == early_maps == [], 'readback closed the unpresented request early'
         _dawn.present(identifier)
-        evidence.value['snapshots']['after-explicit-present'] = dict(_dawn.probe())
+        after_present = dict(_dawn.probe())
+        evidence.value['snapshots']['after-explicit-present'] = after_present
         evidence.save()
         receipts, maps = [], []
         deadline = time.monotonic()+5
@@ -300,7 +301,9 @@ def test_public_headless_capture_keeps_finish_presentation_free_and_tracks_all_s
         assert row['last_present_submission_index'] == current.UNSUBMITTED_INDEX
         assert gpu['last_present_submission_index'] == row['last_present_submission_index']
         assert row['counters']['dawn_queue_submits']-before['dawn_queue_submits'] == expected['submissions']
-        assert row['counters']['application_presents']-before['application_presents'] == 1
+        assert row['counters']['application_presents']-before['application_presents'] == expected['implicit_presents']
+        assert after_present['application_presents']-before['application_presents'] == 1
+        assert after_present['dawn_queue_submits'] == copied['dawn_queue_submits']
         assert [part['kind'] for part in gpu['passes']] == expected['pass_kinds']
         assert [part['submission_index'] for part in gpu['passes']] == expected['pass_submission_indices']
         assert gpu['pass_sum_ns'] == sum(part['elapsed_ns'] for part in gpu['passes'])

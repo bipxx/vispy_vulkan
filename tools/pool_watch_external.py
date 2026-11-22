@@ -23,13 +23,14 @@ records the root's exit, with the watcher's own CPU time, and exits with the roo
 learnt from the watcher's own handles; an index it holds no handle of is recorded as a number. A close followed by
 reuse for another worker factory between two reads is not seen.
 Usage (Windows):
-  pool_watch_external.py --output events.jsonl [--interval 0.005] -- <command>...   launch and watch
+  pool_watch_external.py --output events.jsonl [--interval 0.005] [--timeout SECONDS] -- <command>...
   pool_watch_external.py --output events.jsonl --pid <pid>                          watch a running process
 """
 from __future__ import annotations
 
 import argparse
 import json
+import math
 import os
 import struct
 import subprocess
@@ -43,6 +44,7 @@ HEADER_BYTES = 16
 # PROCESS_HANDLE_TABLE_ENTRY_INFO on x64: HandleValue, HandleCount, PointerCount, GrantedAccess, ObjectTypeIndex,
 # HandleAttributes, Reserved.
 ENTRY = struct.Struct('<QQQIIII')
+TIMEOUT_EXIT = 124
 
 
 def decode(raw):
@@ -90,6 +92,7 @@ class Windows:
         k.CreateJobObjectW.argtypes = [ctypes.c_void_p, ctypes.c_void_p]
         k.CreateJobObjectW.restype = wintypes.HANDLE
         k.AssignProcessToJobObject.argtypes = [wintypes.HANDLE, wintypes.HANDLE]
+        k.TerminateJobObject.argtypes = [wintypes.HANDLE, wintypes.UINT]
         k.QueryInformationJobObject.argtypes = [wintypes.HANDLE, ctypes.c_int, ctypes.c_void_p, wintypes.DWORD,
                                                 ctypes.c_void_p]
         k.QueryFullProcessImageNameW.argtypes = [wintypes.HANDLE, wintypes.DWORD, wintypes.LPWSTR,
@@ -138,15 +141,28 @@ class Windows:
             if job:
                 self.kernel32.CloseHandle(job)
 
-    def members(self):
-        """Pids of every process in the job (JobObjectBasicProcessIdList), or [] without a job."""
+    def members(self, *, strict=False):
+        """Read job PIDs, requiring a successful query when strict is set."""
         if self.job is None:
             return []
         if not self.kernel32.QueryInformationJobObject(self.job, 3, self.job_buffer, len(self.job_buffer), None):
+            if strict:
+                raise self.ctypes.WinError(self.ctypes.get_last_error())
             return []
         listed = int.from_bytes(self.job_buffer.raw[4:8], 'little')
         words = memoryview(self.job_buffer.raw[8:8 + 8 * listed]).cast('Q')
         return words.tolist()
+
+    def terminate(self, child):
+        """Terminate the owned job and wait for its root and all descendants."""
+        if not self.kernel32.TerminateJobObject(self.job, TIMEOUT_EXIT):
+            raise self.ctypes.WinError(self.ctypes.get_last_error())
+        deadline = time.perf_counter() + 5
+        child.wait(timeout=5)
+        while self.members(strict=True):
+            if time.perf_counter() >= deadline:
+                raise TimeoutError('terminated job still has active members')
+            time.sleep(0.01)
 
     def open(self, pid):
         """A handle to the process, or None when it is already gone."""
@@ -196,14 +212,16 @@ class Windows:
         return names
 
 
-def watch(api, root, record, interval, began):
-    """Watch the root process and every later job member until all have exited; return the losses recorded."""
+def watch(api, root, record, interval, began, deadline=None):
+    """Watch the root and its job members; bounded launches require the whole job to exit."""
     seconds = lambda: round(time.perf_counter() - began, 4)
+    bounded = deadline is not None
     names = api.type_names()
     factory_type = next((index for index, name in names.items() if name == 'TpWorkerFactory'), None)
     if factory_type is None:
         record(event='no_own_worker_factory', pid=root, seconds=seconds())
-        return 0
+        if not bounded:
+            return 0
     targets, family, losses = {}, set(), 0
 
     def adopt(pid, root_process=False):
@@ -217,34 +235,46 @@ def watch(api, root, record, interval, began):
             parent, name = api.describe(process)
             record(event='adopted', pid=pid, parent=parent, name=name, seconds=seconds())
 
-    adopt(root, root_process=True)
-    while targets:
-        for pid in api.members():
-            if pid not in family:
-                adopt(pid)
-        for pid, target in list(targets.items()):
-            entries = api.snapshot(target['process'])
-            if entries is None or api.exited(target['process']):  # a read during or after exit says nothing
-                if not target['found']:
-                    record(event='no_worker_factory', pid=pid, seconds=seconds())
-                api.close(target['process'])
-                del targets[pid]
-                continue
-            if target['watched'] is None:
-                found = factories(entries, factory_type)
-                if found:
-                    target['watched'], target['found'] = found[0], True
-                    record(event='watching', pid=pid, seconds=seconds(), handle=found[0], factories=found,
-                           factory_type=factory_type)
-                continue
-            now = check(entries, target['watched'], factory_type, names)
-            if now is not None:
-                losses += 1
-                record(event='default_pool_lost', pid=pid, seconds=seconds(), handle=target['watched'], now=now,
-                       factories=factories(entries, factory_type))
-                target['watched'] = None  # a later lowest factory is reported as the next one watched
-        if targets:
-            time.sleep(interval)
+    try:
+        if factory_type is not None:
+            adopt(root, root_process=True)
+        while targets or bounded:
+            members = api.members(strict=True) if bounded else api.members()
+            if factory_type is not None:
+                for pid in members:
+                    if pid not in family:
+                        adopt(pid)
+            if not targets and not members:
+                break
+            if bounded and time.perf_counter() >= deadline:
+                record(event='timeout', seconds=seconds(), active_pids=sorted(set(targets) | set(members)))
+                raise subprocess.TimeoutExpired('watched job', deadline - began)
+            for pid, target in list(targets.items()):
+                entries = api.snapshot(target['process'])
+                if entries is None or api.exited(target['process']):  # a read during or after exit says nothing
+                    if not target['found']:
+                        record(event='no_worker_factory', pid=pid, seconds=seconds())
+                    api.close(target['process'])
+                    del targets[pid]
+                    continue
+                if target['watched'] is None:
+                    found = factories(entries, factory_type)
+                    if found:
+                        target['watched'], target['found'] = found[0], True
+                        record(event='watching', pid=pid, seconds=seconds(), handle=found[0], factories=found,
+                               factory_type=factory_type)
+                    continue
+                now = check(entries, target['watched'], factory_type, names)
+                if now is not None:
+                    losses += 1
+                    record(event='default_pool_lost', pid=pid, seconds=seconds(), handle=target['watched'], now=now,
+                           factories=factories(entries, factory_type))
+                    target['watched'] = None  # a later lowest factory is reported as the next one watched
+            if targets or (bounded and members):
+                time.sleep(interval)
+    finally:
+        for target in targets.values():
+            api.close(target['process'])
     return losses
 
 
@@ -252,12 +282,18 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('--output', required=True)
     parser.add_argument('--interval', type=float, default=0.005)
+    parser.add_argument('--timeout', type=float, help='Windows launch deadline in seconds; exit 124 and terminate the job')
     parser.add_argument('--pid', type=int)
     parser.add_argument('command', nargs=argparse.REMAINDER)
     args = parser.parse_args(argv)
     command = args.command[1:] if args.command[:1] == ['--'] else args.command
     if bool(command) == (args.pid is not None):
         parser.error('give a command after -- or --pid, not both')
+    if args.timeout is not None and (sys.platform != 'win32' or not command
+                                     or not math.isfinite(args.timeout) or args.timeout <= 0):
+        parser.error('--timeout requires a Windows launch and a finite positive deadline')
+    if args.timeout is not None and (not math.isfinite(args.interval) or args.interval <= 0):
+        parser.error('--interval must be finite and positive with --timeout')
     if command and os.path.exists(command[0]):  # CreateProcess does not resolve a relative path written with '/'
         command = [os.path.abspath(command[0]), *command[1:]]
 
@@ -272,13 +308,28 @@ def main(argv=None):
         return child.wait() if child else 0
     api = Windows()
     child = api.launch(command) if command else None
-    watch(api, child.pid if child else args.pid, record, args.interval, began)
     if child is None:
+        watch(api, args.pid, record, args.interval, began)
         return 0
-    code = child.wait()
+    timed_out = False
+    try:
+        if args.timeout is None:
+            watch(api, child.pid, record, args.interval, began)
+        else:
+            try:
+                watch(api, child.pid, record, args.interval, began, began + args.timeout)
+            except subprocess.TimeoutExpired:
+                timed_out = True
+                api.terminate(child)
+            except BaseException:
+                api.terminate(child)
+                raise
+        code = child.wait()
+    finally:
+        api.close(api.job)
     record(event='target_exit', pid=child.pid, seconds=round(time.perf_counter() - began, 4), returncode=code,
            child_waited=True, watcher_cpu_seconds=round(time.process_time(), 3))
-    return code
+    return TIMEOUT_EXIT if timed_out else code
 
 
 if __name__ == '__main__':

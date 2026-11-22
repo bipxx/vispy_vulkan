@@ -12,7 +12,6 @@ interface.
 """
 
 import numpy as np
-from ... import gloo
 from . util import fetchcode
 from . base_collection import BaseCollection
 from ..shaders import ModularProgram
@@ -213,16 +212,17 @@ class CollectionView(object):
 
         vertex = collection._vertex
         fragment = collection._fragment
-        program = gloo.Program(vertex, fragment)
+        program = ModularProgram(vertex, fragment)
+        if transform is not None and "transform" in program.vert.template_vars:
+            program.vert["transform"] = transform
 
-#        if "transform" in program.hooks and transform is not None:
-#            program["transform"] = transform
-#        if "viewport" in program.hooks and viewport is not None:
-#            program["viewport"] = viewport
-
-        program.bind(collection._vertices_buffer)
-        for name in collection._uniforms.keys():
-            program[name] = collection._uniforms[name]
+        if collection._vertices_buffer is not None:
+            program.bind(collection._vertices_buffer)
+            if collection._uniforms_texture is not None:
+                program["uniforms"] = collection._uniforms_texture
+                program["uniforms_shape"] = collection._ushape
+        for name, value in collection._uniforms.items():
+            program[name] = value
 
         collection._programs.append(program)
         self._program = program
@@ -242,10 +242,6 @@ class CollectionView(object):
 
         if collection._need_update:
             collection._update()
-            # self._program.bind(self._vertices_buffer)
-            if collection._uniforms_list is not None:
-                program["uniforms"] = collection._uniforms_texture
-                program["uniforms_shape"] = collection._ushape
 
         if collection._indices_list is not None:
             program.draw(mode, collection._indices_buffer)

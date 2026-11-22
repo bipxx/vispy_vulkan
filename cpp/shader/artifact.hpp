@@ -9,6 +9,7 @@
 #include <chrono>
 #include <cstddef>
 #include <cstdint>
+#include <cstdlib>
 #include <limits>
 #include <list>
 #include <map>
@@ -214,7 +215,10 @@ inline std::shared_ptr<const PortableShaderArtifact> build_portable_shader(
         artifact->error = "endpoint compute policy requires build_line_evaluator, not a render pipeline";
         return artifact;
     }
-    auto compiled = compile_vulkan_glsl(artifact->vertex, artifact->fragment, true);
+    const char* cache = std::getenv("VISPY_DAWN_COMPILER_CACHE");
+    auto compiled = cache && std::string_view(cache) == "1"
+        ? compile_vulkan_glsl_cached(artifact->vertex, artifact->fragment, true, compiler_identity)
+        : compile_vulkan_glsl(artifact->vertex, artifact->fragment, true);
     artifact->timings.parse_ns = compiled.parse_ns;
     artifact->timings.link_ns = compiled.link_ns;
     artifact->timings.spirv_ns = compiled.spirv_ns;

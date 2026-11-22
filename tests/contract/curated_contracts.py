@@ -25,7 +25,9 @@ MODULES = ('test_hot_swap_policy', 'test_napari_vector_layers_reference', 'test_
            'test_dawn_orphan_retirement_contract', 'test_scene_widget_api05_contract',
            'test_app_timer_context_api05_contract',
            'test_subpackages_api05_contract',
-           'test_optional_hosts_current_wheel_renewal')
+           'test_optional_hosts_current_wheel_renewal',
+           'test_geometry_inventory_acceptance',
+           'test_repro_headless_startup')
 # Contract modules that no workflow runs, with the reason. A new module goes in MODULES or here.
 NOT_IN_CI = {
     **dict.fromkeys(('test_color_volume_linux_wheel_parity', 'test_color_volume_wheel_parity',
@@ -38,6 +40,9 @@ NOT_IN_CI = {
                     'not yet checked in CI\'s environment (consolidated plan, Organization)'),
     'test_hot_swap_linux_native': 'Linux-only native ptrace controls (C compiler, static libc, ptrace); not yet checked '
                                   'in CI\'s environment (W7)',
+    'test_color_inventory_acceptance': 'Optional matplotlib colormap checks (pytest.importorskip) outside CI dev+build lock',
+    'test_io_inventory_acceptance': 'Optional PIL/imageio checks (pytest.importorskip) and dataset_cache fixture outside CI dev+build lock',
+    'test_util_acceptance': 'Includes Linux Xvfb 110 DPI test (skip without VISPY_TEST_XVFB_110_DPI=1) outside CI CPU contract gate',
 }
 
 for _name in MODULES:

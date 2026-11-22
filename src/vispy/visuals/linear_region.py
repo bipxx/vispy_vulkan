@@ -1,6 +1,7 @@
 import numpy as np
 
 from .. import gloo
+from ..color import Color
 from .visual import Visual
 
 
@@ -120,7 +121,10 @@ class LinearRegionVisual(Visual):
             self._changed['pos'] = True
 
         if color is not None:
-            color = np.array(color, dtype=np.float32)
+            if isinstance(color, (str, Color)):
+                color = Color(color).rgba.astype(np.float32)
+            else:
+                color = np.array(color, dtype=np.float32)
             num_elements = new_pos.shape[0] / 2
             if color.ndim == 2:
                 if color.shape[0] != num_elements:

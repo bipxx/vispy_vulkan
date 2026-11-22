@@ -12,8 +12,7 @@ ownership. Width is a draw uniform, so changing width reuses the compiled
 consumer and render pipeline.
 
 This is an approximation to OpenGL line smoothing. Rotated edge pixels and joins
-can differ between renderers. Exact-reference smoothing and multisample line
-coverage remain unsupported. Analytic smoothing requires a `vec4` color output
+can differ between renderers. Analytic smoothing requires a `vec4` color output
 so coverage can modulate alpha. Existing restrictions on early fragment tests
 and fragment storage/image side effects still apply.
 
@@ -53,10 +52,12 @@ Native Linux GPU and macOS Metal checks remain unavailable. Historical exact
 OpenGL comparison results and strict latency/memory benchmark gates remain
 unchanged; those lab measurements are outside practical completion scope.
 
-Practical completion prioritizes functional rendering and stable packages.
-Small rasterizer edge differences do not block that scope. Additional exact
-reference matching and MSAA line coverage are deferred; no partial MSAA
-implementation is included.
+On a four-sample target, generated lines use raster sample coverage of a
+butt-ended rectangle at the requested width when `line_smooth=False`. With
+`line_smooth=True`, the analytic edge and cap coverage is evaluated at each
+raster sample and modulates its fragment alpha. Both policies reconstruct
+depth and interpolation at the raster sample. Fixed-function alpha-to-coverage
+can further reduce the samples contributing to the color resolve.
 
 ## Parity criterion for smooth-line frames
 

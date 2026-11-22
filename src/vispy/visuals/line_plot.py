@@ -86,8 +86,6 @@ class LinePlotVisual(CompoundVisual):
         if bad_keys:
             raise TypeError("Invalid keyword arguments: {}".format(", ".join(bad_keys)))
 
-        # remember these kwargs for future updates
-        self._kwargs.update(kwargs)
         if data is None:
             pos = None
         else:
@@ -106,7 +104,7 @@ class LinePlotVisual(CompoundVisual):
 
                 # if both args and keywords are zero, then there is no
                 # point in calling this function.
-                if len(self._kwargs) == 0:
+                if not self._kwargs and not kwargs:
                     raise TypeError("neither line points nor line properties"
                                     "are provided")
             elif pos.shape[1] == 1:
@@ -117,6 +115,8 @@ class LinePlotVisual(CompoundVisual):
                 raise TypeError("Too many coordinates given (%s; max is 3)."
                                 % pos.shape[1])
 
+        # Remember styles only after validating the input layout.
+        self._kwargs.update(kwargs)
         # todo: have both sub-visuals share the same buffers.
         line_kwargs = {}
         for k in self._line_kwargs:

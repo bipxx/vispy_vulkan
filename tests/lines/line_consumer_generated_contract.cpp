@@ -1209,7 +1209,7 @@ void chunk_mapping_contract() {
     refusal([&]{plan(0,2,1,true,true,false,0,grants(),state(3,true));},"chunk does not enable unresolved smooth coverage");
     auto bad = *c; bad.policy.sample_count = 4;
     refusal([&]{plan_generated_line_consumer_chunk_draw(bad,0,2,1,true,true,false,0,state(3,false),{0,0,32,24},100,0,1,grants());},
-            "chunk does not enable multisample coverage");
+            "changing the sample count alone cannot reuse a single-sample chunk artifact");
     for (const auto* words : {&c->vertex_spv,&c->fragment_spv}) {
         Trace trace(*words); const auto parameters = trace.id("vispy_line_consumer_parameters",true);
         bool mode_guard = false, count_guard = false;
@@ -1449,18 +1449,23 @@ void multisample_contract() {
     auto e = evaluator();
     auto single = build_generated_line_consumer(e, policy(), grants());
     require(single->ok, single->error);
+    auto msaa_limits = grants();
+    msaa_limits.max_inter_stage_shader_variables = 3;
+    std::string rectangle_key;
     for (bool smooth : {false, true}) {
         auto p = policy(); p.sample_count = 4;
-        p.coverage = smooth ? LineCoveragePolicy::SmoothAnalytic : LineCoveragePolicy::AliasedMajorAxis;
+        p.coverage = line_coverage_policy(smooth, 4);
         p.coverage_identity = line_coverage_identity(smooth, 4);
-        auto c = build_generated_line_consumer(e, p, grants());
+        auto c = build_generated_line_consumer(e, p, msaa_limits);
         diagnostics(smooth ? "multisample_smooth" : "multisample_aliased", *c);
         compiled_contract(*c, *e);
         require(c->policy_identity != single->policy_identity && c->cache_key != single->cache_key,
                 "four-sample generated semantics have a distinct complete cache identity");
+        if (!smooth) rectangle_key = c->cache_key;
+        else require(c->cache_key != rectangle_key, "four-sample smoothing has its own compiled cache entry");
         Trace fragment(c->fragment_spv);
         const auto& call = fragment.entry_call(fragment.id("vispy_line_consumer_original_fragment", true));
-        size_t sample_reads = 0, sample_mask_stores = 0;
+        size_t sample_reads = 0, sample_mask_reads = 0;
         for (const auto& i : fragment.code) {
             if (i.function != fragment.entry) continue;
             if (i.op == spv::Op::OpLoad && fragment.loaded_from.contains(i.args[1])) {
@@ -1468,24 +1473,38 @@ void multisample_contract() {
                 if (fragment.builtins.contains(root) && fragment.builtins.at(root) == spv::BuiltIn::SampleId) {
                     ++sample_reads; require(fragment.dominates(i, call), "native SampleId read precedes user execution");
                 }
-            }
-            if (i.op == spv::Op::OpStore) {
-                const auto root = fragment.roots.contains(i.args[0]) ? fragment.roots.at(i.args[0]) : i.args[0];
                 if (fragment.builtins.contains(root) && fragment.builtins.at(root) == spv::BuiltIn::SampleMask) {
-                    ++sample_mask_stores;
-                    require(fragment.dominates(i, call), "native sample-mask initialization precedes user execution");
+                    ++sample_mask_reads;
+                    require(fragment.dominates(i, call), "native sample mask is read before user execution");
                 }
             }
         }
-        require(sample_reads > 0 && sample_mask_stores == 1,
-                "real fragment consumes SampleId and writes its per-sample coverage mask");
+        require(sample_reads > 0 && sample_mask_reads > 0, "real fragment consumes SampleId and the raster sample mask");
+        for (const auto& i : fragment.code) if (i.op == spv::Op::OpVariable &&
+                i.args[2] == uint32_t(spv::StorageClass::Output) && fragment.builtins.contains(i.args[1]))
+            require(fragment.builtins.at(i.args[1]) != spv::BuiltIn::SampleMask,
+                "hardware coverage remains compatible with fixed-function alpha-to-coverage");
         LineConsumerSelection selection(Mode::List, Selection{0, 2, 1});
         const auto draw = plan_generated_line_consumer_draw(*c, selection, {0, 1},
-            state(3, smooth), {0, 0, 32, 24}, 24, 0, 1, grants());
-        require(draw.vertex_count == 6 && draw.instance_count == 1,
-                "four-sample draw planning positively retains one generated line quad");
+            state(0.375, smooth), {0, 0, 32, 24}, 24, 0, 1, msaa_limits);
+        require(draw.vertex_count == 6 && draw.instance_count == 1 && draw.parameters.raster[0] == 0.375f,
+                "four-sample planning retains one segment and its fractional width");
+        const auto chunk = plan_generated_line_consumer_chunk_draw(*c, 2, 2, 1, false, false, true, 5,
+            state(0.375, smooth), {0, 0, 32, 24}, 24, 0, 1, msaa_limits);
+        require(chunk.instance_count == 1 && chunk.parameters.raster[0] == 0.375f && chunk.parameters.ranges[1] == 5,
+                "four-sample chunk plans carry the fractional width and original first segment");
+        refusal([&]{plan_generated_line_consumer_draw(*c, selection, {0, 1},
+            state(0.375, !smooth), {0, 0, 32, 24}, 24, 0, 1, msaa_limits);},
+            "four-sample draws refuse a consumer compiled with the other smoothing state");
+        refusal([&]{plan_generated_line_consumer_chunk_draw(*c, 2, 2, 1, false, false, true, 5,
+            state(0.375, !smooth), {0, 0, 32, 24}, 24, 0, 1, msaa_limits);},
+            "four-sample chunks refuse a consumer compiled with the other smoothing state");
+        auto small = msaa_limits; small.max_inter_stage_shader_variables = 2;
+        require(!build_generated_line_consumer(e, p, small)->ok, "MSAA refuses an insufficient fragment interface grant");
+        refusal([&]{plan_generated_line_consumer_draw(*c, selection, {0, 1},
+            state(0.375, smooth), {0, 0, 32, 24}, 24, 0, 1, small);}, "MSAA draw requires all three interface slots");
         p.depth_output = false;
-        auto color_only = build_generated_line_consumer(e, p, grants());
+        auto color_only = build_generated_line_consumer(e, p, msaa_limits);
         require(color_only->ok, "four-sample color-only consumer compiles: " + color_only->error);
         Trace color_trace(color_only->fragment_spv);
         for (const auto& [id, builtin] : color_trace.builtins)
@@ -1495,8 +1514,9 @@ void multisample_contract() {
         auto qualified = evaluator(
             "attribute vec4 position; " + qualifier + " out float value; void main(){gl_Position=position;value=float(gl_VertexID);}",
             qualifier + " in float value; void main(){gl_FragColor=vec4(value,0,0,1);}");
-        auto p = policy(); p.sample_count = 4; p.coverage_identity = line_coverage_identity(false, 4);
-        auto c = build_generated_line_consumer(qualified, p, grants());
+        auto p = policy(); p.sample_count = 4; p.coverage = LineCoveragePolicy::MultisampleRectangle;
+        p.coverage_identity = line_coverage_identity(false, 4);
+        auto c = build_generated_line_consumer(qualified, p, msaa_limits);
         require(c->ok, "four-sample " + qualifier + " input compiles and reconstructs: " + c->error);
         require(c->fragment_rows.row_stride == qualified->output_row_bytes,
                 "qualified multisample interpolation retains the exact typed endpoint layout");

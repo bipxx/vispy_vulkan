@@ -169,6 +169,8 @@ def create_plane(width=1, height=1, width_segments=1, height_segments=1,
         shift, neutral_axis = -1, 1
     elif direction in ('-z', '+z'):
         shift, neutral_axis = 0, 2
+    else:
+        raise ValueError("direction must be one of '+x', '-x', '+y', '-y', '+z', '-z'")
 
     sign = -1 if '-' in direction else 1
 

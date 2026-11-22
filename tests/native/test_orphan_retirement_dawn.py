@@ -220,6 +220,8 @@ print('orphan retirement proof', json.dumps(dict(
                                  'host-import', 'host-import-fail-before-submit',
                                  'host-import-fail-callback', 'panzoom'])
 def test_orphan_retirement_preserves_owners_and_restores_resources(case):
+    if case.startswith('host-import') and os.environ.get('VISPY_DAWN_STANDARD_ONLY') == '1':
+        pytest.skip('Dawn HostMappedPointer is disabled by VISPY_DAWN_STANDARD_ONLY=1')
     setup = (f'import sys\nsys.path[:0] = {sys.path!r}\n'
              f'EXPECTED_VISPY = {str(Path(vispy.__file__).resolve())!r}\n'
              f'TEST_ROOT = {str(Path(__file__).resolve().parents[2])!r}\nCASE = {case!r}\n')

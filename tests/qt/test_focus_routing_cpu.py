@@ -153,7 +153,7 @@ def test_host_qwindow_routes_keys_by_application_focus_and_recovers(flow):
     setup = (f'FLOW = {flow!r}\nEXPECTED_QT = {str(qt)!r}\n'
              f'EXPECTED_QT_SHA = {qt_sha!r}\n')
     result = subprocess.run(
-        [sys.executable, '-B', '-X', 'faulthandler', '-c', setup + CHILD],
+        [sys.executable, '-B', *(('-S',) if sys.flags.no_site else ()), '-X', 'faulthandler', '-c', setup + CHILD],
         cwd=source,
         env=dict(os.environ, QT_QPA_PLATFORM='offscreen',
                  PYTHONDONTWRITEBYTECODE='1'),

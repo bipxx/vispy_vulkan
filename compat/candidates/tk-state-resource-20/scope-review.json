@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "status": "APPROVED",
+  "kind": "scope",
+  "independent": true,
+  "reviewer": "Independent read-only review vulkan5-review-1172r2 of the exact preparation20 bindings",
+  "candidate_scope_sha256": "43171e01b0993e927f4f8bc88a5a8acfe1e76ef7c7a19ec12e7ca9cd535bb6e0",
+  "reviewed_delta_sha256": "8376fccd794298934de48e9290eb8a671227bcd4ffa172a3d3b524ba76947623",
+  "native_reuse_links": [
+    "4ebdeba109fcd7a3e2c9361b3cee8d46f659c69c516e9f34bbc609b8f305a4b3",
+    "e5acd3f19039d6511b4462c85178d3efade710cf3830d5172d953145f65c6579"
+  ],
+  "evidence": {
+    "path": "@evidence/build/runs/vulkan5-review-1172r2/decision.json",
+    "sha256": "eae9e9d2496cd9437466bedb6878ac27caea07170b647a8cc6cfcbda756e70b8"
+  },
+  "raw_response": {
+    "path": "@evidence/build/runs/vulkan5-review-1172r2/decision.json",
+    "sha256": "eae9e9d2496cd9437466bedb6878ac27caea07170b647a8cc6cfcbda756e70b8"
+  },
+  "decision": {
+    "path": "@evidence/build/runs/vulkan5-review-1172r2/decision.json",
+    "sha256": "eae9e9d2496cd9437466bedb6878ac27caea07170b647a8cc6cfcbda756e70b8"
+  },
+  "scope": "Exact whole prepared 0.17.0+vulkan.5 preparation20 (1171b) source/scope and fresh cp312 native provenance declarations. No strict installed/profile/artifact, CI/integration/publication admission.",
+  "conditions": [],
+  "qualification_approved": false,
+  "coverage_map_sha256": "e46eb264db6dbd9bd8103d4062bdc86a4fd2f845c5a32c850bf887006a362edb",
+  "execution_map_sha256": "524c0bd1ebcc02417315204d69f20c95039559842ee42a53912e0d3fdf558292",
+  "admission_scope_sha256": "dfeab0b7ce429bc1f27c249812c09711a75a304bd71076025163aac37591a83d"
+}

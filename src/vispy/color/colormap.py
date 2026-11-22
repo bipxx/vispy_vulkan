@@ -3,6 +3,7 @@
 # Distributed under the (new) BSD License. See LICENSE.txt for more info.
 
 from __future__ import division  # just to be safe...
+from string import Template
 import warnings
 
 import re
@@ -123,7 +124,19 @@ def step(colors, x, controls=None):
 
 
 # GLSL interpolation functions.
-def _glsl_mix(controls=None, colors=None, texture_map_data=None):
+_LUT_GLSL_MAP = """
+    $lut_declaration
+    vec4 colormap(float t) {
+        return texture2D($lut_sampler, vec2(0.0, clamp(t, 0.0, 1.0)));
+    }
+    """
+_DEFAULT_LUT_PARAMS = dict(lut_declaration='uniform sampler2D texture2D_LUT;',
+                           lut_sampler='texture2D_LUT')
+_DEFAULT_LUT_GLSL_MAP = Template(_LUT_GLSL_MAP).substitute(_DEFAULT_LUT_PARAMS)
+
+
+def _glsl_mix(controls=None, colors=None, texture_map_data=None, *,
+              glsl_template=_DEFAULT_LUT_GLSL_MAP):
     """Generate a GLSL template function from a given interpolation patterns
     and control points.
 
@@ -159,15 +172,11 @@ def _glsl_mix(controls=None, colors=None, texture_map_data=None):
     LUT[:, 0, 2] = np.interp(x, controls, c_rgba[:, 2])
     LUT[:, 0, 3] = np.interp(x, controls, c_rgba[:, 3])
 
-    return """
-    uniform sampler2D texture2D_LUT;
-    vec4 colormap(float t) {
-        return texture2D(texture2D_LUT, vec2(0.0, clamp(t, 0.0, 1.0)));
-    }
-    """
+    return glsl_template
 
 
-def _glsl_step(controls=None, colors=None, texture_map_data=None):
+def _glsl_step(controls=None, colors=None, texture_map_data=None, *,
+               glsl_template=_DEFAULT_LUT_GLSL_MAP):
     assert (controls[0], controls[-1]) == (0., 1.)
     ncolors = len(controls) - 1
     assert ncolors >= 2
@@ -194,12 +203,7 @@ def _glsl_step(controls=None, colors=None, texture_map_data=None):
     colors_rgba = ColorArray(colors[:])._rgba
     LUT[:, 0, :] = colors_rgba[j]
 
-    return """
-    uniform sampler2D texture2D_LUT;
-    vec4 colormap(float t) {
-        return texture2D(texture2D_LUT, vec2(0.0, clamp(t, 0.0, 1.0)));
-    }
-    """
+    return glsl_template
 
 
 # Mini GLSL template system for colors.
@@ -231,10 +235,10 @@ class BaseColormap(object):
 
     Notes
     -----
-    Must be overriden. Child classes need to implement:
+    Child classes implement:
 
     glsl_map : string
-        The GLSL function for the colormap. Use $color_0 to refer
+        The GLSL function required for GPU use. Use $color_0 to refer
         to the first color in `colors`, and so on. These are vec4 vectors.
     map(item) : function
         Takes a (N, 1) vector of values in [0, 1], and returns a rgba array
@@ -260,19 +264,21 @@ class BaseColormap(object):
             self.colors = colors
         if not isinstance(self.colors, ColorArray):
             self.colors = ColorArray(self.colors)
-        # Process the GLSL map function by replacing $color_i by the
-        if len(self.colors) > 0:
+        has_glsl = self.glsl_map is not None
+        if has_glsl and len(self.colors) > 0:
             self.glsl_map = _process_glsl_template(self.glsl_map,
                                                    self.colors.rgba)
         if high_color is not None:
             self.high_color = Color(high_color)
-            self._set_high_color_glsl()
+            if has_glsl:
+                self._set_high_color_glsl()
         if low_color is not None:
             self.low_color = Color(low_color)
-            self._set_low_color_glsl()
-
+            if has_glsl:
+                self._set_low_color_glsl()
         self.bad_color = Color((0, 0, 0, 0) if bad_color is None else bad_color)
-        self._set_bad_color_glsl()
+        if has_glsl:
+            self._set_bad_color_glsl()
 
     def _set_bad_color_glsl(self):
         """Set the color mapping for NaN values."""
@@ -463,9 +469,17 @@ class Colormap(BaseColormap):
         # use texture map for luminance to RGBA conversion
         self.texture_map_data = np.zeros((LUT_len, 1, 4), dtype=np.float32)
         self.glsl_map = self._glsl_map_generator(self._controls, colors,
-                                                 self.texture_map_data)
+                                                 self.texture_map_data,
+                                                 glsl_template=_LUT_GLSL_MAP)
         super(Colormap, self).__init__(colors, bad_color=bad_color,
                                        high_color=high_color, low_color=low_color)
+        self._glsl_map_template = Template(self.glsl_map)
+        self.glsl_map = self._glsl_map_template.substitute(_DEFAULT_LUT_PARAMS)
+
+    def _glsl_map_with_bound_lut(self):
+        # The shader compiler assigns a unique uniform to each bound LUT.
+        return self._glsl_map_template.substitute(
+            lut_declaration='', lut_sampler='$lut_sampler')
 
     @property
     def interpolation(self):

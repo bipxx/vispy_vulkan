@@ -85,8 +85,9 @@ print(json.dumps({name: "patch" if np.array_equal(region, patch) else "zeros" if
     (128, 96, 8, 16),  # the patched texture's own size does not matter
 ])
 def test_a_staged_patch_survives_a_new_textures_first_upload_in_its_frame(side, other_side, rows, columns):
+    flags = ["-B", "-S"] if sys.flags.no_site else ["-B"]
     completed = subprocess.run(
-        [sys.executable, "-B", "-c", CHILD, json.dumps(sys.path), _dawn.__file__,
+        [sys.executable, *flags, "-c", CHILD, json.dumps(sys.path), _dawn.__file__,
          str(side), str(other_side), str(rows), str(columns)],
         capture_output=True, text=True, timeout=60,
     )

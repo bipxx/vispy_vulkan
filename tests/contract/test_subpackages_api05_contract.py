@@ -21,7 +21,6 @@ import inspect
 import io
 import math
 import struct
-import warnings
 import zlib
 
 import numpy as np
@@ -477,8 +476,7 @@ def test_api05_subpkg_io_png_image_mesh_and_offline_bounds(tmp_path):
     with pytest.raises(HeaderError):
         vio.read_mesh(str(short_stl_file))
 
-    # Full >=84-byte binary STL hits np.fromstring(bytes, dtype=...) in upstream stl.py:
-    # on NumPy >= 2.3 this raises ValueError; on NumPy < 2.3 (e.g. 2.2.x on Python 3.10) it warns and returns the mesh.
+    # A binary STL decodes a complete triangle across supported NumPy versions.
     bin_stl_path = tmp_path / 'single_tri.stl'
     bin_header = b'vispy binary stl'.ljust(80, b'\x00') + struct.pack('<I', 1)
     bin_tri = struct.pack(
@@ -490,20 +488,10 @@ def test_api05_subpkg_io_png_image_mesh_and_offline_bounds(tmp_path):
         0,
     )
     bin_stl_path.write_bytes(bin_header + bin_tri)
-    np_ver = tuple(
-        int(''.join(ch for ch in part if ch.isdigit()) or '0')
-        for part in np.__version__.split('.')[:2]
-    )
-    if np_ver >= (2, 3):
-        with pytest.raises(ValueError, match='fromstring'):
-            vio.read_mesh(str(bin_stl_path))
-    else:
-        with warnings.catch_warnings():
-            warnings.simplefilter('ignore', DeprecationWarning)
-            bv, bf, bn, _ = vio.read_mesh(str(bin_stl_path))
-        np.testing.assert_allclose(bv, [[0, 0, 0], [1, 0, 0], [0, 1, 0]])
-        np.testing.assert_array_equal(bf, [[0, 1, 2]])
-        assert bn.shape == (1, 3)
+    bv, bf, bn, _ = vio.read_mesh(str(bin_stl_path))
+    np.testing.assert_allclose(bv, [[0, 0, 0], [1, 0, 0], [0, 1, 0]])
+    np.testing.assert_array_equal(bf, [[0, 1, 2]])
+    np.testing.assert_allclose(bn, [[0, 0, 1]])
 
     # Bundled offline dataset works without network; uncached load_data_file fails closed offline.
     kernels, filter_names = vio.load_spatial_filters()
@@ -747,19 +735,14 @@ def test_api05_subpkg_transforms_cpu_map_imap_shaders_and_system():
     np.testing.assert_allclose(polar_out, [[5.0, 0.0, 2.0], [0.0, 3.0, -1.0]], atol=1e-6)
     assert 'polar_transform_map' in polar.shader_map().compile()
 
-    # LogTransform: forward CPU map + GLSL shader_map/shader_imap uniform sign inversion.
-    # Note upstream LogTransform._map(..., base=-self.base) evaluates `-base[i] ** coords[..., i]`
-    # (`(-10.0) ** float_array`), producing NaN in NumPy float power on CPU imap when base > 1;
-    # GPU shader_imap passes `-base` into GLSL `pow(-$base.x, pos.x)` cleanly.
+    # LogTransform CPU round trip and GLSL forward and inverse programs.
     log_tr = vtransforms.LogTransform(base=(10.0, 2.0, 0.0))
     log_in = np.array([[100.0, 8.0, 7.0], [1000.0, 16.0, -3.0]], dtype=np.float64)
     log_out = log_tr.map(log_in)
     np.testing.assert_allclose(log_out, [[2.0, 3.0, 7.0], [3.0, 4.0, -3.0]], atol=1e-6)
-    with warnings.catch_warnings():
-        warnings.simplefilter('ignore', RuntimeWarning)
-        imap_probe = log_tr.imap(log_out)
-    assert np.isnan(imap_probe[:, :2]).all()
-    np.testing.assert_allclose(imap_probe[:, 2], [7.0, -3.0], atol=1e-6)
+    imap_probe = log_tr.imap(log_out)
+    np.testing.assert_allclose(imap_probe[:, :2], log_in[:, :2], rtol=1e-6)
+    np.testing.assert_array_equal(imap_probe[:, 2], log_in[:, 2])
     assert 'LogTransform_map' in log_tr.shader_map().compile()
     assert 'LogTransform_map' in log_tr.shader_imap().compile()
 
